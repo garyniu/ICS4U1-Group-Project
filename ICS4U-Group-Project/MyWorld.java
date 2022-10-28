@@ -9,7 +9,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class MyWorld extends World
 {
 
-    private GreenfootImage background;
+    private GreenfootImage background, test;
+    private MouseInfo mouse = Greenfoot.getMouseInfo();
     
     
     /**
@@ -25,6 +26,14 @@ public class MyWorld extends World
         background.setColor(Color.GRAY);
         background.fillRect(0, 0, 1024, 800);
         setBackground(background);
+        
+    }
+    
+    public void act(){
+        test = new GreenfootImage(400, 300);
+        test.setColor(Color.BLACK);
+        
+        test.fillRect(mouse.getX(), mouse.getY(), 400, 300
         
     }
 }
