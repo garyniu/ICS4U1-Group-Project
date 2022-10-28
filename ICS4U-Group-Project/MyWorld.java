@@ -11,6 +11,7 @@ public class MyWorld extends World
 
     private GreenfootImage background;
     
+    
     /**
      * Constructor for objects of class MyWorld.
      * 
