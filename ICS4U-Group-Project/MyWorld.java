@@ -12,6 +12,8 @@ public class MyWorld extends World
     private GreenfootImage background, test;
     private MouseInfo mouse = Greenfoot.getMouseInfo();
     
+    private int x = 0, y = 0;
+    
     
     /**
      * Constructor for objects of class MyWorld.
@@ -30,10 +32,26 @@ public class MyWorld extends World
     }
     
     public void act(){
-        test = new GreenfootImage(400, 300);
-        test.setColor(Color.BLACK);
         
-        test.fillRect(mouse.getX(), mouse.getY(), 400, 300
+        setBackground(background);
+        
+        test = new GreenfootImage(1024, 800);
+        test.setColor(Color.BLACK);
+        mouse = Greenfoot.getMouseInfo();
+        
+        if (mouse != null){
+            x = mouse.getX() / 4;
+        }
+        if (mouse != null){
+            y = mouse.getY() / 4;
+        }
+        
+        System.out.println(x + " " + y);
+        
+        
+        test.fillRect(x, y, x + 400, y + 300);
+        
+        setBackground(test);
         
     }
 }
