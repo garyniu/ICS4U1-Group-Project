@@ -27,6 +27,12 @@ public class MyWorld extends World
         background.fillRect(0, 0, 1024, 800);
         setBackground(background);
         
+        getBackground().setColor(new Color(0, 0, 0));
+        getBackground().drawLine(512, 0, 512, 800);
+        addObject(new FifthMachine(), 400, 600);
+        addObject(new FifthMachine(), 624, 600);
+        addObject(new FirstMachine(), 362, 120);
+        addObject(new FirstMachine(), 662, 120);
     }
     
     public void act(){
