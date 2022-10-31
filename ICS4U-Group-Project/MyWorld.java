@@ -33,6 +33,7 @@ public class MyWorld extends World
         addObject(new FifthMachine(), 624, 600);
         addObject(new FirstMachine(), 362, 120);
         addObject(new FirstMachine(), 662, 120);
+        addObject(new HiredWorkers(), 200, 800);
     }
     
     public void act(){
