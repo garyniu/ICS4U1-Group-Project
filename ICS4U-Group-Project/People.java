@@ -14,12 +14,10 @@ public class People extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public People(){
-        direction = 2;
-    
+        direction = -2;
     }
     public void act()
     {
-        
         if(this.getY() >= 800){
             direction = -2;
         }
