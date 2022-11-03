@@ -8,6 +8,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class conveyerstatic extends Machines
 {
+    
+    // For output conveyer only
+    
+    public conveyerstatic(){
+        
+    }
+    
+    
     /**
      * Act - do whatever the conveyerstatic wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.

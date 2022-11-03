@@ -6,18 +6,19 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class MyWorld extends World
+public class GameWorld extends World
 {
 
     private GreenfootImage background;
-
+    public static int currency;
+    public static int secondCurrency;
     
     
     /**
      * Constructor for objects of class MyWorld.
      * 
      */
-    public MyWorld()
+    public GameWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 800, 1); 
@@ -30,11 +31,22 @@ public class MyWorld extends World
         getBackground().setColor(new Color(0, 0, 0));
         getBackground().drawLine(512, 0, 512, 800);
         
-        addObject(new HiredWorkers(), 200, 800);
+        // addObject(new HiredWorkers(), 200, 800);
     }
     
     public void act(){
 
+        
+    }
+    /*
+     *   This will be the method that upgrades the machines that produces items
+     *  It will 
+    */
+    public void machineUpgradeOne(){
+        if(currency > 3)
+        {
+            
+        }
         
     }
 }

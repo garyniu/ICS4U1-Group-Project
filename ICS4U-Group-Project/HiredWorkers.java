@@ -8,21 +8,30 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class HiredWorkers extends People
 {
-    /**
-     * Act - do whatever the HiredWorkers wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public HiredWorkers(){
-        direction = -2;
+    
+    private static int workercount = 0;
+    
+    
+    public HiredWorkers(int locX, int locY){
+        super(locX, locY);
+        //incrementing worker count
+        workercount++;
+        
+        //add image / scale image 
+        
     }
+    
     public void act()
     {
-        if(this.getY() >= 800){
-            direction = -2;
-        }
-        if(this.getY() <= 0){
-            direction = 2;
-        }
-        setLocation(this.getX(), this.getY()+direction);
+        
+        
+        
+    }
+    
+    
+    //dies
+    public void death(){
+        workercount--;
+        getWorld().removeObject(this);
     }
 }
