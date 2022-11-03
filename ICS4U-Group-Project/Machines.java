@@ -8,7 +8,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Machines extends Actor
 {
-    
+    //TODO
+    //implement machines (conveyers)
+    // - Static
+    //  - just a rectangle, moves items on it
+    // - Add
+    //  - add new worker conveyers, 3 sections for each employee
     
     
     public void act()
