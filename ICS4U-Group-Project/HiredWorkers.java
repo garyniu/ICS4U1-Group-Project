@@ -12,8 +12,17 @@ public class HiredWorkers extends People
      * Act - do whatever the HiredWorkers wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    public HiredWorkers(){
+        direction = -2;
+    }
     public void act()
     {
-        // Add your action code here.
+        if(this.getY() >= 800){
+            direction = -2;
+        }
+        if(this.getY() <= 0){
+            direction = 2;
+        }
+        setLocation(this.getX(), this.getY()+direction);
     }
 }
