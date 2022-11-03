@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Machines extends Actor
+public abstract class Machines extends Actor
 {
     //TODO
     //implement machines (conveyers)

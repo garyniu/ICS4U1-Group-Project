@@ -9,6 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class conveyeradd extends Machines
 {
     
+    //each will have individual input 
     
     public conveyeradd(){
         
