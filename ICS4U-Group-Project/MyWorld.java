@@ -10,7 +10,8 @@ public class MyWorld extends World
 {
 
     private GreenfootImage background;
-
+    public static int currency;
+    public static int secondCurrency;
     
     
     /**
@@ -35,6 +36,17 @@ public class MyWorld extends World
     
     public void act(){
 
+        
+    }
+    /*
+     *   This will be the method that upgrades the machines that produces items
+     *  It will 
+    */
+    public void machineUpgradeOne(){
+        if(currency > 3)
+        {
+            
+        }
         
     }
 }

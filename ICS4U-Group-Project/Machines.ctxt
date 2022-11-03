@@ -1,6 +1,12 @@
 #BlueJ class context
 comment0.target=Machines
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Machines\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ Machines\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=
 comment1.target=void\ act()
-numComments=2
+comment2.params=
+comment2.target=void\ produce()
+comment2.text=\n\ This\ produce\ method\ will\ be\ the\ thing\ that\ produces\ \n
+comment3.params=
+comment3.target=void\ setSpeed()
+comment3.text=\n\ This\ will\ set\ the\ speed\ of\ the\ machine\n
+numComments=4
