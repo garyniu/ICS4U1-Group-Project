@@ -8,6 +8,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class WorkerOne extends People
 {
+    
+    public WorkerOne(int x, int y){
+        super(x, y);
+    }
     /**
      * Act - do whatever the WorkerOne wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.

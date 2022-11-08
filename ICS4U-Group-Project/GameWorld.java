@@ -10,7 +10,7 @@ public class GameWorld extends World
 {
 
     private GreenfootImage background;
-<<<<<<< Updated upstream
+
     private static int currency;
     private static int secondCurrency;
     
@@ -18,11 +18,9 @@ public class GameWorld extends World
     private boolean workerUpgradePref;
     private boolean machUpgradePref;
     
-=======
-    public static int currency;
-    public static int secondCurrency;
+
     private HiredWorkers p;
->>>>>>> Stashed changes
+
     
     /**
      * Constructor for objects of class MyWorld.
@@ -41,20 +39,18 @@ public class GameWorld extends World
         getBackground().setColor(new Color(0, 0, 0));
         getBackground().drawLine(512, 0, 512, 800);
         
-<<<<<<< Updated upstream
+
         // addObject(new HiredWorkers(), 200, 800);
         
         //set variables 
         workerUpgradePref = true;
         machUpgradePref = false;
-=======
+
         p = new HiredWorkers(300, 400);
         
         addObject(p, 300, 400);
         
         
-    
->>>>>>> Stashed changes
     }
     
     public void act(){
