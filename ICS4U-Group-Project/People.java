@@ -11,8 +11,8 @@ public abstract class People extends Actor
     protected int direction;
     protected int currentX, currentY; //current x and y positions, will be filled for inital spawning
     protected int goToX, goToY; //coordinates to go to
-    
-    
+    protected boolean xBlocked;
+    protected boolean yBlocked;
     //TODO
     //spawn hiredworker
     //"holding" an object / having object in hand
@@ -34,7 +34,7 @@ public abstract class People extends Actor
     }
     
     public void act(){
-        pathFind(goToX, goToY, getWorld());
+        pathFind(goToX, goToY);
         
         System.out.println("x: " + goToX + " y: " + goToY);
     }
