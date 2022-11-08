@@ -12,8 +12,31 @@ public class WorkConveyors extends Machines
      * Act - do whatever the WorkConveyors wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    private int timer;
+    private int speed;
+    
+    public WorkConveyors(){
+        timer = 0;
+        speed = 1;
+    }
+    
     public void act()
     {
-        // Add your action code here.
+        timer++;
+        if(speed == 1){
+          if (timer == 1200){ //after 20 seconds
+            //output item (1 item is finished producing)
+            //when outputing items, it will be 1*# workers
+            timer=0;
+          }  
+        }
+    }
+    
+    public void upgradeSpeed(){
+        speed++;
+    }
+    //returns # of workers per station
+    public void returnWorkers(){
+        
     }
 }
