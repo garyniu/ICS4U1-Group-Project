@@ -1,15 +1,23 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class WorkConveyors here.
+ * Write a description of class conveyerstatic here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class WorkConveyors extends Machines
+public class conveyerstatic extends Machines
 {
+    
+    // For output conveyer only
+    
+    public conveyerstatic(){
+        
+    }
+    
+    
     /**
-     * Act - do whatever the WorkConveyors wants to do. This method is called whenever
+     * Act - do whatever the conveyerstatic wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     private int timer;
