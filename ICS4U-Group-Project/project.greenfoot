@@ -1,11 +1,14 @@
 #Greenfoot project file
 class.People.image=man01.png
-editor.fx.0.height=0
-editor.fx.0.width=0
-editor.fx.0.x=0
-editor.fx.0.y=0
+dependency1.from=People
+dependency1.to=GameWorld
+dependency1.type=UsesDependency
+editor.fx.0.height=737
+editor.fx.0.width=814
+editor.fx.0.x=360
+editor.fx.0.y=28
 height=838
-package.numDependencies=0
+package.numDependencies=1
 package.numTargets=16
 project.charset=UTF-8
 publish.hasSource=false
