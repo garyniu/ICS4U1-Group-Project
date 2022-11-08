@@ -11,6 +11,7 @@ public abstract class People extends Actor
     protected int direction;
     protected int currentX, currentY; //current x and y positions, will be filled for inital spawning
     protected int goToX, goToY; //coordinates to go to
+    private boolean xBlocked, yBlocked;
     
     
     //TODO
@@ -28,33 +29,29 @@ public abstract class People extends Actor
         //setting positions
         currentX = locX;
         currentY = locY;
-<<<<<<< Updated upstream
-=======
         goToX = locX;
         goToY = locY;
         System.out.println("x: " + goToX + " y: " + goToY);
->>>>>>> Stashed changes
     }
     
     public void act(){
     
-<<<<<<< Updated upstream
-=======
         pathFind(goToX, goToY, getWorld());
         
         System.out.println("x: " + goToX + " y: " + goToY);
->>>>>>> Stashed changes
     }
     
     public void goToLocation(int x, int y){
-        
+        goToX = x;
+        goToY = y;
     }
     
     //pathfinding algo, very simple
-    private void pathFind(int x, int y){
+    //not even pathfinding its literally just go forward
+    private void pathFind(int x, int y, World w){
+        GameWorld gw = (GameWorld)w;
+        //get gameworld objects, and check x y interception, same as bus
         
-<<<<<<< Updated upstream
-=======
         while (x != currentX && y != currentY){
             
             if (currentX < x){
@@ -81,7 +78,6 @@ public abstract class People extends Actor
             setLocation (currentX, currentY);
             
         }
->>>>>>> Stashed changes
     }
     
 }
