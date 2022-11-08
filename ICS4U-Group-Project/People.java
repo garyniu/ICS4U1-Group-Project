@@ -28,22 +28,15 @@ public abstract class People extends Actor
         //setting positions
         currentX = locX;
         currentY = locY;
-<<<<<<< Updated upstream
-=======
         goToX = locX;
         goToY = locY;
         System.out.println("x: " + goToX + " y: " + goToY);
->>>>>>> Stashed changes
     }
     
     public void act(){
-    
-<<<<<<< Updated upstream
-=======
         pathFind(goToX, goToY, getWorld());
         
         System.out.println("x: " + goToX + " y: " + goToY);
->>>>>>> Stashed changes
     }
     
     public void goToLocation(int x, int y){
@@ -52,9 +45,6 @@ public abstract class People extends Actor
     
     //pathfinding algo, very simple
     private void pathFind(int x, int y){
-        
-<<<<<<< Updated upstream
-=======
         while (x != currentX && y != currentY){
             
             if (currentX < x){
@@ -81,7 +71,6 @@ public abstract class People extends Actor
             setLocation (currentX, currentY);
             
         }
->>>>>>> Stashed changes
     }
     
 }
