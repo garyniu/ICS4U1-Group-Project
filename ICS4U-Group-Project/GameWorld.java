@@ -54,7 +54,7 @@ public class GameWorld extends World
             //upgrade worker speed
         }
         else if(machUpgradePref && !workerUpgradePref){
-            //upgrade machine speed 
+            //upgrade machine speed
         }
         else if(!machUpgradePref && !workerUpgradePref){
             int x = Greenfoot.getRandomNumber(2);
