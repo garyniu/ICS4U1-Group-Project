@@ -30,7 +30,7 @@ public abstract class People extends Actor
         currentY = locY;
         goToX = locX;
         goToY = locY;
-        System.out.println("x: " + goToX + " y: " + goToY);
+        //System.out.println("x: " + goToX + " y: " + goToY);
     }
     
     public void act(){

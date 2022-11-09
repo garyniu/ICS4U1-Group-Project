@@ -17,6 +17,7 @@ public class WorkConveyors extends Machines
     public WorkConveyors(){
         speed = 1.0;
         timer = 0;
+        this.getImage().scale(300, 80);
     }
     public void act()
     {
