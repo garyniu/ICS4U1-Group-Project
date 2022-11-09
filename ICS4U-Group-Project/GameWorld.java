@@ -19,9 +19,9 @@ public class GameWorld extends World
     private boolean workerUpgraded;
     
     private HiredWorkers p;
-    private WorkConveyors wcOne;
-    private WorkConveyors wcTwo;
-    private WorkConveyors wcThree;
+    private LeftConveyor wcOne;
+    private LeftConveyor wcTwo;
+    private LeftConveyor wcThree;
     
     /**
      * Constructor for objects of class MyWorld.
@@ -42,14 +42,14 @@ public class GameWorld extends World
         // addObject(new HiredWorkers(), 200, 800);
         
         //set variables 
-        workerUpgradePref = true;
+        workerUpgradePref = false;
         machUpgradePref = false;
         workerUpgraded = true;
         
         p = new HiredWorkers(300, 400);
-        wcOne = new WorkConveyors();
-        wcTwo = new WorkConveyors();
-        wcThree = new WorkConveyors();
+        wcOne = new LeftConveyor();
+        wcTwo = new LeftConveyor();
+        wcThree = new LeftConveyor();
         
         addObject(p, 100, 400);
         addObject(wcOne, 300, 200);
@@ -72,22 +72,23 @@ public class GameWorld extends World
      *  It will 
     */
     public void machineUpgradeOne(){
-        if(currency > 3){
+        int x = Greenfoot.getRandomNumber(2);
+        if(x==1){
             /**
              * Note that workers can't be upgraded two times in a row and 
              */
-            if(workerUpgradePref && !machUpgradePref){ //worker is priorityupgrade
+            if(workerUpgradePref){ //worker is priorityupgrade
                 if(!workerUpgraded){//if worker wasn't upgraded before
                     //upgrade worker speed
                     workerUpgraded = true;
                 }
                 else{//if worker was upgraded before
-                    wcOne.increaseSpeed();
+                    //upgrade machine
                 }
             }
-            else if(machUpgradePref && !workerUpgradePref){ //machine is priority
+            else if(machUpgradePref){ //machine is priority
                 if(workerUpgraded){//if worker was last upgraded
-                    //upgrade machine speed
+                    //upgrade machine
                 }
                 else{//if machine was last upgraded
                     //upgrade worker speed
@@ -95,12 +96,12 @@ public class GameWorld extends World
             }
             //random upgrade
             else if(!machUpgradePref && !workerUpgradePref){
-                int x = Greenfoot.getRandomNumber(2);
-                if(x == 0){
+                int y = Greenfoot.getRandomNumber(2);
+                if(y == 0){
                     //upgrade worker speed
                 }
-                else if(x == 1){
-                    //upgrade machine speed
+                else if(y == 1){
+                    //machine upgrade
                 }
             }
         }
