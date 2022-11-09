@@ -23,10 +23,7 @@ public class conveyerstatic extends Machines
     private int timer;
     private int speed;
     
-    public WorkConveyors(){
-        timer = 0;
-        speed = 1;
-    }
+    
     
     public void act()
     {

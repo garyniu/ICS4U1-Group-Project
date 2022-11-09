@@ -19,7 +19,7 @@ public class GameWorld extends World
     private boolean machUpgradePref;
     
 
-    private HiredWorkers p;
+    private HiredWorkers p, p1;
 
     
     /**
@@ -47,14 +47,16 @@ public class GameWorld extends World
         machUpgradePref = false;
 
         p = new HiredWorkers(300, 400);
+        p1 = new HiredWorkers(200, 100);
         
         addObject(p, 300, 400);
+        addObject(p1, 350, 450);
         
         
     }
     
     public void act(){
-        p.goToLocation(10, 20);
+        p.goToLocation(400, 520);
         
     }
     /**

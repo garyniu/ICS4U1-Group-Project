@@ -32,17 +32,14 @@ public abstract class People extends Actor
 
         goToX = locX;
         goToY = locY;
-        System.out.println("x: " + goToX + " y: " + goToY);
 
     }
     
     public void act(){
-    
-        System.out.println("test");
         
         pathFind(goToX, goToY, (GameWorld)getWorld());
         
-        System.out.println("x: " + goToX + " y: " + goToY);
+        
 
     }
     
@@ -54,33 +51,42 @@ public abstract class People extends Actor
     //pathfinding algo, very simple
     private void pathFind(int x, int y, GameWorld w){
         GameWorld gw = w;
+        Actor xImp = getOneObjectAtOffset(getImage().getWidth()/2 + 5, 0, Actor.class);
+        Actor yImp = getOneObjectAtOffset(0, getImage().getHeight()/2, Actor.class);
+        
+        xBlocked = (xImp != null) ? true : false;
+        yBlocked = (yImp != null) ? true : false;
+        
+        System.out.println(getImage().getHeight()/2);
+        
         
         if (x != currentX && y != currentY){
-            System.out.println("running");
             
-            if (currentX < x){
-                currentX++;
-            } else if (currentX > x){
-                currentX--;
-            }
-            System.out.println(currentX);
             
-            if (currentY < y){
-                currentY++;
-            } else if (currentY > y){
-                currentY--;
+            if (!xBlocked){
+                if (currentX < x){
+                    currentX++;
+                } else if (currentX > x){
+                    currentX--;
+                }
             }
             
-            System.out.println(currentY);
             
-            
-            if (xBlocked){
-                
-            } else if (yBlocked){
-                
-            } else if (xBlocked && yBlocked){
-                
+            if (!yBlocked){
+                if (currentY < y){
+                    currentY++;
+                } else if (currentY > y){
+                    currentY--;
+                }
             }
+            
+            
+            
+            
+            
+            if (xBlocked && yBlocked){
+                System.out.println("test");
+            } 
             
             setLocation (currentX, currentY);
             

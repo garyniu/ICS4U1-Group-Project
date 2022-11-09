@@ -23,7 +23,7 @@ public class HiredWorkers extends People
     
     public void act()
     {
-        
+        super.act();
         
         
     }
