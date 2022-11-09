@@ -17,6 +17,12 @@ public abstract class Items extends Actor
     protected boolean checkPeople;
     protected int checkLevel;
     
+    
+    public void sole(){
+        
+    }
+        
+    
     public void act()
     {
         // Add your action code here.
