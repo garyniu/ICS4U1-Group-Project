@@ -19,6 +19,9 @@ public class GameWorld extends World
     private boolean workerUpgraded;
     
     private HiredWorkers p;
+    private WorkConveyors wcOne;
+    private WorkConveyors wcTwo;
+    private WorkConveyors wcThree;
     
     /**
      * Constructor for objects of class MyWorld.
@@ -44,9 +47,9 @@ public class GameWorld extends World
         workerUpgraded = true;
         
         p = new HiredWorkers(300, 400);
-        WorkConveyors wcOne = new WorkConveyors();
-        WorkConveyors wcTwo = new WorkConveyors();
-        WorkConveyors wcThree = new WorkConveyors();
+        wcOne = new WorkConveyors();
+        wcTwo = new WorkConveyors();
+        wcThree = new WorkConveyors();
         
         addObject(p, 100, 400);
         addObject(wcOne, 300, 200);
@@ -79,7 +82,7 @@ public class GameWorld extends World
                     workerUpgraded = true;
                 }
                 else{//if worker was upgraded before
-                    //upgrade machine speed
+                    wcOne.increaseSpeed();
                 }
             }
             else if(machUpgradePref && !workerUpgradePref){ //machine is priority
