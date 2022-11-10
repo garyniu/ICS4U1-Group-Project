@@ -23,11 +23,19 @@ public class HiredWorkers extends People
     public void act()
     {
         super.act();
+        work();
+    }
+
+    //animation for creating new items + working
+    public void work(){
 
     }
-    
+
     //dies
     public void death(){
+
+        //play sound, delay 2 seconds, rotate 90 degrees, delete
+
         workercount--;
         getWorld().removeObject(this);
     }
