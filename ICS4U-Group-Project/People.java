@@ -38,9 +38,7 @@ public abstract class People extends Actor
 
         pathFind(goToX, goToY, (GameWorld)getWorld());
 
-
     }
-
     public void goToLocation(int x, int y){
         if (x > getWorld().getWidth()){
             x = getWorld().getWidth();
@@ -76,6 +74,13 @@ public abstract class People extends Actor
         //  -        
         if (x != currentX && y != currentY){
 
+            // check for collision on left and right, 2 seperate vars
+            // check for collision on top and bottom, 2 seperate vars
+
+            //if moving up / down, change a variable (direction)
+
+            //if moving right / left, change a variable (direction)
+
             if (!yBlocked){
                 if (currentX < x){
                     currentX++;
@@ -92,8 +97,6 @@ public abstract class People extends Actor
                 }
             }
 
-            
-            
             if (xBlocked && yBlocked){
                 currentX++;
             } 
