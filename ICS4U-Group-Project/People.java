@@ -44,6 +44,17 @@ public abstract class People extends Actor
     }
     
     public void goToLocation(int x, int y){
+        if (x > getWorld().getWidth()){
+            x = getWorld().getWidth();
+        } else if (x < 0){
+            x = 0;
+        }
+        
+        if (y > getWorld().getHeight()){
+            y = getWorld().getHeight();
+        } else if (y < 0){
+            y = 0;
+        }
         goToX = x;
         goToY = y;
     }
@@ -51,8 +62,8 @@ public abstract class People extends Actor
     //pathfinding algo, very simple
     private void pathFind(int x, int y, GameWorld w){
         GameWorld gw = w;
-        Actor xImp = getOneObjectAtOffset(getImage().getWidth()/2 + 5, 0, Actor.class);
-        Actor yImp = getOneObjectAtOffset(0, getImage().getHeight()/2, Actor.class);
+        Actor xImp = getOneObjectAtOffset((getImage().getWidth()/2), 0, Machines.class);
+        Actor yImp = getOneObjectAtOffset(0, (getImage().getHeight()/2), Machines.class);
         
         xBlocked = (xImp != null) ? true : false;
         yBlocked = (yImp != null) ? true : false;
@@ -63,16 +74,16 @@ public abstract class People extends Actor
         if (x != currentX && y != currentY){
             
             
-            if (!xBlocked){
+            if (!yBlocked){
                 if (currentX < x){
                     currentX++;
                 } else if (currentX > x){
                     currentX--;
                 }
-            }
+            } 
             
             
-            if (!yBlocked){
+            if (!xBlocked){
                 if (currentY < y){
                     currentY++;
                 } else if (currentY > y){
@@ -85,7 +96,7 @@ public abstract class People extends Actor
             
             
             if (xBlocked && yBlocked){
-                System.out.println("test");
+                currentX++;
             } 
             
             setLocation (currentX, currentY);
