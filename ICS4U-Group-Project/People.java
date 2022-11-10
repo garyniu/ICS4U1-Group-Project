@@ -12,20 +12,19 @@ public abstract class People extends Actor
     protected int currentX, currentY; //current x and y positions, will be filled for inital spawning
     protected int goToX, goToY; //coordinates to go to
     private boolean xBlocked, yBlocked;
-    
-    
+
     //TODO
     //spawn hiredworker
     //"holding" an object / having object in hand
     //implement manufactoring 
     //implement pathfinding, go to machine with pathfinding
-    
+
     /**
      * Act - do whatever the People wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public People(int locX, int locY){
-        
+
         //setting positions
         currentX = locX;
         currentY = locY;
@@ -34,22 +33,21 @@ public abstract class People extends Actor
         goToY = locY;
 
     }
-    
+
     public void act(){
-        
+
         pathFind(goToX, goToY, (GameWorld)getWorld());
-        
-        
+
 
     }
-    
+
     public void goToLocation(int x, int y){
         if (x > getWorld().getWidth()){
             x = getWorld().getWidth();
         } else if (x < 0){
             x = 0;
         }
-        
+
         if (y > getWorld().getHeight()){
             y = getWorld().getHeight();
         } else if (y < 0){
@@ -58,22 +56,26 @@ public abstract class People extends Actor
         goToX = x;
         goToY = y;
     }
-    
+
     //pathfinding algo, very simple
     private void pathFind(int x, int y, GameWorld w){
         GameWorld gw = w;
-        Actor xImp = getOneObjectAtOffset((getImage().getWidth()/2), 0, Machines.class);
-        Actor yImp = getOneObjectAtOffset(0, (getImage().getHeight()/2), Machines.class);
-        
+        Actor xImp = getOneObjectAtOffset((getImage().getWidth()/2), 0, Actor.class);
+        Actor yImp = getOneObjectAtOffset(0, (getImage().getHeight()/2), Actor.class);
+
         xBlocked = (xImp != null) ? true : false;
         yBlocked = (yImp != null) ? true : false;
-        
+
         System.out.println(getImage().getHeight()/2);
-        
-        
+
+        //8 cases
+        //4 cases 1 edge
+        //4 cases 2 edge, 1 corner
+        //  _
+        // |p|
+        //  -        
         if (x != currentX && y != currentY){
-            
-            
+
             if (!yBlocked){
                 if (currentX < x){
                     currentX++;
@@ -81,8 +83,7 @@ public abstract class People extends Actor
                     currentX--;
                 }
             } 
-            
-            
+
             if (!xBlocked){
                 if (currentY < y){
                     currentY++;
@@ -90,18 +91,16 @@ public abstract class People extends Actor
                     currentY--;
                 }
             }
-            
-            
-            
+
             
             
             if (xBlocked && yBlocked){
                 currentX++;
             } 
-            
+
             setLocation (currentX, currentY);
-            
+
         }
     }
-    
+
 }
