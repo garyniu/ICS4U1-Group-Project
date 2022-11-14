@@ -21,6 +21,7 @@ public class HiredWorkers extends People
         //add image / scale image 
 
     }
+
     public void act()
     {
         //play sliding down animation, fade in
@@ -31,7 +32,7 @@ public class HiredWorkers extends People
         } else {
 
             //test pathfinding
-            //super.act();
+            super.act();
 
             work();
 
@@ -50,8 +51,7 @@ public class HiredWorkers extends People
         } else if (transp < 0){
             transp = 0;
         }
-        
-        
+
 
         getImage().setTransparency(transp);
 
@@ -64,11 +64,16 @@ public class HiredWorkers extends People
     }
 
     //dies
-    public void death(){
+    public void death(int time){
 
         //play sound, delay 2 seconds, rotate 90 degrees, delete
 
-        workercount--;
-        getWorld().removeObject(this);
+        //setRotation(90);
+
+        if (time > 120){
+            workercount--;
+            getWorld().removeObject(this);
+        }
+
     }
 }

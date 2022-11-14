@@ -43,7 +43,7 @@ public class GameWorld extends World
         machUpgradePref = false;
 
         p = new HiredWorkers(300, 400);
-        p1 = new HiredWorkers(200, 100);
+        p1 = new HiredWorkers(350, 450);
 
         addObject(p, 300, 400);
         addObject(p1, 350, 450);

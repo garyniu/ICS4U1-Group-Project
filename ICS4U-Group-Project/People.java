@@ -58,14 +58,9 @@ public abstract class People extends Actor
     //pathfinding algo, very simple
     private void pathFind(int x, int y, GameWorld w){
         GameWorld gw = w;
-        Actor xImp = getOneObjectAtOffset((getImage().getWidth()/2), 0, Actor.class);
-        Actor yImp = getOneObjectAtOffset(0, (getImage().getHeight()/2), Actor.class);
-
-        xBlocked = (xImp != null) ? true : false;
-        yBlocked = (yImp != null) ? true : false;
-
-        System.out.println(getImage().getHeight()/2);
-
+        
+        
+        
         //8 cases
         //4 cases 1 edge
         //4 cases 2 edge, 1 corner
