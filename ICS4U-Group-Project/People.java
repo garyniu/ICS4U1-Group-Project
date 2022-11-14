@@ -11,7 +11,7 @@ public abstract class People extends Actor
     protected int direction;
     protected int currentX, currentY; //current x and y positions, will be filled for inital spawning
     protected int goToX, goToY; //coordinates to go to
-    private boolean xBlocked, yBlocked;
+    private boolean tBlock, bBlock, lBlock, rBlock;
 
     //TODO
     //spawn hiredworker
@@ -32,12 +32,10 @@ public abstract class People extends Actor
         goToX = locX;
         goToY = locY;
 
+        
     }
-
     public void act(){
-
         pathFind(goToX, goToY, (GameWorld)getWorld());
-
     }
     public void goToLocation(int x, int y){
         if (x > getWorld().getWidth()){
@@ -51,6 +49,7 @@ public abstract class People extends Actor
         } else if (y < 0){
             y = 0;
         }
+
         goToX = x;
         goToY = y;
     }
@@ -58,8 +57,20 @@ public abstract class People extends Actor
     //pathfinding algo, very simple
     private void pathFind(int x, int y, GameWorld w){
         GameWorld gw = w;
+
+        BlockedBoxes t = new BlockedBoxes(0, 0, getImage().getWidth(), 2);
+        BlockedBoxes b = new BlockedBoxes(0, 0, getImage().getWidth(), 2);
+        BlockedBoxes l = new BlockedBoxes(0, 0, 2, getImage().getHeight());
+        BlockedBoxes r = new BlockedBoxes(0, 0, 2, getImage().getHeight());
+
+        w.addObject(t, getX(), getY() + (getImage().getHeight()/2) + 5);
+        w.addObject(b, getX(), getY() - (getImage().getHeight()/2) - 5);
+        w.addObject(l, getX() - (getImage().getWidth()/2) - 5, getY());
+        w.addObject(r, getX() + (getImage().getWidth()/2) + 5, getY());
+
+        tBlock = t.contact(); bBlock = b.contact(); lBlock = l.contact(); rBlock = r.contact();
         
-        
+        System.out.println("Top blocked: " + tBlock + "|| Bottom blocked: " + bBlock + "\nLeft blocked: " + lBlock + "|| Right blocked: " + rBlock + "\n");
         
         //8 cases
         //4 cases 1 edge
@@ -76,29 +87,32 @@ public abstract class People extends Actor
 
             //if moving right / left, change a variable (direction)
 
-            if (!yBlocked){
-                if (currentX < x){
-                    currentX++;
-                } else if (currentX > x){
-                    currentX--;
-                }
-            } 
-
-            if (!xBlocked){
-                if (currentY < y){
-                    currentY++;
-                } else if (currentY > y){
-                    currentY--;
-                }
+            
+            currentX++;
+            currentY++;
+            
+            
+            
+            /*
+            if (currentX < x){
+                currentX++;
+            } else if (currentX > x){
+                currentX--;
             }
 
-            if (xBlocked && yBlocked){
-                currentX++;
-            } 
+            
+            if (currentY < y){
+                currentY++;
+            } else if (currentY > y){
+                currentY--;
+            }*/
 
+            
             setLocation (currentX, currentY);
-
         }
+        
+        w.removeObject(t); w.removeObject(b); w.removeObject(l); w.removeObject(r);
+        
     }
 
 }

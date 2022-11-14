@@ -16,8 +16,11 @@ public class HiredWorkers extends People
         super(locX, locY);
         //incrementing worker count
         workercount++;
+
         originalPos = locY;
 
+        
+        
         //add image / scale image 
 
     }
@@ -28,12 +31,15 @@ public class HiredWorkers extends People
         fadein--; originalPos++;
         if (fadein >= 0){
             entry(fadein, originalPos);
-            System.out.println("test");
+            
         } else {
 
             //test pathfinding
-            super.act();
-
+            
+                super.act();
+            
+            
+            
             work();
 
         }

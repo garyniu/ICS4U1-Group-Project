@@ -1,5 +1,6 @@
 import greenfoot.GreenfootImage;
 import greenfoot.Actor;
+import greenfoot.Color;
 
 /**
  * Write a description of class BlockedBoxes here.
@@ -24,11 +25,13 @@ public class BlockedBoxes extends Actor
         this.h = h;
         
         image = new GreenfootImage(w, h);
+        image.setColor(Color.RED);
+        image.fillRect(0, 0, w-1, h - 1);
         setImage(image);
         
     }
 
     public boolean contact(){
-        return (isTouching(Machines.class)) ? true : false;
+        return (isTouching(Machines.class) || isTouching(Actor.class)) ? true : false;
     }
 }
