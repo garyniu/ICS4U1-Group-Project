@@ -50,7 +50,7 @@ public class GameWorld extends World
 
     }
     public void act(){
-        p.goToLocation(400, 520);
+        p.goToLocation(500, 520);
 
     }
 
