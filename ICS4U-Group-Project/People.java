@@ -65,15 +65,15 @@ public abstract class People extends Actor
     private void pathFind(int x, int y, GameWorld w){
         GameWorld gw = w;
 
-        BlockedBoxes t = new BlockedBoxes(0, 0, getImage().getWidth(), 2);
-        BlockedBoxes b = new BlockedBoxes(0, 0, getImage().getWidth(), 2);
-        BlockedBoxes l = new BlockedBoxes(0, 0, 2, getImage().getHeight());
-        BlockedBoxes r = new BlockedBoxes(0, 0, 2, getImage().getHeight());
+        BlockedBoxes t = new BlockedBoxes(0, 0, getImage().getWidth() - 5, 2);
+        BlockedBoxes b = new BlockedBoxes(0, 0, getImage().getWidth() - 5, 2);
+        BlockedBoxes l = new BlockedBoxes(0, 0, 2, getImage().getHeight() -  5);
+        BlockedBoxes r = new BlockedBoxes(0, 0, 2, getImage().getHeight() - 5);
 
-        w.addObject(t, getX(), getY() + (getImage().getHeight()/2) + 5);
-        w.addObject(b, getX(), getY() - (getImage().getHeight()/2) - 5);
-        w.addObject(l, getX() - (getImage().getWidth()/2) - 5, getY());
-        w.addObject(r, getX() + (getImage().getWidth()/2) + 5, getY());
+        w.addObject(t, getX(), getY() + (getImage().getHeight()/2) - 5);
+        w.addObject(b, getX(), getY() - (getImage().getHeight()/2) + 5);
+        w.addObject(l, getX() - (getImage().getWidth()/2) - 10, getY());
+        w.addObject(r, getX() + (getImage().getWidth()/2) + 10, getY());
 
         tBlock = b.contact(); bBlock = t.contact(); lBlock = l.contact(); rBlock = r.contact();
 
@@ -81,15 +81,20 @@ public abstract class People extends Actor
 
         //make rest of cases
         //make method for movement each case, flip x/y, disable x++, x--, y++, y--
-        
+
         //8 cases
         //4 cases 1 edge
         //4 cases 2 edge, 1 corner
         //  _
         // |p|
-        //  -        
-        if (x != currentX && y != currentY){
+        //  -     
 
+        System.out.println(x + " " + y);
+        System.out.println(currentX + " " + currentY);
+
+        if (x != currentX || y != currentY){
+
+            System.out.println("evenrunning");
             // check for collision on left and right, 2 seperate vars
             // check for collision on top and bottom, 2 seperate vars
 
@@ -97,20 +102,52 @@ public abstract class People extends Actor
 
             //if moving right / left, change a variable (direction)
 
-            
-            
-            
-
             if (tBlock){
                 System.out.println("1");
                 if (rBlock){
                     System.out.println("2");
 
+                    if (currentX < x){
+                        //currentX++; //go right
+                    } else if (currentX > x){
+                        currentX--; //go left
+                    }
+
+                    if (currentY < y){
+                        currentY++; //go down
+                    } else if (currentY > y){
+                        //currentY--; // go up
+                    }
+
                 } else if (lBlock){
                     System.out.println("3");
 
+                    if (currentX < x){
+                        currentX++; //go right
+                    } else if (currentX > x){
+                        //currentX--; //go left
+                    }
+
+                    if (currentY < y){
+                        currentY++; //go down
+                    } else if (currentY > y){
+                        //currentY--; // go up
+                    }
+
                 } else {
                     System.out.println("4");
+
+                    if (currentX < x){
+                        currentX++;
+                    } else if (currentX > x){
+                        currentX--;
+                    }
+
+                    if (currentY < y){
+                        currentY++;
+                    } else if (currentY > y){
+                        //currentY--;
+                    }
 
                 }
 
@@ -121,29 +158,66 @@ public abstract class People extends Actor
 
                     if (currentX < x){
                         //currentX++;
-                        System.out.println("test1");
+
                     } else if (currentX > x){
                         //currentX--;
-                        System.out.println("test");
+
                     }
-                    System.out.println("test3");
+
                     if (currentY < y){
                         currentY++;
                     } else if (currentY > y){
                         currentY--;
                     }
+
                 } else if (lBlock){
                     System.out.println("8");
+
+                    if (currentX < x){
+                        currentX++; //go right
+                    } else if (currentX > x){
+                        //currentX--; //go left
+                    }
+
+                    if (currentY < y){
+                        //currentY++; //go down
+                    } else if (currentY > y){
+                        currentY--; // go up
+                    }
+
                 } else {
+                    if (currentX < x){
+                        currentX++; //go right
+                    } else if (currentX > x){
+                        currentX--; //go left
+                    }
+
+                    if (currentY < y){
+                        //currentY++; //go down
+                    } else if (currentY > y){
+                        currentY--; // go up
+                    }
                     System.out.println("9");
                 }
 
             } else if (lBlock){
                 System.out.println("10");
 
+                if (currentX < x){
+                    currentX++; //go right
+                } else if (currentX > x){
+                    //currentX--; //go left
+                }
+
+                if (currentY < y){
+                    currentY++; //go down
+                } else if (currentY > y){
+                    currentY--; // go up
+                }
+
             } else if (rBlock){
                 System.out.println("11");
-                
+
                 if (currentX > x){
                     currentX--;
                 }
@@ -153,10 +227,10 @@ public abstract class People extends Actor
                 } else if (currentY > y){
                     currentY--;
                 }
-                
-                
+
             } else {
-                
+
+                System.out.println("penis");
                 if (currentX < x){
                     currentX++;
                 } else if (currentX > x){
@@ -169,6 +243,8 @@ public abstract class People extends Actor
                     currentY--;
                 }
             }
+
+            System.out.println("penis1");
 
             setLocation (currentX, currentY);
         }
