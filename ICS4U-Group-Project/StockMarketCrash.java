@@ -15,8 +15,22 @@ public class StockMarketCrash extends Event
     public StockMarketCrash(int d){
         super(d);
     }
+    
+    public void addedToWorld(World w){
+        //draw effects for stock market crash
+        decreaseStock();
+    }
+    
+    public void decreaseStock(){
+        //half the stock/value of an item 
+    }
     public void act()
     {
-        // Add your action code here.
+       super();
+       //decrease
+       if(timer == 180){
+          GameWorld gw = (GameWorld)getWorld();
+          gw.removeObject(this); 
+        }
     }
 }

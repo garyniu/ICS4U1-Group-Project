@@ -9,9 +9,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Event extends Actor
 {
     protected int duration; 
-
+    protected int timer; 
+    
     public Event(int duration){
         this.duration = duration; 
+        timer =0; 
     }
     
     /**
@@ -20,6 +22,6 @@ public class Event extends Actor
      */
     public void act()
     {
-        // Add your action code here.
+        timer++;
     }
 }

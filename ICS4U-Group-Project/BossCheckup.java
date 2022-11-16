@@ -9,14 +9,19 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class BossCheckup extends Event
 {
     /**
-     * Act - do whatever the BossCheckup wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * During BossCheckup, Boss spawns 
      */
     public BossCheckup(int d){
         super(d);
     }
     public void act()
     {
-        // Add your action code here.
+        super();
+        if(timer == 900){
+            //remove boss object 
+            //randomize a #, if '0', workers get a raise, production speeds up , if '1', workers get pay deduction, less productive 
+            GameWorld gw = (GameWorld)getWorld();
+            gw.removeObject(this);
+        }
     }
 }

@@ -9,7 +9,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Strike extends Event
 {
     /**
-     * During duration, execute all visual effects,  
+     * During Strike, the production speed for machines will be set to 0
+     * - Visual effects listed in google doc
+     * - At the end, worker num is halfed 
      */
     
     public Strike(int d, int machineSpd, int workerNum){
@@ -22,7 +24,12 @@ public class Strike extends Event
      */
     public void act()
     {
-        // Add your action code here.
+        super();
+        if(timer == 900){
+            //end strike (half workers); 
+            GameWorld gw = (GameWorld)getWorld();
+            gw.removeObject(this);
+        }
     }
     
     public void stopProduction(){
