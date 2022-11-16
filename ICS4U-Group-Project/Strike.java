@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Strike extends Event
 {
-    public Strike(int d){
+    public Strike(int d, int machineSpd){
         super(d);
     }
     
