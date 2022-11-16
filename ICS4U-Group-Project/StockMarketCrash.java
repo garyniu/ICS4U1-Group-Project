@@ -1,23 +1,20 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Event here.
+ * Write a description of class StockMarketCrash here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Event extends Actor
+public class StockMarketCrash extends Event
 {
-    protected int duration; 
-
-    public Event(int duration){
-        this.duration = duration; 
-    }
-    
     /**
-     * Act - do whatever the Event wants to do. This method is called whenever
+     * Act - do whatever the StockMarketCrash wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    public StockMarketCrash(int d){
+        super(d);
+    }
     public void act()
     {
         // Add your action code here.
