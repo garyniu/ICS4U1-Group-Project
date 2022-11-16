@@ -12,7 +12,7 @@ public class Strike extends Event
      * During duration, execute all visual effects,  
      */
     
-    public Strike(int d, int machineSpd){
+    public Strike(int d, int machineSpd, int workerNum){
         super(d);
     }
     
