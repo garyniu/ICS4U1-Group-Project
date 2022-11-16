@@ -8,6 +8,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Strike extends Event
 {
+    /**
+     * During duration, execute all visual effects,  
+     */
+    
     public Strike(int d, int machineSpd){
         super(d);
     }
@@ -19,5 +23,13 @@ public class Strike extends Event
     public void act()
     {
         // Add your action code here.
+    }
+    
+    public void stopProduction(){
+        
+    }
+    
+    public void strikeEnd(){
+        
     }
 }
