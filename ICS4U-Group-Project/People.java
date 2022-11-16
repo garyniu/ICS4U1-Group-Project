@@ -23,7 +23,7 @@ public abstract class People extends Actor
      * Act - do whatever the People wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public People(int locX, int locY, boolean test){
+    public People(int locX, int locY){
 
         //setting positions
         currentX = locX;
@@ -32,15 +32,15 @@ public abstract class People extends Actor
         goToX = locX;
         goToY = locY;
 
-        this.test = test;
+        
 
     }
 
     public void act(){
 
-        if (test){
-            pathFind(goToX, goToY, (GameWorld)getWorld());
-        }
+        
+        pathFind(goToX, goToY, (GameWorld)getWorld());
+        
 
     }
 

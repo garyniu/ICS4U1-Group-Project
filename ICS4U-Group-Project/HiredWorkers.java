@@ -12,8 +12,8 @@ public class HiredWorkers extends People
     private static int workercount = 0;
     private int fadepercent = 0, fadein = 120, originalPos;
 
-    public HiredWorkers(int locX, int locY, boolean test){
-        super(locX, locY, test);
+    public HiredWorkers(int locX, int locY){
+        super(locX, locY);
         //incrementing worker count
         workercount++;
 
@@ -36,7 +36,7 @@ public class HiredWorkers extends People
 
             //test pathfinding
             
-                super.act();
+                //super.act();
             
             
             
