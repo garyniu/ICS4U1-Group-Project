@@ -11,7 +11,7 @@ public abstract class People extends Actor
     protected int direction;
     protected int currentX, currentY; //current x and y positions, will be filled for inital spawning
     protected int goToX, goToY; //coordinates to go to
-    
+    public static int peopleAmount;
     
     //TODO
     //spawn hiredworker
@@ -36,8 +36,7 @@ public abstract class People extends Actor
     
     public void goToLocation(int x, int y){
         
-    }
-    
+    }    
     //pathfinding algo, very simple
     private void pathFind(int x, int y){
         
