@@ -22,8 +22,7 @@ public class Hitboxes extends Actor
         visible = false;
         image = new GreenfootImage(width, height);
         image.setColor(Color.GRAY);
-        image.fill();
-        //fillRect(90, 90, width, height);
+        image.fillRect(90, 90, width, height);
         setImage(image);
     }
     

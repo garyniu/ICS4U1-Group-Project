@@ -16,7 +16,7 @@ public abstract class Items extends Actor
     protected boolean isMade;
     protected boolean checkPeople;
     protected int checkLevel;
-    
+    protected GreenfootImage image;
     public void act()
     {
         // Add your action code here.
