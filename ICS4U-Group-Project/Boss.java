@@ -1,19 +1,19 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class WorkerOne here.
+ * Write a description of class Boss here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class WorkerOne extends People
+public class Boss extends People
 {
     
-    public WorkerOne(int x, int y){
+    public Boss(int x, int y){
         super(x, y);
     }
     /**
-     * Act - do whatever the WorkerOne wants to do. This method is called whenever
+     * Act - do whatever the Boss wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()

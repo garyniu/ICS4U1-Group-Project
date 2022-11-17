@@ -15,12 +15,19 @@ public abstract class Machines extends Actor
     // - Add
     //  - add new worker conveyers, 3 sections for each employee
     // create an 
-    
+    protected double machineSpeed;
+    protected int level;
+    protected int produceSpeed;
     
     public void act()
     {
         // Add your action code here.
+        
     }
     
+    public void Machines()
+    {
+        
+    }
     
 }
