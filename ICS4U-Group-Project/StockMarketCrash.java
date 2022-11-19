@@ -21,7 +21,7 @@ public class StockMarketCrash extends Event
           gw.removeObject(this); 
         }
     }
-    public void addedToWorld(GameWorld gw){
+    public void addedToWorld(World w){
         //draw effects for stock market crash
         decreaseStock();
     }

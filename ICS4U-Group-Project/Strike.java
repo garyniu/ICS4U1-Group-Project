@@ -13,7 +13,7 @@ public class Strike extends Event
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public Strike(int d){
-        
+        super(d);
     }
     public void act()
     {

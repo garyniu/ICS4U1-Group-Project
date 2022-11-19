@@ -19,4 +19,13 @@ public class BoomingBusiness extends Event
             gw.remove(this);
         }
     }
+    
+    public void addedToWorld(World w){
+        //draw effects for stock market crash
+        increaseStock();
+    }
+    
+    public void increaseStock(){
+        //double the stock/value of an item 
+    }
 }
