@@ -22,7 +22,7 @@ public class BossCheckup extends Event
             //randomize a #, if '0', workers get a raise, production speeds up , if '1', workers get pay deduction, less productive 
             int x = Greenfoot.getRandomNumber(2);
             if(x==0){
-                //increase speed
+                increaseEfficiency();
             } else if (x==1){
                 slowEfficiency();
             }
