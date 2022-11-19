@@ -16,9 +16,10 @@ public class BossCheckup extends Event
     }
     public void act()
     {
-        super();
+        timer++;
         if(timer == 900){
-            //remove boss object 
+            GameWorld gw = (GameWorld)getWorld();
+            
             //randomize a #, if '0', workers get a raise, production speeds up , if '1', workers get pay deduction, less productive 
             int x = Greenfoot.getRandomNumber(2);
             if(x==0){
@@ -26,13 +27,13 @@ public class BossCheckup extends Event
             } else if (x==1){
                 slowEfficiency();
             }
-            GameWorld gw = (GameWorld)getWorld();
+            
+            //gw.removeObject(b);
             gw.removeObject(this);
         }
     }
-    public void increaseEfficiency(){
-        for(HiredWorkers w : getObjectsAtOffset(256, 400, HiredWorkers.class)){
-            //speed up workers
-        }
+    public void addedToWorld(GameWorld gw){
+        //Boss b = new Boss(int x, int y); 
+        //gw.addObject(b);
     }
 }

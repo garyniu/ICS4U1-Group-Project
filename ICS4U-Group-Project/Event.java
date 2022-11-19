@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Event extends Actor
+public abstract class Event extends Actor
 {
     protected int duration; 
     protected int timer; 
@@ -16,6 +16,28 @@ public class Event extends Actor
     }
     public void act()
     {
-        timer++;
+        
+    }
+    public void endEvent(){
+        GameWorld gw = (GameWorld) getWorld();
+        gw.removeObject(this);
+        timer = 0;
+    }
+    
+    //methods for changing speed/efficiency of workers
+    public void increaseEfficiency(){
+        for(HiredWorkers w : getObjectsAtOffset(256, 400, HiredWorkers.class)){
+            //speed up workers
+        }
+    }
+    public void slowEfficiency(){
+        for(HiredWorkers w : getObjectsAtOffset(256, 400, HiredWorkers.class)){
+            //slow workers
+        }
+    }
+    public void resumeEfficiency(){
+        for(HiredWorkers w : getObjectsAtOffset(256, 400, HiredWorkers.class)){
+            //return workers to normal speed
+        }
     }
 }

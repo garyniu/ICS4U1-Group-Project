@@ -13,10 +13,9 @@ public class BoomingBusiness extends Event
     }
     public void act()
     {
-        super();
+        timer++;
         if(timer == 180){
-            GameWorld gw = (GameWorld)getWorld();
-            gw.remove(this);
+            endEvent();
         }
     }
     

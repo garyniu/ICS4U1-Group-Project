@@ -17,6 +17,52 @@ public class Strike extends Event
     }
     public void act()
     {
-        super();
+        timer++;
+        if(timer == 900){
+            startWorkers();
+            splitWorkerNum();
+            startMachines();
+            endEvent();
+            timer = 0;
+        }
+    }
+    public void addedToWorld(){
+        stopWorkers();
+        stopMachines();
+    }
+    
+    public void stopWorkers(){
+        for(HiredWorkers w : getObjectsAtOffset(256, 400, HiredWorkers.class)){
+            //stop workers
+        }
+    }
+    public void startWorkers(){
+        for(HiredWorkers w : getObjectsAtOffset(256, 400, HiredWorkers.class)){
+            //start up workers
+        }
+    }
+    public void stopMachines(){
+        for(Machines m : getObjectsAtOffset(256, 400, Machines.class)){
+            //stop machines 
+        }
+    }
+    public void startMachines(){
+        for(Machines m : getObjectsAtOffset(256, 400, Machines.class)){
+            //stop machines 
+        }
+    }
+    public void splitWorkerNum(){
+        for(HiredWorkers w : getObjectsAtOffset(256, 400, HiredWorkers.class)){
+            int rand = Greenfoot.getRandomNumber(2);
+            int removedWorkersCount =0;
+            if(rand == 1){
+                //if(removedWorkersCount <= workerCount/2){
+                    removedWorkersCount++;
+                    GameWorld gw = (GameWorld)getWorld();
+                    gw.removeObject(w);
+                //}
+            }
+            //remove half of workers
+        }
     }
 }

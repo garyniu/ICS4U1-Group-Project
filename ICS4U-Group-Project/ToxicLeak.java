@@ -13,25 +13,14 @@ public class ToxicLeak extends Event
     }
     public void act()
     {
-        super();
+        timer++;
         if(timer == 900){
-            GameWorld gw = (GameWorld) getWorld();
-            gw.remove(this);
+            resumeEfficiency();
+            endEvent();
         }
     }
     
-    public void addedToWorld(World w){
+    public void addedToWorld(GameWorld gw){
         slowEfficiency();
-    }
-    
-    public void slowEfficiency(){
-        for(HiredWorkers w : getObjectsAtOffset(256, 400, HiredWorkers.class)){
-            //slow workers
-        }
-    }
-    public void resumeEfficiency(){
-        for(HiredWorkers w : getObjectsAtOffset(256, 400, HiredWorkers.class)){
-            //return workers to normal speed
-        }
     }
 }

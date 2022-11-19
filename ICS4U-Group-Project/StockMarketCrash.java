@@ -14,14 +14,13 @@ public class StockMarketCrash extends Event
         super(d);
     }
     public void act(){
-       super();
+       timer++;
        //decrease
        if(timer == 180){
-          GameWorld gw = (GameWorld)getWorld();
-          gw.removeObject(this); 
+          endEvent();
         }
     }
-    public void addedToWorld(World w){
+    public void addedToWorld(GameWorld gw){
         //draw effects for stock market crash
         decreaseStock();
     }
