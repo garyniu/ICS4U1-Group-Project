@@ -20,8 +20,19 @@ public class BossCheckup extends Event
         if(timer == 900){
             //remove boss object 
             //randomize a #, if '0', workers get a raise, production speeds up , if '1', workers get pay deduction, less productive 
+            int x = Greenfoot.getRandomNumber(2);
+            if(x==0){
+                //increase speed
+            } else if (x==1){
+                slowEfficiency();
+            }
             GameWorld gw = (GameWorld)getWorld();
             gw.removeObject(this);
+        }
+    }
+    public void increaseEfficiency(){
+        for(HiredWorkers w : getObjectsAtOffset(256, 400, HiredWorkers.class)){
+            //speed up workers
         }
     }
 }

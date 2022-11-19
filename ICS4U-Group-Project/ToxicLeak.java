@@ -29,4 +29,9 @@ public class ToxicLeak extends Event
             //slow workers
         }
     }
+    public void resumeEfficiency(){
+        for(HiredWorkers w : getObjectsAtOffset(256, 400, HiredWorkers.class)){
+            //return workers to normal speed
+        }
+    }
 }
