@@ -17,6 +17,6 @@ public class Strike extends Event
     }
     public void act()
     {
-        // Add your action code here.
+        super();
     }
 }

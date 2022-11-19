@@ -20,7 +20,7 @@ public class BoomingBusiness extends Event
         }
     }
     
-    public void addedToWorld(World w){
+    public void addedToWorld(GameWorld gw){
         //draw effects for stock market crash
         increaseStock();
     }
