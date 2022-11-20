@@ -2,8 +2,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
  * Write a description of class Machines here.
- * 
- * @author (your name) 
+ *
+ * @author (your name)
  * @version (a version number or a date)
  */
 public abstract class Machines extends Actor
@@ -14,13 +14,20 @@ public abstract class Machines extends Actor
     //  - just a rectangle, moves items on it
     // - Add
     //  - add new worker conveyers, 3 sections for each employee
-    // create an 
-    
-    
+    // create an
+    protected double machineSpeed;
+    protected int level;
+    protected int produceSpeed;
+    protected int defaultSpeed;
     public void act()
     {
         // Add your action code here.
+       
     }
-    
-    
+   
+    public void Machines()
+    {
+       
+    }
+   
 }

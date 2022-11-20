@@ -10,6 +10,7 @@ public abstract class Event extends Actor
 {
     protected int duration; 
     protected int timer; 
+    protected String side;
     
     public Event(int duration){
         this.duration = duration;
@@ -23,7 +24,13 @@ public abstract class Event extends Actor
         gw.removeObject(this);
         timer = 0;
     }
-    
+    public void findSide(){
+        if(this.getX()<=512){
+            side = "left";
+        } else if(this.getX()>512){
+            side = "right";
+        }
+    }
     //methods for changing speed/efficiency of workers
     public void increaseEfficiency(){
         for(HiredWorkers w : getObjectsAtOffset(256, 400, HiredWorkers.class)){

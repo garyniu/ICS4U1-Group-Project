@@ -19,7 +19,6 @@ public class Strike extends Event
     {
         timer++;
         if(timer == 900){
-            startWorkers();
             splitWorkerNum();
             startMachines();
             endEvent();
@@ -27,24 +26,22 @@ public class Strike extends Event
         }
     }
     public void addedToWorld(){
-        stopWorkers();
+        findSide();
         stopMachines();
     }
     
-    public void stopWorkers(){
-        for(HiredWorkers w : getObjectsAtOffset(256, 400, HiredWorkers.class)){
-            //stop workers
-        }
-    }
-    public void startWorkers(){
-        for(HiredWorkers w : getObjectsAtOffset(256, 400, HiredWorkers.class)){
-            //start up workers
-        }
-    }
     public void stopMachines(){
-        for(Machines m : getObjectsAtOffset(256, 400, Machines.class)){
-            //stop machines 
+        if(side == "left"){
+            for(LeftMachines lm : getObjectsAtOffset(256, 400, LeftMachines.class)){
+                lm.setProdSpeedA(0); 
+            }
         }
+        else if(side == "right"){
+            for(RightMachines rm : getObjectsAtOffset(256, 400, LeftMachines.class)){
+                rm.setProdSpeedB(0); 
+            }
+        }
+        
     }
     public void startMachines(){
         for(Machines m : getObjectsAtOffset(256, 400, Machines.class)){
