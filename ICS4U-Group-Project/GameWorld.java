@@ -52,6 +52,8 @@ public class GameWorld extends World
         
         // showText("MONEY2: " + currency, 200, 20);
         
+        
+        
     }
     
     public void act()

@@ -32,28 +32,33 @@ public class Truck extends Actor
 
         }
 
-
         if (getX() < stopPointA - 1){
             stopping(stopPointA);
             stopTime = 0;
         } else if (getX() == stopPointA - 1 && stopTime < 240){
             unit = 0;
             stopTime++;
+
         } else if (getX() < stopPointB - 1){
             stopping(stopPointB);
             stopTime = 0;
         } else if (getX() == stopPointB - 1 && stopTime < 240){
             unit = 0;
             stopTime++;
+
         } else {
             unit = 2;
             stopTime = 0;
         }
 
         moving(unit);
-        
+
         System.out.println(getWorld().getWidth());
         System.out.println(getX());
+
+        if (stopTime == 60 || stopTime == 120 || stopTime == 180){
+            getWorld().addObject(new TruckItems(), getX(), getY()+50);
+        }
 
         if (getX() > getWorld().getWidth()-2){
             getWorld().removeObject(this);
