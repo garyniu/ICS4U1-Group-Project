@@ -20,7 +20,7 @@ public class Shoes extends Clothes
         image.scale(30, 30);
         setImage(image);
 
-        this.prodSpeedA = LeftMachines.getProdSpeedA();
+        this.prodSpeedA = LeftMachines.getDefaultSpeedA();
     }
     public void act()
     {

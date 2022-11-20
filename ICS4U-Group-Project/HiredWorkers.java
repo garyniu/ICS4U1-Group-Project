@@ -9,13 +9,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class HiredWorkers extends People
 {
 
-    private static int workercount = 0;
+    private static int workerCount = 0;
     private int fadepercent = 0, fadein = 120, originalPos;
 
     public HiredWorkers(int locX, int locY){
         super(locX, locY);
         //incrementing worker count
-        workercCount++;
+        GameWorld gw = (GameWorld)getWorld();
+        gw.workercCount++;
 
         originalPos = locY;
 
@@ -44,9 +45,7 @@ public class HiredWorkers extends People
 
         }
     }
-    public int getWorkerCount(){
-        return workerCount; 
-    }
+    
     private void entry(int fadetime, int ogposition){
 
         int upMovement = ogposition - 120;
@@ -79,7 +78,7 @@ public class HiredWorkers extends People
         //setRotation(90);
 
         if (time > 120){
-            workercount--;
+            gw.workercount--;
             getWorld().removeObject(this);
         }
 

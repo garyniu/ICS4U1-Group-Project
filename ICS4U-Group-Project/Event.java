@@ -14,6 +14,7 @@ public abstract class Event extends Actor
     
     public Event(int duration){
         this.duration = duration;
+        findSide; 
     }
     public void act()
     {
