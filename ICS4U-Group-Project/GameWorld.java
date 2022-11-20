@@ -44,7 +44,7 @@ public class GameWorld extends World
         workerUpgradePref = true;
         machUpgradePref = false;
         
-        addObject(new Truck(), 50, 75);
+        addObject(new Truck(), 0, 75);
         
         // showText("MONEY: " + currency, 200, 20);
         // showText("MONEY: " + currency, 700, 20);
