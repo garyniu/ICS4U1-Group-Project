@@ -13,6 +13,7 @@ public class Button extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     GreenfootImage background, nameImage, greyBackground; 
+    private boolean click;
 
     public Button(int width, int height, String name)
     {
@@ -34,18 +35,19 @@ public class Button extends Actor
     public void act() 
     {
         // Add your action code here.
-        listenForClick();
+        click = listenForClick();
     }    
 
-    public void listenForClick()
+    public boolean listenForClick()
     {
         if(Greenfoot.mousePressed(this))
         {
             greyBackground.scale(greyBackground.getWidth()+5, greyBackground.getHeight()+5);
             Greenfoot.delay(10); 
             greyBackground.scale(greyBackground.getWidth()-5, greyBackground.getHeight()-5);
-            Greenfoot.setWorld(new ValueSetting());
-
+            
+            
+            return true;
         } 
         if (Greenfoot.mouseMoved(this)){
             setImage(greyBackground);
@@ -53,7 +55,13 @@ public class Button extends Actor
         if (Greenfoot.mouseMoved(null) && !Greenfoot.mouseMoved(this)){
             setImage(background);
         }
+        
+        return false;
 
+    }
+    
+    public boolean getClick(){
+        return click;
     }
 
 }

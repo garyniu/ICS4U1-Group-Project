@@ -9,6 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Menu extends World
 {
     private GreenfootImage background2;
+    private Button b;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -19,12 +20,19 @@ public class Menu extends World
         super(1024, 800, 1); 
         background2 = new GreenfootImage(1024, 800);
         background2.setColor(Color.GRAY);
-        Button b = new Button(100, 100, "Click to Start!");
+        b = new Button(100, 100, "Click to Start!");
         addObject(b,300,300); 
+    }
+    
+    public void act(){
+        if (b.getClick()){
+            Greenfoot.setWorld(new ValueSetting());
+        }
     }
     /*
      * 
      * DO NOT TOUCH
+     * 
     public void act()
     {
       showText(startButton.buttonState.toString(), 500,100); 
