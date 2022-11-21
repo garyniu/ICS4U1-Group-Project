@@ -14,7 +14,7 @@ public class Shoes extends Clothes
      * Act - do whatever the Shoes wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public Shoes()
+    public Shoes(Machines m)
     {
         image = new GreenfootImage("shoesTemp.png");
         image.scale(30, 30);
@@ -31,8 +31,6 @@ public class Shoes extends Clothes
        if(b != null)  
        {  
            GameWorld.addCurrency();
-           
-           
            getWorld().removeObject(this);
            return;
        }  
