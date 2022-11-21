@@ -37,29 +37,32 @@ public class Strike extends Event
             }
         }
         else if(side == "right"){
-            for(RightMachines rm : getObjectsAtOffset(256, 400, LeftMachines.class)){
+            for(RightMachines rm : getObjectsAtOffset(256, 400, RightMachines.class)){
                 rm.setProdSpeedB(0); 
             }
         }
-        
     }
     public void startMachines(){
-        for(Machines m : getObjectsAtOffset(256, 400, Machines.class)){
-            //stop machines 
+        if(side == "left"){
+            for(LeftMachines lm : getObjectsAtOffset(256, 400, LeftMachines.class)){
+                lm.setProdSpeedA(lm.getDefaultSpeedA()); 
+            }
+        }
+        else if(side == "right"){
+            for(RightMachines rm : getObjectsAtOffset(256, 400, RightMachines.class)){
+                rm.setProdSpeedB(rm.getDefaultSpeedB()); 
+            }
         }
     }
+
     public void splitWorkerNum(){
+        int removedWorkersCount =0;
         for(HiredWorkers w : getObjectsAtOffset(256, 400, HiredWorkers.class)){
-            int rand = Greenfoot.getRandomNumber(2);
-            int removedWorkersCount =0;
-            if(rand == 1){
-                //if(removedWorkersCount <= workerCount/2){
-                    removedWorkersCount++;
-                    GameWorld gw = (GameWorld)getWorld();
-                    gw.removeObject(w);
-                //}
+            GameWorld gw = (GameWorld)getWorld();
+            if(!(removedWorkerCount == gw.getWorkerCount()/2)){
+                gw.removeObject(w); 
+                removedWorkerCount++;
             }
-            //remove half of workers
         }
     }
 }

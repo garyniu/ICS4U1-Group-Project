@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Shoes extends Clothes
 {
    
-    public static int prodSpeedA;
+    public int prodSpeedA;
     /**
      * Act - do whatever the Shoes wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.

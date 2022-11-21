@@ -14,7 +14,7 @@ public abstract class Event extends Actor
     
     public Event(int duration){
         this.duration = duration;
-        findSide; 
+        findSide(); 
     }
     public void act()
     {
@@ -34,8 +34,15 @@ public abstract class Event extends Actor
     }
     //methods for changing speed/efficiency of workers
     public void increaseEfficiency(){
-        for(HiredWorkers w : getObjectsAtOffset(256, 400, HiredWorkers.class)){
-            //speed up workers
+        if(side == "left"){
+            for(LeftMachines lm : getObjectsAtOffset(256, 400, LeftMachines.class)){
+                lm.setProdSpeedA(lm.getDefaultSpeedA()+=1); 
+            }
+        }
+        else if(side == "right"){
+            for(RightMachines rm : getObjectsAtOffset(256, 400, RightMachines.class)){
+                rm.setProdSpeedB(rm.getDefaultSpeedB()); 
+            }
         }
     }
     public void slowEfficiency(){
