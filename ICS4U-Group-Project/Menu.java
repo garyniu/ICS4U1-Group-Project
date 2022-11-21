@@ -16,11 +16,11 @@ public class Menu extends World
     public Menu()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 600, 1);
+        super(1024, 800, 1); 
         background2 = new GreenfootImage(1024, 800);
         background2.setColor(Color.GRAY);
-        Start startButton = new Start("Press to begin!"); 
-        addObject(startButton,300,300); 
+        Button b = new Button(100, 100, "Click to Start!");
+        addObject(b,300,300); 
     }
     /*
      * 
