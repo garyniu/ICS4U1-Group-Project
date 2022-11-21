@@ -10,17 +10,29 @@ public class Shoes extends Clothes
 {
    
     public int prodSpeedA;
+    public String facing; 
     /**
      * Act - do whatever the Shoes wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public Shoes()
+    public Shoes(Machines m)
     {
         image = new GreenfootImage("shoesTemp.png");
         image.scale(30, 30);
         setImage(image);
-
-        this.prodSpeedA = LeftMachines.getDefaultSpeedA();
+        if(this.getX() <=256){
+            facing = "left";
+            LeftMachines lm = (LeftMachines)m; 
+            this.prodSpeedA = lm.getDefaultSpeedA();
+        } else if(this.getX()>256){
+            facing = "right";
+            RightMachines rm = (RightMachines)m; 
+            this.prodSpeedA = rm.getDefaultSpeedB();
+        }
+        if(facing == "left"){
+            
+        }
+        
     }
     public void act()
     {
