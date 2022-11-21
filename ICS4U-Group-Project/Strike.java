@@ -59,9 +59,9 @@ public class Strike extends Event
         int removedWorkersCount =0;
         for(HiredWorkers w : getObjectsAtOffset(256, 400, HiredWorkers.class)){
             GameWorld gw = (GameWorld)getWorld();
-            if(!(removedWorkerCount == gw.getWorkerCount()/2)){
+            if(!(removedWorkersCount == gw.getWorkerCount()/2)){
                 gw.removeObject(w); 
-                removedWorkerCount++;
+                removedWorkersCount++;
             }
         }
     }

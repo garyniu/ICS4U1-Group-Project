@@ -16,7 +16,9 @@ public class HiredWorkers extends People
         super(locX, locY);
         //incrementing worker count
         GameWorld gw = (GameWorld)getWorld();
-        gw.workercCount++;
+        workerCount = gw.getWorkerCount();
+        workerCount++;
+        gw.setWorkerCount(workerCount);
 
         originalPos = locY;
 
@@ -78,7 +80,9 @@ public class HiredWorkers extends People
         //setRotation(90);
 
         if (time > 120){
-            gw.workercount--;
+            GameWorld gw = (GameWorld)getWorld();
+            workerCount--;
+            gw.setWorkerCount(workerCount);
             getWorld().removeObject(this);
         }
 

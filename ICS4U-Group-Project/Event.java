@@ -36,23 +36,45 @@ public abstract class Event extends Actor
     public void increaseEfficiency(){
         if(side == "left"){
             for(LeftMachines lm : getObjectsAtOffset(256, 400, LeftMachines.class)){
-                lm.setProdSpeedA(lm.getDefaultSpeedA()+=1); 
+                int x = lm.getDefaultSpeedA();
+                x++;
+                lm.setProdSpeedA(x); 
+            }
+        }
+        else if(side == "right"){
+            for(RightMachines rm : getObjectsAtOffset(256, 400, RightMachines.class)){
+                int y = rm.getDefaultSpeedB();
+                y++;
+                rm.setProdSpeedB(y); 
+            }
+        }
+    }
+    public void slowEfficiency(){
+        if(side == "left"){
+            for(LeftMachines lm : getObjectsAtOffset(256, 400, LeftMachines.class)){
+                int x = lm.getDefaultSpeedA();
+                x--;
+                lm.setProdSpeedA(x); 
+            }
+        }
+        else if(side == "right"){
+            for(RightMachines rm : getObjectsAtOffset(256, 400, RightMachines.class)){
+                int y = rm.getDefaultSpeedB();
+                y--;
+                rm.setProdSpeedB(y); 
+            }
+        }
+    }
+    public void resumeEfficiency(){
+        if(side == "left"){
+            for(LeftMachines lm : getObjectsAtOffset(256, 400, LeftMachines.class)){
+                lm.setProdSpeedA(lm.getDefaultSpeedA()); 
             }
         }
         else if(side == "right"){
             for(RightMachines rm : getObjectsAtOffset(256, 400, RightMachines.class)){
                 rm.setProdSpeedB(rm.getDefaultSpeedB()); 
             }
-        }
-    }
-    public void slowEfficiency(){
-        for(HiredWorkers w : getObjectsAtOffset(256, 400, HiredWorkers.class)){
-            //slow workers
-        }
-    }
-    public void resumeEfficiency(){
-        for(HiredWorkers w : getObjectsAtOffset(256, 400, HiredWorkers.class)){
-            //return workers to normal speed
         }
     }
 }

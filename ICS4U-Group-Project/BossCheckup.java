@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class BossCheckup extends Event
 {
+    private Boss b;
     /**
      * During BossCheckup, Boss spawns 
      */
@@ -28,12 +29,18 @@ public class BossCheckup extends Event
                 slowEfficiency();
             }
             
-            //gw.removeObject(b);
+            gw.removeObject(b);
             gw.removeObject(this);
         }
     }
     public void addedToWorld(GameWorld gw){
-        //Boss b = new Boss(int x, int y); 
-        //gw.addObject(b);
+        if(side == "left"){
+            b = new Boss(250, 700); 
+            gw.addObject(b, 0, 50);
+        }
+        else if(side == "right"){
+            b = new Boss(300, 700);
+            gw.addObject(b, 1024, 50);
+        }
     }
 }
