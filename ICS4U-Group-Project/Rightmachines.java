@@ -14,17 +14,28 @@ public class RightMachines extends Machines
      */
     private GreenfootImage imageB;
     private int produceTimeB;
+    private int width;
+    private int height;
    
-    public void act()
-    {
-        // Add your action code here.
+    public RightMachines(){
        
         imageB = new GreenfootImage("shirtMachineTemp.png");
         imageB.scale(300, 100);
         setImage(imageB);
         produceSpeed = 1;
         defaultSpeed = produceSpeed; 
+        
+        width = imageB.getWidth();
+        height = imageB.getHeight();
        
+    }
+    public void addedToWorld(World w){
+        w.addObject(new Hitboxes(), this.getX()+width/2, this.getY()-height/2);
+        //w.addObject(new Shoes(this), this.getX()-width/2, this.getY()-height/4);
+    }
+    public void act()
+    {
+        
     }
    
     public void produceB()

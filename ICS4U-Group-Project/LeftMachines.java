@@ -16,6 +16,8 @@ public class LeftMachines extends Machines
     private int items;
     private int timer;
     private static int upgradeAmount;
+    private int width;
+    private int height;
    
     public LeftMachines()
     {
@@ -25,12 +27,18 @@ public class LeftMachines extends Machines
         produceSpeed = 1;
         defaultSpeed = produceSpeed; 
         //upgradeA();
- 
+         
+        width = imageA.getWidth();
+        height = imageA.getHeight();
         upgradeAmount = GameWorld.getCurrency();
     }
     public void act()
     {
         getWorld().showText("" + produceSpeed, 80, 80);
+    }
+    public void addedToWorld(World w){
+        w.addObject(new Hitboxes(), this.getX()+width/2, this.getY()-height/2);
+        //w.addObject(new Shoes(this), this.getX()-width/2, this.getY()-height/4);
     }
    
     //people interaction
