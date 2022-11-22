@@ -18,7 +18,7 @@ public class Value extends Button
      */
     
     public Value(String name, int points){
-        super(100,100,name, 0); 
+        super(400,400,name, 0); 
         myPoints = points;
         pointsImage = new GreenfootImage(Integer.toString(points),30,Color.GREEN, Color.BLACK); 
         nameImage = new GreenfootImage(name, 50, Color.WHITE, Color.BLACK);
@@ -42,6 +42,6 @@ public class Value extends Button
     private void upDatePoints()
     {
         pointsImage = new GreenfootImage(Integer.toString(myPoints),30,Color.WHITE, Color.BLACK);
-        background.drawImage(pointsImage,300,300);
+        background.drawImage(pointsImage,background.getWidth()/2-pointsImage.getWidth()/2, background.getHeight()-pointsImage.getHeight());
     }
 }

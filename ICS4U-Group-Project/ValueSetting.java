@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class ValueSetting extends World
 {
     private GreenfootImage background2;
-    private Button b;
+    private Value b;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -20,16 +20,17 @@ public class ValueSetting extends World
         super(1024, 800, 1); 
         background2 = new GreenfootImage(1024, 800);
         background2.setColor(Color.GRAY);
-        b = new Button(400, 300, "# Of workers", 0);
+        b = new Value("# Of workers", 0);
         addObject(b,getWidth()/2,getHeight()/2); 
+        
     }
     
     public void act(){
         
     }
     
-    p
     
+
     
    
     
