@@ -31,17 +31,10 @@ public abstract class People extends Actor
 
         goToX = locX;
         goToY = locY;
-
-       
-
     }
 
     public void act(){
-
-       
         pathFind(goToX, goToY, (GameWorld)getWorld());
-       
-
     }
 
     public void goToLocation(int x, int y){
@@ -62,7 +55,7 @@ public abstract class People extends Actor
     }
 
     //pathfinding algo, very simple
-    private void pathFind(int x, int y, GameWorld w){
+    protected void pathFind(int x, int y, GameWorld w){
         GameWorld gw = w;
 
         BlockedBoxes t = new BlockedBoxes(0, 0, getImage().getWidth() - 5, 2);

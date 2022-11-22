@@ -32,6 +32,6 @@ public class BlockedBoxes extends Actor
     }
 
     public boolean contact(){
-        return (isTouching(Machines.class) || isTouching(Actor.class)) ? true : false;
+        return (isTouching(Machines.class)) ? true : false;
     }
 }

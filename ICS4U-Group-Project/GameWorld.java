@@ -30,6 +30,7 @@ public class GameWorld extends World
         super(1024, 800, 1);
         currency = 0;
         spawnMachines();
+        addObject(new Boss(400, 700), 400, 700);
         addObject(new Hitboxes(), 300,100);
         background = new GreenfootImage(1024, 800);
         background.setColor(Color.GRAY);

@@ -16,6 +16,7 @@ public class LeftMachines extends Machines
     private int items;
     private int timer;
     private static int upgradeAmount;
+    private static int defaultSpeed;
     private int width;
     private int height;
    
@@ -38,7 +39,7 @@ public class LeftMachines extends Machines
     }
     public void addedToWorld(World w){
         w.addObject(new Hitboxes(), this.getX()+width/2, this.getY()-height/2);
-        //w.addObject(new Shoes(this), this.getX()-width/2, this.getY()-height/4);
+        w.addObject(new Shoes(this), this.getX()-width/2, this.getY()-height/4);
     }
    
     //people interaction
@@ -52,8 +53,9 @@ public class LeftMachines extends Machines
         produceSpeed += 1;
         defaultSpeed = produceSpeed; 
     }
-   
-    public int getDefaultSpeedA()
+    
+    
+    public static int getDefaultSpeedA()
     {
         return defaultSpeed;
     }

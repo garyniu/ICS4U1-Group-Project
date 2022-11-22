@@ -31,7 +31,7 @@ public class Rightmachines extends Machines
     }
     public void addedToWorld(World w){
         w.addObject(new Hitboxes(), this.getX()+width/2, this.getY()-height/2);
-        //w.addObject(new Shoes(this), this.getX()-width/2, this.getY()-height/4);
+        w.addObject(new Shoes(this), this.getX()-width/2, this.getY()-height/4);
     }
     public void act()
     {
