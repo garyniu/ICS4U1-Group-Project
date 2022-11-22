@@ -42,7 +42,7 @@ public abstract class Event extends Actor
             }
         }
         else if(side == "right"){
-            for(RightMachines rm : getObjectsAtOffset(256, 400, RightMachines.class)){
+            for(Rightmachines rm : getObjectsAtOffset(256, 400, Rightmachines.class)){
                 int y = rm.getDefaultSpeedB();
                 y++;
                 rm.setProdSpeedB(y); 
@@ -58,7 +58,7 @@ public abstract class Event extends Actor
             }
         }
         else if(side == "right"){
-            for(RightMachines rm : getObjectsAtOffset(256, 400, RightMachines.class)){
+            for(Rightmachines rm : getObjectsAtOffset(256, 400, Rightmachines.class)){
                 int y = rm.getDefaultSpeedB();
                 y--;
                 rm.setProdSpeedB(y); 
@@ -72,7 +72,7 @@ public abstract class Event extends Actor
             }
         }
         else if(side == "right"){
-            for(RightMachines rm : getObjectsAtOffset(256, 400, RightMachines.class)){
+            for(Rightmachines rm : getObjectsAtOffset(256, 400, Rightmachines.class)){
                 rm.setProdSpeedB(rm.getDefaultSpeedB()); 
             }
         }

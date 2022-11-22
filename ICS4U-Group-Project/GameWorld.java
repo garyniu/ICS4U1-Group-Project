@@ -72,11 +72,11 @@ public class GameWorld extends World
         //if(workerCountA == 6 && machUpgradePref)
         addObject(new LeftMachines(), 150, 550);
        
-        addObject(new RightMachines(), 682, 150);
+        addObject(new Rightmachines(), 682, 150);
         //if(workerCountB == 3 && machUpgradePref)
-        addObject(new RightMachines(), 682, 350);
+        addObject(new Rightmachines(), 682, 350);
         //if(workerCountB == 6 && machUpgradePref)
-        addObject(new RightMachines(), 682, 550);
+        addObject(new Rightmachines(), 682, 550);
        
         //just duplicate on top of the current worker
         //every time a new worker appears

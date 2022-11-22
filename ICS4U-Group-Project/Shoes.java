@@ -26,7 +26,7 @@ public class Shoes extends Clothes
             this.prodSpeedA = lm.getDefaultSpeedA();
         } else if(this.getX()>256){
             facing = "right";
-            RightMachines rm = (RightMachines)m; 
+            Rightmachines rm = (Rightmachines)m; 
             this.prodSpeedA = rm.getDefaultSpeedB();
         }
         if(facing == "left"){

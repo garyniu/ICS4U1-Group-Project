@@ -37,7 +37,7 @@ public class Strike extends Event
             }
         }
         else if(side == "right"){
-            for(RightMachines rm : getObjectsAtOffset(256, 400, RightMachines.class)){
+            for(Rightmachines rm : getObjectsAtOffset(256, 400, Rightmachines.class)){
                 rm.setProdSpeedB(0); 
             }
         }
@@ -49,7 +49,7 @@ public class Strike extends Event
             }
         }
         else if(side == "right"){
-            for(RightMachines rm : getObjectsAtOffset(256, 400, RightMachines.class)){
+            for(Rightmachines rm : getObjectsAtOffset(256, 400, Rightmachines.class)){
                 rm.setProdSpeedB(rm.getDefaultSpeedB()); 
             }
         }
