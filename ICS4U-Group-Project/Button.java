@@ -21,7 +21,7 @@ public class Button extends Actor
         background.setColor(Color.BLACK); 
         background.fill(); 
 
-        nameImage = new GreenfootImage(name, 15, Color.WHITE, Color.BLACK);
+        nameImage = new GreenfootImage(name, 50, Color.WHITE, Color.BLACK);
         background.drawImage(nameImage, background.getWidth()/2-nameImage.getWidth()/2,background.getHeight()/2-nameImage.getHeight()/2);
 
         greyBackground = new GreenfootImage(width, height); 
