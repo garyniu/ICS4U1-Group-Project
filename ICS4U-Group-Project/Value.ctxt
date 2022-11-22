@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Value
+comment0.text=\r\n\ Write\ a\ description\ of\ \r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=name\ points
+comment1.target=Value(java.lang.String,\ int)
+comment1.text=\r\n\ \ \r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ upDatePoints()
+numComments=4

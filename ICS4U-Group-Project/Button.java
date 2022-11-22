@@ -12,16 +12,16 @@ public class Button extends Actor
      * Act - do whatever the Button wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    GreenfootImage background, nameImage, greyBackground; 
+    protected GreenfootImage background, nameImage, greyBackground; 
     private boolean click;
 
-    public Button(int width, int height, String name)
+    public Button(int width, int height, String name, int points)
     {
         background = new GreenfootImage(width, height); 
         background.setColor(Color.BLACK); 
         background.fill(); 
 
-        nameImage = new GreenfootImage(name, 15, Color.WHITE, Color.BLACK);
+        nameImage = new GreenfootImage(name, 50, Color.WHITE, Color.BLACK);
         background.drawImage(nameImage, background.getWidth()/2-nameImage.getWidth()/2,background.getHeight()/2-nameImage.getHeight()/2);
 
         greyBackground = new GreenfootImage(width, height); 

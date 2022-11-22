@@ -20,8 +20,8 @@ public class Menu extends World
         super(1024, 800, 1); 
         background2 = new GreenfootImage(1024, 800);
         background2.setColor(Color.GRAY);
-        b = new Button(100, 100, "Click to Start!");
-        addObject(b,300,300); 
+        b = new Button(400, 100, "Click to Start!",0);
+        addObject(b,getWidth()/2,getHeight()/2); 
     }
     
     public void act(){
@@ -29,23 +29,5 @@ public class Menu extends World
             Greenfoot.setWorld(new ValueSetting());
         }
     }
-    /*
-     * 
-     * DO NOT TOUCH
-     * 
-    public void act()
-    {
-      showText(startButton.buttonState.toString(), 500,100); 
-      
-      if(Greenfoot.mouseClicked(null))
-      {
-          showText("clicked", 300,300); 
-        }
-        
-        else
-        {
-            showText("not clicked", 300,300); 
-        }
-    }
-    */
+    
 }
