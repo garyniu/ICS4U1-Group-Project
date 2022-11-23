@@ -20,7 +20,21 @@ public class Menu extends World
         super(1024, 800, 1); 
         background2 = new GreenfootImage(1024, 800);
         background2.setColor(Color.GRAY);
-        b = new Button(400, 100, "Click to Start!",0);
+        
+        GreenfootImage background = new GreenfootImage(400, 100); 
+        background.setColor(Color.BLACK); 
+        background.fill(); 
+
+        GreenfootImage nameImage = new GreenfootImage("Click to Start!", 50, Color.WHITE, Color.BLACK);
+        background.drawImage(nameImage, background.getWidth()/2-nameImage.getWidth()/2,background.getHeight()/2-nameImage.getHeight()/2);
+
+        GreenfootImage greyBackground = new GreenfootImage(400, 100); 
+        greyBackground.setColor(Color.GRAY); 
+        greyBackground.fill(); 
+        nameImage = new GreenfootImage("Click to Start!", 50, Color.WHITE, Color.GRAY);
+        greyBackground.drawImage(nameImage, background.getWidth()/2-nameImage.getWidth()/2,background.getHeight()/2-nameImage.getHeight()/2);
+        
+        b = new Button(background, greyBackground);
         addObject(b,getWidth()/2,getHeight()/2); 
     }
     

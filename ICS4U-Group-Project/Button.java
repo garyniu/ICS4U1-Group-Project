@@ -14,9 +14,11 @@ public class Button extends Actor
      */
     protected GreenfootImage background, nameImage, greyBackground; 
     private boolean click;
+    //protected width, height;
 
-    public Button(int width, int height, String name, int points)
+    public Button(GreenfootImage a, GreenfootImage b)
     {
+        /*
         background = new GreenfootImage(width, height); 
         background.setColor(Color.BLACK); 
         background.fill(); 
@@ -27,7 +29,10 @@ public class Button extends Actor
         greyBackground = new GreenfootImage(width, height); 
         greyBackground.setColor(Color.GRAY); 
         greyBackground.fill(); 
-        greyBackground.drawImage(nameImage, background.getWidth()/2-nameImage.getWidth()/2,background.getHeight()/2-nameImage.getHeight()/2);
+        greyBackground.drawImage(nameImage, background.getWidth()/2-nameImage.getWidth()/2,background.getHeight()/2-nameImage.getHeight()/2);*/
+        
+        background = a;
+        greyBackground = b;
 
         setImage(background); 
     }
