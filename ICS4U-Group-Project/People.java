@@ -11,7 +11,7 @@ public abstract class People extends Actor
     protected int direction;
     protected int currentX, currentY; //current x and y positions, will be filled for inital spawning
     protected int goToX, goToY; //coordinates to go to
-    private boolean tBlock, bBlock, lBlock, rBlock, test;
+    private boolean tBlock, bBlock, lBlock, rBlock;
 
     //TODO
     //spawn hiredworker
@@ -32,18 +32,10 @@ public abstract class People extends Actor
         goToX = locX;
         goToY = locY;
 
-        
-
     }
-
     public void act(){
-
-        
         pathFind(goToX, goToY, (GameWorld)getWorld());
-        
-
     }
-
     public void goToLocation(int x, int y){
         if (x > getWorld().getWidth()){
             x = getWorld().getWidth();
@@ -59,6 +51,24 @@ public abstract class People extends Actor
 
         goToX = x;
         goToY = y;
+    }
+
+    private int[] blockedMovement(boolean LB, boolean RB, boolean TB, boolean BB){
+        int[] arr = {currentX, currentY};
+
+        if (currentX < goToX && !RB){
+            currentX++;
+        } else if (currentX > goToX && !LB){
+            currentX--;
+        }
+
+        if (currentY < goToY && !BB){
+            currentY++;
+        } else if (currentY > goToY && !TB){
+            currentY--;
+        }
+
+        return arr;
     }
 
     //pathfinding algo, very simple
@@ -77,8 +87,9 @@ public abstract class People extends Actor
 
         tBlock = b.contact(); bBlock = t.contact(); lBlock = l.contact(); rBlock = r.contact();
 
-        System.out.println("Top blocked: " + tBlock + "|| Bottom blocked: " + bBlock + "\nLeft blocked: " + lBlock + "|| Right blocked: " + rBlock + "\n");
-
+        
+        int[] arr = new int[2];
+        
         //make rest of cases
         //make method for movement each case, flip x/y, disable x++, x--, y++, y--
 
@@ -89,148 +100,24 @@ public abstract class People extends Actor
         // |p|
         //  -     
 
-        System.out.println(x + " " + y);
-        System.out.println(currentX + " " + currentY);
-
         if (x != currentX || y != currentY){
-
-            System.out.println("evenrunning");
             // check for collision on left and right, 2 seperate vars
             // check for collision on top and bottom, 2 seperate vars
 
             //if moving up / down, change a variable (direction)
 
             //if moving right / left, change a variable (direction)
+            
+            if (tBlock || bBlock || rBlock || lBlock){
+                arr = blockedMovement(lBlock, rBlock, tBlock, bBlock);
 
-            if (tBlock){
-                System.out.println("1");
-                if (rBlock){
-                    System.out.println("2");
+                currentX = arr[0];
+                currentY = arr[1];
+            }
 
-                    if (currentX < x){
-                        //currentX++; //go right
-                    } else if (currentX > x){
-                        currentX--; //go left
-                    }
+            
+             else {
 
-                    if (currentY < y){
-                        currentY++; //go down
-                    } else if (currentY > y){
-                        //currentY--; // go up
-                    }
-
-                } else if (lBlock){
-                    System.out.println("3");
-
-                    if (currentX < x){
-                        currentX++; //go right
-                    } else if (currentX > x){
-                        //currentX--; //go left
-                    }
-
-                    if (currentY < y){
-                        currentY++; //go down
-                    } else if (currentY > y){
-                        //currentY--; // go up
-                    }
-
-                } else {
-                    System.out.println("4");
-
-                    if (currentX < x){
-                        currentX++;
-                    } else if (currentX > x){
-                        currentX--;
-                    }
-
-                    if (currentY < y){
-                        currentY++;
-                    } else if (currentY > y){
-                        //currentY--;
-                    }
-
-                }
-
-            } else if (bBlock) {
-                System.out.println("6");
-                if (rBlock){
-                    System.out.println("7");
-
-                    if (currentX < x){
-                        //currentX++;
-
-                    } else if (currentX > x){
-                        //currentX--;
-
-                    }
-
-                    if (currentY < y){
-                        currentY++;
-                    } else if (currentY > y){
-                        currentY--;
-                    }
-
-                } else if (lBlock){
-                    System.out.println("8");
-
-                    if (currentX < x){
-                        currentX++; //go right
-                    } else if (currentX > x){
-                        //currentX--; //go left
-                    }
-
-                    if (currentY < y){
-                        //currentY++; //go down
-                    } else if (currentY > y){
-                        currentY--; // go up
-                    }
-
-                } else {
-                    if (currentX < x){
-                        currentX++; //go right
-                    } else if (currentX > x){
-                        currentX--; //go left
-                    }
-
-                    if (currentY < y){
-                        //currentY++; //go down
-                    } else if (currentY > y){
-                        currentY--; // go up
-                    }
-                    System.out.println("9");
-                }
-
-            } else if (lBlock){
-                System.out.println("10");
-
-                if (currentX < x){
-                    currentX++; //go right
-                } else if (currentX > x){
-                    //currentX--; //go left
-                }
-
-                if (currentY < y){
-                    currentY++; //go down
-                } else if (currentY > y){
-                    currentY--; // go up
-                }
-
-            } else if (rBlock){
-                System.out.println("11");
-
-                if (currentX > x){
-                    currentX--;
-                }
-
-                if (currentY < y){
-                    currentY++;
-                } else if (currentY > y){
-                    currentY--;
-                }
-
-            } else {
-
-                System.out.println("penis");
                 if (currentX < x){
                     currentX++;
                 } else if (currentX > x){
@@ -243,8 +130,6 @@ public abstract class People extends Actor
                     currentY--;
                 }
             }
-
-            System.out.println("penis1");
 
             setLocation (currentX, currentY);
         }
