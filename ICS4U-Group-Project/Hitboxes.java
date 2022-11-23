@@ -21,8 +21,8 @@ public class Hitboxes extends Actor
         // set this to true to see the Spawners - might help with understanding of how this works:
         visible = false;
         image = new GreenfootImage(width, height);
-        image.setColor(Color.BLUE);
-        image.fill();
+        //image.setColor(Color.BLUE);
+        //image.fill();
         //fillRect(90, 90, width, height);
         setImage(image);
     }

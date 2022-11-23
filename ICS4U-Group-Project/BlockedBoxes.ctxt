@@ -1,9 +1,9 @@
 #BlueJ class context
 comment0.target=BlockedBoxes
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ BlockedBoxes\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ BlockedBoxes\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=x\ y\ w\ h
 comment1.target=BlockedBoxes(int,\ int,\ int,\ int)
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ BlockedBoxes\r\n
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ BlockedBoxes\n
 comment2.params=
 comment2.target=boolean\ contact()
 numComments=3

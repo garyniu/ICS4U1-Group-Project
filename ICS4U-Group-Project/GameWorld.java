@@ -10,8 +10,8 @@ public class GameWorld extends World
 {
 
     private GreenfootImage background;
-    public static int currency = 0;
-    public static int secondCurrency = 0;
+    private static int currencyA;
+    private static int currencyB;
     private double timer;
     
     //booleans for preferences
@@ -27,7 +27,8 @@ public class GameWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 800, 1); 
-        currency = 0;
+        currencyA = 0;
+        currencyB = 0;
         spawnMachines();
         addObject(new Hitboxes(), 300,100);
         background = new GreenfootImage(1024, 800);
@@ -55,9 +56,10 @@ public class GameWorld extends World
     public void act()
     {
         timer();
-        showText("MONEY: " + secondCurrency, 700, 20);
         // hitbox();
-        showText("MONEY: " + currency, 200, 20);
+        showText("MONEY: " + currencyA, 200, 20);
+        showText("MONEY: " + currencyB, 700, 20);
+
     }
     //add the conveyers
     public void spawnMachines()
@@ -89,16 +91,22 @@ public class GameWorld extends World
         addObject(new LeftMachines(), 150, 550);
     }
     
-    public static int getCurrency()
+    public static int getCurrencyA()
     {
-        return currency;
+        return currencyA;
     }
-    
-    public static void addCurrency()
+    public static void addCurrencyA()
     {
-        currency += 1;
+        currencyA += 10;
     }
-    
+    public static int getCurrencyB()
+    {
+        return currencyB;
+    }
+    public static void addCurrencyB()
+    {
+        currencyB += 10;
+    }
     public void timer()
     {
         timer += 0.016;

@@ -28,19 +28,25 @@ public class LeftMachines extends Machines
         produceSpeed = 1;
         width = imageA.getWidth();
         height = imageA.getHeight();
-        //upgradeA();
- 
-        upgradeAmount = GameWorld.getCurrency();
+        upgradeA();
+        //getWorld().showText("" + produceSpeed, this.getX(), this.getY());
+        upgradeAmount = GameWorld.getCurrencyA();
+        
     }
     public void addedToWorld(World w)
     {
-        w.addObject(new Hitboxes(), this.getX() + width/2, this.getY() - height/4);
-        w.addObject(new Shoes(this), this.getX() - width/2, this.getY() - height/4);
+        w.addObject(new Hitboxes(), this.getX() + width/2, this.getY() - height/2);
+        w.showText("" + produceSpeed, this.getX(), this.getY());
     }
     public void act()
     {
         //getWorld().showText("" + produceSpeed, 80, 80);
-        
+        if(Shoes.getExist() == false)
+        {
+            //getWorld().showText("true", 80, 80);
+            //addObject(new Shoes(this), this.getX() - width/2, this.getY() - height/4);
+            getWorld().addObject(new Shoes(this), this.getX() - width/2, this.getY() - height/4);
+        }
     }
     
     //people interaction
@@ -53,7 +59,6 @@ public class LeftMachines extends Machines
     {
         produceSpeed += 1;
     }
-    
     public static int getProdSpeedA()
     {
         return produceSpeed;
