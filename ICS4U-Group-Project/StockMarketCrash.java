@@ -6,6 +6,7 @@
  */
 public class StockMarketCrash extends Event
 {
+    private double newValue; 
     /**
      * Act - do whatever the StockMarketCrash wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -26,7 +27,16 @@ public class StockMarketCrash extends Event
     }
     
     public void decreaseStock(){
-        //half the stock/value of an item 
+        for(Shoes s : getObjectsAtOffset(256, 400, Shoes.class)){
+            if(s.getItemValue() > 2){
+                newValue = s.getItemValue()-2;  
+                s.setItemValue(newValue);
+            }
+            else if(s.getItemValue() ==2){
+                newValue = 1; 
+                s.setItemValue(newValue);
+            }
+        }
     }
     
 }

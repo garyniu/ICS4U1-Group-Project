@@ -30,10 +30,10 @@ public class Rightmachines extends Machines
         
         width = imageB.getWidth();
         height = imageB.getHeight();
-        upgradeAmount = GameWorld.getCurrency();
+        upgradeAmount = GameWorld.getCurrencyB();
     }
     public void addedToWorld(World w){
-        w.addObject(new Hitboxes(), this.getX()+width/2, this.getY()-height/2);
+        //w.addObject(new Hitboxes(), this.getX()+width/2, this.getY()-height/2);
         w.addObject(new Shoes(this), this.getX()-width/2, this.getY()-height/4);
     }
     public void act()

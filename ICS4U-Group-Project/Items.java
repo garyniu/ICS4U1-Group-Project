@@ -17,6 +17,7 @@ public abstract class Items extends SmoothMover
     protected boolean checkPeople;
     protected int checkLevel;
     protected GreenfootImage image;
+    protected double itemValue; 
     public void act()
     {
         // Add your action code here.

@@ -32,14 +32,14 @@ public class LeftMachines extends Machines
          
         width = imageA.getWidth();
         height = imageA.getHeight();
-        upgradeAmount = GameWorld.getCurrency();
+        upgradeAmount = GameWorld.getCurrencyA();
     }
     public void act()
     {
         getWorld().showText("" + produceSpeed, 80, 80);
     }
     public void addedToWorld(World w){
-        w.addObject(new Hitboxes(), this.getX()+width/2, this.getY()-height/2);
+        //w.addObject(new Hitboxes(), this.getX()+width/2, this.getY()-height/2);
         w.addObject(new Shoes(this), this.getX()-width/2, this.getY()-height/4);
     }
    

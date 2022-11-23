@@ -25,6 +25,9 @@ public class BoomingBusiness extends Event
     }
     
     public void increaseStock(){
-        //double the stock/value of an item 
+        for(Shoes s : getObjectsAtOffset(256, 400, Shoes.class)){
+            double newValue = s.getItemValue()+2;  
+            s.setItemValue(newValue);
+        }
     }
 }

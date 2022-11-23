@@ -28,7 +28,7 @@ public class Hitboxes extends Actor
    
     public void act()
     {
-        setLocation (300, 100);
+        
     }
 }
  

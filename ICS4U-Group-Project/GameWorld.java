@@ -10,8 +10,8 @@ public class GameWorld extends World
 {
 
     private GreenfootImage background;
-    public static int currency = 0;
-    public static int secondCurrency = 0;
+    private static int currencyA;
+    private static int currencyB;
     private double timer;
    
     //booleans for preferences
@@ -28,11 +28,10 @@ public class GameWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 800, 1);
-        currency = 0;
+        currencyA = 0;
+        currencyB = 0;
         spawnMachines();
         addObject(new Boss(0, 50), 0, 50);
-        addObject(new Hitboxes(), 350,700);
-        addObject(new Hitboxes(), 882, 700); 
         background = new GreenfootImage(1024, 800);
         background.setColor(Color.GRAY);
         background.fillRect(0, 0, 1024, 800);
@@ -62,9 +61,9 @@ public class GameWorld extends World
     public void act()
     {
         timer();
-        showText("MONEY: " + secondCurrency, 700, 20);
+        showText("MONEY: " + currencyA, 200, 20);
         // hitbox();
-        showText("MONEY: " + currency, 200, 20);
+        showText("MONEY: " + currencyB, 700, 20);
     }
     //add the conveyers
     public void spawnMachines()
@@ -86,6 +85,9 @@ public class GameWorld extends World
         //just duplicate on top of the current worker
         //every time a new worker appears
         //addObject(new Hitboxes(), 150,50);
+        
+        //addObject(new Hitboxes(), 350,600);
+        //addObject(new Hitboxes(), 882, 600); 
        
     }
     //adds the machines depending on the workers for the left side
@@ -105,16 +107,22 @@ public class GameWorld extends World
         workerCount = newWorkerCount; 
     }
     
-    public static int getCurrency()
+    public static int getCurrencyA()
     {
-        return currency;
+        return currencyA;
     }
-   
-    public static void addCurrency()
+    public static int getCurrencyB(){
+        return currencyB;
+    }
+    public static void addCurrencyA()
     {
-        currency += 1;
+        currencyA += 1;
     }
-   
+    public static void addCurrencyB()
+    {
+        currencyB += 1;
+    }
+    
     public void timer()
     {
         timer += 0.016;

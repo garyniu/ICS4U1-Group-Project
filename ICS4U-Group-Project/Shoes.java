@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Shoes extends Clothes
+public class Shoes extends Items
 {
     private static double prodSpeedA;
     private static double prodSpeedB;
@@ -24,7 +24,8 @@ public class Shoes extends Clothes
         image.scale(30, 30);
         setImage(image);
         
-        this.prodSpeedA = LeftMachines.getDefaultSpeedA();
+        itemValue = 2; 
+        
         onVertConveyor = false;
     }
     public void addedToWorld(World w){
@@ -51,7 +52,12 @@ public class Shoes extends Clothes
        Actor b = getOneIntersectingObject(Hitboxes.class);  
        if(b != null)  
        {  
-           GameWorld.addCurrency();
+           if(side == "left"){
+               GameWorld.addCurrencyA();
+           }
+           else if(side == "right"){
+               GameWorld.addCurrencyB();
+           }
            getWorld().removeObject(this);
            return;
        }  
@@ -81,5 +87,11 @@ public class Shoes extends Clothes
                 this.onVertConveyor = true;
             }
         }
+    }
+    public double getItemValue(){
+        return itemValue; 
+    }
+    public void setItemValue(double iV){
+        itemValue = iV; 
     }
 } 
