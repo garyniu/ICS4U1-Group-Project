@@ -30,8 +30,9 @@ public class GameWorld extends World
         super(1024, 800, 1);
         currency = 0;
         spawnMachines();
-        addObject(new Boss(400, 700), 400, 700);
-        addObject(new Hitboxes(), 300,100);
+        addObject(new Boss(0, 50), 0, 50);
+        addObject(new Hitboxes(), 350,700);
+        addObject(new Hitboxes(), 882, 700); 
         background = new GreenfootImage(1024, 800);
         background.setColor(Color.GRAY);
         background.fillRect(0, 0, 1024, 800);
@@ -54,7 +55,8 @@ public class GameWorld extends World
         // hitbox();
        
         // showText("MONEY2: " + currency, 200, 20);
-       
+        
+        setPaintOrder(Event.class, Shoes.class, People.class, Machines.class);
     }
     
     public void act()
@@ -79,6 +81,8 @@ public class GameWorld extends World
         //if(workerCountB == 6 && machUpgradePref)
         addObject(new Rightmachines(), 682, 550);
        
+        addObject(new VertConveyor(), 350, 350);
+        addObject(new VertConveyor(), 882, 350);
         //just duplicate on top of the current worker
         //every time a new worker appears
         //addObject(new Hitboxes(), 150,50);

@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name)
  * @version (a version number or a date)
  */
-public abstract class Items extends Actor
+public abstract class Items extends SmoothMover
 {
     /**
      * Act - do whatever the Items wants to do. This method is called whenever

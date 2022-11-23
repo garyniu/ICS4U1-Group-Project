@@ -17,8 +17,6 @@ public abstract class Machines extends Actor
     // create an
     protected double machineSpeed;
     protected int level;
-    protected int produceSpeed;
-    protected int defaultSpeed;
     public void act()
     {
         // Add your action code here.

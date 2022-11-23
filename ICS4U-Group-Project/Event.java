@@ -36,15 +36,15 @@ public abstract class Event extends Actor
     public void increaseEfficiency(){
         if(side == "left"){
             for(LeftMachines lm : getObjectsAtOffset(256, 400, LeftMachines.class)){
-                int x = lm.getDefaultSpeedA();
-                x++;
+                double x = lm.getDefaultSpeedA();
+                x+=0.2;
                 lm.setProdSpeedA(x); 
             }
         }
         else if(side == "right"){
             for(Rightmachines rm : getObjectsAtOffset(256, 400, Rightmachines.class)){
-                int y = rm.getDefaultSpeedB();
-                y++;
+                double y = rm.getDefaultSpeedB();
+                y+=0.2;
                 rm.setProdSpeedB(y); 
             }
         }
@@ -52,15 +52,15 @@ public abstract class Event extends Actor
     public void slowEfficiency(){
         if(side == "left"){
             for(LeftMachines lm : getObjectsAtOffset(256, 400, LeftMachines.class)){
-                int x = lm.getDefaultSpeedA();
-                x--;
+                double x = lm.getDefaultSpeedA();
+                x-=0.2;
                 lm.setProdSpeedA(x); 
             }
         }
         else if(side == "right"){
             for(Rightmachines rm : getObjectsAtOffset(256, 400, Rightmachines.class)){
-                int y = rm.getDefaultSpeedB();
-                y--;
+                double y = rm.getDefaultSpeedB();
+                y-=0.2;
                 rm.setProdSpeedB(y); 
             }
         }

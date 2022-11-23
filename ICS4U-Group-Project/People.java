@@ -70,7 +70,7 @@ public abstract class People extends Actor
 
         tBlock = b.contact(); bBlock = t.contact(); lBlock = l.contact(); rBlock = r.contact();
 
-        System.out.println("Top blocked: " + tBlock + "|| Bottom blocked: " + bBlock + "\nLeft blocked: " + lBlock + "|| Right blocked: " + rBlock + "\n");
+        //System.out.println("Top blocked: " + tBlock + "|| Bottom blocked: " + bBlock + "\nLeft blocked: " + lBlock + "|| Right blocked: " + rBlock + "\n");
 
         //make rest of cases
         //make method for movement each case, flip x/y, disable x++, x--, y++, y--
@@ -82,12 +82,12 @@ public abstract class People extends Actor
         // |p|
         //  -    
 
-        System.out.println(x + " " + y);
-        System.out.println(currentX + " " + currentY);
+        //System.out.println(x + " " + y);
+        //System.out.println(currentX + " " + currentY);
 
         if (x != currentX || y != currentY){
 
-            System.out.println("evenrunning");
+            //System.out.println("evenrunning");
             // check for collision on left and right, 2 seperate vars
             // check for collision on top and bottom, 2 seperate vars
 
@@ -223,7 +223,7 @@ public abstract class People extends Actor
 
             } else {
 
-                System.out.println("penis");
+                //System.out.println("penis");
                 if (currentX < x){
                     currentX++;
                 } else if (currentX > x){
@@ -237,7 +237,7 @@ public abstract class People extends Actor
                 }
             }
 
-            System.out.println("penis1");
+            //System.out.println("penis1");
 
             setLocation (currentX, currentY);
         }

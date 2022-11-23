@@ -16,7 +16,8 @@ public class LeftMachines extends Machines
     private int items;
     private int timer;
     private static int upgradeAmount;
-    private static int defaultSpeed;
+    private static double produceSpeed;
+    private static double defaultSpeed;
     private int width;
     private int height;
    
@@ -25,7 +26,7 @@ public class LeftMachines extends Machines
         imageA = new GreenfootImage("shirtMachineTemp.png");
         imageA.scale(300, 100);
         setImage(imageA);
-        produceSpeed = 1;
+        produceSpeed = 0.5;
         defaultSpeed = produceSpeed; 
         //upgradeA();
          
@@ -50,16 +51,14 @@ public class LeftMachines extends Machines
    
     public void upgradeA()
     {
-        produceSpeed += 1;
+        produceSpeed += 0.2;
         defaultSpeed = produceSpeed; 
     }
-    
-    
-    public static int getDefaultSpeedA()
+    public static double getDefaultSpeedA()
     {
         return defaultSpeed;
     }
-    public void setProdSpeedA(int newSpd){
+    public void setProdSpeedA(double newSpd){
         produceSpeed = newSpd;
     }
 }

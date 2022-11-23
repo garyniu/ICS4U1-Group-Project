@@ -14,6 +14,9 @@ public class Rightmachines extends Machines
      */
     private GreenfootImage imageB;
     private int produceTimeB;
+    private static int upgradeAmount;
+    private static double produceSpeed;
+    private static double defaultSpeed; 
     private int width;
     private int height;
    
@@ -22,12 +25,12 @@ public class Rightmachines extends Machines
         imageB = new GreenfootImage("shirtMachineTemp.png");
         imageB.scale(300, 100);
         setImage(imageB);
-        produceSpeed = 1;
+        produceSpeed = 1.5;
         defaultSpeed = produceSpeed; 
         
         width = imageB.getWidth();
         height = imageB.getHeight();
-       
+        upgradeAmount = GameWorld.getCurrency();
     }
     public void addedToWorld(World w){
         w.addObject(new Hitboxes(), this.getX()+width/2, this.getY()-height/2);
@@ -45,13 +48,13 @@ public class Rightmachines extends Machines
    
     public void upgradeB()
     {
-       produceSpeed +=1; 
+       produceSpeed +=0.2; 
        defaultSpeed = produceSpeed;
     }
-    public int getDefaultSpeedB(){
+    public static double getDefaultSpeedB(){
         return defaultSpeed; 
     }
-    public void setProdSpeedB(int newSpd){
+    public void setProdSpeedB(double newSpd){
         produceSpeed = newSpd;
     }
 }
