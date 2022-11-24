@@ -36,7 +36,7 @@ public class HiredWorkers extends People
 
             //test pathfinding
             
-                //super.act();
+                super.act();
             
             
             

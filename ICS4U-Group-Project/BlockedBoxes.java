@@ -11,13 +11,13 @@ import greenfoot.Color;
 public class BlockedBoxes extends Actor
 {
     // instance variables - replace the example below with your own
-    private int x, y, w, h;
+    private int x, y, w, h, timer = 0;
     private GreenfootImage image;
 
     /**
      * Constructor for objects of class BlockedBoxes
      */
-    public BlockedBoxes(int x, int y, int w, int h)
+    public BlockedBoxes(int x, int y, int w, int h, Color c)
     {
         this.x = x;
         this.y = y;
@@ -25,13 +25,18 @@ public class BlockedBoxes extends Actor
         this.h = h;
         
         image = new GreenfootImage(w, h);
-        image.setColor(Color.RED);
+        image.setColor(c);
         image.fillRect(0, 0, w-1, h - 1);
         setImage(image);
         
     }
+    
+    public void act(){
+        timer++;
+        if (timer > 1) getWorld().removeObject(this);
+    }
 
     public boolean contact(){
-        return (isTouching(Machines.class) || isTouching(Actor.class)) ? true : false;
+        return (isTouching(Machines.class) || isTouching(People.class)) ? true : false;
     }
 }

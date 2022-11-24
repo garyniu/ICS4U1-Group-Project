@@ -33,9 +33,12 @@ public abstract class People extends Actor
         goToY = locY;
 
     }
+    
     public void act(){
         pathFind(goToX, goToY, (GameWorld)getWorld());
+        //System.out.println(currentX + " " + currentY + " "  + goToX + " " + goToY);
     }
+    
     public void goToLocation(int x, int y){
         if (x > getWorld().getWidth()){
             x = getWorld().getWidth();
@@ -53,8 +56,7 @@ public abstract class People extends Actor
         goToY = y;
     }
 
-    private int[] blockedMovement(boolean LB, boolean RB, boolean TB, boolean BB){
-        int[] arr = {currentX, currentY};
+    private void blockedMovement(boolean LB, boolean RB, boolean TB, boolean BB){
 
         if (currentX < goToX && !RB){
             currentX++;
@@ -62,33 +64,32 @@ public abstract class People extends Actor
             currentX--;
         }
 
-        if (currentY < goToY && !BB){
+        if (currentY < goToY && !TB){
             currentY++;
-        } else if (currentY > goToY && !TB){
+        } else if (currentY > goToY && !BB){
             currentY--;
         }
-
-        return arr;
     }
 
     //pathfinding algo, very simple
     private void pathFind(int x, int y, GameWorld w){
         GameWorld gw = w;
 
-        BlockedBoxes t = new BlockedBoxes(0, 0, getImage().getWidth() - 5, 2);
-        BlockedBoxes b = new BlockedBoxes(0, 0, getImage().getWidth() - 5, 2);
-        BlockedBoxes l = new BlockedBoxes(0, 0, 2, getImage().getHeight() -  5);
-        BlockedBoxes r = new BlockedBoxes(0, 0, 2, getImage().getHeight() - 5);
+        BlockedBoxes t = new BlockedBoxes(0, 0, getImage().getWidth() - 10, 2, Color.RED);
+        BlockedBoxes b = new BlockedBoxes(0, 0, getImage().getWidth() - 10, 2, Color.BLUE);
+        BlockedBoxes l = new BlockedBoxes(0, 0, 2, getImage().getHeight() - 5, Color.GREEN);
+        BlockedBoxes r = new BlockedBoxes(0, 0, 2, getImage().getHeight() - 5, Color.YELLOW);
 
-        w.addObject(t, getX(), getY() + (getImage().getHeight()/2) - 5);
-        w.addObject(b, getX(), getY() - (getImage().getHeight()/2) + 5);
-        w.addObject(l, getX() - (getImage().getWidth()/2) - 10, getY());
-        w.addObject(r, getX() + (getImage().getWidth()/2) + 10, getY());
+        w.addObject(t, getX(), getY() - (getImage().getHeight()/2) - 9);
+        w.addObject(b, getX(), getY() + (getImage().getHeight()/2) + 9);
+        w.addObject(l, getX() - (getImage().getWidth()/2) - 3, getY());
+        w.addObject(r, getX() + (getImage().getWidth()/2) + 3, getY());
 
-        tBlock = b.contact(); bBlock = t.contact(); lBlock = l.contact(); rBlock = r.contact();
+        tBlock = t.contact(); bBlock = b.contact(); lBlock = l.contact(); rBlock = r.contact();
+        
 
         
-        int[] arr = new int[2];
+        //System.out.println("\ntop blocked: " + tBlock + "\nbottom blocked: " + bBlock + "\nleft blocked: " + lBlock + "\nright blocked: " + rBlock);
         
         //make rest of cases
         //make method for movement each case, flip x/y, disable x++, x--, y++, y--
@@ -108,33 +109,11 @@ public abstract class People extends Actor
 
             //if moving right / left, change a variable (direction)
             
-            if (tBlock || bBlock || rBlock || lBlock){
-                arr = blockedMovement(lBlock, rBlock, tBlock, bBlock);
-
-                currentX = arr[0];
-                currentY = arr[1];
-            }
-
-            
-             else {
-
-                if (currentX < x){
-                    currentX++;
-                } else if (currentX > x){
-                    currentX--;
-                }
-
-                if (currentY < y){
-                    currentY++;
-                } else if (currentY > y){
-                    currentY--;
-                }
-            }
-
+            blockedMovement(lBlock, rBlock, tBlock, bBlock);
             setLocation (currentX, currentY);
         }
 
-        w.removeObject(t); w.removeObject(b); w.removeObject(l); w.removeObject(r);
+        //w.removeObject(t); w.removeObject(b); w.removeObject(l); w.removeObject(r);
         tBlock = false; bBlock = false; lBlock = false; rBlock = false;
     }
 
