@@ -2,33 +2,62 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
  * Write a description of class MyWorld here
- * 
- * @author (your name) 
+ *
+ * @author (your name)
  * @version (a version number or a date)
  */
 public class GameWorld extends World
 {
 
     private GreenfootImage background;
-
-    private static int currency;
-    private static int secondCurrency;
+    private static int currencyA;
+    private static int currencyB;
+    private int counter;
+    private int timer;
 
     //booleans for preferences
     private boolean workerUpgradePref;
     private boolean machUpgradePref;
-
-    private HiredWorkers p, p1;
     
+    private String itemChoiceA; 
+    private String itemChoiceB;
+
+    private boolean activeEventA;
+    private boolean activeEventB; 
+    
+    private boolean normalMode; //true = normal, false = extreme 
+
+    private int workerCount; 
+
     /**
      * Constructor for objects of class MyWorld.
-     * 
+     *
      */
-    public GameWorld()
+    public GameWorld() //String leftItemSold, String rightItemSold
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(1024, 800, 1); 
+        super(1024, 800, 1);
+        setPaintOrder(Effect.class, Event.class, Items.class, People.class, Machines.class);
+        
+        //set variables
+        currencyA = 0;
+        currencyB = 0;
+        workerUpgradePref = true; 
+        machUpgradePref = false;
+        workerCount = 0;
+        counter = 0;
+        timer = 0;
 
+        normalMode = true;
+        
+        itemChoiceA = "phones"; 
+        itemChoiceB = "tools"; 
+        
+        activeEventA = false;
+        activeEventB = false;
+        
+        spawnMachines();
+        addObject(new Boss(0, 50), 0, 50);
         background = new GreenfootImage(1024, 800);
         background.setColor(Color.GRAY);
         background.fillRect(0, 0, 1024, 800);
@@ -36,53 +65,147 @@ public class GameWorld extends World
 
         getBackground().setColor(new Color(0, 0, 0));
         getBackground().drawLine(512, 0, 512, 800);
-
-        // addObject(new HiredWorkers(), 200, 800);
-        //set variables 
-        workerUpgradePref = true;
-        machUpgradePref = false;
-
-        p = new HiredWorkers(300, 350);
-        p1 = new HiredWorkers(350, 450);
-
-        addObject(p, 300, 350);
-        addObject(p1, 350, 450);
-
-    }
-    public void act(){
-        p.goToLocation(500, 520);
-
+        
     }
 
-    /**
-     * This method will randomize which gets upgraded(Workers or Machines)
-     */
-    public void chooseUpgrade(){
-        if(workerUpgradePref && !machUpgradePref){
-            //upgrade worker speed
-        }
-        else if(machUpgradePref && !workerUpgradePref){
-            //upgrade machine speed 
-        }
-        else if(!machUpgradePref && !workerUpgradePref){
-            int x = Greenfoot.getRandomNumber(2);
-            if(x == 0){
-                //upgrade worker speed
+    public void act()
+    {
+        timer();
+        showText("MONEY: " + currencyA, 200, 20);
+        // hitbox();
+        showText("MONEY: " + currencyB, 700, 20);
+        if(normalMode){
+            if(!activeEventA){
+                if(Greenfoot.getRandomNumber(1500) == 0){
+                    chooseEventA();
+                }
             }
-            else if(x == 1){
-                //upgrade machine speed
+            if(!activeEventB){
+                if(Greenfoot.getRandomNumber(1500) == 0){
+                    chooseEventB();
+                }
             }
         }
-    }
-
-    /*
-     *   This will be the method that upgrades the machines that produces items
-     *  It will 
-     */
-    public void machineUpgradeOne(){
-        if(currency > 3){
-
+        /*
+        else{
+            if((timer%8) == 0){
+                chooseEvent();
+            }
         }
+        */
+        
+    }
+    //add the conveyers
+    public void spawnMachines()
+    {
+        addObject(new LeftMachines(itemChoiceA), 150, 150);
+        //if(workerCountA == 3 && machUpgradePref)
+        addObject(new LeftMachines(itemChoiceA), 150, 350);
+        //if(workerCountA == 6 && machUpgradePref)
+        addObject(new LeftMachines(itemChoiceA), 150, 550);
+
+        addObject(new Rightmachines(itemChoiceB), 682, 150);
+        //if(workerCountB == 3 && machUpgradePref)
+        addObject(new Rightmachines(itemChoiceB), 682, 350);
+        //if(workerCountB == 6 && machUpgradePref)
+        addObject(new Rightmachines(itemChoiceB), 682, 550);
+
+        addObject(new VertConveyor(), 350, 350);
+        addObject(new VertConveyor(), 882, 350);
+        //just duplicate on top of the current worker
+        //every time a new worker appears
+        //addObject(new Hitboxes(), 150,50);
+
+        //addObject(new Hitboxes(), 350,600);
+        //addObject(new Hitboxes(), 882, 600); 
 
     }
+    //adds the machines depending on the workers for the left side
+    public void machineWorkerA()
+    {
+        addObject(new LeftMachines(itemChoiceA), 150, 150);
+        //if(workerCountA == 3 && machUpgradePref)
+        addObject(new LeftMachines(itemChoiceA), 150, 350);
+        //if(workerCountA == 6 && machUpgradePref)
+        addObject(new LeftMachines(itemChoiceA), 150, 550);
+    }
+
+    public int getWorkerCount(){
+        return workerCount; 
+    }
+
+    public void setWorkerCount(int newWorkerCount){
+        workerCount = newWorkerCount; 
+    }
+
+    public static int getCurrencyA()
+    {
+        return currencyA;
+    }
+
+    public static int getCurrencyB(){
+        return currencyB;
+    }
+
+    public static void addCurrencyA()
+    {
+        currencyA += LeftMachines.getMachItemValueA();
+    }
+
+    public static void addCurrencyB()
+    {
+        currencyB += Rightmachines.getMachItemValueB();
+    }
+    public void setEventStatusA(boolean x){
+        activeEventA = x;
+    }
+    public boolean getEventStatusA(){
+        return activeEventA; 
+    }
+    public void setEventStatusB(boolean x){
+        activeEventB = x;
+    }
+    public boolean getEventStatusB(){
+        return activeEventB;
+    }
+    public void timer()
+    {
+        counter += 1;
+        if(counter%60 == 0){
+            timer += 1;
+        }
+        //int time = (int)Math.floor(timer * 100)/100;
+        showText("Time: " + timer, 512, 20);
+    }
+    
+    public void chooseEventA(){
+        int eventA = Greenfoot.getRandomNumber(4);
+        if(!activeEventA){
+            activeEventA = true;
+            if(eventA == 2){
+                addObject(new BossCheckup(15, true, false), 256, 400);
+            } else if(eventA == 1){
+                addObject(new BoomingBusiness(5, true, false), 256, 400); 
+            } else if(eventA == 0){
+                addObject(new StockMarketCrash(5, true, false), 256, 400);
+            } else if(eventA == 3){
+                addObject(new Strike(15, true, false), 256, 400);
+            }
+        }
+    }
+    public void chooseEventB(){
+        int eventB = Greenfoot.getRandomNumber(4);
+        if(!activeEventB){
+            activeEventB = true;
+            if(eventB == 2){
+                addObject(new BossCheckup(15, false, true), 256, 400);
+            } else if(eventB == 1){
+                addObject(new BoomingBusiness(5, false, true), 256, 400); 
+            } else if(eventB == 0){
+                addObject(new StockMarketCrash(5, false, true), 256, 400);
+            } else if(eventB == 3){
+                addObject(new Strike(15, false, true), 256, 400);
+            }
+        }
+    }    
 }

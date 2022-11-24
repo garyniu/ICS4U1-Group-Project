@@ -6,19 +6,25 @@ import java.util.ArrayList;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Shoes extends Items
+public class Phones extends Items
 {
+    private static double prodSpeedA;
+    private static double prodSpeedB;
+    private String side;  
+    private int vcLeftX; 
+    private int vcRightX; 
+    private boolean onVertConveyor; 
     /**
      * Act - do whatever the Shoes wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public Shoes(Machines m)
+    public Phones(Machines m)
     {
-        image = new GreenfootImage("shoesTemp.png");
+        image = new GreenfootImage("phoneTemp.png");
         image.scale(30, 30);
         setImage(image);
         
-        itemValue = 100; 
+        itemValue = 500; 
         
         onVertConveyor = false;
     }
@@ -88,4 +94,4 @@ public class Shoes extends Items
     public static void setItemValue(double iV){
         itemValue = iV; 
     }
-} 
+}

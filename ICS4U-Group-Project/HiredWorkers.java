@@ -2,26 +2,29 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
  * Write a description of class HiredWorkers here.
- * 
- * @author (your name) 
+ *
+ * @author (your name)
  * @version (a version number or a date)
  */
 public class HiredWorkers extends People
 {
 
-    private static int workercount = 0;
+    private static int workerCount = 0;
     private int fadepercent = 0, fadein = 120, originalPos;
 
     public HiredWorkers(int locX, int locY){
         super(locX, locY);
         //incrementing worker count
-        workercount++;
+        GameWorld gw = (GameWorld)getWorld();
+        workerCount = gw.getWorkerCount();
+        workerCount++;
+        gw.setWorkerCount(workerCount);
 
         originalPos = locY;
 
-        
-        
-        //add image / scale image 
+       
+       
+        //add image / scale image
 
     }
 
@@ -31,20 +34,20 @@ public class HiredWorkers extends People
         fadein--; originalPos++;
         if (fadein >= 0){
             entry(fadein, originalPos);
-            
+           
         } else {
 
             //test pathfinding
-            
-                super.act();
-            
-            
-            
+           
+                //super.act();
+           
+           
+           
             work();
 
         }
     }
-
+    
     private void entry(int fadetime, int ogposition){
 
         int upMovement = ogposition - 120;
@@ -77,7 +80,9 @@ public class HiredWorkers extends People
         //setRotation(90);
 
         if (time > 120){
-            workercount--;
+            GameWorld gw = (GameWorld)getWorld();
+            workerCount--;
+            gw.setWorkerCount(workerCount);
             getWorld().removeObject(this);
         }
 
