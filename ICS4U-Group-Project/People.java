@@ -85,11 +85,11 @@ public abstract class People extends Actor
         w.addObject(l, getX() - (getImage().getWidth()/2) - 3, getY());
         w.addObject(r, getX() + (getImage().getWidth()/2) + 3, getY());
 
-        tBlock = t.contact(); bBlock = b.contact(); lBlock = l.contact(); rBlock = r.contact();
+        tBlock = b.contact(); bBlock = t.contact(); lBlock = l.contact(); rBlock = r.contact();
         
 
         
-        //System.out.println("\ntop blocked: " + tBlock + "\nbottom blocked: " + bBlock + "\nleft blocked: " + lBlock + "\nright blocked: " + rBlock);
+        System.out.println("\ntop blocked: " + tBlock + "\nbottom blocked: " + bBlock + "\nleft blocked: " + lBlock + "\nright blocked: " + rBlock);
         
         //make rest of cases
         //make method for movement each case, flip x/y, disable x++, x--, y++, y--
