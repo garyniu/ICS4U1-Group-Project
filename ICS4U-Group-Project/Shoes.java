@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Shoes extends Items
 {
     
-    public static int prodSpeedA;
+    public static double prodSpeedA;
     private static boolean exist;
     
     /**

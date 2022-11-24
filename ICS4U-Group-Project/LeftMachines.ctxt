@@ -10,5 +10,5 @@ comment3.target=void\ act()
 comment4.params=
 comment4.target=void\ upgradeA()
 comment5.params=
-comment5.target=int\ getProdSpeedA()
+comment5.target=double\ getProdSpeedA()
 numComments=6

@@ -15,7 +15,7 @@ public class LeftMachines extends Machines
     private GreenfootImage imageA;
     private int items;
     private int timer;
-    protected static int produceSpeed;
+    protected static double produceSpeed;
     private static int upgradeAmount;
     private int width;
     private int height;
@@ -36,17 +36,75 @@ public class LeftMachines extends Machines
     public void addedToWorld(World w)
     {
         w.addObject(new Hitboxes(), this.getX() + width/2, this.getY() - height/2);
-        w.showText("" + produceSpeed, this.getX(), this.getY());
+        w.addObject(new Shoes(this), this.getX() - width/2, this.getY() - height/4);
+        w.showText("" + produceSpeed + "x", this.getX(), this.getY());
     }
     public void act()
     {
         //getWorld().showText("" + produceSpeed, 80, 80);
+        //getWorld().addObject(new Shoes(this), this.getX() - width/2, this.getY() - height/4);
         if(Shoes.getExist() == false)
         {
-            //getWorld().showText("true", 80, 80);
-            //addObject(new Shoes(this), this.getX() - width/2, this.getY() - height/4);
+            //getWorld().showText("true", this.getX() - width/2, this.getY() - height/4);
             getWorld().addObject(new Shoes(this), this.getX() - width/2, this.getY() - height/4);
+            getWorld().showText("" + this.getX() + this.getY(), this.getX(), this.getY());
+            //Shoes.setLocation(imageA.getX(), imageA.getY());
+            //getWorld().showText("LMFAO", 150, 150);
+            
+            /*
+            if((getWorld().getMachUpgradePref && (getWorld().getWorkerCount() == 3)) == true)
+            {
+                
+            }
+            if((getWorld().getMachUpgradePref && (getWorld().getWorkerCount() == 6)) == true)
+            {
+                
+            }
+            if((getWorld().getMachUpgradePref && (getWorld().getWorkerCount() == 9)) == true)
+            {
+                
+            }
+            if((getWorld().getPeopleUpgradePref && (LeftMachines.getProdSpeedA() > 1.5)) == true)
+            {
+                
+            }
+            if((getWorld().getPeopleUpgradePref && (LeftMachines.getProdSpeedA() > 2)) == true)
+            {
+                
+            }
+            if((getWorld().getPeopleUpgradePref && (LeftMachines.getProdSpeedA() > 3)) == true)
+            {
+                
+            }
+            if((getWorld().getMachUpgradePrefB && (getWorld().getWorkerCountB() == 3)) == true)
+            {
+                
+            }
+            if((getWorld().getMachUpgradePrefB && (getWorld().getWorkerCountB() == 6)) == true)
+            {
+                
+            }
+            if((getWorld().getMachUpgradePrefB && (getWorld().getWorkerCountB() == 9)) == true)
+            {
+                
+            }
+            if((getWorld().getPeopleUpgradePrefB && (LeftMachines.getProdSpeedB() > 1.5)) == true)
+            {
+                
+            }
+            if((getWorld().getPeopleUpgradePrefB && (LeftMachines.getProdSpeedB() > 1.5)) == true)
+            {
+                
+            }
+            if((getWorld().getPeopleUpgradePrefB && (LeftMachines.getProdSpeedB() > 1.5)) == true)
+            {
+                
+            }
+            */
+        } else {
+            getWorld().showText("true", this.getX() - width/3, this.getY() - height/4);
         }
+        
     }
     
     //people interaction
@@ -55,11 +113,11 @@ public class LeftMachines extends Machines
     //    If it reaches the end of the conveyer, just move the object 
     //    far enough to the middle of the exit conveyer
     
-    protected static void upgradeA()
+    protected void upgradeA()
     {
-        produceSpeed += 1;
+        produceSpeed += 0.5;
     }
-    public static int getProdSpeedA()
+    public static double getProdSpeedA()
     {
         return produceSpeed;
     }

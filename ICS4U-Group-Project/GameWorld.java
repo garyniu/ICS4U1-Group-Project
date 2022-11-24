@@ -57,9 +57,9 @@ public class GameWorld extends World
     {
         timer();
         // hitbox();
-        showText("MONEY: " + currencyA, 200, 20);
-        showText("MONEY: " + currencyB, 700, 20);
-
+        showText("$ DOLLAS: " + currencyA, 200, 20);
+        showText("$ DOLLAS: " + currencyB, 700, 20);
+        
     }
     //add the conveyers
     public void spawnMachines()
