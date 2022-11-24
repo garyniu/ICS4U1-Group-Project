@@ -14,6 +14,8 @@ public abstract class Event extends Actor
     
     public Event(int duration){
         this.duration = duration;
+    }
+    public void addedToWorld(World w){
         findSide(); 
     }
     public void act()

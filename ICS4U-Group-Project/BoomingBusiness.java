@@ -11,8 +11,12 @@ public class BoomingBusiness extends Event
     public BoomingBusiness(int d){
         super(d);
     }
+    public void addedToWorld(World w){
+        w.addObject(new RedFlash(duration), 0, 0);
+    }
     public void act()
     {
+        
         timer++;
         if(timer == 180){
             endEvent();
