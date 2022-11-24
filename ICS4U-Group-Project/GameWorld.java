@@ -66,6 +66,8 @@ public class GameWorld extends World
         getBackground().setColor(new Color(0, 0, 0));
         getBackground().drawLine(512, 0, 512, 800);
         
+        addObject(new Truck(), 0, 100);
+        
     }
 
     public void act()
