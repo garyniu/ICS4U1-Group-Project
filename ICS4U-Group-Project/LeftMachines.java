@@ -22,14 +22,14 @@ public class LeftMachines extends Machines
     private int width;
     private int height;
    
-    public LeftMachines(String itemChoice)
+    public LeftMachines(int itemChoice)
     {
         imageA = new GreenfootImage("shirtMachineTemp.png");
         imageA.scale(300, 100);
         setImage(imageA);
         defaultSpeed = produceSpeed; 
         
-        this.itemChoice = itemChoice; 
+        this.intItemChoice = itemChoice; 
         //upgradeA();
          
         width = imageA.getWidth();
@@ -63,15 +63,18 @@ public class LeftMachines extends Machines
     }
     public void chooseItemSpawn(){
         GameWorld w = (GameWorld)getWorld();
-        if(itemChoice == "phones"){
+        if(intItemChoice == 2){
+            itemChoice = "phones";
             w.addObject(new Phones(this), this.getX()-width/2, this.getY()-height/4);
             produceSpeed = 0.5;
             itemValue = Phones.getItemValue(); 
-        } else if(itemChoice == "shoes"){
+        } else if(intItemChoice == 0){
+            itemChoice = "shoes";
             w.addObject(new Shoes(this), this.getX()-width/2, this.getY()-height/4);
             produceSpeed = 2;
             itemValue = Shoes.getItemValue();
-        } else if(itemChoice == "tools"){
+        } else if(intItemChoice == 1){
+            itemChoice = "tools";
             w.addObject(new Tools(this), this.getX()-width/2, this.getY()-height/4);
             produceSpeed = 5;
             itemValue = Tools.getItemValue();

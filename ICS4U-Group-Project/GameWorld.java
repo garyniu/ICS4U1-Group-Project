@@ -14,44 +14,55 @@ public class GameWorld extends World
     private static int currencyB;
     private int counter;
     private int timer;
+    private int maxTimer; 
 
     //booleans for preferences
-    private boolean workerUpgradePref;
-    private boolean machUpgradePref;
+    //0 = random, 1 = workers, 2 = machines
+    private int upgradePrefA;
+    private int upgradePrefB;
     
-    private String itemChoiceA; 
-    private String itemChoiceB;
+    private int itemChoiceA; //0=shoes, 1 = tools, 2 = phones
+    private int itemChoiceB;
 
     private boolean activeEventA;
     private boolean activeEventB; 
     
-    private boolean normalMode; //true = normal, false = extreme 
+    private boolean hardMode; //true = hard, false = easy
 
     private int workerCount; 
 
+    private boolean winner; 
     /**
      * Constructor for objects of class MyWorld.
      *
      */
-    public GameWorld() //String leftItemSold, String rightItemSold
+    public GameWorld(int LUP, int RUP, int LIS, int RIS, int LSM, int RSM, int time, boolean difficulty) 
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 800, 1);
         setPaintOrder(Effect.class, Event.class, Items.class, People.class, Machines.class);
         
         //set variables
-        currencyA = 0;
-        currencyB = 0;
-        workerUpgradePref = true; 
-        machUpgradePref = false;
+        currencyA = LSM;
+        currencyB = RSM;
+        
+        upgradePrefA = LUP;
+        upgradePrefB = RUP;
+        
+        
+        //workerUpgradePref = true; 
+        //machUpgradePref = false;
+        
         workerCount = 0;
         counter = 0;
         timer = 0;
+        maxTimer = time; 
+        System.out.println(maxTimer);
 
-        normalMode = true;
+        hardMode = difficulty;
         
-        itemChoiceA = "phones"; 
-        itemChoiceB = "tools"; 
+        itemChoiceA = LIS; 
+        itemChoiceB = RIS; 
         
         activeEventA = false;
         activeEventB = false;
@@ -74,26 +85,31 @@ public class GameWorld extends World
         showText("MONEY: " + currencyA, 200, 20);
         // hitbox();
         showText("MONEY: " + currencyB, 700, 20);
-        if(normalMode){
+        if(!hardMode){
             if(!activeEventA){
-                if(Greenfoot.getRandomNumber(1500) == 0){
+                if(Greenfoot.getRandomNumber(1800) == 0){
                     chooseEventA();
                 }
             }
             if(!activeEventB){
-                if(Greenfoot.getRandomNumber(1500) == 0){
+                if(Greenfoot.getRandomNumber(1800) == 0){
                     chooseEventB();
                 }
             }
         }
-        /*
         else{
-            if((timer%8) == 0){
-                chooseEvent();
+            if(!activeEventA){
+                if(Greenfoot.getRandomNumber(1200) == 0){
+                    chooseEventA();
+                }
+            }
+            if(!activeEventB){
+                if(Greenfoot.getRandomNumber(1200) == 0){
+                    chooseEventB();
+                }
             }
         }
-        */
-        
+        checkTimerOver();
     }
     //add the conveyers
     public void spawnMachines()
@@ -177,7 +193,17 @@ public class GameWorld extends World
         //int time = (int)Math.floor(timer * 100)/100;
         showText("Time: " + timer, 512, 20);
     }
-    
+    public void checkTimerOver(){
+        if(timer == maxTimer){
+            if(currencyA > currencyB){
+                winner = true; //left side wins
+                Greenfoot.setWorld(new End(winner));
+            } else if(currencyB<currencyA){
+                winner = false; //right side wins
+                Greenfoot.setWorld(new End(winner));
+            }
+        }
+    }
     public void chooseEventA(){
         int eventA = Greenfoot.getRandomNumber(4);
         if(!activeEventA){

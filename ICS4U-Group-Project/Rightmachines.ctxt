@@ -2,7 +2,7 @@
 comment0.target=Rightmachines
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Rightmachines\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=itemChoice
-comment1.target=Rightmachines(java.lang.String)
+comment1.target=Rightmachines(int)
 comment10.params=value
 comment10.target=void\ setMachItemValueB(double)
 comment11.params=

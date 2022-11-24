@@ -13,10 +13,13 @@ public class End extends World
      * Constructor for objects of class End.
      * 
      */
-    public End()
+    private boolean winner; 
+    public End(boolean winner)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 800, 1); 
+        this.winner = winner;
+        
         GreenfootImage background2 = new GreenfootImage("EndScreen.png");
         background2.scale(1024,800);
         setBackground(background2);
@@ -26,7 +29,14 @@ public class End extends World
 
         GreenfootImage greyBackground = new GreenfootImage("HoverPlayAgain.png");
         greyBackground.scale(greyBackground.getWidth()/4, greyBackground.getHeight()/4);
-
+        
+        if(winner){
+          System.out.println("THe winner was left side");   
+        } else{
+            System.out.println("the winner was right side");
+        }
+        
+        
         b = new Button(background, greyBackground);
         addObject(b,getWidth()/2,getHeight()/2 + 100); 
     }

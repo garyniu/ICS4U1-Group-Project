@@ -300,8 +300,8 @@ public class ValueSetting extends World
         
         //buttons
         if (start.getClick()){
-            Greenfoot.setWorld(new GameWorld());
-            //Greenfoot.setWorld(new GameWorld(LUP, RUP, LIS, RIS, LSM, RSM, time, difficulty));
+            //Greenfoot.setWorld(new GameWorld());
+            Greenfoot.setWorld(new GameWorld(LUP, RUP, LIS, RIS, LSM, RSM, time, difficulty));
         }
         if (defaults.getClick()){
             LUP = 0; RUP = 0;
