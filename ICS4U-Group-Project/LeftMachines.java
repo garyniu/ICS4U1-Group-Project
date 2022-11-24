@@ -54,13 +54,7 @@ public class LeftMachines extends Machines
     //    If it reaches the end of the conveyer, just move the object
     //    far enough to the middle of the exit conveyer
 
-    public static double getDefaultSpeedA()
-    {
-        return defaultSpeed;
-    }
-    public void setProdSpeedA(double newSpd){
-        produceSpeed = newSpd;
-    }
+    
     public void chooseItemSpawn(){
         GameWorld w = (GameWorld)getWorld();
         if(intItemChoice == 2){
@@ -82,6 +76,12 @@ public class LeftMachines extends Machines
         defaultSpeed = produceSpeed; 
     }
     
+    public static double getDefaultSpeedA(){
+        return defaultSpeed;
+    }
+    public void setProdSpeedA(double newSpd){
+        produceSpeed = newSpd;
+    }
     public static double getMachItemValueA(){
         return itemValue;
     }

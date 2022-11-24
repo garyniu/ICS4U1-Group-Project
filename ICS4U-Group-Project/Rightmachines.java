@@ -47,18 +47,6 @@ public class Rightmachines extends Machines
     {
        
     }
-   
-    public void upgradeB()
-    {
-       produceSpeed +=0.2; 
-       defaultSpeed = produceSpeed;
-    }
-    public static double getDefaultSpeedB(){
-        return defaultSpeed; 
-    }
-    public void setProdSpeedB(double newSpd){
-        produceSpeed = newSpd;
-    }
     
     public void chooseItemSpawn(){
         GameWorld w = (GameWorld)getWorld();
@@ -81,6 +69,12 @@ public class Rightmachines extends Machines
         defaultSpeed = produceSpeed; 
     }
     
+    public static double getDefaultSpeedB(){
+        return defaultSpeed; 
+    }
+    public void setProdSpeedB(double newSpd){
+        produceSpeed = newSpd;
+    }
     public static double getMachItemValueB(){
         return itemValue;
     }
