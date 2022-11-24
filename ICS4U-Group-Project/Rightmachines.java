@@ -17,16 +17,17 @@ public class Rightmachines extends Machines
     private static int upgradeAmount;
     private static double produceSpeed;
     private static double defaultSpeed; 
+    private double itemValue; 
     private int width;
     private int height;
    
-    public Rightmachines(){
+    public Rightmachines(String itemChoice){
        
         imageB = new GreenfootImage("shirtMachineTemp.png");
         imageB.scale(300, 100);
         setImage(imageB);
-        produceSpeed = 1.5;
-        defaultSpeed = produceSpeed; 
+        
+        this.itemChoice = itemChoice; 
         
         width = imageB.getWidth();
         height = imageB.getHeight();
@@ -34,7 +35,8 @@ public class Rightmachines extends Machines
     }
     public void addedToWorld(World w){
         //w.addObject(new Hitboxes(), this.getX()+width/2, this.getY()-height/2);
-        w.addObject(new Shoes(this), this.getX()-width/2, this.getY()-height/4);
+        chooseItemSpawn();
+        //w.addObject(new Shoes(this), this.getX()-width/2, this.getY()-height/4);
     }
     public void act()
     {
@@ -56,5 +58,33 @@ public class Rightmachines extends Machines
     }
     public void setProdSpeedB(double newSpd){
         produceSpeed = newSpd;
+    }
+    
+    public void chooseItemSpawn(){
+        GameWorld w = (GameWorld)getWorld();
+        if(itemChoice == "phones"){
+            w.addObject(new Phones(this), this.getX()-width/2, this.getY()-height/4);
+            produceSpeed = 0.5;
+            itemValue = Phones.getItemValue();
+        } else if(itemChoice == "shoes"){
+            w.addObject(new Shoes(this), this.getX()-width/2, this.getY()-height/4);
+            produceSpeed = 2;
+            itemValue = Shoes.getItemValue();
+        } else if(itemChoice == "tools"){
+            w.addObject(new Tools(this), this.getX()-width/2, this.getY()-height/4);
+            produceSpeed = 5;
+            itemValue = Tools.getItemValue();
+        }
+        defaultSpeed = produceSpeed; 
+    }
+    
+    public double getMachItemValueB(){
+        return itemValue;
+    }
+    public void setMachItemValueB(double value){
+        this.itemValue = value; 
+    }
+    public String getItemChoiceB(){
+        return itemChoice; 
     }
 }

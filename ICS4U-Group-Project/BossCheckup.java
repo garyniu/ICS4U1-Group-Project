@@ -12,8 +12,8 @@ public class BossCheckup extends Event
     /**
      * During BossCheckup, Boss spawns 
      */
-    public BossCheckup(int d){
-        super(d);
+    public BossCheckup(int d, boolean left, boolean right){
+        super(d, left, right);
         System.out.println("BOSS CHECKUP BOSS CHECKUP");
     }
     public void act()
@@ -35,11 +35,11 @@ public class BossCheckup extends Event
         }
     }
     public void addedToWorld(GameWorld gw){
-        if(side == "left"){
+        if(left){
             b = new Boss(250, 700); 
             gw.addObject(b, 0, 50);
         }
-        else if(side == "right"){
+        else if(right){
             b = new Boss(300, 700);
             gw.addObject(b, 1024, 50);
         }

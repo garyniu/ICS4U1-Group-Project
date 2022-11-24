@@ -18,21 +18,25 @@ public class LeftMachines extends Machines
     private static int upgradeAmount;
     private static double produceSpeed;
     private static double defaultSpeed;
+    private double itemValue;
     private int width;
     private int height;
    
-    public LeftMachines()
+    public LeftMachines(String itemChoice)
     {
         imageA = new GreenfootImage("shirtMachineTemp.png");
         imageA.scale(300, 100);
         setImage(imageA);
-        produceSpeed = 0.5;
         defaultSpeed = produceSpeed; 
+        
+        this.itemChoice = itemChoice; 
         //upgradeA();
          
         width = imageA.getWidth();
         height = imageA.getHeight();
         upgradeAmount = GameWorld.getCurrencyA();
+        
+        
     }
     public void act()
     {
@@ -40,7 +44,8 @@ public class LeftMachines extends Machines
     }
     public void addedToWorld(World w){
         //w.addObject(new Hitboxes(), this.getX()+width/2, this.getY()-height/2);
-        w.addObject(new Shoes(this), this.getX()-width/2, this.getY()-height/4);
+        chooseItemSpawn();
+        //w.addObject(new Shoes(this), this.getX()-width/2, this.getY()-height/4);
     }
    
     //people interaction
@@ -48,17 +53,39 @@ public class LeftMachines extends Machines
     //  Move items to next worker, call workers work method with the item
     //    If it reaches the end of the conveyer, just move the object
     //    far enough to the middle of the exit conveyer
-   
-    public void upgradeA()
-    {
-        produceSpeed += 0.2;
-        defaultSpeed = produceSpeed; 
-    }
+
     public static double getDefaultSpeedA()
     {
         return defaultSpeed;
     }
     public void setProdSpeedA(double newSpd){
         produceSpeed = newSpd;
+    }
+    public void chooseItemSpawn(){
+        GameWorld w = (GameWorld)getWorld();
+        if(itemChoice == "phones"){
+            w.addObject(new Phones(this), this.getX()-width/2, this.getY()-height/4);
+            produceSpeed = 0.5;
+            itemValue = Phones.getItemValue(); 
+        } else if(itemChoice == "shoes"){
+            w.addObject(new Shoes(this), this.getX()-width/2, this.getY()-height/4);
+            produceSpeed = 2;
+            itemValue = Shoes.getItemValue();
+        } else if(itemChoice == "tools"){
+            w.addObject(new Tools(this), this.getX()-width/2, this.getY()-height/4);
+            produceSpeed = 5;
+            itemValue = Tools.getItemValue();
+        }
+        defaultSpeed = produceSpeed; 
+    }
+    
+    public double getMachItemValueA(){
+        return itemValue;
+    }
+    public void setMachItemValueA(double value){
+        this.itemValue = value; 
+    }
+    public String getItemChoiceA(){
+        return itemChoice; 
     }
 }

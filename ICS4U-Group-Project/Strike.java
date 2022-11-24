@@ -12,8 +12,8 @@ public class Strike extends Event
      * Act - do whatever the Strike wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public Strike(int d){
-        super(d);
+    public Strike(int d, boolean left, boolean right){
+        super(d, left, right);
         System.out.println("STRIKE STRIKE");
     }
     public void act()
@@ -26,29 +26,28 @@ public class Strike extends Event
         }
     }
     public void addedToWorld(){
-        findSide();
         stopMachines();
     }
     
     public void stopMachines(){
-        if(side == "left"){
+        if(left){
             for(LeftMachines lm : getObjectsAtOffset(256, 400, LeftMachines.class)){
                 lm.setProdSpeedA(0); 
             }
         }
-        else if(side == "right"){
+        else if(right){
             for(Rightmachines rm : getObjectsAtOffset(256, 400, Rightmachines.class)){
                 rm.setProdSpeedB(0); 
             }
         }
     }
     public void startMachines(){
-        if(side == "left"){
+        if(left){
             for(LeftMachines lm : getObjectsAtOffset(256, 400, LeftMachines.class)){
                 lm.setProdSpeedA(lm.getDefaultSpeedA()); 
             }
         }
-        else if(side == "right"){
+        else if(right){
             for(Rightmachines rm : getObjectsAtOffset(256, 400, Rightmachines.class)){
                 rm.setProdSpeedB(rm.getDefaultSpeedB()); 
             }

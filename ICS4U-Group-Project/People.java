@@ -96,9 +96,7 @@ public abstract class People extends Actor
             //if moving right / left, change a variable (direction)
 
             if (tBlock){
-                System.out.println("1");
                 if (rBlock){
-                    System.out.println("2");
 
                     if (currentX < x){
                         //currentX++; //go right
@@ -113,7 +111,6 @@ public abstract class People extends Actor
                     }
 
                 } else if (lBlock){
-                    System.out.println("3");
 
                     if (currentX < x){
                         currentX++; //go right
@@ -128,7 +125,6 @@ public abstract class People extends Actor
                     }
 
                 } else {
-                    System.out.println("4");
 
                     if (currentX < x){
                         currentX++;
@@ -145,9 +141,7 @@ public abstract class People extends Actor
                 }
 
             } else if (bBlock) {
-                //System.out.println("6");
                 if (rBlock){
-                    //System.out.println("7");
 
                     if (currentX < x){
                         //currentX++;
@@ -164,7 +158,6 @@ public abstract class People extends Actor
                     }
 
                 } else if (lBlock){
-                    System.out.println("8");
 
                     if (currentX < x){
                         currentX++; //go right
@@ -190,11 +183,9 @@ public abstract class People extends Actor
                     } else if (currentY > y){
                         currentY--; // go up
                     }
-                    System.out.println("9");
                 }
 
             } else if (lBlock){
-                System.out.println("10");
 
                 if (currentX < x){
                     currentX++; //go right
@@ -209,7 +200,6 @@ public abstract class People extends Actor
                 }
 
             } else if (rBlock){
-                System.out.println("11");
 
                 if (currentX > x){
                     currentX--;
@@ -223,7 +213,6 @@ public abstract class People extends Actor
 
             } else {
 
-                //System.out.println("penis");
                 if (currentX < x){
                     currentX++;
                 } else if (currentX > x){
@@ -237,7 +226,6 @@ public abstract class People extends Actor
                 }
             }
 
-            //System.out.println("penis1");
 
             setLocation (currentX, currentY);
         }

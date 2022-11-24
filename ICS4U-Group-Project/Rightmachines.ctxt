@@ -1,8 +1,12 @@
 #BlueJ class context
 comment0.target=Rightmachines
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Rightmachines\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=
-comment1.target=Rightmachines()
+comment1.params=itemChoice
+comment1.target=Rightmachines(java.lang.String)
+comment10.params=value
+comment10.target=void\ setMachItemValueB(double)
+comment11.params=
+comment11.target=java.lang.String\ getItemChoiceB()
 comment2.params=w
 comment2.target=void\ addedToWorld(greenfoot.World)
 comment3.params=
@@ -15,4 +19,8 @@ comment6.params=
 comment6.target=double\ getDefaultSpeedB()
 comment7.params=newSpd
 comment7.target=void\ setProdSpeedB(double)
-numComments=8
+comment8.params=
+comment8.target=void\ chooseItemSpawn()
+comment9.params=
+comment9.target=double\ getMachItemValueB()
+numComments=12
