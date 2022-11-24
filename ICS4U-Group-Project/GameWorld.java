@@ -111,8 +111,8 @@ public class GameWorld extends World
             activeEventA = false;
         }
         if(normalMode){
-            if(Greenfoot.getRandomNumber(1000) == 0){
-                if(!activeEventA){
+            if(!activeEventA){
+                if(Greenfoot.getRandomNumber(1000) == 0){
                     chooseEvent();
                 }
             }
