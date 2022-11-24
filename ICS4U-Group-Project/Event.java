@@ -26,6 +26,12 @@ public abstract class Event extends Actor
         GameWorld gw = (GameWorld) getWorld();
         eventTimer = 0;
         System.out.println("EVENT IS NOW OVER EVENT IS NOW OVER");
+        if(side == "left"){
+            gw.setEventStatusA(false);
+        }
+        else if(side == "right"){
+            gw.setEventStatusB(false);
+        }
         gw.removeObject(this);
     }
     public void findSide(){

@@ -20,6 +20,7 @@ public class GameWorld extends World
     private boolean machUpgradePref;
 
     //booleans for events 
+    /*
     private boolean bossCheckA;
     private boolean bossCheckB;
     private boolean businessBoomA;
@@ -28,11 +29,10 @@ public class GameWorld extends World
     private boolean stockCrashB;
     private boolean strikeA;
     private boolean strikeB; 
+    */
     
     private boolean activeEventA;
     private boolean activeEventB; 
-    
-    private int eventTimeElapsed; 
     
     private boolean normalMode; //true = normal, false = extreme 
 
@@ -58,6 +58,7 @@ public class GameWorld extends World
         timer = 0;
 
         //set event booleans
+        /*
         bossCheckA =false;
         bossCheckB = false;
         businessBoomA = false;
@@ -66,6 +67,7 @@ public class GameWorld extends World
         stockCrashB = false;
         strikeA = false;
         strikeB = false;
+        */
         normalMode = true; 
         
         activeEventA = false;
@@ -81,21 +83,6 @@ public class GameWorld extends World
         getBackground().setColor(new Color(0, 0, 0));
         getBackground().drawLine(512, 0, 512, 800);
         
-        
-        
-
-        // addObject(new HiredWorkers(), 200, 800);
-
-        
-        //addObject(new Truck(), 50, 75);
-
-        // showText("MONEY: " + currency, 200, 20);
-        // showText("MONEY: " + currency, 700, 20);
-        // hitbox();
-
-        // showText("MONEY2: " + currency, 200, 20);
-        
-        
     }
 
     public void act()
@@ -104,12 +91,6 @@ public class GameWorld extends World
         showText("MONEY: " + currencyA, 200, 20);
         // hitbox();
         showText("MONEY: " + currencyB, 700, 20);
-        if(activeEventA){
-            eventTimeElapsed++; 
-        }
-        if(eventTimeElapsed >= 900){
-            activeEventA = false;
-        }
         if(normalMode){
             if(!activeEventA){
                 if(Greenfoot.getRandomNumber(1000) == 0){
@@ -187,7 +168,12 @@ public class GameWorld extends World
     {
         currencyB += 1;
     }
-
+    public void setEventStatusA(boolean x){
+        activeEventA = x;
+    }
+    public void setEventStatusB(boolean x){
+        activeEventB = x;
+    }
     public void timer()
     {
         counter += 1;

@@ -31,7 +31,7 @@ public class BossCheckup extends Event
             }
             
             gw.removeObject(b);
-            gw.removeObject(this);
+            endEvent();
         }
     }
     public void addedToWorld(GameWorld gw){
