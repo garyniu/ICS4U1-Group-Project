@@ -149,12 +149,12 @@ public class GameWorld extends World
 
     public static void addCurrencyA()
     {
-        currencyA += 1;
+        currencyA += LeftMachines.getMachItemValueA();
     }
 
     public static void addCurrencyB()
     {
-        currencyB += 1;
+        currencyB += Rightmachines.getMachItemValueB();
     }
     public void setEventStatusA(boolean x){
         activeEventA = x;

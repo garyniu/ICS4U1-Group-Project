@@ -17,7 +17,7 @@ public class Rightmachines extends Machines
     private static int upgradeAmount;
     private static double produceSpeed;
     private static double defaultSpeed; 
-    private double itemValue; 
+    private static double itemValue; 
     private int width;
     private int height;
    
@@ -78,7 +78,7 @@ public class Rightmachines extends Machines
         defaultSpeed = produceSpeed; 
     }
     
-    public double getMachItemValueB(){
+    public static double getMachItemValueB(){
         return itemValue;
     }
     public void setMachItemValueB(double value){
