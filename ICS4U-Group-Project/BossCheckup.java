@@ -14,11 +14,12 @@ public class BossCheckup extends Event
      */
     public BossCheckup(int d){
         super(d);
+        System.out.println("BOSS CHECKUP BOSS CHECKUP");
     }
     public void act()
     {
-        timer++;
-        if(timer == 900){
+        eventTimer++;
+        if(eventTimer == 900){
             GameWorld gw = (GameWorld)getWorld();
             
             //randomize a #, if '0', workers get a raise, production speeds up , if '1', workers get pay deduction, less productive 

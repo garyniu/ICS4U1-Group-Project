@@ -1,12 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class RedFlash here.
+ * Write a description of class GreenFlash here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class RedFlash extends Effect
+public class GreenFlash extends Effect
 {
     /**
      * Act - do whatever the RedFlash wants to do. This method is called whenever
@@ -16,11 +16,11 @@ public class RedFlash extends Effect
    private int flashTimer;
    private int durationTimer;
    private GreenfootImage flashing; 
-   public RedFlash(int duration){
+   public GreenFlash(int duration){
        this.duration = duration;
        durationTimer = 0;
        flashTimer = 0;
-       flashing = flashRed(0, 0, 512, 800);
+       flashing = flashGreen(0, 0, 512, 800);
        flashing.setTransparency(100);
        setImage(flashing);
    }
@@ -41,9 +41,9 @@ public class RedFlash extends Effect
            gw.removeObject(this);
        }
    }
-   private GreenfootImage flashRed(int x, int y, int width, int height){
+   private GreenfootImage flashGreen(int x, int y, int width, int height){
         GreenfootImage canvas = new GreenfootImage(width, height); 
-        image = createFlash(512 ,800, "red");
+        image = createFlash(512 ,800, "green");
         image.setTransparency(100);
         canvas.drawImage(image, x,y);
         return canvas; 

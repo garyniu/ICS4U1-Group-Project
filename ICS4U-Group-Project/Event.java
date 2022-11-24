@@ -9,11 +9,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public abstract class Event extends Actor
 {
     protected int duration; 
-    protected int timer; 
+    protected int eventTimer; 
     protected String side;
     
     public Event(int duration){
-        this.duration = duration;
+        this.duration = duration*60;
     }
     public void addedToWorld(World w){
         findSide(); 
@@ -24,8 +24,9 @@ public abstract class Event extends Actor
     }
     public void endEvent(){
         GameWorld gw = (GameWorld) getWorld();
+        eventTimer = 0;
+        System.out.println("EVENT IS NOW OVER EVENT IS NOW OVER");
         gw.removeObject(this);
-        timer = 0;
     }
     public void findSide(){
         if(this.getX()<=512){

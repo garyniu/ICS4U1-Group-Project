@@ -145,9 +145,9 @@ public abstract class People extends Actor
                 }
 
             } else if (bBlock) {
-                System.out.println("6");
+                //System.out.println("6");
                 if (rBlock){
-                    System.out.println("7");
+                    //System.out.println("7");
 
                     if (currentX < x){
                         //currentX++;

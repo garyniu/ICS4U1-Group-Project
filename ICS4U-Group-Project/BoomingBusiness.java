@@ -8,24 +8,22 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class BoomingBusiness extends Event
 {
+    private GreenFlash gf; 
     public BoomingBusiness(int d){
         super(d);
+        gf = new GreenFlash(duration); 
+        System.out.println("BOOMING BUSINESS");
     }
     public void addedToWorld(World w){
-        w.addObject(new RedFlash(duration), 0, 0);
+        w.addObject(gf, 256, 400);
+        increaseStock();
     }
     public void act()
     {
-        
-        timer++;
-        if(timer == 180){
+        eventTimer++;
+        if(eventTimer == duration){
             endEvent();
         }
-    }
-    
-    public void addedToWorld(GameWorld gw){
-        //draw effects for stock market crash
-        increaseStock();
     }
     
     public void increaseStock(){

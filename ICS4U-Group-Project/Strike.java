@@ -14,15 +14,15 @@ public class Strike extends Event
      */
     public Strike(int d){
         super(d);
+        System.out.println("STRIKE STRIKE");
     }
     public void act()
     {
-        timer++;
-        if(timer == 900){
+        eventTimer++;
+        if(eventTimer == 900){
             splitWorkerNum();
             startMachines();
             endEvent();
-            timer = 0;
         }
     }
     public void addedToWorld(){
