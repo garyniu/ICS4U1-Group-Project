@@ -31,7 +31,7 @@ public class GameWorld extends World
 
     private int workerCount; 
 
-    private boolean winner; 
+    private String winner; 
     /**
      * Constructor for objects of class MyWorld.
      *
@@ -198,10 +198,13 @@ public class GameWorld extends World
     public void checkTimerOver(){
         if(timer == maxTimer){
             if(currencyA > currencyB){
-                winner = true; //left side wins
+                winner = "left"; //left side wins
                 Greenfoot.setWorld(new End(winner));
-            } else if(currencyB<currencyA){
-                winner = false; //right side wins
+            } else if(currencyB>currencyA){
+                winner = "right"; //right side wins
+                Greenfoot.setWorld(new End(winner));
+            } else if(currencyB == currencyA){
+                winner = "tie";
                 Greenfoot.setWorld(new End(winner));
             }
         }
