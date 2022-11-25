@@ -63,6 +63,9 @@ public class Rightmachines extends Machines
     public double getDefaultSpeedB(){
         return defaultSpeed; 
     }
+    public double getProdSpeedB(){
+        return produceSpeed; 
+    }
     public void setProdSpeedB(double newSpd){
         produceSpeed = newSpd;
     }

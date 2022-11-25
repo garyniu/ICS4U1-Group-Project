@@ -12,56 +12,68 @@ public class Strike extends Event
      * Act - do whatever the Strike wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    private boolean machinesStopped; 
     public Strike(int d, boolean left, boolean right){
         super(d, left, right);
+        machinesStopped = false;
         System.out.println("STRIKE STRIKE");
     }
     public void act()
     {
+        if(!machinesStopped){
+            stopMachines();
+            machinesStopped = true;
+        }
         eventTimer++;
         if(eventTimer == 900){
-            splitWorkerNum();
             startMachines();
+            splitWorkerNum();
             endEvent();
         }
     }
-    public void addedToWorld(){
-        stopMachines();
-    }
     
     public void stopMachines(){
+        GameWorld gw = (GameWorld)getWorld();
         if(left){
-            for(LeftMachines lm : getObjectsAtOffset(256, 400, LeftMachines.class)){
+            for(LeftMachines lm : gw.getObjects(LeftMachines.class)){
                 lm.setProdSpeedA(0); 
+                System.out.println("left machine speed(stop): "+lm.getProdSpeedA());
             }
         }
         else if(right){
-            for(Rightmachines rm : getObjectsAtOffset(256, 400, Rightmachines.class)){
+            for(Rightmachines rm : gw.getObjects(Rightmachines.class)){
                 rm.setProdSpeedB(0); 
+                System.out.println("right machine speed(stop); "+ rm.getProdSpeedB());
             }
         }
     }
     public void startMachines(){
+        GameWorld gw = (GameWorld)getWorld();
         if(left){
-            for(LeftMachines lm : getObjectsAtOffset(256, 400, LeftMachines.class)){
+            for(LeftMachines lm : gw.getObjects(LeftMachines.class)){
                 lm.setProdSpeedA(lm.getDefaultSpeedA()); 
+                System.out.println("left machine speed(start): "+lm.getProdSpeedA());
             }
         }
         else if(right){
-            for(Rightmachines rm : getObjectsAtOffset(256, 400, Rightmachines.class)){
+            for(Rightmachines rm : gw.getObjects(Rightmachines.class)){
                 rm.setProdSpeedB(rm.getDefaultSpeedB()); 
+                System.out.println("rightt machine speed(start): "+rm.getProdSpeedB());
             }
         }
     }
 
     public void splitWorkerNum(){
-        int removedWorkersCount =0;
-        for(HiredWorkers w : getObjectsAtOffset(256, 400, HiredWorkers.class)){
-            GameWorld gw = (GameWorld)getWorld();
+        int removedWorkersCount = 0;
+        GameWorld gw = (GameWorld)getWorld();
+        for(HiredWorkers w : getObjectsInRange(400, HiredWorkers.class)){
             if(!(removedWorkersCount == gw.getWorkerCount()/2)){
                 gw.removeObject(w); 
                 removedWorkersCount++;
             }
         }
+        System.out.println("# removed workers, 5, : "+removedWorkersCount);
+        gw.setWorkerCount(gw.getWorkerCount()-removedWorkersCount);
+        System.out.println("split worker count: "+gw.getWorkerCount());
     }
 }

@@ -80,6 +80,9 @@ public class LeftMachines extends Machines
     public double getDefaultSpeedA(){
         return defaultSpeed;
     }
+    public double getProdSpeedA(){
+        return produceSpeed; 
+    }
     public void setProdSpeedA(double newSpd){
         produceSpeed = newSpd;
     }

@@ -53,7 +53,7 @@ public class GameWorld extends World
         //workerUpgradePref = true; 
         //machUpgradePref = false;
         
-        workerCount = 0;
+        workerCount = 10;
         counter = 0;
         timer = 0;
         maxTimer = time; 
@@ -147,67 +147,7 @@ public class GameWorld extends World
         //if(workerCountA == 6 && machUpgradePref)
         addObject(new LeftMachines(itemChoiceA), 150, 550);
     }
-
-    public int getWorkerCount(){
-        return workerCount; 
-    }
-
-    public void setWorkerCount(int newWorkerCount){
-        workerCount = newWorkerCount; 
-    }
-
-    public static int getCurrencyA()
-    {
-        return currencyA;
-    }
-
-    public static int getCurrencyB(){
-        return currencyB;
-    }
-
-    public static void addCurrencyA()
-    {
-        currencyA += Shoes.getItemValue();
-        /*
-        if(LeftMachines.getItemChoiceA() == "tools"){
-            currencyA += Tools.getItemValue();
-        }
-        else if(LeftMachines.getItemChoiceA() == "shoes"){
-            currencyA += Shoes.getItemValue();
-        }
-        else if(LeftMachines.getItemChoiceA() == "phones"){
-            currencyA += Phones.getItemValue();
-        }*/
-    }
-
-    public static void addCurrencyB()
-    {
-        currencyB += Shoes.getItemValue();
-        /*
-        if(Rightmachines.getItemChoiceB() == "tools"){
-            currencyB += Tools.getItemValue();
-        }
-        else if(Rightmachines.getItemChoiceB() == "shoes"){
-            currencyB += Shoes.getItemValue();
-        }
-        else if(Rightmachines.getItemChoiceB() == "phones"){
-            currencyB += Phones.getItemValue();
-        }*/
-    }
-    public void setEventStatusA(boolean x){
-        activeEventA = x;
-    }
-    public boolean getEventStatusA(){
-        return activeEventA; 
-    }
-    public void setEventStatusB(boolean x){
-        activeEventB = x;
-    }
-    public boolean getEventStatusB(){
-        return activeEventB;
-    }
-    public void timer()
-    {
+    public void timer(){
         counter += 1;
         if(counter%60 == 0){
             timer += 1;
@@ -229,8 +169,10 @@ public class GameWorld extends World
             }
         }
     }
+    
     public void chooseEventA(){
         int eventA = Greenfoot.getRandomNumber(2);
+        eventA = 3;
         if(!activeEventA){
             activeEventA = true;
             if(eventA == 2){
@@ -240,12 +182,13 @@ public class GameWorld extends World
             } else if(eventA == 0){
                 addObject(new StockMarketCrash(5, true, false), 256, 400);
             } else if(eventA == 3){
-                addObject(new Strike(15, true, false), 256, 400);
+                addObject(new Strike(15, true, false), 112, 400);
             }
         }
     }
     public void chooseEventB(){
         int eventB = Greenfoot.getRandomNumber(2);
+        eventB = 3;
         if(!activeEventB){
             activeEventB = true;
             if(eventB == 2){
@@ -255,8 +198,64 @@ public class GameWorld extends World
             } else if(eventB == 0){
                 addObject(new StockMarketCrash(5, false, true), 768, 400);
             } else if(eventB == 3){
-                addObject(new Strike(15, false, true), 768, 400);
+                addObject(new Strike(15, false, true), 912, 400);
             }
         }
+    }
+    public int getWorkerCount(){
+        return workerCount; 
+    }
+    public void setWorkerCount(int newWorkerCount){
+        workerCount = newWorkerCount; 
+    }
+
+    public static int getCurrencyA()
+    {
+        return currencyA;
+    }
+    public static void addCurrencyA()
+    {
+        currencyA += Shoes.getItemValue();
+        /*
+        if(LeftMachines.getItemChoiceA() == "tools"){
+            currencyA += Tools.getItemValue();
+        }
+        else if(LeftMachines.getItemChoiceA() == "shoes"){
+            currencyA += Shoes.getItemValue();
+        }
+        else if(LeftMachines.getItemChoiceA() == "phones"){
+            currencyA += Phones.getItemValue();
+        }*/
+    }
+    
+    public static int getCurrencyB(){
+        return currencyB;
+    }
+    public static void addCurrencyB()
+    {
+        currencyB += Shoes.getItemValue();
+        /*
+        if(Rightmachines.getItemChoiceB() == "tools"){
+            currencyB += Tools.getItemValue();
+        }
+        else if(Rightmachines.getItemChoiceB() == "shoes"){
+            currencyB += Shoes.getItemValue();
+        }
+        else if(Rightmachines.getItemChoiceB() == "phones"){
+            currencyB += Phones.getItemValue();
+        }*/
+    }
+    
+    public void setEventStatusA(boolean x){
+        activeEventA = x;
+    }
+    public boolean getEventStatusA(){
+        return activeEventA; 
+    }
+    public void setEventStatusB(boolean x){
+        activeEventB = x;
+    }
+    public boolean getEventStatusB(){
+        return activeEventB;
     }    
 }
