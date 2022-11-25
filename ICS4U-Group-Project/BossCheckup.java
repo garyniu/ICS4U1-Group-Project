@@ -36,11 +36,11 @@ public class BossCheckup extends Event
     }
     public void addedToWorld(GameWorld gw){
         if(left){
-            b = new Boss(250, 700); 
+            b = new Boss(250, 700, 0, 1); 
             gw.addObject(b, 0, 50);
         }
         else if(right){
-            b = new Boss(300, 700);
+            b = new Boss(300, 700, 0, 1);
             gw.addObject(b, 1024, 50);
         }
     }
