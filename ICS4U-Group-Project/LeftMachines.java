@@ -83,7 +83,7 @@ public class LeftMachines extends Machines
     public void setProdSpeedA(double newSpd){
         produceSpeed = newSpd;
     }
-    public double getMachItemValueA(){
+    public static double getMachItemValueA(){
         return itemValue;
     }
     public void setMachItemValueA(double value){

@@ -39,16 +39,6 @@ public class Rightmachines extends Machines
         chooseItemSpawn();
         //w.addObject(new Shoes(this), this.getX()-width/2, this.getY()-height/4);
     }
-    public void act()
-    {
-        
-    }
-   
-    public void produceB()
-    {
-       
-    }
-    
     public void chooseItemSpawn(){
         GameWorld w = (GameWorld)getWorld();
         if(intItemChoice == 0){
@@ -76,7 +66,7 @@ public class Rightmachines extends Machines
     public void setProdSpeedB(double newSpd){
         produceSpeed = newSpd;
     }
-    public double getMachItemValueB(){
+    public static double getMachItemValueB(){
         return itemValue;
     }
     public void setMachItemValueB(double value){

@@ -230,8 +230,7 @@ public class GameWorld extends World
         }
     }
     public void chooseEventA(){
-        int eventA = Greenfoot.getRandomNumber(4);
-        eventA = 1;
+        int eventA = Greenfoot.getRandomNumber(2);
         if(!activeEventA){
             activeEventA = true;
             if(eventA == 2){
@@ -246,18 +245,17 @@ public class GameWorld extends World
         }
     }
     public void chooseEventB(){
-        int eventB = Greenfoot.getRandomNumber(4);
-        eventB = 1;
+        int eventB = Greenfoot.getRandomNumber(2);
         if(!activeEventB){
             activeEventB = true;
             if(eventB == 2){
-                addObject(new BossCheckup(15, false, true), 256, 400);
+                addObject(new BossCheckup(15, false, true), 768, 400);
             } else if(eventB == 1){
-                addObject(new BoomingBusiness(5, false, true), 256, 400); 
+                addObject(new BoomingBusiness(5, false, true), 768, 400); 
             } else if(eventB == 0){
-                addObject(new StockMarketCrash(5, false, true), 256, 400);
+                addObject(new StockMarketCrash(5, false, true), 768, 400);
             } else if(eventB == 3){
-                addObject(new Strike(15, false, true), 256, 400);
+                addObject(new Strike(15, false, true), 768, 400);
             }
         }
     }    
