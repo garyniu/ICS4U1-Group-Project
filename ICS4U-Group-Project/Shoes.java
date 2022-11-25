@@ -12,23 +12,30 @@ public class Shoes extends Items
      * Act - do whatever the Shoes wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    private boolean shoeMade;
     public Shoes(Machines m)
     {
         image = new GreenfootImage("shoesTemp.png");
         image.scale(30, 30);
         setImage(image);
         
-        itemValue = 100; 
+        itemValue = 100;
+        System.out.println("Shoes item value: "+itemValue);
         
         onVertConveyor = false;
+        shoeMade = false;
     }
     public void addedToWorld(World w){
         if(this.getX() <=512){
-            this.prodSpeedA = LeftMachines.getDefaultSpeedA();
-            side = "left";
+            for(LeftMachines lm : w.getObjects(LeftMachines.class)){
+                this.prodSpeedA = lm.getDefaultSpeedA();
+                side = "left";
+            }
         } else if(this.getX()>512){
-            this.prodSpeedB = Rightmachines.getDefaultSpeedB();
-            side = "right";
+            for(Rightmachines rm: w.getObjects(Rightmachines.class)){
+                this.prodSpeedB = rm.getDefaultSpeedB();
+                side = "right";
+            }
         }
     }
     public void act()
@@ -43,8 +50,11 @@ public class Shoes extends Items
        
         //setLocation(getX() + produceSpeed, getY());
        
-       Actor b = getOneIntersectingObject(Hitboxes.class);  
-       if(b != null)  
+       Actor b = getOneIntersectingObject(Hitboxes.class); 
+       if(b != null && !onVertConveyor){
+           shoeMade = true;
+       }
+       if(b != null && onVertConveyor)  
        {  
            if(side == "left"){
                GameWorld.addCurrencyA();
@@ -53,9 +63,7 @@ public class Shoes extends Items
                GameWorld.addCurrencyB();
            }
            getWorld().removeObject(this);
-           return;
-       }  
-       
+       }
     }
     public void checkVertConveyor(){
         GameWorld gw = (GameWorld)getWorld();
@@ -81,6 +89,9 @@ public class Shoes extends Items
                 this.onVertConveyor = true;
             }
         }
+    }
+    public boolean getShoeMade(){
+        return shoeMade;
     }
     public static double getItemValue(){
         return itemValue; 

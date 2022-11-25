@@ -12,8 +12,12 @@ public abstract class Event extends Actor
     protected int eventTimer;
     protected boolean left;
     protected boolean right;
-    protected double newValue; 
-    protected double newSpeed;
+    protected double newValueLeft;
+    protected double newValueRight;
+    protected double newSpeedLeft;
+    protected double newSpeedRight;
+    protected double slowSpeedLeft;
+    protected double slowSpeedRight;
     
     public Event(int duration, boolean left, boolean right){
         this.duration = duration*60; 
@@ -29,67 +33,73 @@ public abstract class Event extends Actor
         eventTimer = 0;
         System.out.println("EVENT IS NOW OVER EVENT IS NOW OVER");
         if(left){
-            System.out.println("eventstatus A: "+gw.getEventStatusA());
             gw.setEventStatusA(false);
-            System.out.println("eventstatus A: "+gw.getEventStatusA());
         }
         else if(right){
-            System.out.println("Eventstatus B: "+gw.getEventStatusB());
             gw.setEventStatusB(false);
-            System.out.println("Eventstatus B: "+gw.getEventStatusB());
         }
         gw.removeObject(this);
     }
     //methods for changing speed/efficiency of workers
     public void increaseEfficiency(){
+        GameWorld gw = (GameWorld)getWorld();
         if(left){
-            for(LeftMachines lm : getObjectsAtOffset(256, 400, LeftMachines.class)){
-                if(lm.getItemChoiceA() == "tools" || lm.getItemChoiceA() == "shoes"){
-                    newSpeed = lm.getDefaultSpeedA()+0.5;
-                    lm.setProdSpeedA(newSpeed);
+            for(LeftMachines lm : gw.getObjects(LeftMachines.class)){
+                /*if(lm.getItemChoiceA() == "tools" || lm.getItemChoiceA() == "shoes"){
+                    newSpeedLeft = lm.getDefaultSpeedA()+0.5;
+                    lm.setProdSpeedA(newSpeedLeft);
                 }
                 else if(lm.getItemChoiceA() == "phones"){
-                    newSpeed = lm.getDefaultSpeedA()+0.1875;
-                    lm.setProdSpeedA(newSpeed); 
-                }
+                    newSpeedLeft = lm.getDefaultSpeedA()+0.1875;
+                    lm.setProdSpeedA(newSpeedLeft); 
+                }*/
+                newSpeedLeft = lm.getDefaultSpeedA()+0.1875; 
+                lm.setProdSpeedA(newSpeedLeft);
             }
         }
         else if(right){
-            for(Rightmachines rm : getObjectsAtOffset(256, 400, Rightmachines.class)){
-                if(rm.getItemChoiceB() == "tools" || rm.getItemChoiceB() == "shoes"){
+            for(Rightmachines rm : gw.getObjects(Rightmachines.class)){
+                /*if(rm.getItemChoiceB() == "tools" || rm.getItemChoiceB() == "shoes"){
                     newSpeed = rm.getDefaultSpeedB()+0.5;
-                    rm.setProdSpeedB(newValue);
+                    rm.setProdSpeedB(newSpeed);
                 }
                 else if(rm.getItemChoiceB() == "phones"){
                     newSpeed = rm.getDefaultSpeedB()+0.1875;
-                    rm.setProdSpeedB(newValue); 
-                }
+                    rm.setProdSpeedB(newSpeed); 
+                }*/
+                newSpeedRight = rm.getDefaultSpeedB()+0.1875; 
+                rm.setProdSpeedB(newSpeedRight);
             }
         }
     }
     public void slowEfficiency(){
+        GameWorld gw = (GameWorld)getWorld();
         if(left){
-            for(LeftMachines lm : getObjectsAtOffset(256, 400, LeftMachines.class)){
-                if(lm.getItemChoiceA() == "tools" || lm.getItemChoiceA() == "shoes"){
-                    newSpeed = lm.getDefaultSpeedA()-0.5;
-                    lm.setProdSpeedA(newValue);
+            for(LeftMachines lm : gw.getObjects(LeftMachines.class)){
+                /*if(lm.getItemChoiceA() == "tools" || lm.getItemChoiceA() == "shoes"){
+                    newSpeedLeft = lm.getDefaultSpeedA()+0.5;
+                    lm.setProdSpeedA(newSpeedLeft);
                 }
                 else if(lm.getItemChoiceA() == "phones"){
-                    newSpeed = lm.getDefaultSpeedA()-0.1875;
-                    lm.setProdSpeedA(newValue); 
-                }
+                    newSpeedLeft = lm.getDefaultSpeedA()+0.1875;
+                    lm.setProdSpeedA(newSpeedLeft); 
+                }*/
+                slowSpeedLeft = lm.getDefaultSpeedA()-0.1875; 
+                lm.setProdSpeedA(slowSpeedLeft);
             }
         }
         else if(right){
-            for(Rightmachines rm : getObjectsAtOffset(256, 400, Rightmachines.class)){
-                if(rm.getItemChoiceB() == "tools" || rm.getItemChoiceB() == "shoes"){
-                    newSpeed = rm.getDefaultSpeedB()-0.5;
-                    rm.setProdSpeedB(newValue);
+            for(Rightmachines rm : gw.getObjects(Rightmachines.class)){
+                /*if(rm.getItemChoiceB() == "tools" || rm.getItemChoiceB() == "shoes"){
+                    newSpeed = rm.getDefaultSpeedB()+0.5;
+                    rm.setProdSpeedB(newSpeed);
                 }
                 else if(rm.getItemChoiceB() == "phones"){
-                    newSpeed = rm.getDefaultSpeedB()-0.1875;
-                    rm.setProdSpeedB(newValue); 
-                }
+                    newSpeed = rm.getDefaultSpeedB()+0.1875;
+                    rm.setProdSpeedB(newSpeed); 
+                }*/
+                slowSpeedRight = rm.getDefaultSpeedB()-0.1875; 
+                rm.setProdSpeedB(slowSpeedRight);
             }
         }
     }

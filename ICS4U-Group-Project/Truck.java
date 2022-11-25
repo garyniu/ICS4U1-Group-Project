@@ -17,7 +17,7 @@ public class Truck extends Actor
 
     public Truck(){
         setImage(image);
-        System.out.println(getImage().getWidth() * 5 / 6);
+        //System.out.println(getImage().getWidth() * 5 / 6);
         getImage().scale((getImage().getWidth() * 2 / 3), (getImage().getHeight() * 2 / 3));
 
     }
@@ -53,8 +53,8 @@ public class Truck extends Actor
 
         moving(unit);
 
-        System.out.println(getWorld().getWidth());
-        System.out.println(getX());
+        //System.out.println(getWorld().getWidth());
+        //System.out.println(getX());
 
         if (stopTime == 60 || stopTime == 120 || stopTime == 180){
             getWorld().addObject(new TruckItems(), getX(), getY()+50);

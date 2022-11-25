@@ -26,7 +26,6 @@ public class VertConveyor extends Machines
     }
     public void addedToWorld(World w){
         w.addObject(new Hitboxes(), this.getX(), 650);
-        w.addObject(new Hitboxes(), this.getX(), 650);
     }
     
 }

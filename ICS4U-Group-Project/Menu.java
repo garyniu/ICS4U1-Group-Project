@@ -36,5 +36,4 @@ public class Menu extends World
             Greenfoot.setWorld(new ValueSetting());
         }
     }
-
 }

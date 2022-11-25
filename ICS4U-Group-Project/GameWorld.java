@@ -31,7 +31,7 @@ public class GameWorld extends World
 
     private int workerCount; 
 
-    private boolean winner; 
+    private String winner; 
     /**
      * Constructor for objects of class MyWorld.
      *
@@ -53,7 +53,7 @@ public class GameWorld extends World
         //workerUpgradePref = true; 
         //machUpgradePref = false;
         
-        workerCount = 0;
+        //workerCount = 10;
         counter = 0;
         timer = 0;
         maxTimer = time; 
@@ -61,14 +61,14 @@ public class GameWorld extends World
 
         hardMode = difficulty;
         
-        itemChoiceA = LIS; 
-        itemChoiceB = RIS; 
+        itemChoiceA = 0; 
+        itemChoiceB = 0; 
         
         activeEventA = false;
         activeEventB = false;
         
         spawnMachines();
-        addObject(new Boss(0, 50), 0, 50);
+        //addObject(new Boss(0, 50), 0, 50);
         background = new GreenfootImage(1024, 800);
         background.setColor(Color.GRAY);
         background.fillRect(0, 0, 1024, 800);
@@ -87,30 +87,7 @@ public class GameWorld extends World
         showText("MONEY: " + currencyA, 200, 20);
         // hitbox();
         showText("MONEY: " + currencyB, 700, 20);
-        if(!hardMode){
-            if(!activeEventA){
-                if(Greenfoot.getRandomNumber(1800) == 0){
-                    chooseEventA();
-                }
-            }
-            if(!activeEventB){
-                if(Greenfoot.getRandomNumber(1800) == 0){
-                    chooseEventB();
-                }
-            }
-        }
-        else{
-            if(!activeEventA){
-                if(Greenfoot.getRandomNumber(1200) == 0){
-                    chooseEventA();
-                }
-            }
-            if(!activeEventB){
-                if(Greenfoot.getRandomNumber(1200) == 0){
-                    chooseEventB();
-                }
-            }
-        }
+        spawnEvents();
         checkTimerOver();
     }
     //add the conveyers
@@ -147,11 +124,90 @@ public class GameWorld extends World
         //if(workerCountA == 6 && machUpgradePref)
         addObject(new LeftMachines(itemChoiceA), 150, 550);
     }
-
+    public void timer(){
+        counter += 1;
+        if(counter%60 == 0){
+            timer += 1;
+        }
+        //int time = (int)Math.floor(timer * 100)/100;
+        showText("Time: " + timer, 512, 20);
+    }
+    public void checkTimerOver(){
+        if(timer == maxTimer){
+            if(currencyA > currencyB){
+                winner = "left"; //left side wins
+                Greenfoot.setWorld(new End(winner));
+            } else if(currencyB>currencyA){
+                winner = "right"; //right side wins
+                Greenfoot.setWorld(new End(winner));
+            } else if(currencyB == currencyA){
+                winner = "tie";
+                Greenfoot.setWorld(new End(winner));
+            }
+        }
+    }
+    //SPAWN EVENTS 
+    public void spawnEvents(){
+        if(!hardMode){
+            if(!activeEventA){
+                if(Greenfoot.getRandomNumber(1800) == 0){
+                    chooseEventA();
+                }
+            }
+            if(!activeEventB){
+                if(Greenfoot.getRandomNumber(1800) == 0){
+                    chooseEventB();
+                }
+            }
+        }
+        else{
+            if(!activeEventA){
+                if(Greenfoot.getRandomNumber(1200) == 0){
+                    chooseEventA();
+                }
+            }
+            if(!activeEventB){
+                if(Greenfoot.getRandomNumber(1200) == 0){
+                    chooseEventB();
+                }
+            }
+        }
+    }
+    public void chooseEventA(){
+        int eventA = Greenfoot.getRandomNumber(2);
+        eventA = 3;
+        if(!activeEventA){
+            activeEventA = true;
+            if(eventA == 2){
+                addObject(new BossCheckup(15, true, false), 256, 400);
+            } else if(eventA == 1){
+                addObject(new BoomingBusiness(5, true, false), 256, 400); 
+            } else if(eventA == 0){
+                addObject(new StockMarketCrash(5, true, false), 256, 400);
+            } else if(eventA == 3){
+                addObject(new Strike(15, true, false), 112, 400);
+            }
+        }
+    }
+    public void chooseEventB(){
+        int eventB = Greenfoot.getRandomNumber(2);
+        eventB = 3;
+        if(!activeEventB){
+            activeEventB = true;
+            if(eventB == 2){
+                addObject(new BossCheckup(15, false, true), 768, 400);
+            } else if(eventB == 1){
+                addObject(new BoomingBusiness(5, false, true), 768, 400); 
+            } else if(eventB == 0){
+                addObject(new StockMarketCrash(5, false, true), 768, 400);
+            } else if(eventB == 3){
+                addObject(new Strike(15, false, true), 912, 400);
+            }
+        }
+    }
     public int getWorkerCount(){
         return workerCount; 
     }
-
     public void setWorkerCount(int newWorkerCount){
         workerCount = newWorkerCount; 
     }
@@ -160,20 +216,39 @@ public class GameWorld extends World
     {
         return currencyA;
     }
-
+    public static void addCurrencyA()
+    {
+        currencyA += Shoes.getItemValue();
+        /*
+        if(LeftMachines.getItemChoiceA() == "tools"){
+            currencyA += Tools.getItemValue();
+        }
+        else if(LeftMachines.getItemChoiceA() == "shoes"){
+            currencyA += Shoes.getItemValue();
+        }
+        else if(LeftMachines.getItemChoiceA() == "phones"){
+            currencyA += Phones.getItemValue();
+        }*/
+    }
+    
     public static int getCurrencyB(){
         return currencyB;
     }
-
-    public static void addCurrencyA()
-    {
-        currencyA += LeftMachines.getMachItemValueA();
-    }
-
     public static void addCurrencyB()
     {
-        currencyB += Rightmachines.getMachItemValueB();
+        currencyB += Shoes.getItemValue();
+        /*
+        if(Rightmachines.getItemChoiceB() == "tools"){
+            currencyB += Tools.getItemValue();
+        }
+        else if(Rightmachines.getItemChoiceB() == "shoes"){
+            currencyB += Shoes.getItemValue();
+        }
+        else if(Rightmachines.getItemChoiceB() == "phones"){
+            currencyB += Phones.getItemValue();
+        }*/
     }
+    
     public void setEventStatusA(boolean x){
         activeEventA = x;
     }
@@ -185,55 +260,5 @@ public class GameWorld extends World
     }
     public boolean getEventStatusB(){
         return activeEventB;
-    }
-    public void timer()
-    {
-        counter += 1;
-        if(counter%60 == 0){
-            timer += 1;
-        }
-        //int time = (int)Math.floor(timer * 100)/100;
-        showText("Time: " + timer, 512, 20);
-    }
-    public void checkTimerOver(){
-        if(timer == maxTimer){
-            if(currencyA > currencyB){
-                winner = true; //left side wins
-                Greenfoot.setWorld(new End(winner));
-            } else if(currencyB<currencyA){
-                winner = false; //right side wins
-                Greenfoot.setWorld(new End(winner));
-            }
-        }
-    }
-    public void chooseEventA(){
-        int eventA = Greenfoot.getRandomNumber(4);
-        if(!activeEventA){
-            activeEventA = true;
-            if(eventA == 2){
-                addObject(new BossCheckup(15, true, false), 256, 400);
-            } else if(eventA == 1){
-                addObject(new BoomingBusiness(5, true, false), 256, 400); 
-            } else if(eventA == 0){
-                addObject(new StockMarketCrash(5, true, false), 256, 400);
-            } else if(eventA == 3){
-                addObject(new Strike(15, true, false), 256, 400);
-            }
-        }
-    }
-    public void chooseEventB(){
-        int eventB = Greenfoot.getRandomNumber(4);
-        if(!activeEventB){
-            activeEventB = true;
-            if(eventB == 2){
-                addObject(new BossCheckup(15, false, true), 256, 400);
-            } else if(eventB == 1){
-                addObject(new BoomingBusiness(5, false, true), 256, 400); 
-            } else if(eventB == 0){
-                addObject(new StockMarketCrash(5, false, true), 256, 400);
-            } else if(eventB == 3){
-                addObject(new Strike(15, false, true), 256, 400);
-            }
-        }
     }    
 }
