@@ -18,6 +18,7 @@ public class Rightmachines extends Machines
     private static double produceSpeed;
     private static double defaultSpeed; 
     private static double itemValue; 
+    private static String itemChoice;
     private int width;
     private int height;
    
@@ -69,19 +70,19 @@ public class Rightmachines extends Machines
         defaultSpeed = produceSpeed; 
     }
     
-    public static double getDefaultSpeedB(){
+    public double getDefaultSpeedB(){
         return defaultSpeed; 
     }
     public void setProdSpeedB(double newSpd){
         produceSpeed = newSpd;
     }
-    public static double getMachItemValueB(){
+    public double getMachItemValueB(){
         return itemValue;
     }
     public void setMachItemValueB(double value){
         this.itemValue = value; 
     }
-    public String getItemChoiceB(){
+    public static String getItemChoiceB(){
         return itemChoice; 
     }
 }

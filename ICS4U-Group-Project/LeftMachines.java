@@ -19,6 +19,7 @@ public class LeftMachines extends Machines
     private static double produceSpeed;
     private static double defaultSpeed;
     private static double itemValue;
+    private static String itemChoice;
     private int width;
     private int height;
    
@@ -76,19 +77,19 @@ public class LeftMachines extends Machines
         defaultSpeed = produceSpeed; 
     }
     
-    public static double getDefaultSpeedA(){
+    public double getDefaultSpeedA(){
         return defaultSpeed;
     }
     public void setProdSpeedA(double newSpd){
         produceSpeed = newSpd;
     }
-    public static double getMachItemValueA(){
+    public double getMachItemValueA(){
         return itemValue;
     }
     public void setMachItemValueA(double value){
         this.itemValue = value; 
     }
-    public String getItemChoiceA(){
+    public static String getItemChoiceA(){
         return itemChoice; 
     }
 }

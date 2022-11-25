@@ -68,7 +68,7 @@ public class GameWorld extends World
         activeEventB = false;
         
         spawnMachines();
-        addObject(new Boss(0, 50), 0, 50);
+        //addObject(new Boss(0, 50), 0, 50);
         background = new GreenfootImage(1024, 800);
         background.setColor(Color.GRAY);
         background.fillRect(0, 0, 1024, 800);
@@ -167,12 +167,28 @@ public class GameWorld extends World
 
     public static void addCurrencyA()
     {
-        currencyA += LeftMachines.getMachItemValueA();
+        if(LeftMachines.getItemChoiceA() == "tools"){
+            currencyA += Tools.getItemValue();
+        }
+        else if(LeftMachines.getItemChoiceA() == "shoes"){
+            currencyA += Shoes.getItemValue();
+        }
+        else if(LeftMachines.getItemChoiceA() == "phones"){
+            currencyA += Phones.getItemValue();
+        }
     }
 
     public static void addCurrencyB()
     {
-        currencyB += Rightmachines.getMachItemValueB();
+        if(Rightmachines.getItemChoiceB() == "tools"){
+            currencyB += Tools.getItemValue();
+        }
+        else if(Rightmachines.getItemChoiceB() == "shoes"){
+            currencyB += Shoes.getItemValue();
+        }
+        else if(Rightmachines.getItemChoiceB() == "phones"){
+            currencyB += Phones.getItemValue();
+        }
     }
     public void setEventStatusA(boolean x){
         activeEventA = x;
@@ -211,6 +227,7 @@ public class GameWorld extends World
     }
     public void chooseEventA(){
         int eventA = Greenfoot.getRandomNumber(4);
+        eventA = 5;
         if(!activeEventA){
             activeEventA = true;
             if(eventA == 2){
@@ -226,6 +243,7 @@ public class GameWorld extends World
     }
     public void chooseEventB(){
         int eventB = Greenfoot.getRandomNumber(4);
+        eventB = 5;
         if(!activeEventB){
             activeEventB = true;
             if(eventB == 2){

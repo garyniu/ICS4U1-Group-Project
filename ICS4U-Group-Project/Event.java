@@ -29,14 +29,10 @@ public abstract class Event extends Actor
         eventTimer = 0;
         System.out.println("EVENT IS NOW OVER EVENT IS NOW OVER");
         if(left){
-            System.out.println("eventstatus A: "+gw.getEventStatusA());
             gw.setEventStatusA(false);
-            System.out.println("eventstatus A: "+gw.getEventStatusA());
         }
         else if(right){
-            System.out.println("Eventstatus B: "+gw.getEventStatusB());
             gw.setEventStatusB(false);
-            System.out.println("Eventstatus B: "+gw.getEventStatusB());
         }
         gw.removeObject(this);
     }

@@ -25,16 +25,21 @@ public class Tools extends Items
         setImage(image);
         
         itemValue = 50; 
+        System.out.println("Tools item value: "+itemValue);
         
         onVertConveyor = false;
     }
     public void addedToWorld(World w){
         if(this.getX() <=512){
-            this.prodSpeedA = LeftMachines.getDefaultSpeedA();
-            side = "left";
+            for(LeftMachines lm : w.getObjects(LeftMachines.class)){
+                this.prodSpeedA = lm.getDefaultSpeedA();
+                side = "left";
+            }
         } else if(this.getX()>512){
-            this.prodSpeedB = Rightmachines.getDefaultSpeedB();
-            side = "right";
+            for(Rightmachines rm: w.getObjects(Rightmachines.class)){
+                this.prodSpeedB = rm.getDefaultSpeedB();
+                side = "right";
+            }
         }
     }
     public void act()

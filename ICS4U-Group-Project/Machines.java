@@ -18,7 +18,6 @@ public abstract class Machines extends Actor
     protected double machineSpeed;
     protected int level;
     protected int intItemChoice; 
-    protected String itemChoice;
     public void act()
     {
         // Add your action code here.
