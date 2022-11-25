@@ -104,7 +104,7 @@ public class ValueSetting extends World
         GreenfootImage startImg = new GreenfootImage("StartGame.png");
         startImg.scale(startImg.getWidth() / 3, startImg.getHeight() / 3);
         start = new Button(startImg, startImg);
-        addObject(start, 860, 730);
+        addObject(start, 860, 650);
         
         GreenfootImage defaultImg = new GreenfootImage("Default.png");
         defaultImg.scale(defaultImg.getWidth() / 3, defaultImg.getHeight() / 3);

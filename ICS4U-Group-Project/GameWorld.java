@@ -76,10 +76,14 @@ public class GameWorld extends World
         
         spawnMachines();
         //addObject(new Boss(0, 50), 0, 50);
-        background = new GreenfootImage(1024, 800);
-        background.setColor(Color.GRAY);
-        background.fillRect(0, 0, 1024, 800);
-        setBackground(background);
+        
+        background = new GreenfootImage("bg.png");
+        background.scale(1200, 800);
+        GreenfootImage bg = getBackground();
+        bg.drawImage(background, -85, 0);
+
+        setBackground(bg);
+        
 
         getBackground().setColor(new Color(0, 0, 0));
         getBackground().drawLine(512, 0, 512, 800);
@@ -98,6 +102,11 @@ public class GameWorld extends World
         spawnEvents();
         spawnTruck();
         checkTimerOver();
+        
+        
+        
+        
+        
     }
     //add the conveyers
     public void spawnMachines()
