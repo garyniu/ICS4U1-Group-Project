@@ -31,6 +31,11 @@ public class GameWorld extends World
 
     private int workerCount; 
 
+    private boolean truckActive; 
+    
+    private static double itemValueA;
+    private static double itemValueB; 
+    
     private String winner; 
     /**
      * Constructor for objects of class MyWorld.
@@ -57,7 +62,6 @@ public class GameWorld extends World
         counter = 0;
         timer = 0;
         maxTimer = time; 
-        System.out.println(maxTimer);
 
         hardMode = difficulty;
         
@@ -66,6 +70,9 @@ public class GameWorld extends World
         
         activeEventA = false;
         activeEventB = false;
+        
+        itemValueA = 100; 
+        itemValueB = 100; 
         
         spawnMachines();
         //addObject(new Boss(0, 50), 0, 50);
@@ -78,6 +85,7 @@ public class GameWorld extends World
         getBackground().drawLine(512, 0, 512, 800);
         
         addObject(new Truck(), 0, 100);
+        truckActive = true; 
         
     }
 
@@ -88,6 +96,7 @@ public class GameWorld extends World
         // hitbox();
         showText("MONEY: " + currencyB, 700, 20);
         spawnEvents();
+        spawnTruck();
         checkTimerOver();
     }
     //add the conveyers
@@ -123,6 +132,14 @@ public class GameWorld extends World
         addObject(new LeftMachines(itemChoiceA), 150, 350);
         //if(workerCountA == 6 && machUpgradePref)
         addObject(new LeftMachines(itemChoiceA), 150, 550);
+    }
+    public void spawnTruck(){
+        if(!truckActive){
+            if(Greenfoot.getRandomNumber(600) == 0){
+                addObject(new Truck(), 0, 100);
+                truckActive = true; 
+            }
+        }
     }
     public void timer(){
         counter += 1;
@@ -175,7 +192,6 @@ public class GameWorld extends World
     }
     public void chooseEventA(){
         int eventA = Greenfoot.getRandomNumber(2);
-        eventA = 3;
         if(!activeEventA){
             activeEventA = true;
             if(eventA == 2){
@@ -191,7 +207,6 @@ public class GameWorld extends World
     }
     public void chooseEventB(){
         int eventB = Greenfoot.getRandomNumber(2);
-        eventB = 3;
         if(!activeEventB){
             activeEventB = true;
             if(eventB == 2){
@@ -218,17 +233,7 @@ public class GameWorld extends World
     }
     public static void addCurrencyA()
     {
-        currencyA += Shoes.getItemValue();
-        /*
-        if(LeftMachines.getItemChoiceA() == "tools"){
-            currencyA += Tools.getItemValue();
-        }
-        else if(LeftMachines.getItemChoiceA() == "shoes"){
-            currencyA += Shoes.getItemValue();
-        }
-        else if(LeftMachines.getItemChoiceA() == "phones"){
-            currencyA += Phones.getItemValue();
-        }*/
+        currencyA += itemValueA;
     }
     
     public static int getCurrencyB(){
@@ -236,17 +241,7 @@ public class GameWorld extends World
     }
     public static void addCurrencyB()
     {
-        currencyB += Shoes.getItemValue();
-        /*
-        if(Rightmachines.getItemChoiceB() == "tools"){
-            currencyB += Tools.getItemValue();
-        }
-        else if(Rightmachines.getItemChoiceB() == "shoes"){
-            currencyB += Shoes.getItemValue();
-        }
-        else if(Rightmachines.getItemChoiceB() == "phones"){
-            currencyB += Phones.getItemValue();
-        }*/
+        currencyB += itemValueB;
     }
     
     public void setEventStatusA(boolean x){
@@ -261,4 +256,22 @@ public class GameWorld extends World
     public boolean getEventStatusB(){
         return activeEventB;
     }    
+    public boolean getTruckStatus(){
+        return truckActive;
+    }
+    public void changeTruckStatus(){
+        truckActive = false;
+    }
+    public double getItemValueA(){
+        return itemValueA;
+    }
+    public void setItemValueA(double newItemValue){
+        itemValueA = newItemValue; 
+    }
+    public double getItemValueB(){
+        return itemValueB; 
+    }
+    public void setItemValueB(double newItemValue){
+        itemValueB = newItemValue; 
+    }
 }

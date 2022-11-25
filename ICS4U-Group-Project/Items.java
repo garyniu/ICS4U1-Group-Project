@@ -15,7 +15,7 @@ public abstract class Items extends SmoothMover
     protected int vcRightX; 
     protected boolean onVertConveyor; 
     protected GreenfootImage image;
-    protected static double itemValue; 
+     
     public void act()
     {
         // Add your action code here.

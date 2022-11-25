@@ -17,10 +17,7 @@ public class Shoes extends Items
     {
         image = new GreenfootImage("shoesTemp.png");
         image.scale(30, 30);
-        setImage(image);
-        
-        itemValue = 100;
-        System.out.println("Shoes item value: "+itemValue);
+        setImage(image);      
         
         onVertConveyor = false;
         shoeMade = false;
@@ -37,6 +34,7 @@ public class Shoes extends Items
                 side = "right";
             }
         }
+        GameWorld gw = (GameWorld)getWorld();
     }
     public void act()
     {
@@ -92,11 +90,5 @@ public class Shoes extends Items
     }
     public boolean getShoeMade(){
         return shoeMade;
-    }
-    public static double getItemValue(){
-        return itemValue; 
-    }
-    public static void setItemValue(double iV){
-        itemValue = iV; 
     }
 } 

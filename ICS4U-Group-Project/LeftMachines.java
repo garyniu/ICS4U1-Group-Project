@@ -19,7 +19,6 @@ public class LeftMachines extends Machines
     private static double produceSpeed;
     private static double defaultSpeed;
     private static double itemValue;
-    private static String itemChoice;
     private boolean shoeCanBeMade;
     private int width;
     private int height;
@@ -38,23 +37,19 @@ public class LeftMachines extends Machines
         width = imageA.getWidth();
         height = imageA.getHeight();
         upgradeAmount = GameWorld.getCurrencyA();
-        
-        
-        
-        
     }
     public void act()
     {
         getWorld().showText("" + produceSpeed, 80, 80);
         shoeCanBeMade = this.shoe.getShoeMade(); 
         if(shoeCanBeMade){
-            chooseItemSpawn();
+            spawnShoes();
             this.shoeCanBeMade = false;
         }
     }
     public void addedToWorld(World w){
         w.addObject(new Hitboxes(), (this.getX()+width/2), this.getY()-height/2);
-        chooseItemSpawn();
+        spawnShoes();
         //w.addObject(new Shoes(this), this.getX()-width/2, this.getY()-height/4);
     }
    
@@ -65,25 +60,12 @@ public class LeftMachines extends Machines
     //    far enough to the middle of the exit conveyer
 
     
-    public void chooseItemSpawn(){
+    public void spawnShoes(){
         GameWorld w = (GameWorld)getWorld();
-        if(intItemChoice == 0){
-            itemChoice = "shoes";
-            shoe = new Shoes(this);
-            w.addObject(shoe, this.getX()-width/2, this.getY()-height/4);
-            produceSpeed = 2;
-            itemValue = Shoes.getItemValue();
-        }/*else if(intItemChoice == 2){
-            itemChoice = "phones";
-            w.addObject(new Phones(this), this.getX()-width/2, this.getY()-height/4);
-            produceSpeed = 0.5;
-            itemValue = Phones.getItemValue(); 
-        }  else if(intItemChoice == 1){
-            itemChoice = "tools";
-            w.addObject(new Tools(this), this.getX()-width/2, this.getY()-height/4);
-            produceSpeed = 5;
-            itemValue = Tools.getItemValue();
-        }*/
+        shoe = new Shoes(this);
+        w.addObject(shoe, this.getX()-width/2, this.getY()-height/4);
+        produceSpeed = 1;
+        itemValue = w.getItemValueA();
         defaultSpeed = produceSpeed; 
     }
     public double getDefaultSpeedA(){
@@ -98,10 +80,7 @@ public class LeftMachines extends Machines
     public static double getMachItemValueA(){
         return itemValue;
     }
-    public void setMachItemValueA(double value){
-        this.itemValue = value; 
-    }
-    public static String getItemChoiceA(){
-        return itemChoice; 
+    public static void setMachItemValueA(double value){
+        itemValue = value; 
     }
 }

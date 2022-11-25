@@ -47,26 +47,21 @@ public class StockMarketCrash extends Event
 
     public void decreaseStock(){
         GameWorld gw = (GameWorld)getWorld();
-        itemA = LeftMachines.getMachItemValueA();
         if(left){
-            for(LeftMachines lm : gw.getObjects(LeftMachines.class)){
-                if(lm.getItemChoiceA() == "shoes"){
-                    newValueLeft = itemA-25;
-                    lm.setMachItemValueA(newValueLeft);
-                    System.out.println("left machine item: "+lm.getItemChoiceA() + " and value: "+newValueLeft);
-                }
-            }
-            Shoes.setItemValue(newValueLeft);
+            itemA = LeftMachines.getMachItemValueA();
+            newValueLeft = itemA - 25; 
+            LeftMachines.setMachItemValueA(newValueLeft);
+            System.out.println("left machine item: shoes " + " and value: "+ newValueLeft);
+            gw.setItemValueA(newValueLeft);
+            System.out.println("Left machine shoes: "+gw.getItemValueA());
         }
         else if(right){
             itemB = Rightmachines.getMachItemValueB();
-            for(Rightmachines rm : gw.getObjects(Rightmachines.class)){
-                newValueRight = itemB-25; 
-                rm.setMachItemValueB(newValueRight); 
-                System.out.println("right machine item: shoes and value: "+newValueRight);
-            }
-            Shoes.setItemValue(newValueRight);
+            newValueRight= itemB - 25; 
+            Rightmachines.setMachItemValueB(newValueRight);
+            System.out.println("right machine item: shoes and value " +newValueRight);
+            gw.setItemValueB(newValueRight);
+            System.out.println("right machine shoes: "+gw.getItemValueB());
         }
     }
-
 }

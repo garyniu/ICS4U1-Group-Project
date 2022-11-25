@@ -61,6 +61,8 @@ public class Truck extends Actor
         }
 
         if (getX() > getWorld().getWidth()-2){
+            GameWorld gw = (GameWorld)getWorld();
+            gw.changeTruckStatus();
             getWorld().removeObject(this);
         }
 
