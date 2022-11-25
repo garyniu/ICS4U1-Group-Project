@@ -20,8 +20,10 @@ public class LeftMachines extends Machines
     private static double defaultSpeed;
     private static double itemValue;
     private static String itemChoice;
+    private boolean shoeCanBeMade;
     private int width;
     private int height;
+    private Shoes shoe; 
    
     public LeftMachines(int itemChoice)
     {
@@ -38,13 +40,20 @@ public class LeftMachines extends Machines
         upgradeAmount = GameWorld.getCurrencyA();
         
         
+        
+        
     }
     public void act()
     {
         getWorld().showText("" + produceSpeed, 80, 80);
+        shoeCanBeMade = this.shoe.getShoeMade(); 
+        if(shoeCanBeMade){
+            chooseItemSpawn();
+            this.shoeCanBeMade = false;
+        }
     }
     public void addedToWorld(World w){
-        //w.addObject(new Hitboxes(), this.getX()+width/2, this.getY()-height/2);
+        w.addObject(new Hitboxes(), (this.getX()+width/2), this.getY()-height/2);
         chooseItemSpawn();
         //w.addObject(new Shoes(this), this.getX()-width/2, this.getY()-height/4);
     }
@@ -60,7 +69,8 @@ public class LeftMachines extends Machines
         GameWorld w = (GameWorld)getWorld();
         if(intItemChoice == 0){
             itemChoice = "shoes";
-            w.addObject(new Shoes(this), this.getX()-width/2, this.getY()-height/4);
+            shoe = new Shoes(this);
+            w.addObject(shoe, this.getX()-width/2, this.getY()-height/4);
             produceSpeed = 2;
             itemValue = Shoes.getItemValue();
         }/*else if(intItemChoice == 2){
@@ -76,7 +86,6 @@ public class LeftMachines extends Machines
         }*/
         defaultSpeed = produceSpeed; 
     }
-    
     public double getDefaultSpeedA(){
         return defaultSpeed;
     }

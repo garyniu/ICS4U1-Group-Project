@@ -53,7 +53,7 @@ public class GameWorld extends World
         //workerUpgradePref = true; 
         //machUpgradePref = false;
         
-        workerCount = 10;
+        //workerCount = 10;
         counter = 0;
         timer = 0;
         maxTimer = time; 
@@ -87,30 +87,7 @@ public class GameWorld extends World
         showText("MONEY: " + currencyA, 200, 20);
         // hitbox();
         showText("MONEY: " + currencyB, 700, 20);
-        if(!hardMode){
-            if(!activeEventA){
-                if(Greenfoot.getRandomNumber(1800) == 0){
-                    chooseEventA();
-                }
-            }
-            if(!activeEventB){
-                if(Greenfoot.getRandomNumber(1800) == 0){
-                    chooseEventB();
-                }
-            }
-        }
-        else{
-            if(!activeEventA){
-                if(Greenfoot.getRandomNumber(1200) == 0){
-                    chooseEventA();
-                }
-            }
-            if(!activeEventB){
-                if(Greenfoot.getRandomNumber(1200) == 0){
-                    chooseEventB();
-                }
-            }
-        }
+        spawnEvents();
         checkTimerOver();
     }
     //add the conveyers
@@ -169,7 +146,33 @@ public class GameWorld extends World
             }
         }
     }
-    
+    //SPAWN EVENTS 
+    public void spawnEvents(){
+        if(!hardMode){
+            if(!activeEventA){
+                if(Greenfoot.getRandomNumber(1800) == 0){
+                    chooseEventA();
+                }
+            }
+            if(!activeEventB){
+                if(Greenfoot.getRandomNumber(1800) == 0){
+                    chooseEventB();
+                }
+            }
+        }
+        else{
+            if(!activeEventA){
+                if(Greenfoot.getRandomNumber(1200) == 0){
+                    chooseEventA();
+                }
+            }
+            if(!activeEventB){
+                if(Greenfoot.getRandomNumber(1200) == 0){
+                    chooseEventB();
+                }
+            }
+        }
+    }
     public void chooseEventA(){
         int eventA = Greenfoot.getRandomNumber(2);
         eventA = 3;

@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * @author (your name)
  * @version (a version number or a date)
  */
-/*
+
 public class Phones extends Items
 {
     private static double prodSpeedA;
@@ -18,7 +18,7 @@ public class Phones extends Items
     /**
      * Act - do whatever the Shoes wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
-     
+    */
     public Phones(Machines m)
     {
         image = new GreenfootImage("phoneTemp.png");
@@ -100,4 +100,3 @@ public class Phones extends Items
         itemValue = iV; 
     }
 }
-*/
