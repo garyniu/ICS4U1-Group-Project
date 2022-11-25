@@ -61,8 +61,8 @@ public class GameWorld extends World
 
         hardMode = difficulty;
         
-        itemChoiceA = LIS; 
-        itemChoiceB = RIS; 
+        itemChoiceA = 0; 
+        itemChoiceB = 0; 
         
         activeEventA = false;
         activeEventB = false;
@@ -167,6 +167,8 @@ public class GameWorld extends World
 
     public static void addCurrencyA()
     {
+        currencyA += Shoes.getItemValue();
+        /*
         if(LeftMachines.getItemChoiceA() == "tools"){
             currencyA += Tools.getItemValue();
         }
@@ -175,11 +177,13 @@ public class GameWorld extends World
         }
         else if(LeftMachines.getItemChoiceA() == "phones"){
             currencyA += Phones.getItemValue();
-        }
+        }*/
     }
 
     public static void addCurrencyB()
     {
+        currencyB += Shoes.getItemValue();
+        /*
         if(Rightmachines.getItemChoiceB() == "tools"){
             currencyB += Tools.getItemValue();
         }
@@ -188,7 +192,7 @@ public class GameWorld extends World
         }
         else if(Rightmachines.getItemChoiceB() == "phones"){
             currencyB += Phones.getItemValue();
-        }
+        }*/
     }
     public void setEventStatusA(boolean x){
         activeEventA = x;
@@ -227,7 +231,7 @@ public class GameWorld extends World
     }
     public void chooseEventA(){
         int eventA = Greenfoot.getRandomNumber(4);
-        eventA = 5;
+        eventA = 1;
         if(!activeEventA){
             activeEventA = true;
             if(eventA == 2){
@@ -243,7 +247,7 @@ public class GameWorld extends World
     }
     public void chooseEventB(){
         int eventB = Greenfoot.getRandomNumber(4);
-        eventB = 5;
+        eventB = 1;
         if(!activeEventB){
             activeEventB = true;
             if(eventB == 2){

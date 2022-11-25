@@ -6,6 +6,7 @@ import java.util.ArrayList;
  * @author (your name)
  * @version (a version number or a date)
  */
+/*
 public class Tools extends Items
 {
     private static double prodSpeedA;
@@ -17,7 +18,7 @@ public class Tools extends Items
     /**
      * Act - do whatever the Shoes wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    
     public Tools(Machines m)
     {
         image = new GreenfootImage("shovelTemp.png");
@@ -100,3 +101,4 @@ public class Tools extends Items
         itemValue = iV; 
     }
 }
+*/

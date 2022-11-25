@@ -58,22 +58,22 @@ public class LeftMachines extends Machines
     
     public void chooseItemSpawn(){
         GameWorld w = (GameWorld)getWorld();
-        if(intItemChoice == 2){
-            itemChoice = "phones";
-            w.addObject(new Phones(this), this.getX()-width/2, this.getY()-height/4);
-            produceSpeed = 0.5;
-            itemValue = Phones.getItemValue(); 
-        } else if(intItemChoice == 0){
+        if(intItemChoice == 0){
             itemChoice = "shoes";
             w.addObject(new Shoes(this), this.getX()-width/2, this.getY()-height/4);
             produceSpeed = 2;
             itemValue = Shoes.getItemValue();
-        } else if(intItemChoice == 1){
+        }/*else if(intItemChoice == 2){
+            itemChoice = "phones";
+            w.addObject(new Phones(this), this.getX()-width/2, this.getY()-height/4);
+            produceSpeed = 0.5;
+            itemValue = Phones.getItemValue(); 
+        }  else if(intItemChoice == 1){
             itemChoice = "tools";
             w.addObject(new Tools(this), this.getX()-width/2, this.getY()-height/4);
             produceSpeed = 5;
             itemValue = Tools.getItemValue();
-        }
+        }*/
         defaultSpeed = produceSpeed; 
     }
     
