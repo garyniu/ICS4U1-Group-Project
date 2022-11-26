@@ -13,15 +13,23 @@ public class Shoes extends Items
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     private boolean shoeMade;
+    private GreenfootImage sole, fabric;
+    private int timer = 0;
     public Shoes(Machines m)
     {
         image = new GreenfootImage("Leather.png");
         image.scale(30, 30);
-        setImage(image);      
+        setImage(image);   
+        
+        sole = new GreenfootImage("soles.png");
+        sole.scale(30, 30);
+        fabric = new GreenfootImage("fabric.png");
+        fabric.scale(30, 30);
         
         onVertConveyor = false;
         shoeMade = false;
     }
+
     public void addedToWorld(World w){
         if(this.getX() <=512){
             for(LeftMachines lm : w.getObjects(LeftMachines.class)){
@@ -29,37 +37,49 @@ public class Shoes extends Items
                 side = "left";
             }
         } else if(this.getX()>512){
-            for(RightMachines rm: w.getObjects(RightMachines.class)){
+            for(Rightmachines rm: w.getObjects(Rightmachines.class)){
                 this.prodSpeedB = rm.getDefaultSpeedB();
                 side = "right";
             }
         }
         GameWorld gw = (GameWorld)getWorld();
     }
+
     public void act()
     {
-       setSpeed();
-       checkVertConveyor();
-       if(side == "left" && !onVertConveyor){
-           move(prodSpeedA);
-       }
-       else if(side == "right" && !onVertConveyor){
-           move(prodSpeedB);
-       }
-       
-       Actor hitBox = getOneIntersectingObject(Hitboxes.class); 
-       
-       if(hitBox != null && onVertConveyor)  
-       {  
-           if(side == "left"){
-               GameWorld.addCurrencyA();
-           }
-           else if(side == "right"){
-               GameWorld.addCurrencyB();
-           }
-           getWorld().removeObject(this);
-       }
+        timer++;
+        setSpeed();
+        checkVertConveyor();
+        if(side == "left" && !onVertConveyor){
+            move(prodSpeedA);
+        }
+        else if(side == "right" && !onVertConveyor){
+            move(prodSpeedB);
+        }
+
+        
+        if (timer < 60){
+            setImage(fabric);
+        } else if (timer >= 60 && timer <= 180){
+            setImage(sole);
+        } else if (timer >= 180 && timer <= 280){
+            setImage(image);
+        }
+        
+        Actor hitBox = getOneIntersectingObject(Hitboxes.class); 
+
+        if(hitBox != null && onVertConveyor)  
+        {  
+            if(side == "left"){
+                GameWorld.addCurrencyA();
+            }
+            else if(side == "right"){
+                GameWorld.addCurrencyB();
+            }
+            getWorld().removeObject(this);
+        }
     }
+
     public void setSpeed(){
         GameWorld gw = (GameWorld)getWorld();
         if(this.getX() <=512){
@@ -74,6 +94,7 @@ public class Shoes extends Items
             }
         }
     }
+
     public void checkVertConveyor(){
         GameWorld gw = (GameWorld)getWorld();
         ArrayList<VertConveyor> vertConveyors = (ArrayList<VertConveyor>)gw.getObjects(VertConveyor.class); 
@@ -85,7 +106,7 @@ public class Shoes extends Items
                 vcRightX = v.getX()+9;
             }
         }
-        
+
         if(side == "left"){
             if(this.getX()>=vcLeftX){
                 setLocation(this.getX(), this.getY() + prodSpeedA);
@@ -99,7 +120,7 @@ public class Shoes extends Items
             }
         }
     }
-    
+
     public boolean getShoeMade(){
         return shoeMade;
     }

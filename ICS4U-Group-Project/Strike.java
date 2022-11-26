@@ -32,7 +32,7 @@ public class Strike extends Event
             machinesStopped = true;
         }
         eventTimer++;
-        if(eventTimer == 900){
+        if(eventTimer == 300){
             GameWorld gw = (GameWorld)getWorld(); 
             startMachines();
             if(left){
@@ -40,6 +40,13 @@ public class Strike extends Event
             }else if(right){
                 gw.setStrikeStatusB(false); 
             }
+            if (strikeStatusA){
+                gw.halfWorkers("left");
+            }
+            if (strikeStatusB){
+                gw.halfWorkers("right");
+            }
+            
             endEvent();
         }
     }

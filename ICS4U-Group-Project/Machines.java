@@ -23,15 +23,18 @@ public abstract class Machines extends Actor
     protected int width;
     protected int height;
     public Machines(){
-       getImage().scale(333, 72);
-       speedSet = false;
-       actTimer = 0; 
-       width = getImage().getWidth();
-       height = getImage().getHeight();
+        GreenfootImage image = new GreenfootImage("Conveyer.png");
+        setImage(image);
+        getImage().scale(333, 72);
+        speedSet = false;
+        actTimer = 0; 
+        width = getImage().getWidth();
+        height = getImage().getHeight();
     }
+
     public void act()
     {
         // Add your action code here.
-       
+
     }
 }

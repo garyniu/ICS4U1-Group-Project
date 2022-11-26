@@ -12,6 +12,8 @@ public class VertConveyor extends Machines
     private int width;
     private int height;
     public VertConveyor(){
+        GreenfootImage image = new GreenfootImage("VertConveyer.png");
+        setImage(image);
         getImage().scale(52,380);
     }
     /**
