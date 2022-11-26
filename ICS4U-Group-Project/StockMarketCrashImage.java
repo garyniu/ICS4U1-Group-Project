@@ -10,6 +10,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class StockMarketCrashImage extends Effect
 {
     public StockMarketCrashImage(){
+        GreenfootImage image = new GreenfootImage("STOCKMARKETCRASHTEXT.png");
+        setImage(image);
         getImage().scale(100,100); 
     }
     /**

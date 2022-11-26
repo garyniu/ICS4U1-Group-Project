@@ -55,6 +55,18 @@ public class GameWorld extends World
     private LeftMachines Lone, Ltwo, Lthree;
     private Rightmachines Rone, Rtwo, Rthree;
     
+    private GreenfootSound backgroundmusic;
+    private GreenfootSound ambience;
+    private GreenfootSound upgrade;
+    
+    /*
+    private GreenfootImage canvasA;
+    private GreenfootImage canvasB;
+    private GreenfootImage bbImage;
+    private GreenfootImage bcImage;
+    private GreenfootImage smcImage;
+    private GreenfootImage strkImage; 
+    */
     private double newSpeedLeft;
     private double newSpeedRight;
     private double slowSpeedLeft;
@@ -88,6 +100,13 @@ public class GameWorld extends World
         maxTimer = time; 
 
         hardMode = difficulty;
+        
+        ambience = new GreenfootSound ("ambience.mp3");
+        ambience.setVolume(40);
+        backgroundmusic = new GreenfootSound ("background.mp3");
+        backgroundmusic.setVolume(30);
+        upgrade = new GreenfootSound ("upgrade.mp3");
+        upgrade.setVolume(20);
 
         itemChoiceA = 0; 
         itemChoiceB = 0; 
@@ -128,6 +147,18 @@ public class GameWorld extends World
 
         addObject(new Truck(), 0, 100);
         truckActive = true; 
+        started();
+    }
+    
+    public void started(){
+        ambience.playLoop();
+        backgroundmusic.playLoop();
+    }
+    
+    public void stopped(){
+        ambience.stop();
+        backgroundmusic.stop();
+        upgrade.stop();
     }
 
     public void act()
@@ -285,7 +316,7 @@ public class GameWorld extends World
                 increaseEfficiency(0);
                 addObject(new UpgradeArrow(1), b.getX(), b.getY());
             }
-            
+            upgrade.play();
             
         } else if (side == "right"){
             
@@ -305,6 +336,7 @@ public class GameWorld extends World
                 increaseEfficiency(1);
                 addObject(new UpgradeArrow(1), b.getX(), b.getY());
             }
+            upgrade.play();
         }
     }
     //methods for changing efficiency
@@ -339,9 +371,11 @@ public class GameWorld extends World
             if(currencyA >= currencyB){
                 winner = "left"; //left side wins
                 Greenfoot.setWorld(new WinScreen(winner));
+                stopped();
             } else if(currencyB>currencyA){
                 winner = "right"; //right side wins
                 Greenfoot.setWorld(new WinScreen(winner));
+                stopped();
             }
         }
     }

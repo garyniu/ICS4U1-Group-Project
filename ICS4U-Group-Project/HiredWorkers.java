@@ -36,11 +36,12 @@ public class HiredWorkers extends People
         fadein--; originalPos++;
         //System.out.println(fadein);
         
-        if (fadein >= 0 && firstSpawn){
+        //if (fadein >= 0 && firstSpawn){
             //System.out.println("testsed");
             //entry(fadein, originalPos);
+        //    entry(fadein, originalPos);
 
-        } 
+        //} 
     }
 
     private void entry(int fadetime, int ogposition){

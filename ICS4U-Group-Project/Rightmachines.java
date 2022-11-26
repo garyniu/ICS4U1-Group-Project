@@ -115,16 +115,12 @@ public class Rightmachines extends Machines
     }
 
     public void checkShoeFinished(){
-        if(produceSpeed == 1){
-            if(actTimer == 293){
-                spawnShoes(); 
-                actTimer = 0;
-            }
-        }else if(produceSpeed == 1.5){
-            if( actTimer == 195){
-                spawnShoes();
-                actTimer = 0;
-            }
+        if(produceSpeed <= 1 && actTimer == 293){
+            spawnShoes(); 
+            actTimer = 0;
+        }else if(produceSpeed == 1.5 && actTimer == 195){
+            spawnShoes();
+            actTimer = 0;
         }else if(produceSpeed == 2 && actTimer == 147){
             spawnShoes();
             actTimer = 0;
@@ -143,13 +139,13 @@ public class Rightmachines extends Machines
         }else if(produceSpeed == 4.5 && actTimer ==65){
             spawnShoes();
             actTimer = 0;
-        }else if(produceSpeed == 5 && actTimer ==59){
+        }else if(produceSpeed >= 5 && actTimer ==59){
             spawnShoes();
             actTimer = 0;
         }
         
         if (twoWorks){
-            if (produceSpeed == 1){
+            if (produceSpeed <= 1){
                 if (actTimer == 203){
                     spawnShoes(); 
                     actTimer = 0;
@@ -189,7 +185,7 @@ public class Rightmachines extends Machines
                     spawnShoes();
                     actTimer=0; 
                 }
-            } else if (produceSpeed == 5){
+            } else if (produceSpeed >= 5){
                 if (actTimer == 45){
                     spawnShoes(); 
                     actTimer=0;
@@ -198,7 +194,7 @@ public class Rightmachines extends Machines
         }
         
         if (threeWorks){
-            if (produceSpeed == 1){
+            if (produceSpeed <= 1){
                 if (actTimer == 150){
                     spawnShoes(); 
                     actTimer=0;
@@ -270,7 +266,7 @@ public class Rightmachines extends Machines
                     spawnShoes();
                     actTimer=0; 
                 }
-            } else if (produceSpeed == 5){
+            } else if (produceSpeed >= 5){
                 if (actTimer == 45){
                     spawnShoes(); 
                     actTimer=0;
@@ -281,6 +277,8 @@ public class Rightmachines extends Machines
                 }
             }
         }
+        
+        if (actTimer > 300) actTimer = 0;
     }
 
     public void updateSpeed(){

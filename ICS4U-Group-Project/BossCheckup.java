@@ -25,7 +25,7 @@ public class BossCheckup extends Event
         } else if(right){
             side = 1; 
         }
-        System.out.println("BOSS CHECKUP BOSS CHECKUP");
+        //System.out.println("BOSS CHECKUP BOSS CHECKUP");
     }
 
     public void act()

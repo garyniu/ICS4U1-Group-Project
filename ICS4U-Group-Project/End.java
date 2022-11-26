@@ -9,6 +9,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class End extends World
 {
     private Button b;
+    
+    
+    
     /**
      * Constructor for objects of class End.
      * 
@@ -30,6 +33,9 @@ public class End extends World
         
         b = new Button(background, greyBackground);
         addObject(b,getWidth()/2,getHeight()/2 + 100); 
+        
+        
+        
     }
 
     public void act(){

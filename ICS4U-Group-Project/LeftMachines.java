@@ -122,8 +122,11 @@ public class LeftMachines extends Machines
         itemValue = gw.getItemValueA(); 
     }
     public void checkShoeFinished(){
-        if(produceSpeed == 1 && actTimer == 293){
+        
+        System.out.println(produceSpeed + " " + actTimer);
+        if(produceSpeed <= 1 && actTimer == 293){
             spawnShoes(); 
+            
             actTimer = 0;
         }else if(produceSpeed == 1.5 && actTimer == 195){
             spawnShoes();
@@ -146,14 +149,14 @@ public class LeftMachines extends Machines
         }else if(produceSpeed == 4.5 && actTimer ==65){
             spawnShoes();
             actTimer = 0;
-        }else if(produceSpeed == 5 && actTimer ==59){
+        }else if(produceSpeed >= 5 && actTimer ==59){
             spawnShoes();
             actTimer = 0;
         }
         
         //if there are two workers per station
         if (twoWorks){
-            if (produceSpeed == 1){
+            if (produceSpeed <= 1){
                 if (actTimer == 203){
                     spawnShoes(); 
                 }
@@ -185,7 +188,7 @@ public class LeftMachines extends Machines
                 if (actTimer == 50){
                     spawnShoes(); 
                 }
-            } else if (produceSpeed == 5){
+            } else if (produceSpeed >= 5){
                 if (actTimer == 45){
                     spawnShoes(); 
                 }
@@ -194,7 +197,7 @@ public class LeftMachines extends Machines
         
         //if station has 3 workers
         if (threeWorks){
-            if (produceSpeed == 1){
+            if (produceSpeed <= 1){
                 if (actTimer == 150){
                     spawnShoes(); 
                 }
@@ -250,7 +253,7 @@ public class LeftMachines extends Machines
                 if (actTimer == 35){
                     spawnShoes(); 
                 }
-            } else if (produceSpeed == 5){
+            } else if (produceSpeed >= 5){
                 if (actTimer == 45){
                     spawnShoes(); 
                 }
@@ -258,6 +261,10 @@ public class LeftMachines extends Machines
                     spawnShoes(); 
                 }
             }
+        }
+        
+        if (actTimer > 300){
+            actTimer = 0;
         }
         
     }
