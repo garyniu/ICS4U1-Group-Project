@@ -14,10 +14,6 @@ public abstract class Event extends Actor
     protected boolean right;
     protected double newValueLeft;
     protected double newValueRight;
-    protected double newSpeedLeft;
-    protected double newSpeedRight;
-    protected double slowSpeedLeft;
-    protected double slowSpeedRight;
     protected boolean flashAdded;
     
     protected GreenFlash gf; 
@@ -45,50 +41,6 @@ public abstract class Event extends Actor
         }
         gw.removeObject(this);
     }
-    //methods for changing speed/efficiency of workers
-    public void increaseEfficiency(){
-        GameWorld gw = (GameWorld)getWorld();
-        if(left){
-            for(LeftMachines lm : gw.getObjects(LeftMachines.class)){
-                newSpeedLeft = lm.getDefaultSpeedA()+0.5; 
-                lm.setProdSpeedA(newSpeedLeft);
-            }
-        }
-        else if(right){
-            for(Rightmachines rm : gw.getObjects(Rightmachines.class)){
-                newSpeedRight = rm.getDefaultSpeedB()+0.5; 
-                rm.setProdSpeedB(newSpeedRight);
-            }
-        }
-    }
-    public void slowEfficiency(){
-        GameWorld gw = (GameWorld)getWorld();
-        if(left){
-            for(LeftMachines lm : gw.getObjects(LeftMachines.class)){
-                slowSpeedLeft = lm.getDefaultSpeedA()-0.5; 
-                lm.setProdSpeedA(slowSpeedLeft);
-            }
-        }
-        else if(right){
-            for(Rightmachines rm : gw.getObjects(Rightmachines.class)){
-                slowSpeedRight = rm.getDefaultSpeedB()-0.5; 
-                rm.setProdSpeedB(slowSpeedRight);
-            }
-        }
-    }
-    public void resumeEfficiency(){
-        if(left){
-            for(LeftMachines lm : getObjectsAtOffset(256, 400, LeftMachines.class)){
-                lm.setProdSpeedA(lm.getDefaultSpeedA()); 
-            }
-        }
-        else if(right){
-            for(RightMachines rm : getObjectsAtOffset(256, 400, RightMachines.class)){
-                rm.setProdSpeedB(rm.getDefaultSpeedB());
-            }
-        }
-    }
-    
     public void addRedFlash(){
         if(!flashAdded){
             GameWorld w = (GameWorld)getWorld();

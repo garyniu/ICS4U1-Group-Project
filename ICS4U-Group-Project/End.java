@@ -23,13 +23,6 @@ public class End extends World
         GreenfootImage background2 = new GreenfootImage("EndScreen.png");
         background2.scale(1024,800);
         setBackground(background2);
-
-        GreenfootImage background = new GreenfootImage("NormalPlayAgain.png");
-        background.scale(background.getWidth()/4, background.getHeight()/4);
-
-        GreenfootImage greyBackground = new GreenfootImage("HoverPlayAgain.png");
-        greyBackground.scale(greyBackground.getWidth()/4, greyBackground.getHeight()/4);
-        
         if(winner == "left"){
           System.out.println("THe winner was left side");   
         } else if(winner == "right"){
@@ -37,7 +30,12 @@ public class End extends World
         }else if(winner == "tie"){
             System.out.println("There was a tie"); 
         }
-        
+
+        GreenfootImage background = new GreenfootImage("NormalPlayAgain.png");
+        background.scale(background.getWidth()/4, background.getHeight()/4);
+
+        GreenfootImage greyBackground = new GreenfootImage("HoverPlayAgain.png");
+        greyBackground.scale(greyBackground.getWidth()/4, greyBackground.getHeight()/4);
         
         b = new Button(background, greyBackground);
         addObject(b,getWidth()/2,getHeight()/2 + 100); 

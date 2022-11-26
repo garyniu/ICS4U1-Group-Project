@@ -16,20 +16,9 @@ public class RightMachines extends Machines
     private static double defaultSpeed; 
     private static double itemValue; 
    
-    public RightMachines(int itemChoice){
-       
-        imageB = new GreenfootImage("shirtMachineTemp.png");
-        imageB.scale(300, 100);
-        setImage(imageB);
-        
-        this.intItemChoice = itemChoice; 
-        
-        width = imageB.getWidth();
-        height = imageB.getHeight();
-        upgradeAmount = GameWorld.getCurrencyB();
-    /*public Rightmachines(){
-        super();
-    }*/
+    public RightMachines(){
+       super();
+    }
     public void addedToWorld(World w){
         w.addObject(new Hitboxes(), (this.getX()+width/2)-10, this.getY()-height/2);
         spawnShoes();

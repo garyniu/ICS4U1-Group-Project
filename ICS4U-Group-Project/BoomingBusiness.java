@@ -19,6 +19,8 @@ public class BoomingBusiness extends Event
     private int imageIndex; 
     private int imageCounter;
     private SimpleTimer animationTimer; 
+    
+    private GreenfootImage image; 
     public BoomingBusiness(int d, boolean left, boolean right){
         super(d, left, right);
         flashAdded=false;
@@ -35,7 +37,6 @@ public class BoomingBusiness extends Event
         }
         animationTimer.mark();
     }
-    
     public void animateArrow(){
         if(animationTimer.millisElapsed() < 80){
             return; 
@@ -51,6 +52,8 @@ public class BoomingBusiness extends Event
     
     public void act()
     {
+        //GameWorld gw = (GameWorld)getWorld(); 
+        //gw.drawImage(image, this.getX()-256, this.getY()); 
         eventTimer++;
         if(!animated){
             animateArrow();

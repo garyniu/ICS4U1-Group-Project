@@ -51,6 +51,18 @@ public class GameWorld extends World
     private LeftMachines Lone, Ltwo, Lthree;
     private RightMachines Rone, Rtwo, Rthree;
     
+    /*
+    private GreenfootImage canvasA;
+    private GreenfootImage canvasB;
+    private GreenfootImage bbImage;
+    private GreenfootImage bcImage;
+    private GreenfootImage smcImage;
+    private GreenfootImage strkImage; 
+    */
+    private double newSpeedLeft;
+    private double newSpeedRight;
+    private double slowSpeedLeft;
+    private double slowSpeedRight;
     
     /**
      * Constructor for objects of class MyWorld.
@@ -95,13 +107,22 @@ public class GameWorld extends World
         produceSpeedA = 1;
         produceSpeedB = 1;
         
-        
+        /*
+        canvasA = new GreenfootImage(75,75);
+        canvasB = new GreenfootImage(75,75); 
+        bbImage = new GreenfootImage("images/STOCKMARKETBOOMINTEXT.png");
+        bcImage = new GreenfootImage("images/BOSSCHECKUP.png");
+        smcImage = new GreenfootImage("images/STOCKMARKETCRASHTEXT.png"); 
+        strkImage = new GreenfootImage("images/STRIKE.png"); 
+        */
         //addObject(new Boss(0, 50), 0, 50);
 
         background = new GreenfootImage("bg.png");
         background.scale(1200, 800);
         GreenfootImage bg = getBackground();
         bg.drawImage(background, -85, 0);
+        //bg.drawImage(canvasA, 0, 500);
+        //bg.drawImage(canvasB, 512, 500); 
 
         setBackground(bg);
 
@@ -110,13 +131,13 @@ public class GameWorld extends World
 
         addObject(a, 40, 40);
         addObject(b, 800, 40);
+        
 
         getBackground().setColor(new Color(0, 0, 0));
         getBackground().drawLine(512, 0, 512, 800);
 
         addObject(new Truck(), 0, 100);
         truckActive = true; 
-
     }
 
     public void act()
@@ -137,10 +158,10 @@ public class GameWorld extends World
     public void spawnInitalMachines()
     {
         
-        Lone = new LeftMachines(itemChoiceA);
+        Lone = new LeftMachines();
         addObject(Lone, 150, 150);
         
-        Rone = new RightMachines(itemChoiceB);
+        Rone = new RightMachines();
         addObject(Rone, 682, 150);
         
 
@@ -185,7 +206,7 @@ public class GameWorld extends World
             
         } else if (LworkerCount == 4 && !spawnedLTwo){
             //add machine, with workers
-            Ltwo = new LeftMachines(itemChoiceA);
+            Ltwo = new LeftMachines();
             addObject(Ltwo, 150, 300);
             spawnedLTwo = true;
         } else if (LworkerCount == 5){
@@ -194,7 +215,7 @@ public class GameWorld extends World
             Ltwo.addWorkers();
         } else if (LworkerCount == 7 && !spawnedLThree){
             //add 2nd machine
-            Lthree = new LeftMachines(itemChoiceA);
+            Lthree = new LeftMachines();
             addObject(Lthree, 150, 450);
             spawnedLThree = true;
         } else if (LworkerCount == 8){
@@ -309,12 +330,16 @@ public class GameWorld extends World
             activeEventA = true;
             if(eventA == 3){
                 addObject(new BossCheckup(15, true, false), 256, 400);
+                //canvasA.drawImage(bcImage, 0, 500); 
             } else if(eventA == 1){
-                addObject(new BoomingBusiness(5, true, false), 256, 400); 
+                addObject(new BoomingBusiness(5, true, false), 256, 400);
+                //canvasA.drawImage(bbImage, 0, 500); 
             } else if(eventA == 0){
                 addObject(new StockMarketCrash(5, true, false), 256, 400);
+                //canvasA.drawImage(smcImage, 0, 500); 
             } else if(eventA == 2 && !strikeStatusB){
                 addObject(new Strike(10, true, false), 112, 400);
+                //canvasA.drawImage(strkImage, 0, 500); 
                 strikeStatusA = true; 
             }
         }
@@ -326,17 +351,61 @@ public class GameWorld extends World
             activeEventB = true;
             if(eventB == 3){
                 addObject(new BossCheckup(15, false, true), 768, 400);
+                //canvasB.drawImage(bcImage, 512, 500); 
             } else if(eventB == 1){
-                addObject(new BoomingBusiness(5, false, true), 768, 400); 
+                addObject(new BoomingBusiness(5, false, true), 768, 400);
+                //canvasB.drawImage(bbImage, 512, 500); 
             } else if(eventB == 0){
                 addObject(new StockMarketCrash(5, false, true), 768, 400);
+                //canvasB.drawImage(smcImage, 512, 500); 
             } else if(eventB == 2 && !strikeStatusA){
                 addObject(new Strike(10, false, true), 912, 400);
+                //canvasB.drawImage(strkImage, 512, 500); 
                 strikeStatusB = true; 
             }
         }
     }
-
+    //methods for changing efficiency
+    public void increaseEfficiency(int side){
+        if(side == 0){
+            for(LeftMachines lm : getObjects(LeftMachines.class)){
+                newSpeedLeft = lm.getDefaultSpeedA()+0.5; 
+                lm.setProdSpeedA(newSpeedLeft);
+            }
+        }
+        else if(side == 1){
+            for(RightMachines rm : getObjects(RightMachines.class)){
+                newSpeedRight = rm.getDefaultSpeedB()+0.5; 
+                rm.setProdSpeedB(newSpeedRight);
+            }
+        }
+    }
+    public void slowEfficiency(int side){
+        if(side == 0){
+            for(LeftMachines lm : getObjects(LeftMachines.class)){
+                slowSpeedLeft = lm.getDefaultSpeedA()-0.5; 
+                lm.setProdSpeedA(slowSpeedLeft);
+            }
+        }
+        else if(side == 1){
+            for(RightMachines rm : getObjects(RightMachines.class)){
+                slowSpeedRight = rm.getDefaultSpeedB()-0.5; 
+                rm.setProdSpeedB(slowSpeedRight);
+            }
+        }
+    }
+    public void resumeEfficiency(int side){
+        if(side == 0){
+            for(LeftMachines lm : getObjects(LeftMachines.class)){
+                lm.setProdSpeedA(lm.getDefaultSpeedA()); 
+            }
+        }
+        else if(side == 1){
+            for(RightMachines rm : getObjects(RightMachines.class)){
+                rm.setProdSpeedB(rm.getDefaultSpeedB());
+            }
+        }
+    }
     public int getWorkerCount(int side){
         if (side == 0){
             return LworkerCount; 

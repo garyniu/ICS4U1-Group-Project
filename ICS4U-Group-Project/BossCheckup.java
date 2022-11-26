@@ -12,8 +12,14 @@ public class BossCheckup extends Event
     /**
      * During BossCheckup, Boss spawns 
      */
+    private int side;
     public BossCheckup(int d, boolean left, boolean right){
         super(d, left, right);
+        if(left){
+            side = 0;
+        } else if(right){
+            side = 1; 
+        }
         System.out.println("BOSS CHECKUP BOSS CHECKUP");
     }
 
@@ -26,9 +32,9 @@ public class BossCheckup extends Event
             //randomize a #, if '0', workers get a raise, production speeds up , if '1', workers get pay deduction, less productive 
             int x = Greenfoot.getRandomNumber(2);
             if(x==0){
-                increaseEfficiency();
+                gw.increaseEfficiency(side);
             } else if (x==1){
-                slowEfficiency();
+                gw.slowEfficiency(side);
             }
 
             gw.removeObject(b);
@@ -43,7 +49,7 @@ public class BossCheckup extends Event
         }
         else if(right){
             b = new Boss(0, 1);
-            gw.addObject(b, 1024, 50);
+            gw.addObject(b, 512, 50);
         }
     }
 }

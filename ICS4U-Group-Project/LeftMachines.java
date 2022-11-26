@@ -19,36 +19,15 @@ public class LeftMachines extends Machines
     private static double produceSpeed;
     private static double defaultSpeed;
     private static double itemValue;
-    private boolean shoeCanBeMade, firstWU = false, secWU = false;
+    private boolean firstWU = false, secWU = false;
     private int width;
-    private int height;
-    private Shoes shoe; 
+    private int height; 
     private HiredWorkers t_o, t_t, t_th, th_o, th_t, th_th;
 
-    public LeftMachines(int itemChoice)
+    public LeftMachines()
     {
-        imageA = new GreenfootImage("shirtMachineTemp.png");
-        imageA.scale(300, 100);
-        setImage(imageA);
-        defaultSpeed = produceSpeed; 
-
-        this.intItemChoice = itemChoice; 
-        //upgradeA();
-
-        width = imageA.getWidth();
-        height = imageA.getHeight();
-        upgradeAmount = GameWorld.getCurrencyA();
-
-        //StartingWorkers();
-    /*private static double produceSpeed;
-    private static double defaultSpeed;
-    private static double itemValue;
-   
-    public LeftMachines(){
         super();
-    }*/
-    
-
+    }
     public void act()
     {
         GameWorld gw = (GameWorld)getWorld(); 
@@ -63,9 +42,6 @@ public class LeftMachines extends Machines
         }
         checkShoeFinished(); 
     }
-
-
-    
 
     public void addedToWorld(World w){
         w.addObject(new Hitboxes(), (this.getX()+width/2) - 10, this.getY()-height/2);
@@ -201,5 +177,4 @@ public class LeftMachines extends Machines
     public void resetWorkers(){
         WC = 1;
     }
-
 }

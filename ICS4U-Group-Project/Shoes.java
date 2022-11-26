@@ -15,7 +15,7 @@ public class Shoes extends Items
     private boolean shoeMade;
     public Shoes(Machines m)
     {
-        image = new GreenfootImage("shoesTemp.png");
+        image = new GreenfootImage("Leather.png");
         image.scale(30, 30);
         setImage(image);      
         
@@ -68,7 +68,7 @@ public class Shoes extends Items
                 side = "left";
             }
         } else if(this.getX()>512){
-            for(Rightmachines rm: gw.getObjects(Rightmachines.class)){
+            for(RightMachines rm: gw.getObjects(RightMachines.class)){
                 this.prodSpeedB = gw.getProdSpeedB();
                 side = "right";
             }
