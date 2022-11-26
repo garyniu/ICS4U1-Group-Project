@@ -209,8 +209,6 @@ public class GameWorld extends World
         //machine will spawn the workers
         //create method in machine to spawn wokers
         
-        System.out.println(LworkerCount + " :worker count");
-        
         if (LworkerCount == 2){
             Lone.addWorkers();
         } else if (LworkerCount == 3){
@@ -278,7 +276,6 @@ public class GameWorld extends World
     }
     
     public void upgrades(String side, int Upgrade, Boss b){
-        //System.out.println("boss upgrade side: " + side + "\nUpgrade type: " + Upgrade + "\n");
         //only upgreade if enough money
         
         if (side == "left"){

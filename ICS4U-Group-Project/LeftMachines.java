@@ -58,7 +58,6 @@ public class LeftMachines extends Machines
 
     public void addWorkers(){
 
-        System.out.println("worker level: " + WC);
 
         if (WC == 2 && !secWU){
             WC = 3;
@@ -121,7 +120,6 @@ public class LeftMachines extends Machines
         itemValue = gw.getItemValueA(); 
     }
     public void checkShoeFinished(){
-        System.out.println(produceSpeed + " " + actTimer);
         if(produceSpeed <= 1 && actTimer == 293){
             spawnShoes(); 
             actTimer = 0;
