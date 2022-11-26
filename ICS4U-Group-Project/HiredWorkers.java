@@ -16,8 +16,9 @@ public class HiredWorkers extends People
         super();
         //incrementing worker count
         GameWorld gw = (GameWorld)getWorld();
-        FS = firstSpawn;
+        firstSpawn = FS;
 
+        
         GreenfootImage image = new GreenfootImage("Char.png");
         image.scale(image.getWidth()/4, image.getHeight()/4);
         setImage(image);
@@ -33,50 +34,36 @@ public class HiredWorkers extends People
     {
         //play sliding down animation, fade in
         fadein--; originalPos++;
-
+        //System.out.println(fadein);
+        
         if (fadein >= 0 && firstSpawn){
+            //System.out.println("testsed");
             entry(fadein, originalPos);
 
-        } else {
-
-            work();
-        }
+        } 
     }
 
     private void entry(int fadetime, int ogposition){
-
+        
         int upMovement = ogposition - 120;
+        
+        System.out.println(upMovement);
         double perc = (double)fadetime / 120;
         perc = 1 - perc;
         int transp = (int)(perc * 255);
+        
+        
 
         if (transp > 255){
             transp = 255;
         } else if (transp < 0){
             transp = 0;
         }
+        
+        //System.out.println(transp);
 
         getImage().setTransparency(transp);
-        setLocation(getX(), upMovement);
+        setLocation(getX(), originalPos + upMovement + 150);
     }
 
-    //animation for creating new items + working
-    public void work(){
-
-    }
-
-    //dies
-    public void death(int time){
-
-        //play sound, delay 2 seconds, rotate 90 degrees, delete
-
-        //setRotation(90);
-
-        if (time > 120){
-            GameWorld gw = (GameWorld)getWorld();
-
-            getWorld().removeObject(this);
-        }
-
-    }
 }

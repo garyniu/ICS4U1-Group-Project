@@ -107,6 +107,8 @@ public class GameWorld extends World
 
         spawnInitalMachines();
         
+        
+        
         produceSpeedA = 1;
         produceSpeedB = 1;
         
