@@ -33,7 +33,7 @@ public class WinScreen extends World
     }
     public void act(){
         timer++; 
-        if(timer == 180){
+        if(timer == 300){
             Greenfoot.setWorld(new End());
         }
     }

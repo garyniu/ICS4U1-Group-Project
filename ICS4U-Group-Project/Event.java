@@ -20,6 +20,7 @@ public abstract class Event extends Actor
     private double newSpeedRight;
     private double slowSpeedLeft;
     private double slowSpeedRight;
+    private double maxSpeed;
     
     protected GreenFlash gf; 
     protected RedFlash rf;
@@ -29,6 +30,7 @@ public abstract class Event extends Actor
         this.left = left;
         this.right = right;
         flashAdded = false;
+        maxSpeed = 5; 
     }
     public void act()
     {
@@ -50,14 +52,18 @@ public abstract class Event extends Actor
         GameWorld gw = (GameWorld)getWorld();
         if(side == 0){
             for(LeftMachines lm : gw.getObjects(LeftMachines.class)){
-                newSpeedLeft = lm.getDefaultSpeedA()+0.5; 
-                lm.setProdSpeedA(newSpeedLeft);
+                if(lm.getProdSpeedA() < maxSpeed){
+                    newSpeedLeft = lm.getDefaultSpeedA()+0.5; 
+                    lm.setProdSpeedA(newSpeedLeft);
+                }
             }
         }
         else if(side == 1){
             for(Rightmachines rm : gw.getObjects(Rightmachines.class)){
-                newSpeedRight = rm.getDefaultSpeedB()+0.5; 
-                rm.setProdSpeedB(newSpeedRight);
+                if(rm.getProdSpeedB() <maxSpeed){
+                    newSpeedRight = rm.getDefaultSpeedB()+0.5; 
+                    rm.setProdSpeedB(newSpeedRight);
+                }
             }
         }
     }

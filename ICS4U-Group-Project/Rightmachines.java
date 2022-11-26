@@ -47,8 +47,8 @@ public class Rightmachines extends Machines
             updateSpeed();
         }
         if(!speedSet){
-            updateSpeed();
             updateDefaultSpeedB(); 
+            updateSpeed();
             speedSet = true;
         }
         checkShoeFinished(); 
@@ -94,6 +94,7 @@ public class Rightmachines extends Machines
         GameWorld gw = (GameWorld)getWorld(); 
         gw.addObject(new Shoes(this) , this.getX()- this.getX()/6, this.getY()-height/4-10);
         updateSpeed();
+        gw.setShoeBoxed(true);
         gw.itemsSold("right");
         itemValue = gw.getItemValueB();
     }
@@ -114,12 +115,16 @@ public class Rightmachines extends Machines
     }
 
     public void checkShoeFinished(){
-        if(produceSpeed == 1 && actTimer == 293){
-            spawnShoes(); 
-            actTimer = 0;
-        }else if(produceSpeed == 1.5 && actTimer == 195){
-            spawnShoes();
-            actTimer = 0;
+        if(produceSpeed == 1){
+            if(actTimer == 293){
+                spawnShoes(); 
+                actTimer = 0;
+            }
+        }else if(produceSpeed == 1.5){
+            if( actTimer == 195){
+                spawnShoes();
+                actTimer = 0;
+            }
         }else if(produceSpeed == 2 && actTimer == 147){
             spawnShoes();
             actTimer = 0;
@@ -147,38 +152,47 @@ public class Rightmachines extends Machines
             if (produceSpeed == 1){
                 if (actTimer == 203){
                     spawnShoes(); 
+                    actTimer = 0;
                 }
             } else if (produceSpeed == 1.5){
                 if (actTimer == 110){
-                    spawnShoes(); 
+                    spawnShoes();
+                    actTimer =0;
                 }
             } else if (produceSpeed == 2){
                 if (actTimer == 95){
                     spawnShoes(); 
+                    actTimer=0;
                 }
             } else if (produceSpeed == 2.5){
                 if (actTimer == 80){
                     spawnShoes(); 
+                    actTimer=0;
                 }
             } else if (produceSpeed == 3){
                 if (actTimer == 65){
                     spawnShoes(); 
+                    actTimer=0;
                 }
             } else if (produceSpeed == 3.5){
                 if (actTimer == 60){
                     spawnShoes(); 
+                    actTimer=0;
                 }
             } else if (produceSpeed == 4){
                 if (actTimer == 55){
                     spawnShoes(); 
+                    actTimer=0;
                 }
             } else if (produceSpeed == 4.5){
                 if (actTimer == 50){
-                    spawnShoes(); 
+                    spawnShoes();
+                    actTimer=0; 
                 }
             } else if (produceSpeed == 5){
                 if (actTimer == 45){
                     spawnShoes(); 
+                    actTimer=0;
                 }
             }
         }
@@ -187,65 +201,83 @@ public class Rightmachines extends Machines
             if (produceSpeed == 1){
                 if (actTimer == 150){
                     spawnShoes(); 
+                    actTimer=0;
                 }
                 if (actTimer == 203){
                     spawnShoes(); 
+                    actTimer=0;
                 }
             } else if (produceSpeed == 1.5){
                 if (actTimer == 110){
                     spawnShoes(); 
+                    actTimer=0;
                 }
                 if (actTimer == 80){
                     spawnShoes(); 
+                    actTimer=0;
                 }
             } else if (produceSpeed == 2){
                 if (actTimer == 95){
                     spawnShoes(); 
+                    actTimer=0;
                 }
                 if (actTimer == 75){
                     spawnShoes(); 
+                    actTimer=0;
                 }
             } else if (produceSpeed == 2.5){
                 if (actTimer == 80){
                     spawnShoes(); 
+                    actTimer=0;
                 }
                 if (actTimer == 70){
                     spawnShoes(); 
+                    actTimer=0;
                 }
             } else if (produceSpeed == 3){
                 if (actTimer == 65){
                     spawnShoes(); 
+                    actTimer=0;
                 }
                 if (actTimer == 60){
-                    spawnShoes(); 
+                    spawnShoes();
+                    actTimer=0; 
                 }
             } else if (produceSpeed == 3.5){
                 if (actTimer == 60){
                     spawnShoes(); 
+                    actTimer=0;
                 }
                 if (actTimer == 46){
                     spawnShoes(); 
+                    actTimer=0;
                 }
             } else if (produceSpeed == 4){
                 if (actTimer == 55){
                     spawnShoes(); 
+                    actTimer=0;
                 }
                 if (actTimer == 40){
                     spawnShoes(); 
+                    actTimer=0;
                 }
             } else if (produceSpeed == 4.5){
                 if (actTimer == 50){
                     spawnShoes(); 
+                    actTimer=0;
                 }
                 if (actTimer == 35){
-                    spawnShoes(); 
+                    spawnShoes();
+                    actTimer=0; 
                 }
             } else if (produceSpeed == 5){
                 if (actTimer == 45){
                     spawnShoes(); 
+                    actTimer=0;
                 }
                 if (actTimer == 20){
                     spawnShoes(); 
+                    actTimer=0;
                 }
             }
         }

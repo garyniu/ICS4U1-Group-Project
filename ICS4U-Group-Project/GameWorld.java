@@ -43,6 +43,7 @@ public class GameWorld extends World
     private boolean spawnedRTwo = false, spawnedRThree = false;
     private static double itemValueA;
     private static double itemValueB; 
+    private boolean shoeBoxed;
     
     private static double produceSpeedA;
     private static double produceSpeedB;
@@ -54,19 +55,13 @@ public class GameWorld extends World
     private LeftMachines Lone, Ltwo, Lthree;
     private Rightmachines Rone, Rtwo, Rthree;
     
-    /*
-    private GreenfootImage canvasA;
-    private GreenfootImage canvasB;
-    private GreenfootImage bbImage;
-    private GreenfootImage bcImage;
-    private GreenfootImage smcImage;
-    private GreenfootImage strkImage; 
-    */
     private double newSpeedLeft;
     private double newSpeedRight;
     private double slowSpeedLeft;
     private double slowSpeedRight;
     
+    private double maxSpeed;
+     
     /**
      * Constructor for objects of class MyWorld.
      *
@@ -75,7 +70,7 @@ public class GameWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 800, 1);
-        setPaintOrder(Effect.class, Event.class, Items.class, Machines.class, People.class);
+        setPaintOrder(Effect.class, Event.class, Items.class, Boss.class, Machines.class, People.class);
 
         //set variables
         currencyA = LSM;
@@ -101,6 +96,7 @@ public class GameWorld extends World
         activeEventB = false;
         strikeStatusA = false;
         strikeStatusB = false;
+        shoeBoxed = false;
         
         itemValueA = 100; 
         itemValueB = 100; 
@@ -111,6 +107,7 @@ public class GameWorld extends World
         
         produceSpeedA = 1;
         produceSpeedB = 1;
+        maxSpeed = 5; 
         
         background = new GreenfootImage("bg.png");
         background.scale(1200, 800);
@@ -283,7 +280,7 @@ public class GameWorld extends World
                 LaterMachines();
                 addObject(new UpgradeArrow(0), b.getX(), b.getY());
             }
-            if (Upgrade == 0 && currencyA > 400){
+            if (Upgrade == 0 && currencyA > 400 && produceSpeedA  < maxSpeed){
                 currencyA -= 250;
                 increaseEfficiency(0);
                 addObject(new UpgradeArrow(1), b.getX(), b.getY());
@@ -303,7 +300,7 @@ public class GameWorld extends World
                 LaterMachines();
                 addObject(new UpgradeArrow(0), b.getX(), b.getY());
             }
-            if (Upgrade == 0 && currencyB > 400){
+            if (Upgrade == 0 && currencyB > 400 && produceSpeedB  < maxSpeed){
                 currencyB -= 250;
                 increaseEfficiency(1);
                 addObject(new UpgradeArrow(1), b.getX(), b.getY());
@@ -509,5 +506,12 @@ public class GameWorld extends World
     }
     public void setProdSpeedB(double produceSpd){
         produceSpeedB = produceSpd; 
+    }
+    //shoe boxed getters and setters
+    public boolean getShoeBoxed(){
+        return shoeBoxed; 
+    }
+    public void setShoeBoxed(boolean b){
+        shoeBoxed = b; 
     }
 }

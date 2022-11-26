@@ -33,8 +33,8 @@ public class LeftMachines extends Machines
     {
         GameWorld gw = (GameWorld)getWorld(); 
         if(!gw.getStrikeStatusA()){
-            actTimer++;
             updateSpeed();
+            actTimer++;
         }
         if(!speedSet){
             updateSpeed();
@@ -117,6 +117,7 @@ public class LeftMachines extends Machines
         GameWorld gw = (GameWorld)getWorld();
         gw.addObject(new Shoes(this) , this.getX() - (this.getX()/2), this.getY()-height/4-10);
         updateSpeed(); 
+        gw.setShoeBoxed(true);
         gw.itemsSold("left");
         itemValue = gw.getItemValueA(); 
     }

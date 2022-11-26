@@ -50,6 +50,7 @@ public class Shoes extends Items
         timer++;
         setSpeed();
         checkVertConveyor();
+        GameWorld gw = (GameWorld)getWorld(); 
         if(side == "left" && !onVertConveyor){
             move(prodSpeedA);
         }
@@ -62,7 +63,7 @@ public class Shoes extends Items
             setImage(leather);
         } else if (timer >= 110 && timer <= 250){
             setImage(shoe);
-        } else if (timer >= 250 && timer <= 360){
+        } else if (gw.getShoeBoxed()){
             setImage(box);
         }
         
