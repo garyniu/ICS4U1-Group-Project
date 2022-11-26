@@ -24,6 +24,8 @@ public class GameWorld extends World
 
     private int itemChoiceA; //0=shoes, 1 = tools, 2 = phones
     private int itemChoiceB;
+    
+    private int LitemSold = 0, RitemSold = 0;
 
     private boolean activeEventA;
     private boolean activeEventB; 
@@ -122,12 +124,16 @@ public class GameWorld extends World
     public void act()
     {
         timer();
-        showText("REVENUE: $" + currencyA, 80, 20);
-        showText("REVENUE: $" + currencyB, 637, 20);
-        showText("SPEED; " + produceSpeedA, 215, 20); 
-        showText("SPEED: "+ produceSpeedB, 772, 20);
-        showText("ITEM VALUE: $"+ (int)itemValueA, 370, 20);
-        showText("ITEM VALUE: $"+ (int)itemValueB, 922, 20); 
+        showText("REVENUE: " + currencyA, 80, 700);
+        showText("REVENUE: " + currencyB, 637, 700);
+        showText("SPEED; " + produceSpeedA, 215, 700); 
+        showText("SPEED: " + produceSpeedB, 772, 700);
+        showText("ITEM VALUE: "+ (int)itemValueA, 370, 700);
+        showText("ITEM VALUE: "+ (int)itemValueB, 922, 700); 
+        
+        showText("TOTAL ITEMS SOLD: "+ LitemSold, 370, 750);
+        showText("TOTAL ITEMS SOLD: "+ RitemSold, 670, 750); 
+        
         spawnEvents();
         spawnTruck();
         
@@ -138,14 +144,14 @@ public class GameWorld extends World
     {
         
         Lone = new LeftMachines();
-        addObject(Lone, 150, 150);
+        addObject(Lone, 288, 300);
         
         Rone = new RightMachines();
-        addObject(Rone, 682, 150);
+        addObject(Rone, 801, 300);
         
 
-        addObject(new VertConveyor(), 350, 350);
-        addObject(new VertConveyor(), 882, 350);
+        addObject(new VertConveyor(), 465, 465);
+        addObject(new VertConveyor(), 978, 465);
         
 
     }
@@ -186,7 +192,7 @@ public class GameWorld extends World
         } else if (LworkerCount == 4 && !spawnedLTwo){
             //add machine, with workers
             Ltwo = new LeftMachines();
-            addObject(Ltwo, 150, 300);
+            addObject(Ltwo, 288, 450);
             spawnedLTwo = true;
         } else if (LworkerCount == 5){
             Ltwo.addWorkers();
@@ -195,7 +201,7 @@ public class GameWorld extends World
         } else if (LworkerCount == 7 && !spawnedLThree){
             //add 2nd machine
             Lthree = new LeftMachines();
-            addObject(Lthree, 150, 450);
+            addObject(Lthree, 288, 600);
             spawnedLThree = true;
         } else if (LworkerCount == 8){
             Lthree.addWorkers();
@@ -204,6 +210,15 @@ public class GameWorld extends World
         }
 
         //true/false to spawn machine, add to workercount
+    }
+    
+    
+    public void itemsSold(String side){
+        if (side == "left"){
+            LitemSold++;
+        } else if (side == "right"){
+            RitemSold++;
+        }
     }
     
     public void upgrades(String side, int Upgrade, Boss b){
@@ -216,13 +231,13 @@ public class GameWorld extends World
             //check enough money
             
             if (Upgrade == 1 && currencyA > 500 && LworkerCount <= 9){
-                currencyA -= 500;
+                currencyA -= 200;
                 LworkerCount++;
                 LaterMachines();
                 addObject(new UpgradeArrow(0), b.getX(), b.getY());
             }
             if (Upgrade == 0 && currencyA > 400){
-                //currencyA -= 400;
+                //currencyA -= 250;
                 //conveyer speed
                 addObject(new UpgradeArrow(1), b.getX(), b.getY());
             }

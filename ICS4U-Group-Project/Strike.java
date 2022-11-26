@@ -40,6 +40,13 @@ public class Strike extends Event
             }else if(right){
                 gw.setStrikeStatusB(false); 
             }
+            if (strikeStatusA){
+                gw.halfWorkers("left");
+            }
+            if (strikeStatusB){
+                gw.halfWorkers("right");
+            }
+            
             endEvent();
         }
     }

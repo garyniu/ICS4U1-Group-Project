@@ -71,9 +71,9 @@ public class LeftMachines extends Machines
         w.addObject(new Hitboxes(), (this.getX()+width/2) - 10, this.getY()-height/2);
         spawnShoes();        
         
-        getWorld().addObject(new HiredWorkers(false), getX()/2 - 30, getY() -20);
-        getWorld().addObject(new HiredWorkers(false), getX()/2 + 60 , getY() - 20);
-        getWorld().addObject(new HiredWorkers(false), getX()/2 + 150, getY() - 20);
+        getWorld().addObject(new HiredWorkers(false), getX()/2 , getY() -30);
+        getWorld().addObject(new HiredWorkers(false), getX()/2 + 120 , getY() - 30);
+        getWorld().addObject(new HiredWorkers(false), getX()/2 + 240, getY() - 30);
 
         //w.addObject(new Shoes(this), this.getX()-width/2, this.getY()-height/4);
     }
@@ -90,9 +90,9 @@ public class LeftMachines extends Machines
             t_t = new HiredWorkers(true);
             t_th = new HiredWorkers(true);
             
-            getWorld().addObject(t_o, getX()/2 - 30+ 40, getY() -20);
-            getWorld().addObject(t_t, getX()/2 + 60+ 40 , getY() - 20);
-            getWorld().addObject(t_th, getX()/2 + 150+ 40, getY() - 20);
+            getWorld().addObject(t_o, getX()/2 + 60, getY() -30);
+            getWorld().addObject(t_t, getX()/2 + 120 + 60 , getY() - 30);
+            getWorld().addObject(t_th, getX()/2 + 240 + 60, getY() - 30);
             secWU = true;
         }
 
@@ -103,9 +103,9 @@ public class LeftMachines extends Machines
             th_t = new HiredWorkers(true);
             th_th = new HiredWorkers(true);
             
-            getWorld().addObject(th_o, getX()/2 - 30 + 20, getY() -20);
-            getWorld().addObject(th_t, getX()/2 + 60+ 20 , getY() - 20);
-            getWorld().addObject(th_th, getX()/2 + 150+ 20, getY() - 20);
+            getWorld().addObject(th_o, getX()/2 + 30, getY() -30);
+            getWorld().addObject(th_t, getX()/2 + 120 + 30 , getY() - 30);
+            getWorld().addObject(th_th, getX()/2 + 240 + 30, getY() - 30);
             firstWU = true;
         } 
 
@@ -132,8 +132,9 @@ public class LeftMachines extends Machines
     
     public void spawnShoes(){
         GameWorld gw = (GameWorld)getWorld();
-        gw.addObject(new Shoes(this) , this.getX()-width/2, this.getY()-height/4);
+        gw.addObject(new Shoes(this) , this.getX() - (this.getX()/2), this.getY()-height/4);
         updateSpeed(); 
+        gw.itemsSold("left");
         itemValue = gw.getItemValueA(); 
     }
     public void checkShoeFinished(){
