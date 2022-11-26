@@ -285,7 +285,7 @@ public class GameWorld extends World
             }
             if (Upgrade == 0 && currencyA > 400){
                 //currencyA -= 250;
-                //conveyer speed
+                //increaseEfficiency(0);
                 addObject(new UpgradeArrow(1), b.getX(), b.getY());
             }
             
@@ -300,17 +300,12 @@ public class GameWorld extends World
             }
             if (Upgrade == 0 && currencyB > 400){
                 //currencyB -= 250;
-                //conveyer speed
+                //increaseEfficiency(1);
                 addObject(new UpgradeArrow(1), b.getX(), b.getY());
             }
-            
-            
         }
-        
     }
 
-
-    
     public void spawnTruck(){
         if(!truckActive){
             if(Greenfoot.getRandomNumber(600) == 0){
@@ -325,21 +320,17 @@ public class GameWorld extends World
         if(counter%60 == 0){
             timer += 1;
         }
-        //int time = (int)Math.floor(timer * 100)/100;
         showText("Time: " + timer, 512, 20);
     }
 
     public void checkTimerOver(){
         if(timer == maxTimer){
-            if(currencyA > currencyB){
+            if(currencyA >= currencyB){
                 winner = "left"; //left side wins
-                Greenfoot.setWorld(new End(winner));
+                Greenfoot.setWorld(new WinScreen(winner));
             } else if(currencyB>currencyA){
                 winner = "right"; //right side wins
-                Greenfoot.setWorld(new End(winner));
-            } else if(currencyB == currencyA){
-                winner = "tie";
-                Greenfoot.setWorld(new End(winner));
+                Greenfoot.setWorld(new WinScreen(winner));
             }
         }
     }
@@ -372,42 +363,34 @@ public class GameWorld extends World
     }
 
     public void chooseEventA(){
-        int eventA = Greenfoot.getRandomNumber(3);
+        int eventA = Greenfoot.getRandomNumber(4);
         if(!activeEventA){
             activeEventA = true;
             if(eventA == 3){
-                addObject(new BossCheckup(15, true, false), 256, 400);
-                //canvasA.drawImage(bcImage, 0, 500); 
+                addObject(new BossCheckup(15, true, false), 75, 650);
             } else if(eventA == 1){
                 addObject(new BoomingBusiness(5, true, false), 256, 400);
-                //canvasA.drawImage(bbImage, 0, 500); 
             } else if(eventA == 0){
                 addObject(new StockMarketCrash(5, true, false), 256, 400);
-                //canvasA.drawImage(smcImage, 0, 500); 
             } else if(eventA == 2 && !strikeStatusB){
-                addObject(new Strike(10, true, false), 112, 400);
-                //canvasA.drawImage(strkImage, 0, 500); 
+                addObject(new Strike(10, true, false), 75, 650);
                 strikeStatusA = true; 
             }
         }
     }
 
     public void chooseEventB(){
-        int eventB = Greenfoot.getRandomNumber(3);
+        int eventB = Greenfoot.getRandomNumber(4);
         if(!activeEventB){
             activeEventB = true;
             if(eventB == 3){
-                addObject(new BossCheckup(15, false, true), 768, 400);
-                //canvasB.drawImage(bcImage, 512, 500); 
+                addObject(new BossCheckup(15, false, true), 587, 650);
             } else if(eventB == 1){
                 addObject(new BoomingBusiness(5, false, true), 768, 400);
-                //canvasB.drawImage(bbImage, 512, 500); 
             } else if(eventB == 0){
-                addObject(new StockMarketCrash(5, false, true), 768, 400);
-                //canvasB.drawImage(smcImage, 512, 500); 
+                addObject(new StockMarketCrash(5, false, true), 768, 450);
             } else if(eventB == 2 && !strikeStatusA){
-                addObject(new Strike(10, false, true), 912, 400);
-                //canvasB.drawImage(strkImage, 512, 500); 
+                addObject(new Strike(10, false, true), 587, 600);
                 strikeStatusB = true; 
             }
         }
@@ -416,14 +399,18 @@ public class GameWorld extends World
     public void increaseEfficiency(int side){
         if(side == 0){
             for(LeftMachines lm : getObjects(LeftMachines.class)){
-                newSpeedLeft = lm.getDefaultSpeedA()+0.5; 
-                lm.setProdSpeedA(newSpeedLeft);
+                //newSpeedLeft = lm.getDefaultSpeedA()+0.5; 
+                //lm.setProdSpeedA(newSpeedLeft);
+                newSpeedLeft = produceSpeedA+=0.5;
+                setProdSpeedA(newSpeedLeft); 
             }
         }
         else if(side == 1){
-            for(RightMachines rm : getObjects(RightMachines.class)){
-                newSpeedRight = rm.getDefaultSpeedB()+0.5; 
-                rm.setProdSpeedB(newSpeedRight);
+            for(Rightmachines rm : getObjects(Rightmachines.class)){
+                //newSpeedRight = rm.getDefaultSpeedB()+0.5; 
+                //rm.setProdSpeedB(newSpeedRight);
+                newSpeedRight = produceSpeedB+=0.5;
+                setProdSpeedB(newSpeedRight); 
             }
         }
     }
@@ -435,7 +422,7 @@ public class GameWorld extends World
             }
         }
         else if(side == 1){
-            for(RightMachines rm : getObjects(RightMachines.class)){
+            for(Rightmachines rm : getObjects(Rightmachines.class)){
                 slowSpeedRight = rm.getDefaultSpeedB()-0.5; 
                 rm.setProdSpeedB(slowSpeedRight);
             }
@@ -448,7 +435,7 @@ public class GameWorld extends World
             }
         }
         else if(side == 1){
-            for(RightMachines rm : getObjects(RightMachines.class)){
+            for(Rightmachines rm : getObjects(Rightmachines.class)){
                 rm.setProdSpeedB(rm.getDefaultSpeedB());
             }
         }

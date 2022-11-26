@@ -12,9 +12,14 @@ public class BossCheckup extends Event
     /**
      * During BossCheckup, Boss spawns 
      */
+    
     private int side;
+    private GreenfootImage bcImage; 
     public BossCheckup(int d, boolean left, boolean right){
         super(d, left, right);
+        bcImage = new GreenfootImage("BOSSCHECKUP.png");
+        bcImage.scale(100,100);
+        setImage(bcImage); 
         if(left){
             side = 0;
         } else if(right){
@@ -52,4 +57,6 @@ public class BossCheckup extends Event
             gw.addObject(b, 512, 50);
         }
     }
+    
+    
 }

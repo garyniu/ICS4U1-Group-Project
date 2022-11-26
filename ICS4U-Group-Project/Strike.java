@@ -15,8 +15,12 @@ public class Strike extends Event
     private boolean machinesStopped; 
     private boolean strikeStatusA;
     private boolean strikeStatusB; 
+    private GreenfootImage strkImage; 
     public Strike(int d, boolean left, boolean right){
         super(d, left, right);
+        strkImage = new GreenfootImage("STRIKE.png");
+        strkImage.scale(100,100);
+        setImage(strkImage); 
         machinesStopped = false;
         strikeStatusA = left;
         strikeStatusB = right; 
@@ -61,7 +65,7 @@ public class Strike extends Event
             }
         }
         else if(right){
-            for(RightMachines rm : gw.getObjects(RightMachines.class)){
+            for(Rightmachines rm : gw.getObjects(Rightmachines.class)){
                 gw.setProdSpeedB(0); 
                 rm.updateSpeed(); 
             }
@@ -75,7 +79,7 @@ public class Strike extends Event
             }
         }
         else if(right){
-            for(RightMachines rm : gw.getObjects(RightMachines.class)){
+            for(Rightmachines rm : gw.getObjects(Rightmachines.class)){
                 gw.setProdSpeedB(rm.getDefaultSpeedB()); 
             }
         }

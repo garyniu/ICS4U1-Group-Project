@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=BoomingBusinessImage
+comment0.text=\r\n\ The\ corresponding\ event\ subclass\ (BoomingBusiness)\ already\ has\ its\ image\ set\ (the\ arrow\ animation).\ My\ simple\ solution\ for\ adding\ an\ event\ icon\ into\ \r\n\ the\ world\ is\ by\ adding\ an\ actor\ with\ their\ image\ set\ as\ the\ event\ icon.\ \r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=BoomingBusinessImage()
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ BoomingBusinessImage\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+numComments=3

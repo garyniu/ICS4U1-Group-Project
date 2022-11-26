@@ -16,6 +16,11 @@ public abstract class Event extends Actor
     protected double newValueRight;
     protected boolean flashAdded;
     
+    private double newSpeedLeft;
+    private double newSpeedRight;
+    private double slowSpeedLeft;
+    private double slowSpeedRight;
+    
     protected GreenFlash gf; 
     protected RedFlash rf;
     
@@ -40,6 +45,49 @@ public abstract class Event extends Actor
             gw.setEventStatusB(false);
         }
         gw.removeObject(this);
+    }
+    public void increaseEfficiency(int side){
+        GameWorld gw = (GameWorld)getWorld();
+        if(side == 0){
+            for(LeftMachines lm : gw.getObjects(LeftMachines.class)){
+                newSpeedLeft = lm.getDefaultSpeedA()+0.5; 
+                lm.setProdSpeedA(newSpeedLeft);
+            }
+        }
+        else if(side == 1){
+            for(Rightmachines rm : gw.getObjects(Rightmachines.class)){
+                newSpeedRight = rm.getDefaultSpeedB()+0.5; 
+                rm.setProdSpeedB(newSpeedRight);
+            }
+        }
+    }
+    public void slowEfficiency(int side){
+        GameWorld gw = (GameWorld)getWorld();
+        if(side == 0){
+            for(LeftMachines lm : gw.getObjects(LeftMachines.class)){
+                slowSpeedLeft = lm.getDefaultSpeedA()-0.5; 
+                lm.setProdSpeedA(slowSpeedLeft);
+            }
+        }
+        else if(side == 1){
+            for(Rightmachines rm : gw.getObjects(Rightmachines.class)){
+                slowSpeedRight = rm.getDefaultSpeedB()-0.5; 
+                rm.setProdSpeedB(slowSpeedRight);
+            }
+        }
+    }
+    public void resumeEfficiency(int side){
+        GameWorld gw = (GameWorld)getWorld();
+        if(side == 0){
+            for(LeftMachines lm : gw.getObjects(LeftMachines.class)){
+                lm.setProdSpeedA(lm.getDefaultSpeedA()); 
+            }
+        }
+        else if(side == 1){
+            for(Rightmachines rm : gw.getObjects(Rightmachines.class)){
+                rm.setProdSpeedB(rm.getDefaultSpeedB());
+            }
+        }
     }
     public void addRedFlash(){
         if(!flashAdded){

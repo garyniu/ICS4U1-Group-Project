@@ -115,8 +115,7 @@ public class LeftMachines extends Machines
     
     public void spawnShoes(){
         GameWorld gw = (GameWorld)getWorld();
-        
-        gw.addObject(new Shoes(this) , this.getX() - (this.getX()/2), this.getY()-height/4);
+        gw.addObject(new Shoes(this) , this.getX() - (this.getX()/2), this.getY()-height/4-10);
         updateSpeed(); 
         gw.itemsSold("left");
         itemValue = gw.getItemValueA(); 
@@ -124,7 +123,6 @@ public class LeftMachines extends Machines
     public void checkShoeFinished(){
         if(produceSpeed == 1 && actTimer == 293){
             spawnShoes(); 
-            
             actTimer = 0;
         }else if(produceSpeed == 1.5 && actTimer == 195){
             spawnShoes();
@@ -152,7 +150,7 @@ public class LeftMachines extends Machines
             actTimer = 0;
         }
         
-        
+        //if there are two workers per station
         if (twoWorks){
             if (produceSpeed == 1){
                 if (actTimer == 203){
@@ -193,6 +191,7 @@ public class LeftMachines extends Machines
             }
         }
         
+        //if station has 3 workers
         if (threeWorks){
             if (produceSpeed == 1){
                 if (actTimer == 150){

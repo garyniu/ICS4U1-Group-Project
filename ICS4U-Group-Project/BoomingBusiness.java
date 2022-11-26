@@ -21,6 +21,7 @@ public class BoomingBusiness extends Event
     private SimpleTimer animationTimer; 
     
     private GreenfootImage image; 
+    private BoomingBusinessImage bbImage; 
     public BoomingBusiness(int d, boolean left, boolean right){
         super(d, left, right);
         flashAdded=false;
@@ -28,9 +29,13 @@ public class BoomingBusiness extends Event
         animated = false;
         System.out.println("BOOMING BUSINESS");
         
+        GameWorld gw = (GameWorld)getWorld(); 
+        gw.addObject(bbImage, this.getX()-181, 650);
+                
         upArrow = new GreenfootImage[19];
         imageIndex = 0;
         animationTimer = new SimpleTimer();
+        
         
         for(int i = 0; i<upArrow.length;i++){
             upArrow[i] = new GreenfootImage("images/UpStonk/UpStonk"+i+".png");

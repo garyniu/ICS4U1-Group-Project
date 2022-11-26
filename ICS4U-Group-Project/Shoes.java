@@ -13,18 +13,18 @@ public class Shoes extends Items
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     private boolean shoeMade;
-    private GreenfootImage sole, fabric;
+    private GreenfootImage leather, shoe, box;
     private int timer = 0;
     public Shoes(Machines m)
     {
-        image = new GreenfootImage("Leather.png");
-        image.scale(30, 30);
-        setImage(image);   
+        leather = new GreenfootImage("Leather.png");
+        leather.scale(30, 30);
+        setImage(leather);   
         
-        sole = new GreenfootImage("soles.png");
-        sole.scale(30, 30);
-        fabric = new GreenfootImage("fabric.png");
-        fabric.scale(30, 30);
+        shoe = new GreenfootImage("Shoes.png");
+        shoe.scale(30, 30);
+        box = new GreenfootImage("ShoeBox.png");
+        box.scale(30, 30);
         
         onVertConveyor = false;
         shoeMade = false;
@@ -58,12 +58,12 @@ public class Shoes extends Items
         }
 
         
-        if (timer < 60){
-            setImage(fabric);
-        } else if (timer >= 60 && timer <= 180){
-            setImage(sole);
-        } else if (timer >= 180 && timer <= 280){
-            setImage(image);
+        if (timer < 110){
+            setImage(leather);
+        } else if (timer >= 110 && timer <= 250){
+            setImage(shoe);
+        } else if (timer >= 250 && timer <= 360){
+            setImage(box);
         }
         
         Actor hitBox = getOneIntersectingObject(Hitboxes.class); 
@@ -88,7 +88,7 @@ public class Shoes extends Items
                 side = "left";
             }
         } else if(this.getX()>512){
-            for(RightMachines rm: gw.getObjects(RightMachines.class)){
+            for(Rightmachines rm: gw.getObjects(Rightmachines.class)){
                 this.prodSpeedB = gw.getProdSpeedB();
                 side = "right";
             }

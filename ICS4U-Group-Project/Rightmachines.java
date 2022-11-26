@@ -25,21 +25,9 @@ public class Rightmachines extends Machines
     private int height;
     private Shoes shoe; 
     private HiredWorkers t_o, t_t, t_th, th_o, th_t, th_th;
-
-    /*public RightMachines(int itemChoice){
-
-        imageB = new GreenfootImage("shirtMachineTemp.png");
-        imageB.scale(300, 100);
-        setImage(imageB);
-
-        this.intItemChoice = itemChoice; 
-
-        width = imageB.getWidth();
-        height = imageB.getHeight();
-        upgradeAmount = GameWorld.getCurrencyB();*/
-        public Rightmachines(){
+    public Rightmachines(){
         super();
-        }
+    }
     
 
     public void addedToWorld(World w){
@@ -104,7 +92,7 @@ public class Rightmachines extends Machines
 
     public void spawnShoes(){
         GameWorld gw = (GameWorld)getWorld(); 
-        gw.addObject(new Shoes(this) , this.getX()- this.getX()/6, this.getY()-height/4);
+        gw.addObject(new Shoes(this) , this.getX()- this.getX()/6, this.getY()-height/4-10);
         updateSpeed();
         gw.itemsSold("right");
         itemValue = gw.getItemValueB();

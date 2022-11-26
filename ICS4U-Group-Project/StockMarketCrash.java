@@ -20,10 +20,7 @@ public class StockMarketCrash extends Event
     private int imageIndex; 
     private int imageCounter;
     private SimpleTimer animationTimer; 
-    /**
-     * Act - do whatever the StockMarketCrash wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    private StockMarketCrashImage smcImage; 
     public StockMarketCrash(int d, boolean left, boolean right){
         super(d, left, right);
         
@@ -32,6 +29,9 @@ public class StockMarketCrash extends Event
         animated = false;
         
         System.out.println("STOCK MARKET CRASH");
+        
+        GameWorld gw = (GameWorld)getWorld(); 
+        gw.addObject(smcImage, this.getX()-181, 650);
         
         downArrow = new GreenfootImage[19];
         imageIndex = 0;

@@ -13,24 +13,15 @@ public class End extends World
      * Constructor for objects of class End.
      * 
      */
-    private String winner; 
-    public End(String winner)
+    public End()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 800, 1); 
-        this.winner = winner;
         
         GreenfootImage background2 = new GreenfootImage("EndScreen.png");
         background2.scale(1024,800);
         setBackground(background2);
-        if(winner == "left"){
-          System.out.println("THe winner was left side");   
-        } else if(winner == "right"){
-            System.out.println("the winner was right side");
-        }else if(winner == "tie"){
-            System.out.println("There was a tie"); 
-        }
-
+        
         GreenfootImage background = new GreenfootImage("NormalPlayAgain.png");
         background.scale(background.getWidth()/4, background.getHeight()/4);
 
