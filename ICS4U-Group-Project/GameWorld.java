@@ -294,7 +294,11 @@ public class GameWorld extends World
                 addObject(new UpgradeArrow(0), b.getX(), b.getY());
             }
             if (Upgrade == 0 && currencyA > 400 && produceSpeedA  < maxSpeed){
-                currencyA -= 250;
+                if (currencyA > 500){
+                    currencyA -= currencyA/4;
+                } else {
+                    currencyA -= 400;
+                }
                 increaseEfficiency(0);
                 addObject(new UpgradeArrow(1), b.getX(), b.getY());
             }
@@ -314,7 +318,11 @@ public class GameWorld extends World
                 addObject(new UpgradeArrow(0), b.getX(), b.getY());
             }
             if (Upgrade == 0 && currencyB > 400 && produceSpeedB  < maxSpeed){
-                currencyB -= 250;
+                if (currencyB > 500){
+                    currencyB -= currencyA/4;
+                } else {
+                    currencyB -= 400;
+                }
                 increaseEfficiency(1);
                 addObject(new UpgradeArrow(1), b.getX(), b.getY());
             }

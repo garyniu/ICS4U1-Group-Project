@@ -37,6 +37,8 @@ public class ValueSetting extends World
         setBackground(background2);
         
         Valuemusic = new GreenfootSound("ValueScreen.mp3");
+        Valuemusic.setVolume(30);
+        Valuemusic.playLoop();
         
         Click = new GreenfootSound ("Click.mp3");
 
