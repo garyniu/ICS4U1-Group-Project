@@ -90,7 +90,7 @@ public class GameWorld extends World
         //workerCount = 10;
         counter = 0;
         timer = 0;
-        maxTimer = time; 
+        maxTimer = 60000; 
 
         hardMode = difficulty;
 

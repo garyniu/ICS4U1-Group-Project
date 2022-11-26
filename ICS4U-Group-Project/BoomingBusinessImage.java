@@ -10,6 +10,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class BoomingBusinessImage extends Effect
 {
     public BoomingBusinessImage(){
+        GreenfootImage image = new GreenfootImage("STOCKMARKETBOOMINTEXT.png");
+        setImage(image);
         getImage().scale(100,100); 
     }
     /**
