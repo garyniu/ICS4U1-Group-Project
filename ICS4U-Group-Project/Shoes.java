@@ -70,7 +70,7 @@ public class Shoes extends SmoothMover
                 } else if (gw.getShoeBoxed()){
                     setImage(box);
                 }
-            } else if (prodSpeedA >= 2 && prodSpeedA <= 4){
+            } else if (prodSpeedA >= 2 && prodSpeedA <= 3){
                 if (timer < 60){
                     setImage(leather);
                 } else if (timer >= 60 && timer <= 120){
@@ -78,6 +78,15 @@ public class Shoes extends SmoothMover
                 } else if (gw.getShoeBoxed()){
                     setImage(box);
                 }
+            } else if (prodSpeedA >= 3 && prodSpeedA <= 4){
+                if (timer < 40){
+                    setImage(leather);
+                } else if (timer >= 40 && timer <= 80){
+                    setImage(shoe);
+                } else if (gw.getShoeBoxed()){
+                    setImage(box);
+                }
+            
             } else if (prodSpeedA > 4){
                 if (timer < 30){
                     setImage(leather);
