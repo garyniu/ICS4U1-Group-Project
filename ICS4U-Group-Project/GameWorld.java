@@ -58,15 +58,6 @@ public class GameWorld extends World
     private GreenfootSound backgroundmusic;
     private GreenfootSound ambience;
     private GreenfootSound upgrade;
-    
-    /*
-    private GreenfootImage canvasA;
-    private GreenfootImage canvasB;
-    private GreenfootImage bbImage;
-    private GreenfootImage bcImage;
-    private GreenfootImage smcImage;
-    private GreenfootImage strkImage; 
-    */
     private double newSpeedLeft;
     private double newSpeedRight;
     private double slowSpeedLeft;
@@ -82,7 +73,7 @@ public class GameWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 800, 1);
-        setPaintOrder(Effect.class, Event.class, Items.class, Boss.class, Machines.class, People.class);
+        setPaintOrder(Effect.class, Event.class, Shoes.class, Boss.class, Machines.class, People.class);
 
         //set variables
         currencyA = LSM;
@@ -90,11 +81,7 @@ public class GameWorld extends World
 
         upgradePrefA = LUP;
         upgradePrefB = RUP;
-
-        //workerUpgradePref = true; 
-        //machUpgradePref = false;
-
-        //workerCount = 10;
+        
         counter = 0;
         timer = 0;
         maxTimer = time; 
@@ -121,8 +108,6 @@ public class GameWorld extends World
         itemValueB = 100; 
 
         spawnInitalMachines();
-        
-        
         
         produceSpeedA = 1;
         produceSpeedB = 1;

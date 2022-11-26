@@ -6,12 +6,15 @@ import java.util.ArrayList;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Shoes extends Items
+public class Shoes extends SmoothMover
 {
-    /**
-     * Act - do whatever the Shoes wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    private static double prodSpeedA;
+    private static double prodSpeedB;
+    private String side;  
+    private int vcLeftX; 
+    private int vcRightX; 
+    private boolean onVertConveyor; 
+    private GreenfootImage image;
     private boolean shoeMade;
     private GreenfootImage leather, shoe, box;
     private int timer = 0;

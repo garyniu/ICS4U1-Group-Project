@@ -42,7 +42,6 @@ public class LeftMachines extends Machines
             speedSet = true;
         }
         checkShoeFinished(); 
-        
     }
 
     public void addedToWorld(World w){
@@ -122,11 +121,9 @@ public class LeftMachines extends Machines
         itemValue = gw.getItemValueA(); 
     }
     public void checkShoeFinished(){
-        
         System.out.println(produceSpeed + " " + actTimer);
         if(produceSpeed <= 1 && actTimer == 293){
             spawnShoes(); 
-            
             actTimer = 0;
         }else if(produceSpeed == 1.5 && actTimer == 195){
             spawnShoes();
@@ -149,48 +146,57 @@ public class LeftMachines extends Machines
         }else if(produceSpeed == 4.5 && actTimer ==65){
             spawnShoes();
             actTimer = 0;
-        }else if(produceSpeed >= 5 && actTimer ==59){
+        }else if(produceSpeed == 5 && actTimer ==59){
             spawnShoes();
             actTimer = 0;
         }
         
         //if there are two workers per station
         if (twoWorks){
-            if (produceSpeed <= 1){
+            if (produceSpeed == 1){
                 if (actTimer == 203){
                     spawnShoes(); 
+                    actTimer = 0;
                 }
             } else if (produceSpeed == 1.5){
                 if (actTimer == 110){
                     spawnShoes(); 
+                    actTimer = 0;
                 }
             } else if (produceSpeed == 2){
                 if (actTimer == 95){
                     spawnShoes(); 
+                    actTimer = 0;
                 }
             } else if (produceSpeed == 2.5){
                 if (actTimer == 80){
                     spawnShoes(); 
+                    actTimer = 0;
                 }
             } else if (produceSpeed == 3){
                 if (actTimer == 65){
-                    spawnShoes(); 
+                    spawnShoes();
+                    actTimer = 0; 
                 }
             } else if (produceSpeed == 3.5){
                 if (actTimer == 60){
                     spawnShoes(); 
+                    actTimer = 0;
                 }
             } else if (produceSpeed == 4){
                 if (actTimer == 55){
                     spawnShoes(); 
+                    actTimer = 0;
                 }
             } else if (produceSpeed == 4.5){
                 if (actTimer == 50){
                     spawnShoes(); 
+                    actTimer = 0;
                 }
             } else if (produceSpeed >= 5){
                 if (actTimer == 45){
                     spawnShoes(); 
+                    actTimer = 0;
                 }
             }
         }
@@ -200,65 +206,83 @@ public class LeftMachines extends Machines
             if (produceSpeed <= 1){
                 if (actTimer == 150){
                     spawnShoes(); 
+                    actTimer = 0;
                 }
                 if (actTimer == 203){
                     spawnShoes(); 
+                    actTimer = 0;
                 }
             } else if (produceSpeed == 1.5){
                 if (actTimer == 110){
                     spawnShoes(); 
+                    actTimer = 0;
                 }
                 if (actTimer == 80){
                     spawnShoes(); 
+                    actTimer = 0;
                 }
             } else if (produceSpeed == 2){
                 if (actTimer == 95){
                     spawnShoes(); 
+                    actTimer = 0;
                 }
                 if (actTimer == 75){
                     spawnShoes(); 
+                    actTimer = 0;
                 }
             } else if (produceSpeed == 2.5){
                 if (actTimer == 80){
                     spawnShoes(); 
+                    actTimer = 0;
                 }
                 if (actTimer == 70){
                     spawnShoes(); 
+                    actTimer = 0;
                 }
             } else if (produceSpeed == 3){
                 if (actTimer == 65){
                     spawnShoes(); 
+                    actTimer = 0;
                 }
                 if (actTimer == 60){
                     spawnShoes(); 
+                    actTimer = 0;
                 }
             } else if (produceSpeed == 3.5){
                 if (actTimer == 60){
                     spawnShoes(); 
+                    actTimer = 0;
                 }
                 if (actTimer == 46){
                     spawnShoes(); 
+                    actTimer = 0;
                 }
             } else if (produceSpeed == 4){
                 if (actTimer == 55){
                     spawnShoes(); 
+                    actTimer = 0;
                 }
                 if (actTimer == 40){
                     spawnShoes(); 
+                    actTimer = 0;
                 }
             } else if (produceSpeed == 4.5){
                 if (actTimer == 50){
                     spawnShoes(); 
+                    actTimer = 0;
                 }
                 if (actTimer == 35){
                     spawnShoes(); 
+                    actTimer = 0;
                 }
             } else if (produceSpeed >= 5){
                 if (actTimer == 45){
                     spawnShoes(); 
+                    actTimer = 0;
                 }
                 if (actTimer == 20){
                     spawnShoes(); 
+                    actTimer = 0;
                 }
             }
         }
