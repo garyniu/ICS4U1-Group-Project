@@ -20,7 +20,8 @@ public class ValueSetting extends World
 
     private GreenfootImage background2, whiteRect;
     private String LUPstr, RUPstr, LISstr, RISstr;
-
+    private GreenfootSound Valuemusic;
+    private GreenfootSound Click;
     /**
      * Constructor for objects of class ValueSetting.
      * 
@@ -32,6 +33,12 @@ public class ValueSetting extends World
         background2 = new GreenfootImage("ValueScreen.png");
         background2.scale(1024,800);
         setBackground(background2);
+
+        Valuemusic = new GreenfootSound("ValueScreen.mp3");
+        
+        Click = new GreenfootSound ("Click.mp3");
+        
+        
 
         GreenfootImage left = new GreenfootImage("LeftButton.png");
         left.scale(left.getWidth()/3, left.getHeight()/3);
@@ -52,14 +59,12 @@ public class ValueSetting extends World
         addObject(LLU, 60, 300); 
 
 
-
         LLS = new Button(left, leftHover);
         addObject(LLS, 60, 420); 
 
         //left side, right buttons
         LRU = new Button(right, rightHover);
         addObject(LRU, 410, 300); 
-
 
 
         LRS = new Button(right, rightHover);
@@ -70,14 +75,12 @@ public class ValueSetting extends World
         addObject(RLU, 610, 300); 
 
 
-
         RLS = new Button(left, leftHover);
         addObject(RLS, 610, 420); 
 
         //right side, right buttons
         RRU = new Button(right, rightHover);
         addObject(RRU, 960, 300); 
-
 
 
         RRS = new Button(right, rightHover);
@@ -93,36 +96,46 @@ public class ValueSetting extends World
         addObject(RT, 675, 520); 
         RD = new Button(right, rightHover);
         addObject(RD, 675, 620); 
-        
+
         //Option buttons
-        
+
         GreenfootImage startImg = new GreenfootImage("StartGame.png");
         startImg.scale(startImg.getWidth() / 3, startImg.getHeight() / 3);
         start = new Button(startImg, startImg);
         addObject(start, 860, 650);
-        
+
         GreenfootImage defaultImg = new GreenfootImage("Default.png");
         defaultImg.scale(defaultImg.getWidth() / 3, defaultImg.getHeight() / 3);
         defaults = new Button(defaultImg, defaultImg);
         addObject(defaults, 160, 730);
-        
+
         GreenfootImage menuImg = new GreenfootImage("Menu.png");
         menuImg.scale(menuImg.getWidth() / 3, menuImg.getHeight() / 3);
         menu = new Button(menuImg, menuImg);
         addObject(menu, 160, 650);
-    }
-
-    public void act(){
-
-        //left side
-        //left side
-        //left side
-
         
+        started();
+    }
+    
+    public void started(){
+        Valuemusic.playLoop();
+    }
+    
+    public void stopped(){
+        Valuemusic.stop();
+    }
+    
+    public void act(){
+        //left side
+        //left side
+        //left side
+
         if (LLU.listenForClick()){
             LUP--;
+            Click.play();
         } else if (LRU.listenForClick()){
             LUP++;
+            Click.play();
         }
 
         if (LUP > 2){
@@ -142,38 +155,38 @@ public class ValueSetting extends World
         GreenfootImage LUPtext = new GreenfootImage(LUPstr, 30, Color.BLACK, Color.WHITE);
         background2.drawImage(whiteRect, 125, 289);
         background2.drawImage(LUPtext, 190, 289);
-        
-        
+
     
-        
-        
         
         if (LLS.listenForClick()){
             LSM-=100;
+            Click.play();
         } else if (LRS.listenForClick()){
             LSM+=100;
+            Click.play();
         }
-        
+
         if (LSM > 1000){
             LSM = 1000;
         } else if (LSM < 200){
             LSM = 200;
         }
-        
+
         GreenfootImage LSMtext = new GreenfootImage(Integer.toString(LSM), 30, Color.BLACK, Color.WHITE);
         background2.drawImage(whiteRect, 125, 406);
         background2.drawImage(LSMtext, 210, 406);
-        
-        
+
         
         //right side
         //right side
         //right side
-        
+
         if (RLU.listenForClick()){
             RUP--;
+            Click.play();
         } else if (RRU.listenForClick()){
             RUP++;
+            Click.play();
         }
 
         if (RUP > 2){
@@ -193,63 +206,68 @@ public class ValueSetting extends World
         GreenfootImage RUPtext = new GreenfootImage(RUPstr, 30, Color.BLACK, Color.WHITE);
         background2.drawImage(whiteRect, 700, 289);
         background2.drawImage(RUPtext, 750, 289);
-        
-        
+
         
         if (RLS.listenForClick()){
             RSM -= 100;
+            Click.play();
         } else if (RRS.listenForClick()){
             RSM += 100;
+            Click.play();
         }
-        
+
         if (RSM > 1000){
             RSM = 1000;
         } else if (RSM < 200){
             RSM = 200;
         }
-        
+
         GreenfootImage RSMtext = new GreenfootImage(Integer.toString(RSM), 30, Color.BLACK, Color.WHITE);
         background2.drawImage(whiteRect, 700, 406);
         background2.drawImage(RSMtext, 770, 406);
 
         //base
-        
+
         if (LT.listenForClick()){
             time -= 30;
+            Click.play();
         } else if (RT.listenForClick()){
             time += 30;
+            Click.play();
         }
-        
+
         if (time > 120){
             time = 120;
         } else if (time < 60){
             time = 60;
         }
-        
+
         GreenfootImage TIMEtext = new GreenfootImage(Integer.toString(time) + " Seconds", 30, Color.BLACK, Color.WHITE);
         background2.drawImage(whiteRect, 400, 505);
         background2.drawImage(TIMEtext, 440, 505);
-        
-        
+
         if (LD.listenForClick() || RD.listenForClick()){
             if(difficulty) difficulty = false;
             else if(!difficulty) difficulty = true;
+            Click.play();
         } 
-        
+
         GreenfootImage Difftext;
         if (difficulty){
             Difftext = new GreenfootImage("Hard Difficulty", 30, Color.BLACK, Color.WHITE);
         } else {
             Difftext = new GreenfootImage("Easy Difficulty", 30, Color.BLACK, Color.WHITE);
         }
-        
+
         background2.drawImage(whiteRect, 400, 605);
         background2.drawImage(Difftext, 425, 605);
-        
+
         //buttons
         if (start.getClick()){
             //Greenfoot.setWorld(new GameWorld());
             Greenfoot.setWorld(new GameWorld(LUP, RUP, LSM, RSM, time, difficulty));
+            stopped();
+            Click.play();
         }
         if (defaults.getClick()){
             LUP = 0; RUP = 0;
@@ -257,9 +275,12 @@ public class ValueSetting extends World
             LSM = 0; RSM = 0;
             time = 90;
             difficulty = false;
+            Click.play();
         }
         if (menu.getClick()){
             Greenfoot.setWorld(new Menu());
+            stopped();
+         
         }
     }
 

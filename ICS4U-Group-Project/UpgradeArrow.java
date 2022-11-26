@@ -13,20 +13,26 @@ public class UpgradeArrow extends Actor
     private int duration;
     private GreenfootImage image;
     
+    private GreenfootSound upgrade;
     public UpgradeArrow(int type){
         this.type = type;
         
         if (type == 0){
             image = new GreenfootImage("WorkerArrow.png");
             image.scale(image.getWidth()/10, image.getHeight()/10);
+            
             setImage(image);
+            
         } else if (type == 1){
             image = new GreenfootImage("MachineUpgrade.png");
             image.scale(image.getWidth()/4, image.getHeight()/4);
+    
             setImage(image);
         }
         
         
+        upgrade = new GreenfootSound("upgrade.mp3");
+        upgrade.setVolume(30);
         duration = 60;
     }
     /**

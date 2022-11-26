@@ -14,14 +14,18 @@ public class Truck extends Actor
     private int stopPointA = 150, stopPointB = 680;
 
     private GreenfootImage image = new GreenfootImage("truck.png");
+    private GreenfootSound truckNoise;
 
     public Truck(){
         setImage(image);
         //System.out.println(getImage().getWidth() * 5 / 6);
         getImage().scale((getImage().getWidth() * 2 / 3), (getImage().getHeight() * 2 / 3));
-
+        
+        truckNoise = new GreenfootSound("truck.mp3");
+        truckNoise.setVolume(35);
     }
-
+    
+    
     public void act(){
         if (timer > 0){
             timer--;
@@ -54,6 +58,7 @@ public class Truck extends Actor
 
         if (stopTime == 60 || stopTime == 120 || stopTime == 180){
             getWorld().addObject(new TruckItems(), getX(), getY()+50);
+            truckNoise.play();
         }
 
         if (getX() > getWorld().getWidth()-2){
