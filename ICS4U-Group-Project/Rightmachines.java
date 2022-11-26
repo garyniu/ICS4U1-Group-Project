@@ -280,6 +280,8 @@ public class Rightmachines extends Machines
         
         if (actTimer > 300) actTimer = 0;
     }
+    
+    
 
     public void updateSpeed(){
         GameWorld gw = (GameWorld)getWorld();
@@ -309,4 +311,12 @@ public class Rightmachines extends Machines
     public static void setMachItemValueB(double value){
         itemValue = value; 
     }
+    public int returnWorkers(){
+        return WC;
+    }
+    
+    public void resetWorkers(){
+        WC = 1;
+    }
+
 }

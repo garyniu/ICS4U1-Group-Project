@@ -198,6 +198,13 @@ public class GameWorld extends World
             
             
         } else if (side == "right"){
+            
+            ArrayList<Rightmachines> rightMachines = (ArrayList<Rightmachines>)this.getObjects(Rightmachines.class);
+            for(Rightmachines m : rightMachines){
+                m.strikeRemove();
+                m.resetWorkers();
+            }
+            
             RworkerCount = 1;
         }
     }
@@ -319,7 +326,7 @@ public class GameWorld extends World
             }
             if (Upgrade == 0 && currencyB > 400 && produceSpeedB  < maxSpeed){
                 if (currencyB > 500){
-                    currencyB -= currencyA/4;
+                    currencyB -= currencyB/4;
                 } else {
                     currencyB -= 400;
                 }
