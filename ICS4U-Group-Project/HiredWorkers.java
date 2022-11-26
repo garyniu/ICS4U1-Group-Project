@@ -9,16 +9,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class HiredWorkers extends People
 {
 
-    private static int workerCount = 0;
     private int fadepercent = 0, fadein = 120, originalPos;
 
     public HiredWorkers(int locX, int locY){
         super(locX, locY);
         //incrementing worker count
         GameWorld gw = (GameWorld)getWorld();
-        workerCount = gw.getWorkerCount();
-        workerCount++;
-        gw.setWorkerCount(workerCount);
+        
 
         originalPos = locY;
 
@@ -81,8 +78,7 @@ public class HiredWorkers extends People
 
         if (time > 120){
             GameWorld gw = (GameWorld)getWorld();
-            workerCount--;
-            gw.setWorkerCount(workerCount);
+
             getWorld().removeObject(this);
         }
 

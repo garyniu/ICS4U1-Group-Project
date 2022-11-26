@@ -20,7 +20,7 @@ public class GameWorld extends World
     //0 = random, 1 = workers, 2 = machines
     private int upgradePrefA;
     private int upgradePrefB;
-    
+
     private int itemChoiceA; //0=shoes, 1 = tools, 2 = phones
     private int itemChoiceB;
 
@@ -29,19 +29,23 @@ public class GameWorld extends World
     private boolean strikeStatusA;
     private boolean strikeStatusB;
     
+
     private boolean hardMode; //true = hard, false = easy
 
-    private int workerCount; 
+    private boolean L2M = false, L3M = false, R2M = false, R3M = false;
+
+    private int LworkerCount = 1, RworkerCount = 1; 
 
     private boolean truckActive; 
-    
     private static double itemValueA;
     private static double itemValueB; 
     
     private static double produceSpeedA;
     private static double produceSpeedB;
     
+
     private String winner; 
+    private Boss a, b;
     /**
      * Constructor for objects of class MyWorld.
      *
@@ -51,28 +55,27 @@ public class GameWorld extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 800, 1);
         setPaintOrder(Effect.class, Event.class, Items.class, People.class, Machines.class);
-        
+
         //set variables
         currencyA = LSM;
         currencyB = RSM;
-        
+
         upgradePrefA = LUP;
         upgradePrefB = RUP;
-        
-        
+
         //workerUpgradePref = true; 
         //machUpgradePref = false;
-        
+
         //workerCount = 10;
         counter = 0;
         timer = 0;
         maxTimer = time; 
 
         hardMode = difficulty;
-        
+
         itemChoiceA = 0; 
         itemChoiceB = 0; 
-        
+
         activeEventA = false;
         activeEventB = false;
         strikeStatusA = false;
@@ -86,21 +89,26 @@ public class GameWorld extends World
         
         spawnMachines();
         //addObject(new Boss(0, 50), 0, 50);
-        
+
         background = new GreenfootImage("bg.png");
         background.scale(1200, 800);
         GreenfootImage bg = getBackground();
         bg.drawImage(background, -85, 0);
 
         setBackground(bg);
-        
+
+        a = new Boss(40, 40, LUP, 0);
+        b = new Boss(800, 40, RUP, 0);
+
+        addObject(a, 40, 40);
+        addObject(b, 800, 40);
 
         getBackground().setColor(new Color(0, 0, 0));
         getBackground().drawLine(512, 0, 512, 800);
-        
+
         addObject(new Truck(), 0, 100);
         truckActive = true; 
-        
+
     }
 
     public void act()
@@ -130,19 +138,57 @@ public class GameWorld extends World
     {
         addObject(new LeftMachines(), 288, 300);
         //if(workerCountA == 3 && machUpgradePref)
-        addObject(new LeftMachines(), 288, 450);
-        //if(workerCountA == 6 && machUpgradePref)
-        addObject(new LeftMachines(), 288, 600);
 
         addObject(new Rightmachines(), 801, 300);
         //if(workerCountB == 3 && machUpgradePref)
-        addObject(new Rightmachines(), 801, 450);
-        //if(workerCountB == 6 && machUpgradePref)
-        addObject(new Rightmachines(), 801, 600);
 
-        addObject(new VertConveyor(), 465, 465);
-        addObject(new VertConveyor(), 978, 465);
+        addObject(new VertConveyor(), 350, 350);
+        addObject(new VertConveyor(), 882, 350);
+        //just duplicate on top of the current worker
+        //every time a new worker appears
+        //addObject(new Hitboxes(), 150,50);
+
+        //addObject(new Hitboxes(), 350,600);
+        //addObject(new Hitboxes(), 882, 600); 
+
     }
+
+    
+    public void LaterMachines(){
+
+        //worker will be tied to a machine
+        //machine will spawn the workers
+        //create method in machine to spawn wokers
+
+        if (LworkerCount > 3 && LworkerCount <=6){
+            //add machine, with workers
+        } else if (LworkerCount > 6){
+            //add 2nd machine
+        }
+
+        //true/false to spawn machine, add to workercount
+    }
+    
+    public void upgrades(String side, int Upgrade){
+        System.out.println("boss upgrade side: " + side + "\nUpgrade type: " + Upgrade + "\n");
+        //only upgreade if enough money
+        
+        if (side == "left"){
+            
+            if (Upgrade == 1){
+                LworkerCount++;
+            }
+        } else if (side == "right"){
+            
+            if (Upgrade == 1){
+                RworkerCount++;
+            }
+        }
+        
+    }
+
+
+
     public void spawnTruck(){
         if(!truckActive){
             if(Greenfoot.getRandomNumber(600) == 0){
@@ -151,6 +197,7 @@ public class GameWorld extends World
             }
         }
     }
+
     public void timer(){
         counter += 1;
         if(counter%60 == 0){
@@ -159,6 +206,7 @@ public class GameWorld extends World
         //int time = (int)Math.floor(timer * 100)/100;
         showText("Time: " + timer, 512, 20);
     }
+
     public void checkTimerOver(){
         if(timer == maxTimer){
             if(currencyA > currencyB){
@@ -200,6 +248,7 @@ public class GameWorld extends World
             }
         }
     }
+
     public void chooseEventA(){
         int eventA = Greenfoot.getRandomNumber(3);
         if(!activeEventA){
@@ -216,6 +265,7 @@ public class GameWorld extends World
             }
         }
     }
+
     public void chooseEventB(){
         int eventB = Greenfoot.getRandomNumber(3);
         if(!activeEventB){
@@ -232,39 +282,56 @@ public class GameWorld extends World
             }
         }
     }
-    public int getWorkerCount(){
-        return workerCount; 
+
+    public int getWorkerCount(int side){
+        if (side == 0){
+            return LworkerCount; 
+        } else if (side == 1){
+            return RworkerCount; 
+        }
+        return 0;
     }
-    public void setWorkerCount(int newWorkerCount){
-        workerCount = newWorkerCount; 
+
+    public void setWorkerCount(int newWorkerCount, int side){
+        if (side == 0){
+            LworkerCount = newWorkerCount; 
+        } else if (side == 1){
+            RworkerCount = newWorkerCount; 
+        }
     }
 
     public static int getCurrencyA()
     {
         return currencyA;
     }
+
     public static void addCurrencyA()
     {
         currencyA += itemValueA;
     }
-    
+
     public static int getCurrencyB(){
         return currencyB;
     }
+
     public static void addCurrencyB()
     {
         currencyB += itemValueB;
     }
     //event and truck status getters and setters - to ensure multiple don't spawn at once
+
     public void setEventStatusA(boolean x){
         activeEventA = x;
     }
+
     public boolean getEventStatusA(){
         return activeEventA; 
     }
+
     public void setEventStatusB(boolean x){
         activeEventB = x;
     }
+
     public boolean getEventStatusB(){
         return activeEventB;
     }    
@@ -283,6 +350,7 @@ public class GameWorld extends World
     public boolean getTruckStatus(){
         return truckActive;
     }
+
     public void changeTruckStatus(){
         truckActive = false;
     }
@@ -290,12 +358,15 @@ public class GameWorld extends World
     public double getItemValueA(){
         return itemValueA;
     }
+
     public void setItemValueA(double newItemValue){
         itemValueA = newItemValue; 
     }
+
     public double getItemValueB(){
         return itemValueB; 
     }
+
     public void setItemValueB(double newItemValue){
         itemValueB = newItemValue; 
     }
