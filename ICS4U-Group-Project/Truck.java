@@ -11,7 +11,7 @@ public class Truck extends Actor
     private int timer = 120, xCoordBeforeStop = 0, distFromStop = 0, transInt, stopTime = 0;
     private double unit = 2.0, trans = 0;
     private boolean dropOff = false;
-    private int stopPointA = 300, stopPointB = 700;
+    private int stopPointA = 150, stopPointB = 680;
 
     private GreenfootImage image = new GreenfootImage("truck.png");
 

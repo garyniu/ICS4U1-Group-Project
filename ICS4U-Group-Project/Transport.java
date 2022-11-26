@@ -10,7 +10,7 @@ public class Transport extends People
 {
 
     private int goX, goY;
-    private int goingX, goingY, timer = 0;
+    private int goingX, goingY, timer = 0, seqence = 1;
     private boolean pointT = false, pointC = true, moving = true;
     private String side;
     private GreenfootImage image, imageA;
@@ -54,14 +54,15 @@ public class Transport extends People
 
         }
 
+        // midpo
         if (!pointC && pointT){
 
             if (side == "left"){
-                goingX = 50;
-                goingY = 100;
+                goingX = 70;
+                goingY = 150;
             } else {
                 goingX = 570;
-                goingY = 100;
+                goingY = 150;
             }
         }
 
