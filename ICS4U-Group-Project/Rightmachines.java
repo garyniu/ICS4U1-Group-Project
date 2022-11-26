@@ -249,6 +249,8 @@ public class Rightmachines extends Machines
                 }
             }
         }
+        
+        if (actTimer > 300) actTimer = 0;
     }
 
     public void updateSpeed(){

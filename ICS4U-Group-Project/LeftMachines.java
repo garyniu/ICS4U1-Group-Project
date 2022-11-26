@@ -121,8 +121,11 @@ public class LeftMachines extends Machines
         itemValue = gw.getItemValueA(); 
     }
     public void checkShoeFinished(){
+        
+        System.out.println(produceSpeed + " " + actTimer);
         if(produceSpeed <= 1 && actTimer == 293){
             spawnShoes(); 
+            
             actTimer = 0;
         }else if(produceSpeed == 1.5 && actTimer == 195){
             spawnShoes();
@@ -257,6 +260,10 @@ public class LeftMachines extends Machines
                     spawnShoes(); 
                 }
             }
+        }
+        
+        if (actTimer > 300){
+            actTimer = 0;
         }
         
     }

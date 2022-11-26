@@ -20,6 +20,9 @@ public class ValueSetting extends World
 
     private GreenfootImage background2, whiteRect;
     private String LUPstr, RUPstr, LISstr, RISstr;
+    
+    private GreenfootSound Valuemusic;
+    private GreenfootSound Click;
 
     /**
      * Constructor for objects of class ValueSetting.
@@ -32,6 +35,10 @@ public class ValueSetting extends World
         background2 = new GreenfootImage("ValueScreen.png");
         background2.scale(1024,800);
         setBackground(background2);
+        
+        Valuemusic = new GreenfootSound("ValueScreen.mp3");
+        
+        Click = new GreenfootSound ("Click.mp3");
 
         GreenfootImage left = new GreenfootImage("LeftButton.png");
         left.scale(left.getWidth()/3, left.getHeight()/3);
@@ -111,6 +118,14 @@ public class ValueSetting extends World
         menu = new Button(menuImg, menuImg);
         addObject(menu, 160, 650);
     }
+    
+    public void started(){
+        Valuemusic.playLoop();
+    }
+    
+    public void stopped(){
+        Valuemusic.stop();
+    }
 
     public void act(){
 
@@ -120,9 +135,9 @@ public class ValueSetting extends World
 
         
         if (LLU.listenForClick()){
-            LUP--;
+            LUP--; Click.play();
         } else if (LRU.listenForClick()){
-            LUP++;
+            LUP++; Click.play();
         }
 
         if (LUP > 2){
@@ -149,9 +164,9 @@ public class ValueSetting extends World
         
         
         if (LLS.listenForClick()){
-            LSM-=100;
+            LSM-=100; Click.play();
         } else if (LRS.listenForClick()){
-            LSM+=100;
+            LSM+=100; Click.play();
         }
         
         if (LSM > 1000){
@@ -171,9 +186,9 @@ public class ValueSetting extends World
         //right side
         
         if (RLU.listenForClick()){
-            RUP--;
+            RUP--; Click.play();
         } else if (RRU.listenForClick()){
-            RUP++;
+            RUP++; Click.play();
         }
 
         if (RUP > 2){
@@ -197,9 +212,9 @@ public class ValueSetting extends World
         
         
         if (RLS.listenForClick()){
-            RSM -= 100;
+            RSM -= 100; Click.play();
         } else if (RRS.listenForClick()){
-            RSM += 100;
+            RSM += 100; Click.play();
         }
         
         if (RSM > 1000){
@@ -215,9 +230,9 @@ public class ValueSetting extends World
         //base
         
         if (LT.listenForClick()){
-            time -= 30;
+            time -= 30; Click.play();
         } else if (RT.listenForClick()){
-            time += 30;
+            time += 30; Click.play();
         }
         
         if (time > 120){
@@ -234,6 +249,7 @@ public class ValueSetting extends World
         if (LD.listenForClick() || RD.listenForClick()){
             if(difficulty) difficulty = false;
             else if(!difficulty) difficulty = true;
+            Click.play();
         } 
         
         GreenfootImage Difftext;
@@ -250,6 +266,8 @@ public class ValueSetting extends World
         if (start.getClick()){
             //Greenfoot.setWorld(new GameWorld());
             Greenfoot.setWorld(new GameWorld(LUP, RUP, LSM, RSM, time, difficulty));
+            stopped();
+            Click.play();
         }
         if (defaults.getClick()){
             LUP = 0; RUP = 0;
@@ -257,6 +275,7 @@ public class ValueSetting extends World
             LSM = 0; RSM = 0;
             time = 90;
             difficulty = false;
+            Click.play();
         }
         if (menu.getClick()){
             Greenfoot.setWorld(new Menu());

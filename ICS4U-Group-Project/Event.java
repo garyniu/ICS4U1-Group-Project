@@ -21,6 +21,9 @@ public abstract class Event extends Actor
     private double slowSpeedLeft;
     private double slowSpeedRight;
     
+    protected GreenfootSound Goodstock;
+    protected GreenfootSound Badstock;
+    
     protected GreenFlash gf; 
     protected RedFlash rf;
     
@@ -29,6 +32,11 @@ public abstract class Event extends Actor
         this.left = left;
         this.right = right;
         flashAdded = false;
+        
+        Goodstock = new GreenfootSound("Goodstock.mp3");
+        Goodstock.setVolume(30);
+        Badstock = new GreenfootSound("Badstock.mp3");
+        Badstock.setVolume(30);
     }
     public void act()
     {
@@ -100,6 +108,7 @@ public abstract class Event extends Actor
                 w.addObject(rf, 768, 400);
             }
             flashAdded = true;
+            Badstock.play();
         }
     }
     public void addGreenFlash(){
@@ -114,6 +123,7 @@ public abstract class Event extends Actor
                 w.addObject(gf, 768, 400);
             }
             flashAdded = true;
+            Goodstock.play();
         }
     }
 }
