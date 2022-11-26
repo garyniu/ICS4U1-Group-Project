@@ -10,17 +10,12 @@ public class TruckItems extends Actor
 {
     private int duration;
     private GreenfootImage image;
-    
-    private GreenfootSound delivery;
+
     public TruckItems(){
         image = new GreenfootImage("boximg.png");
         image.scale(40, 40);
         setImage(image);
         duration = 80;
-        
-        delivery = new GreenfootSound("delivery.mp3");
-        
-        
     }
 
     public void act()
@@ -33,7 +28,6 @@ public class TruckItems extends Actor
         } else if (duration <= 60){
             double percent = duration / (double)80;
             int transperency = (int)(percent * 255);
-            delivery.play();
 
             // Prevent going out of bounds
             if (transperency > 255){

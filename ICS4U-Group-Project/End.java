@@ -13,18 +13,10 @@ public class End extends World
      * Constructor for objects of class End.
      * 
      */
-<<<<<<< Updated upstream
     public End()
-=======
-    private String winner; 
-    private GreenfootSound end;
-    public End(String winner)
->>>>>>> Stashed changes
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 800, 1); 
-        
-        end = new GreenfootSound("end.mp3");
         
         GreenfootImage background2 = new GreenfootImage("EndScreen.png");
         background2.scale(1024,800);
@@ -36,37 +28,13 @@ public class End extends World
         GreenfootImage greyBackground = new GreenfootImage("HoverPlayAgain.png");
         greyBackground.scale(greyBackground.getWidth()/4, greyBackground.getHeight()/4);
         
-<<<<<<< Updated upstream
-=======
-        if(winner == "left"){
-          System.out.println("THe winner was left side");
-          end.playLoop();
-        } else if(winner == "right"){
-            System.out.println("the winner was right side");
-            end.playLoop();
-        }else if(winner == "tie"){
-            System.out.println("There was a tie"); 
-            end.playLoop();
-        }
-        
-        
->>>>>>> Stashed changes
         b = new Button(background, greyBackground);
         addObject(b,getWidth()/2,getHeight()/2 + 100); 
     }
-    public void started(){
-        end.playLoop();
-        
-    }
-    
-    public void stopped(){
-        end.stop();
-    }
-   
+
     public void act(){
         if (b.getClick()){
             Greenfoot.setWorld(new Menu());
-            stopped();
         }
     }
 
