@@ -107,6 +107,8 @@ public class GameWorld extends World
 
         spawnInitalMachines();
         
+        
+        
         produceSpeedA = 1;
         produceSpeedB = 1;
         
@@ -166,9 +168,11 @@ public class GameWorld extends World
     {
         
         Lone = new LeftMachines();
+        addObject(new Transport(100, 300, "left"), 100, 300);
         addObject(Lone, 288, 300);
         
         Rone = new Rightmachines();
+        addObject(new Transport(610, 300, "right"), 610, 300);
         addObject(Rone, 801, 300);
         
 
@@ -214,6 +218,7 @@ public class GameWorld extends World
         } else if (LworkerCount == 4 && !spawnedLTwo){
             //add machine, with workers
             Ltwo = new LeftMachines();
+            addObject(new Transport(100, 450, "left"), 100, 450);
             addObject(Ltwo, 288, 450);
             spawnedLTwo = true;
         } else if (LworkerCount == 5){
@@ -223,6 +228,7 @@ public class GameWorld extends World
         } else if (LworkerCount == 7 && !spawnedLThree){
             //add 2nd machine
             Lthree = new LeftMachines();
+            addObject(new Transport(100, 600, "left"), 100, 600);
             addObject(Lthree, 288, 600);
             spawnedLThree = true;
         } else if (LworkerCount == 8){
@@ -239,6 +245,7 @@ public class GameWorld extends World
         } else if (RworkerCount == 4 && !spawnedRTwo){
             //add machine, with workers
             Rtwo = new Rightmachines();
+            addObject(new Transport(610, 450, "right"), 610, 450);
             addObject(Rtwo, 801, 450);
             spawnedRTwo = true;
         } else if (RworkerCount == 5){
@@ -248,6 +255,7 @@ public class GameWorld extends World
         } else if (RworkerCount == 7 && !spawnedRThree){
             //add 2nd machine
             Rthree = new Rightmachines();
+            addObject(new Transport(610, 600, "right"), 610, 600);
             addObject(Rthree, 801, 600);
             spawnedRThree = true;
         } else if (RworkerCount == 8){
@@ -278,7 +286,11 @@ public class GameWorld extends World
             //check enough money
             
             if (Upgrade == 1 && currencyA > 500 && LworkerCount <= 9){
-                currencyA -= 200;
+                if (currencyA > 600){
+                    currencyA -= currencyA/4;
+                } else {
+                    currencyA -= 500;
+                }
                 LworkerCount++;
                 LaterMachines();
                 addObject(new UpgradeArrow(0), b.getX(), b.getY());
@@ -293,7 +305,12 @@ public class GameWorld extends World
         } else if (side == "right"){
             
             if (Upgrade == 1 && currencyB > 500 && RworkerCount <= 9){
-                currencyB -= 200;
+                if (currencyB > 600){
+                    currencyB -= currencyB/4;
+                } else {
+                    currencyB -= 500;
+                }
+                
                 RworkerCount++;
                 LaterMachines();
                 addObject(new UpgradeArrow(0), b.getX(), b.getY());
