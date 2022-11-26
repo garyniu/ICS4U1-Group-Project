@@ -37,8 +37,8 @@ public class LeftMachines extends Machines
             actTimer++;
         }
         if(!speedSet){
-            updateSpeed();
             updateDefaultSpeedA(); 
+            updateSpeed();
             speedSet = true;
         }
         checkShoeFinished(); 
