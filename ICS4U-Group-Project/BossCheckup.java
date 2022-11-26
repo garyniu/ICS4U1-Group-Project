@@ -37,26 +37,24 @@ public class BossCheckup extends Event
             //randomize a #, if '0', workers get a raise, production speeds up , if '1', workers get pay deduction, less productive 
             int x = Greenfoot.getRandomNumber(2);
             if(x==0){
-                gw.increaseEfficiency(side);
+                increaseEfficiency(side);
             } else if (x==1){
-                gw.slowEfficiency(side);
+                slowEfficiency(side);
             }
-
             gw.removeObject(b);
             endEvent();
         }
     }
 
-    public void addedToWorld(GameWorld gw){
+    public void addedToWorld(World w){
+        GameWorld gw = (GameWorld)getWorld(); 
         if(left){
             b = new Boss(0, 1); 
             gw.addObject(b, 0, 50);
         }
         else if(right){
             b = new Boss(0, 1);
-            gw.addObject(b, 512, 50);
+            gw.addObject(b, 572, 50);
         }
     }
-    
-    
 }

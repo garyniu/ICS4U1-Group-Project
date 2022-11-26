@@ -11,6 +11,7 @@ public class BoomingBusiness extends Event
     private boolean flashAdded; 
     private boolean stockIncreased;
     private boolean animated; 
+    private boolean imageAdded;
     
     private double itemA;
     private double itemB;
@@ -27,14 +28,13 @@ public class BoomingBusiness extends Event
         flashAdded=false;
         stockIncreased = false;
         animated = false;
+        imageAdded = false;
         System.out.println("BOOMING BUSINESS");
-        
-        GameWorld gw = (GameWorld)getWorld(); 
-        gw.addObject(bbImage, this.getX()-181, 650);
                 
         upArrow = new GreenfootImage[19];
         imageIndex = 0;
         animationTimer = new SimpleTimer();
+        bbImage = new BoomingBusinessImage(); 
         
         
         for(int i = 0; i<upArrow.length;i++){
@@ -57,9 +57,10 @@ public class BoomingBusiness extends Event
     
     public void act()
     {
-        //GameWorld gw = (GameWorld)getWorld(); 
-        //gw.drawImage(image, this.getX()-256, this.getY()); 
         eventTimer++;
+        GameWorld gw = (GameWorld)getWorld();
+        gw.addObject(bbImage, this.getX()-190, 625);
+            
         if(!animated){
             animateArrow();
         }
@@ -72,6 +73,7 @@ public class BoomingBusiness extends Event
             stockIncreased = true;
         }
         if(eventTimer == duration){
+            gw.removeObject(bbImage); 
             endEvent();
         }
     }

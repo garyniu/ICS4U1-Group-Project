@@ -112,22 +112,10 @@ public class GameWorld extends World
         produceSpeedA = 1;
         produceSpeedB = 1;
         
-        /*
-        canvasA = new GreenfootImage(75,75);
-        canvasB = new GreenfootImage(75,75); 
-        bbImage = new GreenfootImage("images/STOCKMARKETBOOMINTEXT.png");
-        bcImage = new GreenfootImage("images/BOSSCHECKUP.png");
-        smcImage = new GreenfootImage("images/STOCKMARKETCRASHTEXT.png"); 
-        strkImage = new GreenfootImage("images/STRIKE.png"); 
-        */
-        //addObject(new Boss(0, 50), 0, 50);
-
         background = new GreenfootImage("bg.png");
         background.scale(1200, 800);
         GreenfootImage bg = getBackground();
         bg.drawImage(background, -85, 0);
-        //bg.drawImage(canvasA, 0, 500);
-        //bg.drawImage(canvasB, 512, 500); 
 
         setBackground(bg);
 
@@ -296,8 +284,8 @@ public class GameWorld extends World
                 addObject(new UpgradeArrow(0), b.getX(), b.getY());
             }
             if (Upgrade == 0 && currencyA > 400){
-                //currencyA -= 250;
-                //increaseEfficiency(0);
+                currencyA -= 250;
+                increaseEfficiency(0);
                 addObject(new UpgradeArrow(1), b.getX(), b.getY());
             }
             
@@ -316,13 +304,22 @@ public class GameWorld extends World
                 addObject(new UpgradeArrow(0), b.getX(), b.getY());
             }
             if (Upgrade == 0 && currencyB > 400){
-                //currencyB -= 250;
-                //increaseEfficiency(1);
+                currencyB -= 250;
+                increaseEfficiency(1);
                 addObject(new UpgradeArrow(1), b.getX(), b.getY());
             }
         }
     }
-
+    //methods for changing efficiency
+    public void increaseEfficiency(int side){
+        if(side == 0){
+            produceSpeedA+=0.5;
+        }
+        else if(side == 1){
+            produceSpeedB+=0.5;
+        }
+    }
+    
     public void spawnTruck(){
         if(!truckActive){
             if(Greenfoot.getRandomNumber(600) == 0){
@@ -384,13 +381,13 @@ public class GameWorld extends World
         if(!activeEventA){
             activeEventA = true;
             if(eventA == 3){
-                addObject(new BossCheckup(15, true, false), 75, 650);
+                addObject(new BossCheckup(15, true, false), 66, 625);
             } else if(eventA == 1){
                 addObject(new BoomingBusiness(5, true, false), 256, 400);
             } else if(eventA == 0){
                 addObject(new StockMarketCrash(5, true, false), 256, 400);
             } else if(eventA == 2 && !strikeStatusB){
-                addObject(new Strike(10, true, false), 75, 650);
+                addObject(new Strike(10, true, false), 66, 625);
                 strikeStatusA = true; 
             }
         }
@@ -401,62 +398,18 @@ public class GameWorld extends World
         if(!activeEventB){
             activeEventB = true;
             if(eventB == 3){
-                addObject(new BossCheckup(15, false, true), 587, 650);
+                addObject(new BossCheckup(15, false, true), 578, 625);
             } else if(eventB == 1){
                 addObject(new BoomingBusiness(5, false, true), 768, 400);
             } else if(eventB == 0){
                 addObject(new StockMarketCrash(5, false, true), 768, 450);
             } else if(eventB == 2 && !strikeStatusA){
-                addObject(new Strike(10, false, true), 587, 600);
+                addObject(new Strike(10, false, true), 578, 625);
                 strikeStatusB = true; 
             }
         }
     }
-    //methods for changing efficiency
-    public void increaseEfficiency(int side){
-        if(side == 0){
-            for(LeftMachines lm : getObjects(LeftMachines.class)){
-                //newSpeedLeft = lm.getDefaultSpeedA()+0.5; 
-                //lm.setProdSpeedA(newSpeedLeft);
-                newSpeedLeft = produceSpeedA+=0.5;
-                setProdSpeedA(newSpeedLeft); 
-            }
-        }
-        else if(side == 1){
-            for(Rightmachines rm : getObjects(Rightmachines.class)){
-                //newSpeedRight = rm.getDefaultSpeedB()+0.5; 
-                //rm.setProdSpeedB(newSpeedRight);
-                newSpeedRight = produceSpeedB+=0.5;
-                setProdSpeedB(newSpeedRight); 
-            }
-        }
-    }
-    public void slowEfficiency(int side){
-        if(side == 0){
-            for(LeftMachines lm : getObjects(LeftMachines.class)){
-                slowSpeedLeft = lm.getDefaultSpeedA()-0.5; 
-                lm.setProdSpeedA(slowSpeedLeft);
-            }
-        }
-        else if(side == 1){
-            for(Rightmachines rm : getObjects(Rightmachines.class)){
-                slowSpeedRight = rm.getDefaultSpeedB()-0.5; 
-                rm.setProdSpeedB(slowSpeedRight);
-            }
-        }
-    }
-    public void resumeEfficiency(int side){
-        if(side == 0){
-            for(LeftMachines lm : getObjects(LeftMachines.class)){
-                lm.setProdSpeedA(lm.getDefaultSpeedA()); 
-            }
-        }
-        else if(side == 1){
-            for(Rightmachines rm : getObjects(Rightmachines.class)){
-                rm.setProdSpeedB(rm.getDefaultSpeedB());
-            }
-        }
-    }
+    
     public int getWorkerCount(int side){
         if (side == 0){
             return LworkerCount; 

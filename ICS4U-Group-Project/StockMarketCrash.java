@@ -12,6 +12,7 @@ public class StockMarketCrash extends Event
     private boolean flashAdded;
     private boolean stockDecreased;
     private boolean animated; 
+    private boolean imageAdded; 
     
     private double itemA;
     private double itemB;
@@ -27,15 +28,14 @@ public class StockMarketCrash extends Event
         flashAdded=false;
         stockDecreased = false;
         animated = false;
+        imageAdded = false;
         
         System.out.println("STOCK MARKET CRASH");
-        
-        GameWorld gw = (GameWorld)getWorld(); 
-        gw.addObject(smcImage, this.getX()-181, 650);
         
         downArrow = new GreenfootImage[19];
         imageIndex = 0;
         animationTimer = new SimpleTimer();
+        smcImage = new StockMarketCrashImage(); 
         
         for(int i = 0; i<downArrow.length;i++){
             downArrow[i] = new GreenfootImage("images/DownStonks/DownStonks"+i+".png");
@@ -56,6 +56,8 @@ public class StockMarketCrash extends Event
     }
     public void act(){
         eventTimer++;
+        GameWorld gw = (GameWorld)getWorld();
+        gw.addObject(smcImage, this.getX()-190, 625);
         if(!animated){
             animateArrow();
         }
@@ -68,6 +70,7 @@ public class StockMarketCrash extends Event
             stockDecreased = true; 
         }
         if(eventTimer == duration){
+            gw.removeObject(smcImage); 
             endEvent();
         }
     }    
