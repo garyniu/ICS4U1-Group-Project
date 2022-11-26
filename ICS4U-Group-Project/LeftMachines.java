@@ -25,7 +25,7 @@ public class LeftMachines extends Machines
     private Shoes shoe; 
     private HiredWorkers t_o, t_t, t_th, th_o, th_t, th_th;
 
-    public LeftMachines(int itemChoice)
+    /*public LeftMachines(int itemChoice)
     {
         imageA = new GreenfootImage("shirtMachineTemp.png");
         imageA.scale(300, 100);
@@ -40,13 +40,13 @@ public class LeftMachines extends Machines
         upgradeAmount = GameWorld.getCurrencyA();
 
         //StartingWorkers();
-    /*private static double produceSpeed;
-    private static double defaultSpeed;
-    private static double itemValue;
+        
+    }*/
+
    
     public LeftMachines(){
         super();
-    }*/
+    }
     
 
     public void act()

@@ -55,7 +55,7 @@ public abstract class Event extends Actor
             }
         }
         else if(right){
-            for(Rightmachines rm : gw.getObjects(Rightmachines.class)){
+            for(RightMachines rm : gw.getObjects(RightMachines.class)){
                 newSpeedRight = rm.getDefaultSpeedB()+0.5; 
                 rm.setProdSpeedB(newSpeedRight);
             }
@@ -70,7 +70,7 @@ public abstract class Event extends Actor
             }
         }
         else if(right){
-            for(Rightmachines rm : gw.getObjects(Rightmachines.class)){
+            for(RightMachines rm : gw.getObjects(RightMachines.class)){
                 slowSpeedRight = rm.getDefaultSpeedB()-0.5; 
                 rm.setProdSpeedB(slowSpeedRight);
             }

@@ -137,10 +137,10 @@ public class GameWorld extends World
     public void spawnInitalMachines()
     {
         
-        Lone = new LeftMachines(itemChoiceA);
+        Lone = new LeftMachines();
         addObject(Lone, 150, 150);
         
-        Rone = new RightMachines(itemChoiceB);
+        Rone = new RightMachines();
         addObject(Rone, 682, 150);
         
 
@@ -185,7 +185,7 @@ public class GameWorld extends World
             
         } else if (LworkerCount == 4 && !spawnedLTwo){
             //add machine, with workers
-            Ltwo = new LeftMachines(itemChoiceA);
+            Ltwo = new LeftMachines();
             addObject(Ltwo, 150, 300);
             spawnedLTwo = true;
         } else if (LworkerCount == 5){
@@ -194,7 +194,7 @@ public class GameWorld extends World
             Ltwo.addWorkers();
         } else if (LworkerCount == 7 && !spawnedLThree){
             //add 2nd machine
-            Lthree = new LeftMachines(itemChoiceA);
+            Lthree = new LeftMachines();
             addObject(Lthree, 150, 450);
             spawnedLThree = true;
         } else if (LworkerCount == 8){

@@ -68,7 +68,7 @@ public class Shoes extends Items
                 side = "left";
             }
         } else if(this.getX()>512){
-            for(Rightmachines rm: gw.getObjects(Rightmachines.class)){
+            for(RightMachines rm: gw.getObjects(RightMachines.class)){
                 this.prodSpeedB = gw.getProdSpeedB();
                 side = "right";
             }

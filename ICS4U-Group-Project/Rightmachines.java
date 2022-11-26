@@ -15,25 +15,28 @@ public class RightMachines extends Machines
     private static double produceSpeed;
     private static double defaultSpeed; 
     private static double itemValue; 
-   
-    public RightMachines(int itemChoice){
-       
+
+    /*public RightMachines(int itemChoice){
+
         imageB = new GreenfootImage("shirtMachineTemp.png");
         imageB.scale(300, 100);
         setImage(imageB);
-        
+
         this.intItemChoice = itemChoice; 
-        
+
         width = imageB.getWidth();
         height = imageB.getHeight();
-        upgradeAmount = GameWorld.getCurrencyB();
-    /*public Rightmachines(){
+        upgradeAmount = GameWorld.getCurrencyB();*/
+        public RightMachines(){
         super();
-    }*/
+        }
+    
+
     public void addedToWorld(World w){
         w.addObject(new Hitboxes(), (this.getX()+width/2)-10, this.getY()-height/2);
         spawnShoes();
     }
+
     public void act()
     {
         GameWorld gw = (GameWorld)getWorld(); 
@@ -48,12 +51,14 @@ public class RightMachines extends Machines
         }
         checkShoeFinished(); 
     }
+
     public void spawnShoes(){
         GameWorld gw = (GameWorld)getWorld(); 
         gw.addObject(new Shoes(this), this.getX()-width/2, this.getY()-height/4);
         updateSpeed();
         itemValue = gw.getItemValueB();
     }
+
     public void checkShoeFinished(){
         if(produceSpeed == 1 && actTimer == 293){
             spawnShoes(); 
@@ -84,25 +89,32 @@ public class RightMachines extends Machines
             actTimer = 0;
         }
     }
+
     public void updateSpeed(){
         GameWorld gw = (GameWorld)getWorld();
         produceSpeed = gw.getProdSpeedB();
     }
+
     public void updateDefaultSpeedB(){
         defaultSpeed = produceSpeed; 
     }
+
     public double getDefaultSpeedB(){
         return defaultSpeed; 
     }
+
     public double getProdSpeedB(){
         return produceSpeed; 
     }
+
     public void setProdSpeedB(double newSpd){
         produceSpeed = newSpd;
     }
+
     public static double getMachItemValueB(){
         return itemValue;
     }
+
     public static void setMachItemValueB(double value){
         itemValue = value; 
     }
