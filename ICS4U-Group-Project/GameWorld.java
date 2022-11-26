@@ -120,18 +120,9 @@ public class GameWorld extends World
         showText("SPEED: "+ produceSpeedB, 772, 20);
         showText("ITEM VALUE: $"+ (int)itemValueA, 370, 20);
         showText("ITEM VALUE: $"+ (int)itemValueB, 922, 20); 
-        //spawnEvents();
+        spawnEvents();
         spawnTruck();
         checkTimerOver();
-        /*if(timer == 3 && !activeEventA){
-            addObject(new Strike(15, true, false), 112, 400);
-            activeEventA = true; 
-        }*/
-        if(timer == 4 && !activeEventB){
-            addObject(new Strike(15, false, true), 912, 400);
-            activeEventB = true; 
-        }
-
     }
     //add the conveyers
     public void spawnMachines()

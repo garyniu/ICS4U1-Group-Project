@@ -35,7 +35,6 @@ public class Strike extends Event
         if(eventTimer == 900){
             GameWorld gw = (GameWorld)getWorld(); 
             startMachines();
-            splitWorkerNum();
             if(left){
                 gw.setStrikeStatusA(false);
             }else if(right){
@@ -73,19 +72,5 @@ public class Strike extends Event
                 gw.setProdSpeedB(rm.getDefaultSpeedB()); 
             }
         }
-    }
-
-    public void splitWorkerNum(){
-        int removedWorkersCount = 0;
-        GameWorld gw = (GameWorld)getWorld();
-        for(HiredWorkers w : getObjectsInRange(400, HiredWorkers.class)){
-            if(!(removedWorkersCount == gw.getWorkerCount()/2)){
-                gw.removeObject(w); 
-                removedWorkersCount++;
-            }
-        }
-        System.out.println("# removed workers, 5, : "+removedWorkersCount);
-        gw.setWorkerCount(gw.getWorkerCount()-removedWorkersCount);
-        System.out.println("split worker count: "+gw.getWorkerCount());
     }
 }
