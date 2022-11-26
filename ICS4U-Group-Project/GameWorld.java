@@ -40,6 +40,7 @@ public class GameWorld extends World
     private int LworkerCount = 1, RworkerCount = 1; 
 
     private boolean truckActive, spawnedLTwo = false, spawnedLThree = false; 
+    private boolean spawnedRTwo = false, spawnedRThree = false;
     private static double itemValueA;
     private static double itemValueB; 
     
@@ -208,6 +209,31 @@ public class GameWorld extends World
         } else if (LworkerCount == 9){
             Lthree.addWorkers();
         }
+        
+        if (RworkerCount == 2){
+            Rone.addWorkers();
+        } else if (RworkerCount == 3){
+            Rone.addWorkers();
+            
+        } else if (RworkerCount == 4 && !spawnedRTwo){
+            //add machine, with workers
+            Rtwo = new RightMachines();
+            addObject(Rtwo, 801, 450);
+            spawnedRTwo = true;
+        } else if (RworkerCount == 5){
+            Rtwo.addWorkers();
+        } else if (RworkerCount == 6){
+            Rtwo.addWorkers();
+        } else if (RworkerCount == 7 && !spawnedRThree){
+            //add 2nd machine
+            Rthree = new RightMachines();
+            addObject(Rthree, 801, 600);
+            spawnedRThree = true;
+        } else if (RworkerCount == 8){
+            Rthree.addWorkers();
+        } else if (RworkerCount == 9){
+            Rthree.addWorkers();
+        }
 
         //true/false to spawn machine, add to workercount
     }
@@ -245,10 +271,16 @@ public class GameWorld extends World
             
         } else if (side == "right"){
             
-            if (Upgrade == 1 && currencyB > 500){
-                currencyB -= 500;
+            if (Upgrade == 1 && currencyB > 500 && RworkerCount <= 9){
+                currencyB -= 200;
                 RworkerCount++;
-                
+                LaterMachines();
+                addObject(new UpgradeArrow(0), b.getX(), b.getY());
+            }
+            if (Upgrade == 0 && currencyB > 400){
+                //currencyB -= 250;
+                //conveyer speed
+                addObject(new UpgradeArrow(1), b.getX(), b.getY());
             }
             
             

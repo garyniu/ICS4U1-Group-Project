@@ -20,6 +20,7 @@ public class LeftMachines extends Machines
     private static double defaultSpeed;
     private static double itemValue;
     private boolean shoeCanBeMade, firstWU = false, secWU = false;
+    private boolean twoWorks = false, threeWorks = false;
     private int width;
     private int height;
     private Shoes shoe; 
@@ -62,6 +63,7 @@ public class LeftMachines extends Machines
             speedSet = true;
         }
         checkShoeFinished(); 
+        
     }
 
 
@@ -85,6 +87,7 @@ public class LeftMachines extends Machines
 
         if (WC == 2 && !secWU){
             WC = 3;
+            threeWorks = true;
             
             t_o = new HiredWorkers(true);
             t_t = new HiredWorkers(true);
@@ -98,6 +101,7 @@ public class LeftMachines extends Machines
 
         if (WC == 1 && !firstWU){
             WC = 2;
+            twoWorks = true;
             
             th_o = new HiredWorkers(true);
             th_t = new HiredWorkers(true);
@@ -127,11 +131,15 @@ public class LeftMachines extends Machines
         firstWU = false;
         secWU = false;
         
+        twoWorks = false;
+        threeWorks = false;
+        
     }
         
     
     public void spawnShoes(){
         GameWorld gw = (GameWorld)getWorld();
+        
         gw.addObject(new Shoes(this) , this.getX() - (this.getX()/2), this.getY()-height/4);
         updateSpeed(); 
         gw.itemsSold("left");
@@ -140,6 +148,7 @@ public class LeftMachines extends Machines
     public void checkShoeFinished(){
         if(produceSpeed == 1 && actTimer == 293){
             spawnShoes(); 
+            
             actTimer = 0;
         }else if(produceSpeed == 1.5 && actTimer == 195){
             spawnShoes();
@@ -166,6 +175,115 @@ public class LeftMachines extends Machines
             spawnShoes();
             actTimer = 0;
         }
+        
+        
+        if (twoWorks){
+            if (produceSpeed == 1){
+                if (actTimer == 203){
+                    spawnShoes(); 
+                }
+            } else if (produceSpeed == 1.5){
+                if (actTimer == 110){
+                    spawnShoes(); 
+                }
+            } else if (produceSpeed == 2){
+                if (actTimer == 95){
+                    spawnShoes(); 
+                }
+            } else if (produceSpeed == 2.5){
+                if (actTimer == 80){
+                    spawnShoes(); 
+                }
+            } else if (produceSpeed == 3){
+                if (actTimer == 65){
+                    spawnShoes(); 
+                }
+            } else if (produceSpeed == 3.5){
+                if (actTimer == 60){
+                    spawnShoes(); 
+                }
+            } else if (produceSpeed == 4){
+                if (actTimer == 55){
+                    spawnShoes(); 
+                }
+            } else if (produceSpeed == 4.5){
+                if (actTimer == 50){
+                    spawnShoes(); 
+                }
+            } else if (produceSpeed == 5){
+                if (actTimer == 45){
+                    spawnShoes(); 
+                }
+            }
+        }
+        
+        if (threeWorks){
+            if (produceSpeed == 1){
+                if (actTimer == 150){
+                    spawnShoes(); 
+                }
+                if (actTimer == 203){
+                    spawnShoes(); 
+                }
+            } else if (produceSpeed == 1.5){
+                if (actTimer == 110){
+                    spawnShoes(); 
+                }
+                if (actTimer == 80){
+                    spawnShoes(); 
+                }
+            } else if (produceSpeed == 2){
+                if (actTimer == 95){
+                    spawnShoes(); 
+                }
+                if (actTimer == 75){
+                    spawnShoes(); 
+                }
+            } else if (produceSpeed == 2.5){
+                if (actTimer == 80){
+                    spawnShoes(); 
+                }
+                if (actTimer == 70){
+                    spawnShoes(); 
+                }
+            } else if (produceSpeed == 3){
+                if (actTimer == 65){
+                    spawnShoes(); 
+                }
+                if (actTimer == 60){
+                    spawnShoes(); 
+                }
+            } else if (produceSpeed == 3.5){
+                if (actTimer == 60){
+                    spawnShoes(); 
+                }
+                if (actTimer == 46){
+                    spawnShoes(); 
+                }
+            } else if (produceSpeed == 4){
+                if (actTimer == 55){
+                    spawnShoes(); 
+                }
+                if (actTimer == 40){
+                    spawnShoes(); 
+                }
+            } else if (produceSpeed == 4.5){
+                if (actTimer == 50){
+                    spawnShoes(); 
+                }
+                if (actTimer == 35){
+                    spawnShoes(); 
+                }
+            } else if (produceSpeed == 5){
+                if (actTimer == 45){
+                    spawnShoes(); 
+                }
+                if (actTimer == 20){
+                    spawnShoes(); 
+                }
+            }
+        }
+        
     }
     public void updateSpeed(){
         GameWorld gw = (GameWorld)getWorld();

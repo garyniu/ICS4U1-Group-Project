@@ -32,7 +32,7 @@ public class Strike extends Event
             machinesStopped = true;
         }
         eventTimer++;
-        if(eventTimer == 900){
+        if(eventTimer == 300){
             GameWorld gw = (GameWorld)getWorld(); 
             startMachines();
             if(left){
