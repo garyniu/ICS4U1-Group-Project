@@ -13,6 +13,7 @@ public class Button extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     protected GreenfootImage background, nameImage, greyBackground; 
+    private GreenfootSound Click;
     private boolean click;
     //protected width, height;
     private int timer = 0;
@@ -31,6 +32,8 @@ public class Button extends Actor
         greyBackground.setColor(Color.GRAY); 
         greyBackground.fill(); 
         greyBackground.drawImage(nameImage, background.getWidth()/2-nameImage.getWidth()/2,background.getHeight()/2-nameImage.getHeight()/2);*/
+        
+        Click = new GreenfootSound ("Click.mp3");
         
         background = a;
         greyBackground = b;
@@ -55,7 +58,7 @@ public class Button extends Actor
             greyBackground.scale(greyBackground.getWidth()+5, greyBackground.getHeight()+5);
             Greenfoot.delay(10);
             greyBackground.scale(greyBackground.getWidth()-5, greyBackground.getHeight()-5);
-            
+            Click.play();
             
             return true;
         } 

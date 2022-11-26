@@ -28,6 +28,7 @@ public class LeftMachines extends Machines
     public LeftMachines()
     {
         super();
+        
     }
     public void act()
     {
@@ -46,7 +47,10 @@ public class LeftMachines extends Machines
 
     public void addedToWorld(World w){
         w.addObject(new Hitboxes(), (this.getX()+width/2) - 10, this.getY()-height/2);
-        spawnShoes();        
+        spawnShoes();       
+        
+        MachineCover x = new MachineCover();
+        getWorld().addObject(x, getX(), getY());
         
         getWorld().addObject(new HiredWorkers(false), getX()/2 , getY() -30);
         getWorld().addObject(new HiredWorkers(false), getX()/2 + 120 , getY() - 30);

@@ -10,7 +10,6 @@ public class Menu extends World
 {
     private Button b;
     private GreenfootSound Theme;
-    private GreenfootSound Click;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -21,8 +20,7 @@ public class Menu extends World
         super(1024, 800, 1); 
         
         Theme = new GreenfootSound ("Theme.mp3");
-        Theme.setVolume(30);
-        Click = new GreenfootSound ("Click.mp3");
+        Theme.setVolume(30);        
         
         GreenfootImage background2 = new GreenfootImage("IntroScreen.png");
         background2.scale(1024,800);
@@ -49,7 +47,7 @@ public class Menu extends World
     public void act(){
         if (b.getClick()){
             Greenfoot.setWorld(new ValueSetting());
-            Click.play();
+            
             stopped();
         }
     }

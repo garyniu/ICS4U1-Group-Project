@@ -30,6 +30,7 @@ public abstract class Machines extends Actor
         actTimer = 0; 
         width = getImage().getWidth();
         height = getImage().getHeight();
+        
     }
 
     public void act()

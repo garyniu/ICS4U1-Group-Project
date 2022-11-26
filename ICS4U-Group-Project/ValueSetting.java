@@ -40,7 +40,7 @@ public class ValueSetting extends World
         Valuemusic.setVolume(30);
         Valuemusic.playLoop();
         
-        Click = new GreenfootSound ("Click.mp3");
+        
 
         GreenfootImage left = new GreenfootImage("LeftButton.png");
         left.scale(left.getWidth()/3, left.getHeight()/3);
@@ -137,9 +137,9 @@ public class ValueSetting extends World
 
         
         if (LLU.listenForClick()){
-            LUP--; Click.play();
+            LUP--; 
         } else if (LRU.listenForClick()){
-            LUP++; Click.play();
+            LUP++; 
         }
 
         if (LUP > 2){
@@ -166,9 +166,9 @@ public class ValueSetting extends World
         
         
         if (LLS.listenForClick()){
-            LSM-=100; Click.play();
+            LSM-=100; 
         } else if (LRS.listenForClick()){
-            LSM+=100; Click.play();
+            LSM+=100; 
         }
         
         if (LSM > 1000){
@@ -188,9 +188,9 @@ public class ValueSetting extends World
         //right side
         
         if (RLU.listenForClick()){
-            RUP--; Click.play();
+            RUP--; 
         } else if (RRU.listenForClick()){
-            RUP++; Click.play();
+            RUP++; 
         }
 
         if (RUP > 2){
@@ -214,9 +214,9 @@ public class ValueSetting extends World
         
         
         if (RLS.listenForClick()){
-            RSM -= 100; Click.play();
+            RSM -= 100; 
         } else if (RRS.listenForClick()){
-            RSM += 100; Click.play();
+            RSM += 100; 
         }
         
         if (RSM > 1000){
@@ -232,9 +232,9 @@ public class ValueSetting extends World
         //base
         
         if (LT.listenForClick()){
-            time -= 30; Click.play();
+            time -= 30; 
         } else if (RT.listenForClick()){
-            time += 30; Click.play();
+            time += 30; 
         }
         
         if (time > 120){
@@ -251,7 +251,7 @@ public class ValueSetting extends World
         if (LD.listenForClick() || RD.listenForClick()){
             if(difficulty) difficulty = false;
             else if(!difficulty) difficulty = true;
-            Click.play();
+            
         } 
         
         GreenfootImage Difftext;
@@ -269,7 +269,7 @@ public class ValueSetting extends World
             //Greenfoot.setWorld(new GameWorld());
             Greenfoot.setWorld(new GameWorld(LUP, RUP, LSM, RSM, time, difficulty));
             stopped();
-            Click.play();
+            
         }
         if (defaults.getClick()){
             LUP = 0; RUP = 0;
@@ -277,9 +277,10 @@ public class ValueSetting extends World
             LSM = 0; RSM = 0;
             time = 90;
             difficulty = false;
-            Click.play();
+            
         }
         if (menu.getClick()){
+            stopped();
             Greenfoot.setWorld(new Menu());
         }
     }

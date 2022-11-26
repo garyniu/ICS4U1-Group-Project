@@ -27,12 +27,16 @@ public class Rightmachines extends Machines
     private HiredWorkers t_o, t_t, t_th, th_o, th_t, th_th;
     public Rightmachines(){
         super();
+        
     }
     
 
     public void addedToWorld(World w){
         w.addObject(new Hitboxes(), (this.getX()+width/2)-10, this.getY()-height/2);
         spawnShoes();
+        
+        MachineCover x = new MachineCover();
+        getWorld().addObject(x, getX(), getY());
         
         getWorld().addObject(new HiredWorkers(false), getX()/2  + 260, getY() -30);
         getWorld().addObject(new HiredWorkers(false), getX()/2 + 120 + 260 , getY() - 30);
