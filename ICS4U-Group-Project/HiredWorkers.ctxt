@@ -1,14 +1,16 @@
 #BlueJ class context
 comment0.target=HiredWorkers
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ HiredWorkers\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=locX\ locY
-comment1.target=HiredWorkers(int,\ int)
+comment1.params=FS
+comment1.target=HiredWorkers(boolean)
 comment2.params=
-comment2.target=void\ act()
-comment3.params=fadetime\ ogposition
-comment3.target=void\ entry(int,\ int)
-comment4.params=
-comment4.target=void\ work()
-comment5.params=time
-comment5.target=void\ death(int)
-numComments=6
+comment2.target=void\ addedToWorld()
+comment3.params=
+comment3.target=void\ act()
+comment4.params=fadetime\ ogposition
+comment4.target=void\ entry(int,\ int)
+comment5.params=
+comment5.target=void\ work()
+comment6.params=time
+comment6.target=void\ death(int)
+numComments=7

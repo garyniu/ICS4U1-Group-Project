@@ -25,7 +25,7 @@ public class BlockedBoxes extends Actor
         this.h = h;
         
         image = new GreenfootImage(w, h);
-        image.setColor(c);
+        image.setColor(new Color(0,0,0,0));
         image.fillRect(0, 0, w-1, h - 1);
         setImage(image);
         

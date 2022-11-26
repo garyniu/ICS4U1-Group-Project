@@ -56,9 +56,9 @@ public class StockMarketCrash extends Event
             System.out.println("Left machine shoes: "+gw.getItemValueA());
         }
         else if(right){
-            itemB = Rightmachines.getMachItemValueB();
+            itemB = RightMachines.getMachItemValueB();
             newValueRight= itemB - 25; 
-            Rightmachines.setMachItemValueB(newValueRight);
+            RightMachines.setMachItemValueB(newValueRight);
             System.out.println("right machine item: shoes and value " +newValueRight);
             gw.setItemValueB(newValueRight);
             System.out.println("right machine shoes: "+gw.getItemValueB());

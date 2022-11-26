@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.ArrayList;
 
 /**
  * Write a description of class MyWorld here
@@ -33,21 +34,26 @@ public class GameWorld extends World
 
     private int LworkerCount = 1, RworkerCount = 1; 
 
-    private boolean truckActive; 
+    private boolean truckActive, spawnedLTwo = false, spawnedLThree = false; 
     private static double itemValueA;
     private static double itemValueB; 
 
     private String winner; 
     private Boss a, b;
+    
+    private LeftMachines Lone, Ltwo, Lthree;
+    private RightMachines Rone, Rtwo, Rthree;
+    
+    
     /**
      * Constructor for objects of class MyWorld.
      *
      */
-    public GameWorld(int LUP, int RUP, int LIS, int RIS, int LSM, int RSM, int time, boolean difficulty) 
+    public GameWorld(int LUP, int RUP, int LSM, int RSM, int time, boolean difficulty) 
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 800, 1);
-        setPaintOrder(Effect.class, Event.class, Items.class, People.class, Machines.class);
+        setPaintOrder(Effect.class, Event.class, Items.class, Machines.class, People.class);
 
         //set variables
         currencyA = LSM;
@@ -75,7 +81,7 @@ public class GameWorld extends World
         itemValueA = 100; 
         itemValueB = 100; 
 
-        spawnMachines();
+        spawnInitalMachines();
         //addObject(new Boss(0, 50), 0, 50);
 
         background = new GreenfootImage("bg.png");
@@ -85,8 +91,8 @@ public class GameWorld extends World
 
         setBackground(bg);
 
-        a = new Boss(40, 40, LUP, 0);
-        b = new Boss(800, 40, RUP, 0);
+        a = new Boss(LUP, 0);
+        b = new Boss(RUP, 0);
 
         addObject(a, 40, 40);
         addObject(b, 800, 40);
@@ -107,67 +113,119 @@ public class GameWorld extends World
         showText("MONEY: " + currencyB, 700, 20);
         spawnEvents();
         spawnTruck();
+        
         checkTimerOver();
-
-        
-        
     }
     //add the conveyers
-    public void spawnMachines()
+    public void spawnInitalMachines()
     {
-        addObject(new LeftMachines(itemChoiceA), 150, 150);
-        //if(workerCountA == 3 && machUpgradePref)
-
-        addObject(new Rightmachines(itemChoiceB), 682, 150);
-        //if(workerCountB == 3 && machUpgradePref)
+        
+        Lone = new LeftMachines(itemChoiceA);
+        addObject(Lone, 150, 150);
+        
+        Rone = new RightMachines(itemChoiceB);
+        addObject(Rone, 682, 150);
+        
 
         addObject(new VertConveyor(), 350, 350);
         addObject(new VertConveyor(), 882, 350);
-        //just duplicate on top of the current worker
-        //every time a new worker appears
-        //addObject(new Hitboxes(), 150,50);
-
-        //addObject(new Hitboxes(), 350,600);
-        //addObject(new Hitboxes(), 882, 600); 
+        
 
     }
 
+    
+    //method called
+    //leave only 1 wokers per conveyer
+    public void halfWorkers(String side){
+        if (side == "left"){
+            LworkerCount = 1;
+            
+            ArrayList<LeftMachines> leftMachines = (ArrayList<LeftMachines>)this.getObjects(LeftMachines.class);
+            for(LeftMachines m : leftMachines){
+                m.strikeRemove();
+                m.resetWorkers();
+            }
+            
+            
+        } else if (side == "right"){
+            RworkerCount = 1;
+        }
+    }
+    
     
     public void LaterMachines(){
 
         //worker will be tied to a machine
         //machine will spawn the workers
         //create method in machine to spawn wokers
-
-        if (LworkerCount > 3 && LworkerCount <=6){
+        
+        System.out.println(LworkerCount + " :worker count");
+        
+        if (LworkerCount == 2){
+            Lone.addWorkers();
+        } else if (LworkerCount == 3){
+            Lone.addWorkers();
+            
+        } else if (LworkerCount == 4 && !spawnedLTwo){
             //add machine, with workers
-        } else if (LworkerCount > 6){
+            Ltwo = new LeftMachines(itemChoiceA);
+            addObject(Ltwo, 150, 300);
+            spawnedLTwo = true;
+        } else if (LworkerCount == 5){
+            Ltwo.addWorkers();
+        } else if (LworkerCount == 6){
+            Ltwo.addWorkers();
+        } else if (LworkerCount == 7 && !spawnedLThree){
             //add 2nd machine
+            Lthree = new LeftMachines(itemChoiceA);
+            addObject(Lthree, 150, 450);
+            spawnedLThree = true;
+        } else if (LworkerCount == 8){
+            Lthree.addWorkers();
+        } else if (LworkerCount == 9){
+            Lthree.addWorkers();
         }
 
         //true/false to spawn machine, add to workercount
     }
     
-    public void upgrades(String side, int Upgrade){
-        System.out.println("boss upgrade side: " + side + "\nUpgrade type: " + Upgrade + "\n");
+    public void upgrades(String side, int Upgrade, Boss b){
+        //System.out.println("boss upgrade side: " + side + "\nUpgrade type: " + Upgrade + "\n");
         //only upgreade if enough money
         
         if (side == "left"){
             
-            if (Upgrade == 1){
+            
+            //check enough money
+            
+            if (Upgrade == 1 && currencyA > 500 && LworkerCount <= 9){
+                currencyA -= 500;
                 LworkerCount++;
+                LaterMachines();
+                addObject(new UpgradeArrow(0), b.getX(), b.getY());
             }
+            if (Upgrade == 0 && currencyA > 400){
+                //currencyA -= 400;
+                //conveyer speed
+                addObject(new UpgradeArrow(1), b.getX(), b.getY());
+            }
+            
+            
         } else if (side == "right"){
             
-            if (Upgrade == 1){
+            if (Upgrade == 1 && currencyB > 500){
+                currencyB -= 500;
                 RworkerCount++;
+                
             }
+            
+            
         }
         
     }
 
 
-
+    
     public void spawnTruck(){
         if(!truckActive){
             if(Greenfoot.getRandomNumber(600) == 0){

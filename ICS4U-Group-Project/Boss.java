@@ -21,8 +21,8 @@ public class Boss extends People
      * Act - do whatever the Boss wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public Boss(int locX, int locY, int UP, int bossImg){
-        super(locX, locY);
+    public Boss(int UP, int bossImg){
+        super();
         
         this.bossImg = bossImg;
 
@@ -49,12 +49,13 @@ public class Boss extends People
     }
 
     public void addedToWorld(World w){
+        super.addedToWorld(w);
         if(this.getX()<=512){
             side = "left";
         }else if(this.getX()>512){
             side = "right";
         }
-        //goToLocation(goToX, goToY);
+        
     }
 
     public void act()
@@ -68,7 +69,7 @@ public class Boss extends People
                 goToX = randX+20;
                 goToY = randY+50;
                 System.out.println("test2");
-                goToLocation(400, 500);
+                goToLocation(goToX, goToY);
                 randTimer = 0;
             }
             else if(side == "right"){
@@ -76,15 +77,13 @@ public class Boss extends People
                 randY = Greenfoot.getRandomNumber(650);
                 goToX = randX+536;
                 goToY = randY+50;
-                System.out.println("test1");
+                //System.out.println("test1");
                 goToLocation(goToX, goToY); 
                 randTimer = 0; 
             }
         }
 
-        //another random timer
-        //set upgrade status
-        //in game world, just have check for upgrades constantly, then feed to machine
+        
 
         if (bossImg == 0){
             if (1 == Greenfoot.getRandomNumber(100)){
@@ -92,9 +91,11 @@ public class Boss extends People
                 UpgradeNum = Greenfoot.getRandomNumber(101);
 
                 if (UpgradeNum < WorkChance){
-                    ((GameWorld)getWorld()).upgrades(side, 0);
+                    
+                    ((GameWorld)getWorld()).upgrades(side, 0, this);
                 } else {
-                    ((GameWorld)getWorld()).upgrades(side, 1);
+                    
+                    ((GameWorld)getWorld()).upgrades(side, 1, this);
                 }
 
             }

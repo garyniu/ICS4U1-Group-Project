@@ -29,7 +29,7 @@ public class Shoes extends Items
                 side = "left";
             }
         } else if(this.getX()>512){
-            for(Rightmachines rm: w.getObjects(Rightmachines.class)){
+            for(RightMachines rm: w.getObjects(RightMachines.class)){
                 this.prodSpeedB = rm.getDefaultSpeedB();
                 side = "right";
             }

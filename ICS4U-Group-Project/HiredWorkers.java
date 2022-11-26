@@ -10,41 +10,39 @@ public class HiredWorkers extends People
 {
 
     private int fadepercent = 0, fadein = 120, originalPos;
+    private boolean firstSpawn;
 
-    public HiredWorkers(int locX, int locY){
-        super(locX, locY);
+    public HiredWorkers(boolean FS){
+        super();
         //incrementing worker count
         GameWorld gw = (GameWorld)getWorld();
-        
+        FS = firstSpawn;
 
-        originalPos = locY;
+        GreenfootImage image = new GreenfootImage("Char.png");
+        image.scale(image.getWidth()/4, image.getHeight()/4);
+        setImage(image);
 
-       
-       
         //add image / scale image
+    }
 
+    public void addedToWorld(){
+        originalPos = getY();
     }
 
     public void act()
     {
         //play sliding down animation, fade in
         fadein--; originalPos++;
-        if (fadein >= 0){
+
+        if (fadein >= 0 && firstSpawn){
             entry(fadein, originalPos);
-           
+
         } else {
 
-            //test pathfinding
-           
-                //super.act();
-           
-           
-           
             work();
-
         }
     }
-    
+
     private void entry(int fadetime, int ogposition){
 
         int upMovement = ogposition - 120;
@@ -58,9 +56,7 @@ public class HiredWorkers extends People
             transp = 0;
         }
 
-
         getImage().setTransparency(transp);
-
         setLocation(getX(), upMovement);
     }
 

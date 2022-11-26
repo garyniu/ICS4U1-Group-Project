@@ -23,15 +23,24 @@ public abstract class People extends Actor
      * Act - do whatever the People wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public People(int locX, int locY){
+    public People(){
 
         //setting positions
-        currentX = locX;
-        currentY = locY;
+        
 
-        goToX = locX;
-        goToY = locY;
+    }
+    
+    protected void addedToWorld(World w){
+        
+        //System.out.println("test1222222222222222222");
+        currentX = getX();
+        currentY = getY();
 
+        goToX = getX();
+        goToY = getY();
+        
+        //System.out.println(getX());
+        //System.out.println(getY());
     }
     
     public void act(){
@@ -89,7 +98,7 @@ public abstract class People extends Actor
         
 
         
-        System.out.println("\ntop blocked: " + tBlock + "\nbottom blocked: " + bBlock + "\nleft blocked: " + lBlock + "\nright blocked: " + rBlock);
+        //System.out.println("\ntop blocked: " + tBlock + "\nbottom blocked: " + bBlock + "\nleft blocked: " + lBlock + "\nright blocked: " + rBlock);
         
         //make rest of cases
         //make method for movement each case, flip x/y, disable x++, x--, y++, y--

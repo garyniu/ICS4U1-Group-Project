@@ -41,7 +41,7 @@ public class Strike extends Event
             }
         }
         else if(right){
-            for(Rightmachines rm : gw.getObjects(Rightmachines.class)){
+            for(RightMachines rm : gw.getObjects(RightMachines.class)){
                 rm.setProdSpeedB(0); 
                 System.out.println("right machine speed(stop); "+ rm.getProdSpeedB());
             }
@@ -56,7 +56,7 @@ public class Strike extends Event
             }
         }
         else if(right){
-            for(Rightmachines rm : gw.getObjects(Rightmachines.class)){
+            for(RightMachines rm : gw.getObjects(RightMachines.class)){
                 rm.setProdSpeedB(rm.getDefaultSpeedB()); 
                 System.out.println("rightt machine speed(start): "+rm.getProdSpeedB());
             }
@@ -67,13 +67,13 @@ public class Strike extends Event
         int removedWorkersCount = 0;
         GameWorld gw = (GameWorld)getWorld();
         for(HiredWorkers w : getObjectsInRange(400, HiredWorkers.class)){
-            if(!(removedWorkersCount == gw.getWorkerCount()/2)){
-                gw.removeObject(w); 
-                removedWorkersCount++;
-            }
+            //if(!(removedWorkersCount == gw.getWorkerCount()/2)){
+            //    gw.removeObject(w); 
+            //    removedWorkersCount++;
+            //}
         }
         System.out.println("# removed workers, 5, : "+removedWorkersCount);
-        gw.setWorkerCount(gw.getWorkerCount()-removedWorkersCount);
-        System.out.println("split worker count: "+gw.getWorkerCount());
+        //gw.setWorkerCount(gw.getWorkerCount()-removedWorkersCount);
+        //System.out.println("split worker count: "+gw.getWorkerCount());
     }
 }

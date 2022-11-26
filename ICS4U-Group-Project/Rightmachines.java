@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Rightmachines extends Machines
+public class RightMachines extends Machines
 {
     /**
      * Act - do whatever the Rightmachines wants to do. This method is called whenever
@@ -23,7 +23,7 @@ public class Rightmachines extends Machines
     private int height;
     private Shoes shoe; 
    
-    public Rightmachines(int itemChoice){
+    public RightMachines(int itemChoice){
        
         imageB = new GreenfootImage("shirtMachineTemp.png");
         imageB.scale(300, 100);

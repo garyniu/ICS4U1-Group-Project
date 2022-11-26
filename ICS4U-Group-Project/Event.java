@@ -58,7 +58,7 @@ public abstract class Event extends Actor
             }
         }
         else if(right){
-            for(Rightmachines rm : gw.getObjects(Rightmachines.class)){
+            for(RightMachines rm : gw.getObjects(RightMachines.class)){
                 /*if(rm.getItemChoiceB() == "tools" || rm.getItemChoiceB() == "shoes"){
                     newSpeed = rm.getDefaultSpeedB()+0.5;
                     rm.setProdSpeedB(newSpeed);
@@ -89,7 +89,7 @@ public abstract class Event extends Actor
             }
         }
         else if(right){
-            for(Rightmachines rm : gw.getObjects(Rightmachines.class)){
+            for(RightMachines rm : gw.getObjects(RightMachines.class)){
                 /*if(rm.getItemChoiceB() == "tools" || rm.getItemChoiceB() == "shoes"){
                     newSpeed = rm.getDefaultSpeedB()+0.5;
                     rm.setProdSpeedB(newSpeed);
@@ -110,7 +110,7 @@ public abstract class Event extends Actor
             }
         }
         else if(right){
-            for(Rightmachines rm : getObjectsAtOffset(256, 400, Rightmachines.class)){
+            for(RightMachines rm : getObjectsAtOffset(256, 400, RightMachines.class)){
                 rm.setProdSpeedB(rm.getDefaultSpeedB());
             }
         }

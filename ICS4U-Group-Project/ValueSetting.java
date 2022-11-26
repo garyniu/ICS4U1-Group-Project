@@ -9,12 +9,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class ValueSetting extends World
 {
 
-    private Button LLU, LRU, LLI, LRI, LLS, LRS;
-    private Button RLU, RRU, RLI, RRI, RLS, RRS;  
+    private Button LLU, LRU, LLS, LRS;
+    private Button RLU, RRU, RLS, RRS;  
     private Button LT, RT, LD, RD;
     private Button menu, start, defaults;
 
-    private int LUP = 0, RUP = 0, LIS = 0, RIS = 0, LSM = 200, RSM = 200;
+    private int LUP = 0, RUP = 0,  LSM = 200, RSM = 200;
     private int time = 90;
     private boolean difficulty = false;
 
@@ -51,53 +51,48 @@ public class ValueSetting extends World
         LLU = new Button(left, leftHover);
         addObject(LLU, 60, 300); 
 
-        LLI = new Button(left, leftHover);
-        addObject(LLI, 60, 410); 
+
 
         LLS = new Button(left, leftHover);
-        addObject(LLS, 60, 520); 
+        addObject(LLS, 60, 420); 
 
         //left side, right buttons
         LRU = new Button(right, rightHover);
         addObject(LRU, 410, 300); 
 
-        LRI = new Button(right, rightHover);
-        addObject(LRI, 410, 410); 
+
 
         LRS = new Button(right, rightHover);
-        addObject(LRS, 410, 520); 
+        addObject(LRS, 410, 420); 
 
         //right side, left buttons
         RLU = new Button(left, leftHover);
         addObject(RLU, 610, 300); 
 
-        RLI = new Button(left, leftHover);
-        addObject(RLI, 610, 410); 
+
 
         RLS = new Button(left, leftHover);
-        addObject(RLS, 610, 520); 
+        addObject(RLS, 610, 420); 
 
         //right side, right buttons
         RRU = new Button(right, rightHover);
         addObject(RRU, 960, 300); 
 
-        RRI = new Button(right, rightHover);
-        addObject(RRI, 960, 410); 
+
 
         RRS = new Button(right, rightHover);
-        addObject(RRS, 960, 520); 
+        addObject(RRS, 960, 420); 
 
         //bottom buttons
         LT = new Button(left, leftHover);
-        addObject(LT, 330, 635); 
+        addObject(LT, 330, 520); 
         LD = new Button(left, leftHover);
-        addObject(LD, 330, 735); 
+        addObject(LD, 330, 620); 
 
         RT = new Button(right, rightHover);
-        addObject(RT, 675, 635); 
+        addObject(RT, 675, 520); 
         RD = new Button(right, rightHover);
-        addObject(RD, 675, 735); 
-        
+        addObject(RD, 675, 620); 
         
         //Option buttons
         
@@ -149,30 +144,7 @@ public class ValueSetting extends World
         background2.drawImage(LUPtext, 190, 289);
         
         
-        
-        if (LLI.listenForClick()){
-            LIS--;
-        } else if (LRI.listenForClick()){
-            LIS++;
-        }
-        
-        if (LIS > 2){
-            LIS = 2;
-        } else if (LIS < 0){
-            LIS = 0;
-        }
-        
-        if (LIS == 0){
-            LISstr = "Shoes";
-        } else if (LIS == 1){
-            LISstr = "Tools";
-        } else if (LIS == 2){
-            LISstr = "Phones";
-        }
-
-        GreenfootImage LIStext = new GreenfootImage(LISstr, 30, Color.BLACK, Color.WHITE);
-        background2.drawImage(whiteRect, 125, 389);
-        background2.drawImage(LIStext, 190, 389);
+    
         
         
         
@@ -189,8 +161,8 @@ public class ValueSetting extends World
         }
         
         GreenfootImage LSMtext = new GreenfootImage(Integer.toString(LSM), 30, Color.BLACK, Color.WHITE);
-        background2.drawImage(whiteRect, 125, 510);
-        background2.drawImage(LSMtext, 210, 510);
+        background2.drawImage(whiteRect, 125, 406);
+        background2.drawImage(LSMtext, 210, 406);
         
         
         
@@ -223,30 +195,6 @@ public class ValueSetting extends World
         background2.drawImage(RUPtext, 750, 289);
         
         
-        if (RLI.listenForClick()){
-            RIS--;
-        } else if (RRI.listenForClick()){
-            RIS++;
-        }
-        
-        if (RIS > 2){
-            RIS = 2;
-        } else if (RIS < 0){
-            RIS = 0;
-        }
-        
-        if (RIS == 0){
-            RISstr = "Shoes";
-        } else if (RIS == 1){
-            RISstr = "Tools";
-        } else if (RIS == 2){
-            RISstr = "Phones";
-        }
-
-        GreenfootImage RIStext = new GreenfootImage(RISstr, 30, Color.BLACK, Color.WHITE);
-        background2.drawImage(whiteRect, 700, 389);
-        background2.drawImage(RIStext, 750, 389);
-        
         
         if (RLS.listenForClick()){
             RSM -= 100;
@@ -261,8 +209,8 @@ public class ValueSetting extends World
         }
         
         GreenfootImage RSMtext = new GreenfootImage(Integer.toString(RSM), 30, Color.BLACK, Color.WHITE);
-        background2.drawImage(whiteRect, 700, 510);
-        background2.drawImage(RSMtext, 770, 510);
+        background2.drawImage(whiteRect, 700, 406);
+        background2.drawImage(RSMtext, 770, 406);
 
         //base
         
@@ -279,8 +227,8 @@ public class ValueSetting extends World
         }
         
         GreenfootImage TIMEtext = new GreenfootImage(Integer.toString(time) + " Seconds", 30, Color.BLACK, Color.WHITE);
-        background2.drawImage(whiteRect, 400, 617);
-        background2.drawImage(TIMEtext, 440, 617);
+        background2.drawImage(whiteRect, 400, 505);
+        background2.drawImage(TIMEtext, 440, 505);
         
         
         if (LD.listenForClick() || RD.listenForClick()){
@@ -295,17 +243,17 @@ public class ValueSetting extends World
             Difftext = new GreenfootImage("Easy Difficulty", 30, Color.BLACK, Color.WHITE);
         }
         
-        background2.drawImage(whiteRect, 400, 717);
-        background2.drawImage(Difftext, 425, 717);
+        background2.drawImage(whiteRect, 400, 605);
+        background2.drawImage(Difftext, 425, 605);
         
         //buttons
         if (start.getClick()){
             //Greenfoot.setWorld(new GameWorld());
-            Greenfoot.setWorld(new GameWorld(LUP, RUP, LIS, RIS, LSM, RSM, time, difficulty));
+            Greenfoot.setWorld(new GameWorld(LUP, RUP, LSM, RSM, time, difficulty));
         }
         if (defaults.getClick()){
             LUP = 0; RUP = 0;
-            LIS = 0; RIS = 0;
+
             LSM = 0; RSM = 0;
             time = 90;
             difficulty = false;

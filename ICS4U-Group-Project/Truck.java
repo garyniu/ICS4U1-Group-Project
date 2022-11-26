@@ -28,10 +28,6 @@ public class Truck extends Actor
             fadeIn(timer);
         }
 
-        if (getX() > 700){
-
-        }
-
         if (getX() < stopPointA - 1){
             stopping(stopPointA);
             stopTime = 0;
