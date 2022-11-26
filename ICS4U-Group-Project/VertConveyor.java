@@ -12,9 +12,7 @@ public class VertConveyor extends Machines
     private int width;
     private int height;
     public VertConveyor(){
-        image = new GreenfootImage("shirtMachineTemp.png");
-        image.scale(100, 500);
-        setImage(image);
+        getImage().scale(52,380);
     }
     /**
      * Act - do whatever the VertConveyor wants to do. This method is called whenever
@@ -25,7 +23,7 @@ public class VertConveyor extends Machines
         // Add your action code here.
     }
     public void addedToWorld(World w){
-        w.addObject(new Hitboxes(), this.getX(), 650);
+        w.addObject(new Hitboxes(), this.getX()+9, 700);
     }
     
 }

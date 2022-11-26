@@ -8,39 +8,66 @@ import greenfoot.*;
 public class StockMarketCrash extends Event
 {
     private double newValue; 
-    private RedFlash rf;
+    
     private boolean flashAdded;
+    private boolean stockDecreased;
+    private boolean animated; 
+    
     private double itemA;
     private double itemB;
+    
+    private GreenfootImage[] downArrow; 
+    private int imageIndex; 
+    private int imageCounter;
+    private SimpleTimer animationTimer; 
     /**
      * Act - do whatever the StockMarketCrash wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public StockMarketCrash(int d, boolean left, boolean right){
         super(d, left, right);
+        
         flashAdded=false;
+        stockDecreased = false;
+        animated = false;
+        
         System.out.println("STOCK MARKET CRASH");
-    }
-
-    public void addedToWorld(World w){
-        decreaseStock();
-    }
-
-    public void act(){
-        if(!flashAdded){
-            GameWorld w = (GameWorld)getWorld();
-            if(left){
-                rf = new RedFlash(duration);
-                w.addObject(rf, 256, 400);
-            } else if(right){
-                rf = new RedFlash(duration);
-                w.addObject(rf, 768, 400);
-            }
-            flashAdded = true;
+        
+        downArrow = new GreenfootImage[19];
+        imageIndex = 0;
+        animationTimer = new SimpleTimer();
+        
+        for(int i = 0; i<downArrow.length;i++){
+            downArrow[i] = new GreenfootImage("images/DownStonks/DownStonks"+i+".png");
         }
+        animationTimer.mark();
+    }
+    public void animateArrow(){
+        if(animationTimer.millisElapsed() < 80){
+            return; 
+        }
+        animationTimer.mark();
+        setImage(downArrow[imageIndex]);
+        imageIndex = (imageIndex+1)%downArrow.length;
+        imageCounter++;
+        if(imageCounter == 19){
+            animated = true; 
+        }
+    }
+    public void act(){
         eventTimer++;
-        //decrease
-        if(eventTimer == 180){
+        if(!animated){
+            animateArrow();
+        }
+        if(animated){
+            setImage(new GreenfootImage("images/DownStonks/DownStonks18.png"));
+        }
+        addRedFlash();
+        if(!stockDecreased){
+            decreaseStock();
+            stockDecreased = true; 
+        }
+        if(eventTimer == duration){
             endEvent();
         }
     }    

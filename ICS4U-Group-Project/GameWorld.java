@@ -27,6 +27,9 @@ public class GameWorld extends World
 
     private boolean activeEventA;
     private boolean activeEventB; 
+    private boolean strikeStatusA;
+    private boolean strikeStatusB;
+    
 
     private boolean hardMode; //true = hard, false = easy
 
@@ -37,6 +40,10 @@ public class GameWorld extends World
     private boolean truckActive, spawnedLTwo = false, spawnedLThree = false; 
     private static double itemValueA;
     private static double itemValueB; 
+    
+    private static double produceSpeedA;
+    private static double produceSpeedB;
+    
 
     private String winner; 
     private Boss a, b;
@@ -77,11 +84,18 @@ public class GameWorld extends World
 
         activeEventA = false;
         activeEventB = false;
-
+        strikeStatusA = false;
+        strikeStatusB = false;
+        
         itemValueA = 100; 
         itemValueB = 100; 
 
         spawnInitalMachines();
+        
+        produceSpeedA = 1;
+        produceSpeedB = 1;
+        
+        
         //addObject(new Boss(0, 50), 0, 50);
 
         background = new GreenfootImage("bg.png");
@@ -108,9 +122,12 @@ public class GameWorld extends World
     public void act()
     {
         timer();
-        showText("MONEY: " + currencyA, 200, 20);
-        // hitbox();
-        showText("MONEY: " + currencyB, 700, 20);
+        showText("REVENUE: $" + currencyA, 80, 20);
+        showText("REVENUE: $" + currencyB, 637, 20);
+        showText("SPEED; " + produceSpeedA, 215, 20); 
+        showText("SPEED: "+ produceSpeedB, 772, 20);
+        showText("ITEM VALUE: $"+ (int)itemValueA, 370, 20);
+        showText("ITEM VALUE: $"+ (int)itemValueB, 922, 20); 
         spawnEvents();
         spawnTruck();
         
@@ -272,7 +289,7 @@ public class GameWorld extends World
                 }
             }
         }
-        else{
+        else if(hardMode){
             if(!activeEventA){
                 if(Greenfoot.getRandomNumber(1200) == 0){
                     chooseEventA();
@@ -287,33 +304,35 @@ public class GameWorld extends World
     }
 
     public void chooseEventA(){
-        int eventA = Greenfoot.getRandomNumber(2);
+        int eventA = Greenfoot.getRandomNumber(3);
         if(!activeEventA){
             activeEventA = true;
-            if(eventA == 2){
+            if(eventA == 3){
                 addObject(new BossCheckup(15, true, false), 256, 400);
             } else if(eventA == 1){
                 addObject(new BoomingBusiness(5, true, false), 256, 400); 
             } else if(eventA == 0){
                 addObject(new StockMarketCrash(5, true, false), 256, 400);
-            } else if(eventA == 3){
-                addObject(new Strike(15, true, false), 112, 400);
+            } else if(eventA == 2 && !strikeStatusB){
+                addObject(new Strike(10, true, false), 112, 400);
+                strikeStatusA = true; 
             }
         }
     }
 
     public void chooseEventB(){
-        int eventB = Greenfoot.getRandomNumber(2);
+        int eventB = Greenfoot.getRandomNumber(3);
         if(!activeEventB){
             activeEventB = true;
-            if(eventB == 2){
+            if(eventB == 3){
                 addObject(new BossCheckup(15, false, true), 768, 400);
             } else if(eventB == 1){
                 addObject(new BoomingBusiness(5, false, true), 768, 400); 
             } else if(eventB == 0){
                 addObject(new StockMarketCrash(5, false, true), 768, 400);
-            } else if(eventB == 3){
-                addObject(new Strike(15, false, true), 912, 400);
+            } else if(eventB == 2 && !strikeStatusA){
+                addObject(new Strike(10, false, true), 912, 400);
+                strikeStatusB = true; 
             }
         }
     }
@@ -353,6 +372,7 @@ public class GameWorld extends World
     {
         currencyB += itemValueB;
     }
+    //event and truck status getters and setters - to ensure multiple don't spawn at once
 
     public void setEventStatusA(boolean x){
         activeEventA = x;
@@ -369,7 +389,18 @@ public class GameWorld extends World
     public boolean getEventStatusB(){
         return activeEventB;
     }    
-
+    public boolean getStrikeStatusA(){
+        return strikeStatusA; 
+    }
+    public void setStrikeStatusA(boolean a){
+        strikeStatusA = a;
+    }
+    public boolean getStrikeStatusB(){
+        return strikeStatusB;
+    }
+    public void setStrikeStatusB(boolean b){
+        strikeStatusB = b; 
+    }
     public boolean getTruckStatus(){
         return truckActive;
     }
@@ -377,7 +408,7 @@ public class GameWorld extends World
     public void changeTruckStatus(){
         truckActive = false;
     }
-
+    //item value getter and setters
     public double getItemValueA(){
         return itemValueA;
     }
@@ -392,5 +423,18 @@ public class GameWorld extends World
 
     public void setItemValueB(double newItemValue){
         itemValueB = newItemValue; 
+    }
+    //produce speed getters and setters
+    public double getProdSpeedA(){
+        return produceSpeedA;
+    }
+    public void setProdSpeedA(double produceSpd){
+        produceSpeedA = produceSpd; 
+    }
+    public double getProdSpeedB(){
+        return produceSpeedB;
+    }
+    public void setProdSpeedB(double produceSpd){
+        produceSpeedB = produceSpd; 
     }
 }

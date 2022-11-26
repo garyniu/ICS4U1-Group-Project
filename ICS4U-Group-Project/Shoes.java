@@ -38,6 +38,7 @@ public class Shoes extends Items
     }
     public void act()
     {
+       setSpeed();
        checkVertConveyor();
        if(side == "left" && !onVertConveyor){
            move(prodSpeedA);
@@ -46,13 +47,9 @@ public class Shoes extends Items
            move(prodSpeedB);
        }
        
-        //setLocation(getX() + produceSpeed, getY());
+       Actor hitBox = getOneIntersectingObject(Hitboxes.class); 
        
-       Actor b = getOneIntersectingObject(Hitboxes.class); 
-       if(b != null && !onVertConveyor){
-           shoeMade = true;
-       }
-       if(b != null && onVertConveyor)  
+       if(hitBox != null && onVertConveyor)  
        {  
            if(side == "left"){
                GameWorld.addCurrencyA();
@@ -63,15 +60,29 @@ public class Shoes extends Items
            getWorld().removeObject(this);
        }
     }
+    public void setSpeed(){
+        GameWorld gw = (GameWorld)getWorld();
+        if(this.getX() <=512){
+            for(LeftMachines lm : gw.getObjects(LeftMachines.class)){
+                this.prodSpeedA = gw.getProdSpeedA();
+                side = "left";
+            }
+        } else if(this.getX()>512){
+            for(Rightmachines rm: gw.getObjects(Rightmachines.class)){
+                this.prodSpeedB = gw.getProdSpeedB();
+                side = "right";
+            }
+        }
+    }
     public void checkVertConveyor(){
         GameWorld gw = (GameWorld)getWorld();
         ArrayList<VertConveyor> vertConveyors = (ArrayList<VertConveyor>)gw.getObjects(VertConveyor.class); 
         for(VertConveyor v : vertConveyors){
             if(v.getX() <=512){
-                vcLeftX = v.getX();
+                vcLeftX = v.getX()+9;
             }
             else if(v.getX() >512){
-                vcRightX = v.getX();
+                vcRightX = v.getX()+9;
             }
         }
         
@@ -88,6 +99,7 @@ public class Shoes extends Items
             }
         }
     }
+    
     public boolean getShoeMade(){
         return shoeMade;
     }
