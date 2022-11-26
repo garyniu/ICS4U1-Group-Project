@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.awt.Font;
 /**
  * Write a description of class BoomingBusiness here.
  * 
@@ -8,38 +8,61 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class BoomingBusiness extends Event
 {
-    private GreenFlash gf; 
     private boolean flashAdded; 
     private boolean stockIncreased;
+    private boolean animated; 
+    
     private double itemA;
     private double itemB;
     
+    private GreenfootImage[] upArrow; 
+    private int imageIndex; 
+    private int imageCounter;
+    private SimpleTimer animationTimer; 
     public BoomingBusiness(int d, boolean left, boolean right){
         super(d, left, right);
         flashAdded=false;
         stockIncreased = false;
+        animated = false;
         System.out.println("BOOMING BUSINESS");
+        
+        upArrow = new GreenfootImage[19];
+        imageIndex = 0;
+        animationTimer = new SimpleTimer();
+        
+        for(int i = 0; i<upArrow.length;i++){
+            upArrow[i] = new GreenfootImage("images/UpStonk/UpStonk"+i+".png");
+        }
+        animationTimer.mark();
     }
-
+    
+    public void animateArrow(){
+        if(animationTimer.millisElapsed() < 80){
+            return; 
+        }
+        animationTimer.mark();
+        setImage(upArrow[imageIndex]);
+        imageIndex = (imageIndex+1)%upArrow.length;
+        imageCounter++;
+        if(imageCounter == 19){
+            animated = true; 
+        }
+    }
+    
     public void act()
     {
-        if(!flashAdded){
-            GameWorld w = (GameWorld)getWorld();
-            if(left){
-                gf = new GreenFlash(duration); 
-                w.addObject(gf, 256, 400);
-            }
-            else if(right){
-                gf = new GreenFlash(duration);
-                w.addObject(gf, 768, 400);
-            }
-            flashAdded = true;
+        eventTimer++;
+        if(!animated){
+            animateArrow();
         }
+        if(animated){
+            setImage(new GreenfootImage("images/UpStonk/UpStonk18.png"));
+        }
+        addGreenFlash();
         if(!stockIncreased){
             increaseStock();
             stockIncreased = true;
         }
-        eventTimer++;
         if(eventTimer == duration){
             endEvent();
         }

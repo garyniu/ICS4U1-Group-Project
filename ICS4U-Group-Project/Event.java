@@ -18,11 +18,16 @@ public abstract class Event extends Actor
     protected double newSpeedRight;
     protected double slowSpeedLeft;
     protected double slowSpeedRight;
+    protected boolean flashAdded;
+    
+    protected GreenFlash gf; 
+    protected RedFlash rf;
     
     public Event(int duration, boolean left, boolean right){
         this.duration = duration*60; 
         this.left = left;
         this.right = right;
+        flashAdded = false;
     }
     public void act()
     {
@@ -45,29 +50,13 @@ public abstract class Event extends Actor
         GameWorld gw = (GameWorld)getWorld();
         if(left){
             for(LeftMachines lm : gw.getObjects(LeftMachines.class)){
-                /*if(lm.getItemChoiceA() == "tools" || lm.getItemChoiceA() == "shoes"){
-                    newSpeedLeft = lm.getDefaultSpeedA()+0.5;
-                    lm.setProdSpeedA(newSpeedLeft);
-                }
-                else if(lm.getItemChoiceA() == "phones"){
-                    newSpeedLeft = lm.getDefaultSpeedA()+0.1875;
-                    lm.setProdSpeedA(newSpeedLeft); 
-                }*/
-                newSpeedLeft = lm.getDefaultSpeedA()+0.1875; 
+                newSpeedLeft = lm.getDefaultSpeedA()+0.5; 
                 lm.setProdSpeedA(newSpeedLeft);
             }
         }
         else if(right){
             for(Rightmachines rm : gw.getObjects(Rightmachines.class)){
-                /*if(rm.getItemChoiceB() == "tools" || rm.getItemChoiceB() == "shoes"){
-                    newSpeed = rm.getDefaultSpeedB()+0.5;
-                    rm.setProdSpeedB(newSpeed);
-                }
-                else if(rm.getItemChoiceB() == "phones"){
-                    newSpeed = rm.getDefaultSpeedB()+0.1875;
-                    rm.setProdSpeedB(newSpeed); 
-                }*/
-                newSpeedRight = rm.getDefaultSpeedB()+0.1875; 
+                newSpeedRight = rm.getDefaultSpeedB()+0.5; 
                 rm.setProdSpeedB(newSpeedRight);
             }
         }
@@ -76,29 +65,13 @@ public abstract class Event extends Actor
         GameWorld gw = (GameWorld)getWorld();
         if(left){
             for(LeftMachines lm : gw.getObjects(LeftMachines.class)){
-                /*if(lm.getItemChoiceA() == "tools" || lm.getItemChoiceA() == "shoes"){
-                    newSpeedLeft = lm.getDefaultSpeedA()+0.5;
-                    lm.setProdSpeedA(newSpeedLeft);
-                }
-                else if(lm.getItemChoiceA() == "phones"){
-                    newSpeedLeft = lm.getDefaultSpeedA()+0.1875;
-                    lm.setProdSpeedA(newSpeedLeft); 
-                }*/
-                slowSpeedLeft = lm.getDefaultSpeedA()-0.1875; 
+                slowSpeedLeft = lm.getDefaultSpeedA()-0.5; 
                 lm.setProdSpeedA(slowSpeedLeft);
             }
         }
         else if(right){
             for(Rightmachines rm : gw.getObjects(Rightmachines.class)){
-                /*if(rm.getItemChoiceB() == "tools" || rm.getItemChoiceB() == "shoes"){
-                    newSpeed = rm.getDefaultSpeedB()+0.5;
-                    rm.setProdSpeedB(newSpeed);
-                }
-                else if(rm.getItemChoiceB() == "phones"){
-                    newSpeed = rm.getDefaultSpeedB()+0.1875;
-                    rm.setProdSpeedB(newSpeed); 
-                }*/
-                slowSpeedRight = rm.getDefaultSpeedB()-0.1875; 
+                slowSpeedRight = rm.getDefaultSpeedB()-0.5; 
                 rm.setProdSpeedB(slowSpeedRight);
             }
         }
@@ -113,6 +86,34 @@ public abstract class Event extends Actor
             for(Rightmachines rm : getObjectsAtOffset(256, 400, Rightmachines.class)){
                 rm.setProdSpeedB(rm.getDefaultSpeedB());
             }
+        }
+    }
+    
+    public void addRedFlash(){
+        if(!flashAdded){
+            GameWorld w = (GameWorld)getWorld();
+            if(left){
+                rf = new RedFlash(duration);
+                w.addObject(rf, 256, 400);
+            } else if(right){
+                rf = new RedFlash(duration);
+                w.addObject(rf, 768, 400);
+            }
+            flashAdded = true;
+        }
+    }
+    public void addGreenFlash(){
+        if(!flashAdded){
+            GameWorld w = (GameWorld)getWorld();
+            if(left){
+                gf = new GreenFlash(duration); 
+                w.addObject(gf, 256, 400);
+            }
+            else if(right){
+                gf = new GreenFlash(duration);
+                w.addObject(gf, 768, 400);
+            }
+            flashAdded = true;
         }
     }
 }

@@ -13,21 +13,34 @@ public class Strike extends Event
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     private boolean machinesStopped; 
+    private boolean strikeStatusA;
+    private boolean strikeStatusB; 
     public Strike(int d, boolean left, boolean right){
         super(d, left, right);
         machinesStopped = false;
+        strikeStatusA = left;
+        strikeStatusB = right; 
         System.out.println("STRIKE STRIKE");
     }
     public void act()
     {
         if(!machinesStopped){
+            GameWorld gw = (GameWorld)getWorld(); 
+            gw.setStrikeStatusA(strikeStatusA);
+            gw.setStrikeStatusB(strikeStatusB);
             stopMachines();
             machinesStopped = true;
         }
         eventTimer++;
         if(eventTimer == 900){
+            GameWorld gw = (GameWorld)getWorld(); 
             startMachines();
             splitWorkerNum();
+            if(left){
+                gw.setStrikeStatusA(false);
+            }else if(right){
+                gw.setStrikeStatusB(false); 
+            }
             endEvent();
         }
     }
@@ -36,29 +49,28 @@ public class Strike extends Event
         GameWorld gw = (GameWorld)getWorld();
         if(left){
             for(LeftMachines lm : gw.getObjects(LeftMachines.class)){
-                lm.setProdSpeedA(0); 
-                System.out.println("left machine speed(stop): "+lm.getProdSpeedA());
+                //lm.updateDefaultSpeedA(); //default speed = produce speed = 1
+                gw.setProdSpeedA(0); //gw produce speed = 0 
+                lm.updateSpeed(); //produce speed = gw produce speed = 0
             }
         }
         else if(right){
             for(Rightmachines rm : gw.getObjects(Rightmachines.class)){
-                rm.setProdSpeedB(0); 
-                System.out.println("right machine speed(stop); "+ rm.getProdSpeedB());
+                gw.setProdSpeedB(0); 
+                rm.updateSpeed(); 
             }
         }
     }
     public void startMachines(){
         GameWorld gw = (GameWorld)getWorld();
         if(left){
-            for(LeftMachines lm : gw.getObjects(LeftMachines.class)){
-                lm.setProdSpeedA(lm.getDefaultSpeedA()); 
-                System.out.println("left machine speed(start): "+lm.getProdSpeedA());
+            for(LeftMachines lm : gw.getObjects(LeftMachines.class)){ 
+                gw.setProdSpeedA(lm.getDefaultSpeedA()); //gw speed = defaultspeed = 0 
             }
         }
         else if(right){
             for(Rightmachines rm : gw.getObjects(Rightmachines.class)){
-                rm.setProdSpeedB(rm.getDefaultSpeedB()); 
-                System.out.println("rightt machine speed(start): "+rm.getProdSpeedB());
+                gw.setProdSpeedB(rm.getDefaultSpeedB()); 
             }
         }
     }

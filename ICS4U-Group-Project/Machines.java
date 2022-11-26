@@ -17,17 +17,21 @@ public abstract class Machines extends Actor
     // create an
     protected double machineSpeed;
     protected int level;
-    protected int intItemChoice; 
+    protected int upgradeAmount;     
+    protected boolean speedSet;
+    protected int actTimer;
+    protected int width;
+    protected int height;
+    public Machines(){
+       getImage().scale(333, 72);
+       speedSet = false;
+       actTimer = 0; 
+       width = getImage().getWidth();
+       height = getImage().getHeight();
+    }
     public void act()
     {
         // Add your action code here.
        
     }
-   
-    public void Machines()
-    {
-       
-    }
-    
-
 }
