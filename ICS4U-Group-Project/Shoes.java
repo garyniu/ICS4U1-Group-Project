@@ -23,12 +23,12 @@ public class Shoes extends SmoothMover
         leather = new GreenfootImage("Leather.png");
         leather.scale(30, 30);
         setImage(leather);   
-        
+
         shoe = new GreenfootImage("Shoes.png");
         shoe.scale(30, 30);
         box = new GreenfootImage("ShoeBox.png");
         box.scale(30, 30);
-        
+
         onVertConveyor = false;
         shoeMade = false;
     }
@@ -61,17 +61,61 @@ public class Shoes extends SmoothMover
             move(prodSpeedB);
         }
 
-        
-        if (timer < 110){
-            setImage(leather);
-        } else if (timer >= 110 && timer <= 250){
-            setImage(shoe);
-        } else if (gw.getShoeBoxed()){
-            setImage(box);
+        if (side == "left"){
+            if (prodSpeedA < 2 ){
+                if (timer < 110){
+                    setImage(leather);
+                } else if (timer >= 110 && timer <= 250){
+                    setImage(shoe);
+                } else if (gw.getShoeBoxed()){
+                    setImage(box);
+                }
+            } else if (prodSpeedA >= 2 && prodSpeedA <= 4){
+                if (timer < 60){
+                    setImage(leather);
+                } else if (timer >= 60 && timer <= 120){
+                    setImage(shoe);
+                } else if (gw.getShoeBoxed()){
+                    setImage(box);
+                }
+            } else if (prodSpeedA > 4){
+                if (timer < 30){
+                    setImage(leather);
+                } else if (timer >= 30 && timer <= 60){
+                    setImage(shoe);
+                } else if (gw.getShoeBoxed()){
+                    setImage(box);
+                }
+            }
+        } else if (side == "right"){
+            if (prodSpeedB < 2 ){
+                if (timer < 110){
+                    setImage(leather);
+                } else if (timer >= 110 && timer <= 250){
+                    setImage(shoe);
+                } else if (gw.getShoeBoxed()){
+                    setImage(box);
+                }
+            } else if (prodSpeedB >= 2 && prodSpeedB <= 4){
+                if (timer < 60){
+                    setImage(leather);
+                } else if (timer >= 60 && timer <= 120){
+                    setImage(shoe);
+                } else if (gw.getShoeBoxed()){
+                    setImage(box);
+                }
+            } else if (prodSpeedB > 4){
+                if (timer < 30){
+                    setImage(leather);
+                } else if (timer >= 30 && timer <= 60){
+                    setImage(shoe);
+                } else if (gw.getShoeBoxed()){
+                    setImage(box);
+                }
+            }
         }
-        
-        Actor hitBox = getOneIntersectingObject(Hitboxes.class); 
 
+        Actor hitBox = getOneIntersectingObject(Hitboxes.class); 
         if(hitBox != null && onVertConveyor)  
         {  
             if(side == "left"){
