@@ -81,7 +81,7 @@ public abstract class People extends Actor
     }
 
     //pathfinding algo, very simple
-    private void pathFind(int x, int y, GameWorld w){
+    public void pathFind(int x, int y, GameWorld w){
         GameWorld gw = w;
 
         BlockedBoxes t = new BlockedBoxes(0, 0, getImage().getWidth() - 10, 2, Color.RED);

@@ -17,13 +17,13 @@ public class Shoes extends Items
     private int timer = 0;
     public Shoes(Machines m)
     {
-        image = new GreenfootImage("Leather.png");
+        image = new GreenfootImage("ShoeBox.png");
         image.scale(30, 30);
         setImage(image);   
         
-        sole = new GreenfootImage("soles.png");
+        sole = new GreenfootImage("Shoes.png");
         sole.scale(30, 30);
-        fabric = new GreenfootImage("fabric.png");
+        fabric = new GreenfootImage("Leather.png");
         fabric.scale(30, 30);
         
         onVertConveyor = false;
@@ -88,7 +88,7 @@ public class Shoes extends Items
                 side = "left";
             }
         } else if(this.getX()>512){
-            for(RightMachines rm: gw.getObjects(RightMachines.class)){
+            for(Rightmachines rm: gw.getObjects(Rightmachines.class)){
                 this.prodSpeedB = gw.getProdSpeedB();
                 side = "right";
             }

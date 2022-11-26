@@ -61,7 +61,7 @@ public class Strike extends Event
             }
         }
         else if(right){
-            for(RightMachines rm : gw.getObjects(RightMachines.class)){
+            for(Rightmachines rm : gw.getObjects(Rightmachines.class)){
                 gw.setProdSpeedB(0); 
                 rm.updateSpeed(); 
             }
@@ -75,7 +75,7 @@ public class Strike extends Event
             }
         }
         else if(right){
-            for(RightMachines rm : gw.getObjects(RightMachines.class)){
+            for(Rightmachines rm : gw.getObjects(Rightmachines.class)){
                 gw.setProdSpeedB(rm.getDefaultSpeedB()); 
             }
         }
