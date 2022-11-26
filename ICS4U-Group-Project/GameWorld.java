@@ -52,7 +52,7 @@ public class GameWorld extends World
     private Boss a, b;
     
     private LeftMachines Lone, Ltwo, Lthree;
-    private RightMachines Rone, Rtwo, Rthree;
+    private Rightmachines Rone, Rtwo, Rthree;
     
     
     /**
@@ -147,7 +147,7 @@ public class GameWorld extends World
         Lone = new LeftMachines();
         addObject(Lone, 288, 300);
         
-        Rone = new RightMachines();
+        Rone = new Rightmachines();
         addObject(Rone, 801, 300);
         
 
@@ -217,7 +217,7 @@ public class GameWorld extends World
             
         } else if (RworkerCount == 4 && !spawnedRTwo){
             //add machine, with workers
-            Rtwo = new RightMachines();
+            Rtwo = new Rightmachines();
             addObject(Rtwo, 801, 450);
             spawnedRTwo = true;
         } else if (RworkerCount == 5){
@@ -226,7 +226,7 @@ public class GameWorld extends World
             Rtwo.addWorkers();
         } else if (RworkerCount == 7 && !spawnedRThree){
             //add 2nd machine
-            Rthree = new RightMachines();
+            Rthree = new Rightmachines();
             addObject(Rthree, 801, 600);
             spawnedRThree = true;
         } else if (RworkerCount == 8){

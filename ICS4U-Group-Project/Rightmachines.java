@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name)
  * @version (a version number or a date)
  */
-public class RightMachines extends Machines
+public class Rightmachines extends Machines
 {
     /**
      * Act - do whatever the Rightmachines wants to do. This method is called whenever
@@ -37,7 +37,7 @@ public class RightMachines extends Machines
         width = imageB.getWidth();
         height = imageB.getHeight();
         upgradeAmount = GameWorld.getCurrencyB();*/
-        public RightMachines(){
+        public Rightmachines(){
         super();
         }
     

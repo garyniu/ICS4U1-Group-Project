@@ -29,7 +29,7 @@ public class Shoes extends Items
                 side = "left";
             }
         } else if(this.getX()>512){
-            for(RightMachines rm: w.getObjects(RightMachines.class)){
+            for(Rightmachines rm: w.getObjects(Rightmachines.class)){
                 this.prodSpeedB = rm.getDefaultSpeedB();
                 side = "right";
             }
@@ -68,7 +68,7 @@ public class Shoes extends Items
                 side = "left";
             }
         } else if(this.getX()>512){
-            for(RightMachines rm: gw.getObjects(RightMachines.class)){
+            for(Rightmachines rm: gw.getObjects(Rightmachines.class)){
                 this.prodSpeedB = gw.getProdSpeedB();
                 side = "right";
             }

@@ -79,9 +79,9 @@ public class BoomingBusiness extends Event
             System.out.println("Left machine shoes: "+gw.getItemValueA());
         }
         else if(right){
-            itemB = RightMachines.getMachItemValueB();
+            itemB = Rightmachines.getMachItemValueB();
             newValueRight= itemB + 25; 
-            RightMachines.setMachItemValueB(newValueRight);
+            Rightmachines.setMachItemValueB(newValueRight);
             System.out.println("right machine item: shoes and value " +newValueRight);
             gw.setItemValueB(newValueRight);
             System.out.println("right machine shoes: "+gw.getItemValueB());
