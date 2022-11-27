@@ -1,20 +1,17 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+//Imports
+import greenfoot.*;  
 
 /**
- * Write a description of class Machines here.
+ * Machine class for the conveyer belts
+ * <p>
+ * Mainly holding instance variables for subclasses.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Victor Wei, Gary Niu, Harishan Ganeshanathan
+ * @version November 2022
  */
 public abstract class Machines extends Actor
 {
-    //TODO
-    //implement machines (conveyers)
-    // - Static
-    //  - just a rectangle, moves items on it
-    // - Add
-    //  - add new worker conveyers, 3 sections for each employee
-    // create an
+    //Instance variables
     protected double machineSpeed;
     protected int level;
     protected int upgradeAmount;     
@@ -22,20 +19,21 @@ public abstract class Machines extends Actor
     protected int actTimer;
     protected int width;
     protected int height;
+
+    /**
+     * Constructor for objects of class Machines
+     */
     public Machines(){
+        //Seting the image of the machine
         GreenfootImage image = new GreenfootImage("Conveyer.png");
         setImage(image);
         getImage().scale(333, 72);
+
+        //Setting the instance variables
         speedSet = false;
         actTimer = 0; 
         width = getImage().getWidth();
         height = getImage().getHeight();
         
-    }
-
-    public void act()
-    {
-        // Add your action code here.
-
     }
 }

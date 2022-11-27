@@ -1,25 +1,35 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+//Imports
+import greenfoot.*; 
 
 /**
- * Write a description of class RedFlash here.
+ * Red Flash class, used to create a red flash effect on the screen.
+ * <p>
+ * Creates a red flash effect on the screen, which is used in the Stock Market Crash event.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Harishan Ganeshanathan
+ * @version November 2022
  */
 public class RedFlash extends Effect
 {
-    /**
-     * Act - do whatever the RedFlash wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+//Instance variables
    private int duration;
    private int flashTimer;
    private int durationTimer;
    private GreenfootImage flashing; 
+
+   /**
+     * Constructor for RedFlash.
+     * <p>
+     * Sets instance variables, and creates the red flash effect from the Effect superclass.
+     * 
+     * @param duration Duration of the red flash effect
+     */
    public RedFlash(int duration){
        this.duration = duration;
        durationTimer = 0;
        flashTimer = 0;
+
+       //Creates the green flash effect from the Effect superclass
        flashing = flashRed(0, 0, 512, 800);
        flashing.setTransparency(100);
        setImage(flashing);
@@ -29,6 +39,8 @@ public class RedFlash extends Effect
    {
        flashTimer++;
        durationTimer++;
+
+       //Flashing based on transparency
        if((flashTimer/31 == 1)){
            getImage().setTransparency(100);
            flashTimer = 0;
@@ -41,6 +53,16 @@ public class RedFlash extends Effect
            gw.removeObject(this);
        }
    }
+
+   /**
+     * Method to draw on the generated flashing image onto the Game World.
+     * 
+     * @param x The x coordinate of the green flash effect
+     * @param y The y coordinate of the green flash effect
+     * @param width The width of the green flash effect
+     * @param height The height of the green flash effect
+     * @return The green flash effect
+     */
    private GreenfootImage flashRed(int x, int y, int width, int height){
         GreenfootImage canvas = new GreenfootImage(width, height); 
         image = createFlash(512 ,800, "red");

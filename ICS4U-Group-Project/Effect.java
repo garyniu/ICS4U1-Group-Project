@@ -1,16 +1,26 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+//Imports
+import greenfoot.*;
 
 /**
- * Write a description of class Effects here.
+ * Effects class, used to create a flashing effect on the screen.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Harishan Ganeshanathan
+ * @version November 2022
  */
 public class Effect extends Actor
 {
+    //Instance variables
     protected GreenfootImage image;
     protected Color color; 
     
+    /**
+     * Method to create flashing effect
+     * 
+     * @param color The color of the flashing effect, a string that is either "red" or "green"
+     * @param width The width of the flashing effect
+     * @param height The height of the flashing effect
+     *
+     */
     protected GreenfootImage createFlash(int width, int height, String colour){
         GreenfootImage flash = new GreenfootImage(width, height);
         

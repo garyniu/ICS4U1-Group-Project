@@ -1,10 +1,12 @@
 #BlueJ class context
 comment0.target=GreenFlash
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ GreenFlash\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Green\ Flash\ class,\ used\ to\ create\ a\ green\ flash\ effect\ on\ the\ screen.\r\n\ <p>\r\n\ Creates\ a\ green\ flash\ effect\ on\ the\ screen,\ which\ is\ used\ in\ the\ Booming\ Business\ event.\r\n\ \r\n\ @author\ Harishan\ Ganeshanathan\r\n\ @version\ November\ 2022\r\n
 comment1.params=duration
 comment1.target=GreenFlash(int)
+comment1.text=\r\n\ Constructor\ for\ GreenFlash.\r\n\ <p>\r\n\ Sets\ instance\ variables,\ and\ creates\ the\ green\ flash\ effect\ from\ the\ Effect\ superclass.\r\n\ \r\n\ @param\ duration\ Duration\ of\ the\ green\ flash\ effect\r\n
 comment2.params=
 comment2.target=void\ act()
 comment3.params=x\ y\ width\ height
 comment3.target=greenfoot.GreenfootImage\ flashGreen(int,\ int,\ int,\ int)
+comment3.text=\r\n\ Method\ to\ draw\ on\ the\ generated\ flashing\ image\ onto\ the\ Game\ World.\r\n\ \r\n\ @param\ x\ The\ x\ coordinate\ of\ the\ green\ flash\ effect\r\n\ @param\ y\ The\ y\ coordinate\ of\ the\ green\ flash\ effect\r\n\ @param\ width\ The\ width\ of\ the\ green\ flash\ effect\r\n\ @param\ height\ The\ height\ of\ the\ green\ flash\ effect\r\n\ @return\ The\ green\ flash\ effect\r\n
 numComments=4

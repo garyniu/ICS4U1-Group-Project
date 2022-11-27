@@ -1,26 +1,19 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+//Imports
+import greenfoot.*; 
 
 /**
- * Write a description of class MachineCover here.
+ * Simple class for an image object to cover Shoes while it travels along the conveyer.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Gary Niu
+ * @version November 2022
  */
+
 public class MachineCover extends Machines
 {
-    
+    //Constructor, creates image object
     public MachineCover(){
         GreenfootImage image = new GreenfootImage("ConveyerC.png");
         setImage(image);
         getImage().scale(333, 72);
-    }
-    
-    /**
-     * Act - do whatever the MachineCover wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act()
-    {
-        // Add your action code here.
     }
 }

@@ -1,13 +1,17 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+//Imports
+import greenfoot.*; 
 import java.awt.Font;
 /**
- * Write a description of class BoomingBusiness here.
+ * Booming Business Event, Spawns 2 effects, and increases value of sold items by 25 dollars.
+ * <p>
+ * Spawns two effects, one of which is the arrow visual effect, the other being the flashing screen effect..
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Harishan Ganeshanathan
+ * @version November 2022
  */
 public class BoomingBusiness extends Event
 {
+    //Instance variables
     private boolean flashAdded; 
     private boolean stockIncreased;
     private boolean animated; 
@@ -23,25 +27,40 @@ public class BoomingBusiness extends Event
     
     private GreenfootImage image; 
     private BoomingBusinessImage bbImage; 
+
+
+    /**
+     * Constructor for BoomingBusiness
+     * <p>
+     * Sets instance variables, and creates an array of the up arrow images to be used in the animation.
+     * 
+     * @param d Duration of the event
+     * @param left If the event is on the left side of the screen
+     * @param right If the event is on the right side of the screen
+     */
     public BoomingBusiness(int d, boolean left, boolean right){
+        
         super(d, left, right);
+
+        //Sets instance variables
         flashAdded=false;
         stockIncreased = false;
         animated = false;
         imageAdded = false;
-        System.out.println("BOOMING BUSINESS");
-                
+        
+        //Creates an array of the up arrow images to be used in the animation
         upArrow = new GreenfootImage[19];
         imageIndex = 0;
         animationTimer = new SimpleTimer();
         bbImage = new BoomingBusinessImage(); 
-        
         
         for(int i = 0; i<upArrow.length;i++){
             upArrow[i] = new GreenfootImage("images/UpStonk/UpStonk"+i+".png");
         }
         animationTimer.mark();
     }
+
+    //Method to run through arrow array, to create animation
     public void animateArrow(){
         if(animationTimer.millisElapsed() < 80){
             return; 
@@ -54,7 +73,8 @@ public class BoomingBusiness extends Event
             animated = true; 
         }
     }
-    
+
+
     public void act()
     {
         eventTimer++;
@@ -78,6 +98,7 @@ public class BoomingBusiness extends Event
         }
     }
 
+    //Method to increase the value of the sold items depending on side
     public void increaseStock(){
         GameWorld gw = (GameWorld)getWorld();
         if(left){

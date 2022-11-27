@@ -1,8 +1,9 @@
 #BlueJ class context
 comment0.target=BoomingBusiness
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ BoomingBusiness\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Booming\ Business\ Event,\ Spawns\ 2\ effects,\ and\ increases\ value\ of\ sold\ items\ by\ 25\ dollars.\r\n\ <p>\r\n\ Spawns\ two\ effects,\ one\ of\ which\ is\ the\ arrow\ visual\ effect,\ the\ other\ being\ the\ flashing\ screen\ effect..\r\n\ \r\n\ @author\ Harishan\ Ganeshanathan\r\n\ @version\ November\ 2022\r\n
 comment1.params=d\ left\ right
 comment1.target=BoomingBusiness(int,\ boolean,\ boolean)
+comment1.text=\r\n\ Constructor\ for\ BoomingBusiness\r\n\ <p>\r\n\ Sets\ instance\ variables,\ and\ creates\ an\ array\ of\ the\ up\ arrow\ images\ to\ be\ used\ in\ the\ animation.\r\n\ \r\n\ @param\ d\ Duration\ of\ the\ event\r\n\ @param\ left\ If\ the\ event\ is\ on\ the\ left\ side\ of\ the\ screen\r\n\ @param\ right\ If\ the\ event\ is\ on\ the\ right\ side\ of\ the\ screen\r\n
 comment2.params=
 comment2.target=void\ animateArrow()
 comment3.params=

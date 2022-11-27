@@ -1,49 +1,57 @@
-//Import
+//Imports
 import greenfoot.*;
 
 /**
- * Write a description of class Button here.
+ * Button class, used in menus, to detect if the button is clicked.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Gary Niu, Arsham Zare Moayedi, Anthony Ung
+ * @version November 2022
  */
 public class Button extends Actor
 {
-    /**
-     * Act - do whatever the Button wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    
+    //Instance variables
     protected GreenfootImage background, nameImage, greyBackground; 
     private GreenfootSound Click;
     private boolean click;
-    //protected width, height;
-    private int timer = 0;
 
+    /**
+     * Constructor for Button
+     * <p>
+     * Creates a new Button object with a normal state and hover state
+     * 
+     * @param a The normal image of the button
+     * @param b The hover image of the button
+     */
     public Button(GreenfootImage a, GreenfootImage b)
     {
-        
+        //Creates click sound
         Click = new GreenfootSound ("Click.mp3");
         
+        //Sets the normal and hover images
         background = a;
         greyBackground = b;
 
+        //Sets the image to the normal image
         setImage(background); 
     }
 
     public void act() 
     {
-        // Add your action code here.
-        timer++;
         click = listenForClick();
     }    
 
+    /**
+     * Returns if the button is clicked
+     * 
+     * @return Button clicked
+     */
     public boolean listenForClick()
     {
+        //If the mouse clicks on the button, return true
         if(Greenfoot.mousePressed(this))
         {
-            
-            
-            
+            //Sets the image to the regular image, scales it up slightly, and plays the click sound
             greyBackground.scale(greyBackground.getWidth()+5, greyBackground.getHeight()+5);
             Greenfoot.delay(10);
             greyBackground.scale(greyBackground.getWidth()-5, greyBackground.getHeight()-5);
@@ -51,9 +59,11 @@ public class Button extends Actor
             
             return true;
         } 
+        //If the mouse is hovering over the button, set the image to the hover image
         if (Greenfoot.mouseMoved(this)){
             setImage(greyBackground);
         }
+        //If the mouse is not hovering over the button, set the image to the normal image
         if (Greenfoot.mouseMoved(null) && !Greenfoot.mouseMoved(this)){
             setImage(background);
         }
@@ -62,6 +72,7 @@ public class Button extends Actor
 
     }
     
+    //Returns if the button is clicked
     public boolean getClick(){
         return click;
     }
