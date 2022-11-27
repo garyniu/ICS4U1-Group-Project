@@ -120,7 +120,7 @@ public class Rightmachines extends Machines
     //Method used to spawn a new shoe on the conveyer
     public void spawnShoes(){
         GameWorld gw = (GameWorld)getWorld(); 
-        gw.addObject(new Shoes(this) , this.getX()- this.getX()/6, this.getY()-height/4-10);
+        gw.addObject(new Shoes(this) , this.getX()- this.getX()/5, this.getY()-height/4-10);
         updateSpeed();
         gw.setShoeBoxed(true);
         gw.itemsSold("right");
