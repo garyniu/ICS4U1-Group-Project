@@ -1,31 +1,42 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+//Imports
+import greenfoot.*; 
 
 /**
- * Write a description of class WinScreen here.
+ * Win Screen World
+ * <p>
+ * Displays the image of the Win Screen, and respective text with the winning side.
+ * Also displays a button connected to the main menu.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Harishan Ganeshanathan
+ * @version November 2022
  */
 public class WinScreen extends World
 {
 
-    /**
-     * Constructor for objects of class WinScreen.
-     * 
-     */
+    
     private String winner; 
     private GreenfootImage background;
-    private int timer; 
+    private int timer = 0; 
     private GreenfootSound end;
+    
+    /**
+     * Constructor for objects of class WinScreen
+     * <p>
+     * Sets background for the world.
+     * 
+     * @param winner The winning side of the game, sent in as either "left" or "right"
+     */
+     
     
     public WinScreen(String winner)
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+        // Create a new world of 1024 x 800
         super(1024, 800, 1);
         
+        //Setting audio for background music
         end = new GreenfootSound("end.mp3");
         
-        timer = 0;
+        //Setting world background, based on the winning side
         if(winner == "left"){
           background = new GreenfootImage("images/TEAM_AWIN.png");
           setBackground(background);
@@ -35,19 +46,11 @@ public class WinScreen extends World
           setBackground(background);
           background.scale(1024,800);
         }
-        
-        if(winner == "left"){
-          //System.out.println("THe winner was left side");
-          end.playLoop();
-        } else if(winner == "right"){
-            //System.out.println("the winner was right side");
-            end.playLoop();
-        }
     }
     
+    //Methods to start and stop music
     public void started(){
         end.playLoop();
-        
     }
     
     public void stopped(){
@@ -55,6 +58,7 @@ public class WinScreen extends World
     }
     
     public void act(){
+        //When the timer increments to 300, go to the Main Menu
         timer++; 
         if(timer == 300){
             Greenfoot.setWorld(new End());

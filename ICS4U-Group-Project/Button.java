@@ -1,4 +1,5 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+//Import
+import greenfoot.*;
 
 /**
  * Write a description of class Button here.
@@ -20,18 +21,6 @@ public class Button extends Actor
 
     public Button(GreenfootImage a, GreenfootImage b)
     {
-        /*
-        background = new GreenfootImage(width, height); 
-        background.setColor(Color.BLACK); 
-        background.fill(); 
-
-        nameImage = new GreenfootImage(name, 50, Color.WHITE, Color.BLACK);
-        background.drawImage(nameImage, background.getWidth()/2-nameImage.getWidth()/2,background.getHeight()/2-nameImage.getHeight()/2);
-
-        greyBackground = new GreenfootImage(width, height); 
-        greyBackground.setColor(Color.GRAY); 
-        greyBackground.fill(); 
-        greyBackground.drawImage(nameImage, background.getWidth()/2-nameImage.getWidth()/2,background.getHeight()/2-nameImage.getHeight()/2);*/
         
         Click = new GreenfootSound ("Click.mp3");
         

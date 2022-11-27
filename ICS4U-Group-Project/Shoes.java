@@ -124,8 +124,8 @@ public class Shoes extends SmoothMover
             }
         }
 
-        Actor hitBox = getOneIntersectingObject(Hitboxes.class); 
-        if(hitBox != null && onVertConveyor)  
+        Actor bb = getOneIntersectingObject(BlockedBoxes.class); 
+        if(bb != null && onVertConveyor && ((BlockedBoxes)bb).isMachine())  
         {  
             if(side == "left"){
                 GameWorld.addCurrencyA();

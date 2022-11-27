@@ -11,32 +11,39 @@ import greenfoot.Color;
 public class BlockedBoxes extends Actor
 {
     // instance variables - replace the example below with your own
-    private int x, y, w, h, timer = 0;
+    private int w, h, timer = 0;
     private GreenfootImage image;
+    private boolean wC;
 
     /**
      * Constructor for objects of class BlockedBoxes
      */
-    public BlockedBoxes(int x, int y, int w, int h, Color c)
+    public BlockedBoxes(int w, int h, boolean isMachineUsing)
     {
-        this.x = x;
-        this.y = y;
+
+        wC = isMachineUsing;
         this.w = w;
         this.h = h;
-        
+
         image = new GreenfootImage(w, h);
         image.setColor(new Color(0,0,0,0));
         image.fillRect(0, 0, w-1, h - 1);
         setImage(image);
-        
+
     }
-    
+
     public void act(){
-        timer++;
-        if (timer > 1) getWorld().removeObject(this);
+        if (!wC){
+            timer++;
+            if (timer > 1) getWorld().removeObject(this);
+        }
     }
 
     public boolean contact(){
         return (isTouching(Machines.class) && !isTouching(VertConveyor.class)) ? true : false;
+    }
+
+    public boolean isMachine(){
+        return wC;
     }
 }

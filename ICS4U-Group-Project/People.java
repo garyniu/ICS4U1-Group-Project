@@ -84,10 +84,10 @@ public abstract class People extends Actor
     public void pathFind(int x, int y, GameWorld w){
         GameWorld gw = w;
 
-        BlockedBoxes t = new BlockedBoxes(0, 0, getImage().getWidth() - 10, 2, Color.RED);
-        BlockedBoxes b = new BlockedBoxes(0, 0, getImage().getWidth() - 10, 2, Color.BLUE);
-        BlockedBoxes l = new BlockedBoxes(0, 0, 2, getImage().getHeight() - 5, Color.GREEN);
-        BlockedBoxes r = new BlockedBoxes(0, 0, 2, getImage().getHeight() - 5, Color.YELLOW);
+        BlockedBoxes t = new BlockedBoxes(getImage().getWidth() - 10, 2, false);
+        BlockedBoxes b = new BlockedBoxes(getImage().getWidth() - 10, 2, false);
+        BlockedBoxes l = new BlockedBoxes(2, getImage().getHeight() - 5, false);
+        BlockedBoxes r = new BlockedBoxes(2, getImage().getHeight() - 5, false);
 
         w.addObject(t, getX(), getY() - (getImage().getHeight()/2) - 9);
         w.addObject(b, getX(), getY() + (getImage().getHeight()/2) + 9);

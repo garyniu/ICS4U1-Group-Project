@@ -25,7 +25,7 @@ public class VertConveyor extends Machines
         // Add your action code here.
     }
     public void addedToWorld(World w){
-        w.addObject(new Hitboxes(), this.getX()+9, 700);
+        w.addObject(new BlockedBoxes(30, 80, true), this.getX()+9, 700);
     }
     
 }

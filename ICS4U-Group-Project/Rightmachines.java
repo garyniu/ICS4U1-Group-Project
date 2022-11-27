@@ -32,7 +32,7 @@ public class Rightmachines extends Machines
     
 
     public void addedToWorld(World w){
-        w.addObject(new Hitboxes(), (this.getX()+width/2)-10, this.getY()-height/2);
+        w.addObject(new BlockedBoxes(30, 80, true), (this.getX()+width/2)-10, this.getY()-height/2);
         spawnShoes();
         
         MachineCover x = new MachineCover();
