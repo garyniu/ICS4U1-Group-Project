@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class HiredWorkers here.
+ * A HiredWorker is hired by a normal boss once they want to upgrade the number of workers per station. 
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Gary Niu
+ * @version November 2022
  */
 public class HiredWorkers extends People
 {
@@ -12,6 +12,11 @@ public class HiredWorkers extends People
     private int fadepercent = 0, fadein = 120, originalPos;
     private boolean firstSpawn;
 
+    /**
+     * Constructor calls the super Constructor and sets values+images
+     * 
+     * @param FS    
+     */
     public HiredWorkers(boolean FS){
         super();
         //incrementing worker count

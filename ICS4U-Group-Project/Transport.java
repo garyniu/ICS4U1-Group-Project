@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Transport here.
+ * A transport worker takes materials from where the truck drops them off, and then moves them to the conveyor belt
  * 
  * @author (your name) 
  * @version (a version number or a date)
