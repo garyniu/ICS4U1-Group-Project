@@ -17,9 +17,7 @@ public class UpgradeArrow extends Actor
     private GreenfootSound upgrade;
     
     /**
-     * Constructor for UpgradeArrow
-     * <p>
-     * Sets the image of the UpgradeArrow, and plays the upgrade sound
+     * Constructor for UpgradeArrow - Sets the image of the UpgradeArrow, and plays the upgrade sound
      * @param type The type of upgrade arrow to spawn, changes image based on type (0 for a worker arrow, 1 for a machine arrow)
      */
     public UpgradeArrow(int type){
@@ -41,7 +39,9 @@ public class UpgradeArrow extends Actor
         duration = 60;
     }
 
-
+    /**
+     * Moves the arrow up, starts fade out effect, and removes object if duration == 0
+     */
     public void act()
     {
         //Move the arrow up

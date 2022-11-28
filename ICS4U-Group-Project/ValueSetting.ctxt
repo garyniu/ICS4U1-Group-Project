@@ -1,9 +1,9 @@
 #BlueJ class context
 comment0.target=ValueSetting
-comment0.text=\r\n\ Value\ Screen\ World\r\n\ <p>\r\n\ Displays\ the\ image\ of\ the\ value\ screen,\ and\ multiple\ buttons\ /\ selections\ for\ game\ options.\r\n\ \r\n\ @author\ Gary\ Niu\r\n\ @version\ November\ 2022\r\n
+comment0.text=\r\n\ Value\ Screen\ World\r\n\ <p>\r\n\ Displays\ the\ image\ of\ the\ value\ screen,\ and\ multiple\ buttons\ /\ selections\ for\ game\ options.\r\n\ <p>\r\n\ There\ are\ buttons\ for\ the\ UpgradePriority\ on\ both\ sides,\ the\ StartingMoney\ on\ both\ sides,\ the\ duration\ of\ the\ simulation,\ the\ difficulty\ level\ of\ the\ simulation,\ a\ Menu\ button,\ a\ restore\ Default\ settings\ button,\ and\ a\ Begin\ simulation\ button\r\n\ \r\n\ @author\ Gary\ Niu\r\n\ @version\ November\ 2022\r\n
 comment1.params=
 comment1.target=ValueSetting()
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ ValueSetting.\r\n\ <p>\ \r\n\ Pregenerates\ buttons\ for\ all\ game\ settings.\r\n\ \r\n
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ ValueSetting\ -\ Pregenerates\ buttons\ for\ all\ game\ settings.\r\n\ \r\n
 comment2.params=
 comment2.target=void\ started()
 comment2.text=\r\n\ Started()\ method\ -\ used\ for\ playing\ music\ in\ a\ loop\r\n
@@ -12,5 +12,5 @@ comment3.target=void\ stopped()
 comment3.text=\r\n\ Stopped()\ method\ -\ stops\ music\ if\ the\ world\ is\ stopped\r\n
 comment4.params=
 comment4.target=void\ act()
-comment4.text=\r\n\ Act\ Method\ for\ ValueSetting\ -\ Checks\ to\ see\ if\ buttons\ are\ toggled/pressed\ or\ not.\ \r\n\ <p>\r\n\ For\ the\ left\ and\ right\ side,\ there\ are\ buttons\ for\ UpgradePriority\ and\ Starting\ Money.\ The\ act\ method\ first\ checks\ \r\n\ both\ of\ those\ buttons\ on\ each\ side.\ Each\ button\ has\ a\ limit.\ For\ displaying\ text\ on\ the\ buttons,\ the\ value\ setting\ \r\n\ screen\ is\ an\ image\ with\ empty\ spaces\ where\ text\ can\ be\ written\ on\ top\ of.\ There\ are\ also\ buttons\ that\ apply\ \r\n\ to\ both\ sides,\ one\ for\ the\ time/duration\ of\ the\ event,\ one\ for\ the\ difficulty.\ \r\n\ Finally,\ buttons\ for\ setting\ default\ values,\ starting\ the\ game,\ and\ returning\ to\ the\ Menu\ are\ also\ checked.\ \r\n
+comment4.text=\r\n\ Checks\ to\ see\ if\ buttons\ are\ toggled/pressed\ or\ not\ and\ displays\ text\ onto\ the\ buttons.\ \r\n
 numComments=5

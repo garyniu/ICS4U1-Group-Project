@@ -36,7 +36,7 @@ public class Button extends Actor
         setImage(background); 
     }
     /**
-     * Act Method - Checks to see if the button has been clicked
+     * AChecks to see if the button has been clicked
      */
     public void act() 
     {
@@ -75,7 +75,7 @@ public class Button extends Actor
     }
     
     /**
-     * Returns if the button has been clicked
+     * Returns click
      */
     public boolean getClick(){
         return click;

@@ -2,9 +2,25 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 
 /**
- * This is our GameWorld, where our SweatShop simulation will take place. GameWorld is responsible for storing many base variables, and as a result, there are a lot of getters and setters
- *  used here. We hope you enjoy!
- *
+ * This is our GameWorld, where our SweatShop simulation will take place. In our Sweatshop simulation, two factories owners are competing for a promotion from their boss. Both sweatshops produce shoes. 
+ * <p>
+ * The owners (normal bosses) start off with a single conveyor belt with 4 workers (3 per station on the conveyor belt and one transporting items to and from the cargo dropoff). 
+ * As they make more money, they can upgrade either the speed of the conveyor belt, or the number of workers per station at a conveyor belt. Note that if there are 3 workers per station 
+ * at a conveyor belt, then a new conveyor belt will be opened up, with one worker per station. Upgrades are set by the user at the start to be random (no set order for upgrades), prioritize workers(
+ * upgrade worker count first, then conveyor speed, then worker count, then conveyor speed), or machine upgrades(upgrade machine speed, then worker count, then machine speed, then worker count).
+ * <p>
+ * Events: There are events which can affect the overall money production of either side. A strike will cause all workers to stop producing shoes, and at the end, all stations will have only one worker. When Business is 
+ * Booming, the value of the shoes that a factory produces increases by $25. If the Stock Market Crashes, the value of shoes that a factory produces decreases by $25. 
+ * And if there is a BossCheckup, the super boss will walk around watching the workers, and can give them a pay raise or pay deduction, affecting the speed at which workers work.These help make the simulation random everytime.
+ * Event spawning is completely randomized. 
+ * <p>
+ * Players can choose to set the following variables: Upgrade Priority for either side, the starting amount of money for either side, the duration of the simulation and the difficulty level. If the simulation 
+ * is set to hard mode, events happen more frequently, making the simulation much more random. 
+ * <p>
+ * **Note that our simulation runs on a 1024x800 screen 
+ * <p>
+ * That is all for our Sweatshop simulation and we hope you enjoy :)
+ * 
  * @author Harishan Ganeshanathan, Gary Niu, Victor Wei, Arsham Zare Moayedi, Anthony Ung
  * @version November 2022
  */
@@ -432,12 +448,12 @@ public class GameWorld extends World
         }
         else if(hardMode){
             if(!activeEventA){
-                if(Greenfoot.getRandomNumber(1200) == 0){
+                if(Greenfoot.getRandomNumber(1000) == 0){
                     chooseEventA();
                 }
             }
             if(!activeEventB){
-                if(Greenfoot.getRandomNumber(1200) == 0){
+                if(Greenfoot.getRandomNumber(1000) == 0){
                     chooseEventB();
                 }
             }

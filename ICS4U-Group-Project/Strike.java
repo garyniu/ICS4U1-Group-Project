@@ -34,9 +34,7 @@ public class Strike extends Event
         strikeStatusB = right; 
     }
     /**
-     * If the machines are not already stopped, it will first set the StrikeStatus for both sides in the world, depending on what side the event is happening on. 
-     * Then, the machines will be stopped. If the event timer reaches the duration of the event, the machines will be started, 
-     * the StrikeStatuses will be reset, workers will be set to 1 per station, and the event will be ended. 
+     * Sets the strikestatus, stops the machines, then if the event is over, starts the machines, resets the strikeStatuses, workers are set to 1 per station, and endEvent() is called from the superclass. 
      */
     public void act()
     {
@@ -62,7 +60,6 @@ public class Strike extends Event
             if (strikeStatusB){
                 gw.halfWorkers("right");
             }
-            
             endEvent();
         }
     }

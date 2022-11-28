@@ -20,9 +20,7 @@ public class Truck extends Actor
     private GreenfootImage image = new GreenfootImage("truck.png");
 
     /**
-     * Constructor for Truck
-     * <p>
-     * Sets the image of the Truck, and plays a sound
+     * Constructor for Truck - sets the image of the Truck, and plays a sound
      */
     public Truck(){
         setImage(image);
@@ -35,7 +33,9 @@ public class Truck extends Actor
         truckNoise.setVolume(35);
         truckNoise.play();
     }
-
+    /**
+     * Moves the truck and stops at two points to drop off cargo, calls the stop method once reaching a stopping point. 
+     */
     public void act(){
         //Moves the truck, and stops at two points, and drops off cargo
         //If reaching a stopping point, it calls the stopping method
@@ -83,15 +83,17 @@ public class Truck extends Actor
 
     }
 
-    //Method to move the truck
+    /**
+     * Method for moving a truck
+     * 
+     * @param movement - How much the truck should move by
+     */
     private void moving(double movement){
         setLocation((int)(Math.round(getX() + movement)), getY());
     }
 
     /**
-     * Method to stop the truck
-     * <p>
-     * Slows down the truck by .5 increments
+     * Method to stop the truck - Slows down the truck by .5 increments
      * 
      * @param stopLoc The location to stop at
      */
@@ -113,7 +115,9 @@ public class Truck extends Actor
 
     }
 
-    //Method to fade in the truck
+    /**
+     * Method for making the truck fade in 
+     */
     private void fadeIn(int timer){
         trans = (120 - timer);
         trans = trans / 120;

@@ -19,7 +19,6 @@ public abstract class Machines extends Actor
     protected int actTimer;
     protected int width;
     protected int height;
-
     /**
      * Constructor for objects of class Machines
      */

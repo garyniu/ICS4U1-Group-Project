@@ -1,25 +1,28 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class TruckItems here.
+ * Cargo dropped off by the truck
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Gary Niu 
+ * @version November 2022
  */
 public class TruckItems extends Actor
 {
     private int duration;
     private GreenfootImage image;
     
+    /**
+     * Constructor - sets image and duration value
+     */
     public TruckItems(){
         image = new GreenfootImage("boximg.png");
         image.scale(40, 40);
         setImage(image);
         duration = 80;
-        
-        
     }
-
+    /**
+     * Sets location for truck, fade in effect, and removes the object if duration == 0 
+     */
     public void act()
     {
         // Add your action code here.

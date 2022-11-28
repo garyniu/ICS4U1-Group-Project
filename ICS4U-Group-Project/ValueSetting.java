@@ -5,6 +5,8 @@ import greenfoot.*;
  * Value Screen World
  * <p>
  * Displays the image of the value screen, and multiple buttons / selections for game options.
+ * <p>
+ * There are buttons for the UpgradePriority on both sides, the StartingMoney on both sides, the duration of the simulation, the difficulty level of the simulation, a Menu button, a restore Default settings button, and a Begin simulation button
  * 
  * @author Gary Niu
  * @version November 2022
@@ -28,9 +30,7 @@ public class ValueSetting extends World
     private GreenfootSound Valuemusic;
 
     /**
-     * Constructor for objects of class ValueSetting.
-     * <p> 
-     * Pregenerates buttons for all game settings.
+     * Constructor for objects of class ValueSetting - Pregenerates buttons for all game settings.
      * 
      */
     public ValueSetting()
@@ -133,13 +133,7 @@ public class ValueSetting extends World
         Valuemusic.stop();
     }
     /**
-     * Act Method for ValueSetting - Checks to see if buttons are toggled/pressed or not. 
-     * <p>
-     * For the left and right side, there are buttons for UpgradePriority and Starting Money. The act method first checks 
-     * both of those buttons on each side. Each button has a limit. For displaying text on the buttons, the value setting 
-     * screen is an image with empty spaces where text can be written on top of. There are also buttons that apply 
-     * to both sides, one for the time/duration of the event, one for the difficulty. 
-     * Finally, buttons for setting default values, starting the game, and returning to the Menu are also checked. 
+     * Checks to see if buttons are toggled/pressed or not and displays text onto the buttons. 
      */
     public void act(){
 

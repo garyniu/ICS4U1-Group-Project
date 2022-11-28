@@ -1,14 +1,19 @@
 #BlueJ class context
 comment0.target=Truck
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ truck\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Truck\ class,\ a\ visual\ effect\ of\ a\ truck,\ that\ stops\ at\ certian\ points\ to\ drop\ off\ cargo\r\n\ \r\n\ @author\ Gary\ Niu\r\n\ @version\ November\ 2022\r\n
 comment1.params=
 comment1.target=Truck()
+comment1.text=\r\n\ Constructor\ for\ Truck\ -\ sets\ the\ image\ of\ the\ Truck,\ and\ plays\ a\ sound\r\n
 comment2.params=
 comment2.target=void\ act()
+comment2.text=\r\n\ Moves\ the\ truck\ and\ stops\ at\ two\ points\ to\ drop\ off\ cargo,\ calls\ the\ stop\ method\ once\ reaching\ a\ stopping\ point.\ \r\n
 comment3.params=movement
 comment3.target=void\ moving(double)
+comment3.text=\r\n\ Method\ for\ moving\ a\ truck\r\n\ \r\n\ @param\ movement\ -\ How\ much\ the\ truck\ should\ move\ by\r\n
 comment4.params=stopLoc
 comment4.target=void\ stopping(int)
+comment4.text=\r\n\ Method\ to\ stop\ the\ truck\ -\ Slows\ down\ the\ truck\ by\ .5\ increments\r\n\ \r\n\ @param\ stopLoc\ The\ location\ to\ stop\ at\r\n
 comment5.params=timer
 comment5.target=void\ fadeIn(int)
+comment5.text=\r\n\ Method\ for\ making\ the\ truck\ fade\ in\ \r\n
 numComments=6

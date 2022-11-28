@@ -67,7 +67,7 @@ public class Boss extends People
         
     }
     /**
-     * Calls the super act method and randomizes when the boss should move around and to where. If it is a normal boss, it will randomly buys upgrades. 
+     * Calls the super act method and randomizes when the boss should move around and to where, if it is a normal boss, it will randomly buys upgrades. 
      */
     public void act()
     {

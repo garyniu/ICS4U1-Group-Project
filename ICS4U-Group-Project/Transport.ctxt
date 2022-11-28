@@ -1,11 +1,13 @@
 #BlueJ class context
 comment0.target=Transport
-comment0.text=\r\n\ A\ transport\ worker\ takes\ materials\ from\ where\ the\ truck\ drops\ them\ off,\ and\ then\ moves\ them\ to\ the\ conveyor\ belt\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ A\ transport\ worker\ takes\ materials\ from\ where\ the\ truck\ drops\ them\ off,\ and\ then\ moves\ them\ to\ the\ conveyor\ belt\r\n\ \r\n\ @author\ Gary\ Niu\r\n\ @version\ November\ 2022\r\n
 comment1.params=goX\ goY\ side
 comment1.target=Transport(int,\ int,\ java.lang.String)
+comment1.text=\r\n\ Constructor\ for\ Transport\ -\ sets\ the\ image\ of\ the\ Transport\r\n\ \r\n\ @param\ goX\ x\ coordinate\ to\ go\ to\r\n\ @param\ goY\ y\ coordinate\ to\ go\ to\r\n\ @param\ side\ Which\ side\ the\ transport\ worker\ is\ on,\ "left"\ or\ "right"\ \r\n
 comment2.params=w
 comment2.target=void\ addedToWorld(greenfoot.World)
+comment2.text=\r\n\ Calls\ the\ super\ addedToWorld\ method\r\n
 comment3.params=
 comment3.target=void\ act()
-comment3.text=\r\n\ Act\ -\ do\ whatever\ the\ Transport\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment3.text=\r\n\ Constantly\ switches\ between\ two\ coordinates,\ the\ pickup\ coordinate\ and\ the\ dropoff\ coordinate,\ and\ once\ it\ is\ at\ the\ pickup\ coordinates,\ ti\ will\ pick\ up\ a\ box\ and\ move\ to\ dropoff.\ \r\n
 numComments=4

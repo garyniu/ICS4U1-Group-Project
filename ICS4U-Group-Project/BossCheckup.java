@@ -40,9 +40,7 @@ public class BossCheckup extends Event
         }
     }
     /**
-     * Once the timer is over, it will first randomize if the workers get a raise or deduction, and if their speed is increased or decreased
-     * <p>
-     * Then, the boss and the event are removed from the world
+     * Once the timer is over, it will first randomize if the workers get a raise or deduction, and if their speed is increased or decreased, then, the boss and the event are removed from the world
      */
     public void act()
     {

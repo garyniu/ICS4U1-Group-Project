@@ -49,8 +49,7 @@ public abstract class Event extends Actor
         Badstock.setVolume(30);
     }
     /**
-     * The endEvent method first sets the activeEventStatus to false, depending on which side the event is on. 
-     * Then, it removes the event object from the world. 
+     * The endEvent method sets the activeEventStatus to false, depending on which side the event is on and removes the event object from the world. 
      */
     public void endEvent(){
         GameWorld gw = (GameWorld) getWorld();
@@ -64,8 +63,7 @@ public abstract class Event extends Actor
         gw.removeObject(this);
     }
     /**
-     * If a flash hasn't been added to the world yet, it will add only one 
-     * red flash object to the world
+     * If a flash hasn't been added to the world yet, it will add only one red flash object to the world
      */
     public void addRedFlash(){
         if(!flashAdded){
@@ -82,8 +80,7 @@ public abstract class Event extends Actor
         }
     }
     /**
-     * If a flash hasn't been added to the world yet, it will add only one 
-     * green flash object to the world
+     * If a flash hasn't been added to the world yet, it will add only one green flash object to the world
      */
     public void addGreenFlash(){
         if(!flashAdded){

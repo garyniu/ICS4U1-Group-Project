@@ -75,9 +75,8 @@ public class BoomingBusiness extends Event
         }
     }
     /**
-     * In the act method, the BoomingBusiness event image will be added in the corner. 
-     * If the arrow has not been animated, it will animate the arrow, and if it has been animated,
-     *  it will constantly set the image of the arrow to the final image.  
+     * In the act method, the BoomingBusiness event image will be added in the corner, it will animate the arrow, and if it has already been animated once ,
+     *  it will constantly set the image of the arrow to the final image of the arrow (when it is at its largest).  
      */
     public void act()
     {
@@ -102,7 +101,7 @@ public class BoomingBusiness extends Event
         }
     }
     /**
-     * Increases the value of a shoe. Ex: If a shoe is originally worth $100, after increaseStock() is called, its value will be $125.
+     * Increases the value of a shoe (Ex: If a shoe is originally worth $100, after increaseStock() is called, its value will be $125).
     */
     public void increaseStock(){
         GameWorld gw = (GameWorld)getWorld();

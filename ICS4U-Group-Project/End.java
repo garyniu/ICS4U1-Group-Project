@@ -41,9 +41,7 @@ public class End extends World
 
     }
     /**
-     * Act Method for class End 
-     * <p>
-     * Checks to see if the restart button is clicked, and if so, it will switch to the Menu screen. 
+     * Act Method for class End - Checks to see if the restart button is clicked, and if so, it will switch to the Menu screen. 
      *
      */
     public void act(){

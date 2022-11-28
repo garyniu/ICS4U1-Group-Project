@@ -5,7 +5,11 @@ import greenfoot.*;
  * Class for the Conveyers on the left side of the screen
  * <p>
  * Holds workers, and spawns shoes on the conveyer belt.
- *
+ * <p>
+ * The reason that in checkShoeFinished(), the checking of shoe completion is timer based and not BlockedBoxes collision based is because we ran into problems with adding multiple shoes at a time,
+ *  but with a delay (if there were 3 workers per station, we would want 3 shoes to spawn, but on a visual delay so it visually looks like 3 are made). 
+ *  If we made it collision based, a for loop for delaying shoe spawning would break the spawning entirely, so we had to make it timer based. 
+ * 
  * @author Victor Wei, Gary Niu, Harishan Ganeshanathan
  * @version November 2022
  */
@@ -32,9 +36,7 @@ public class LeftMachines extends Machines
         super();
     }
     /**
-     * If the strike event is inactive and if the speed has not been set, only then wil the speed be updated.
-     * <p>
-     * Checks if the current shoe is finished on the conveyor, so a new shoe Item can be spawned. 
+     * If the strike event is inactive and if the speed has not been set, only then will the speed be updated, and checks if the current shoe is finished on the conveyor, so a new shoe Item can be spawned. 
      */
     public void act()
     {
@@ -73,7 +75,9 @@ public class LeftMachines extends Machines
         getWorld().addObject(new HiredWorkers(false), getX()/2 + 120 , getY() - 30);
         getWorld().addObject(new HiredWorkers(false), getX()/2 + 240, getY() - 30);
     }
-    
+    /**
+     * Adds three workers to the conveyor, one for each station
+     */
     public void addWorkers(){
         //Adds workers to the conveyer based on level
         //Level 2 (> 6 workers)
@@ -107,8 +111,9 @@ public class LeftMachines extends Machines
         } 
 
     }
-
-    //Method used in GameWorld, removes the last 2 workers in each section in a strike
+    /**
+     * Removes all workers at a station except for the original one worker per station, and is called at the end of a strike
+     */
     public void strikeRemove(){
         getWorld().removeObject(t_o);
         getWorld().removeObject(t_t);
@@ -135,11 +140,7 @@ public class LeftMachines extends Machines
     }
 
     /**
-     * Method for checking if a shoe is finished and a new one can be created. The shoe spawning is also worker count based. 
-     * <p>
-     * The reason this is timer based and not BlockedBoxes collision based is because we ran into problems with adding multiple shoes at a time,
-     *  but with a delay (if there were 3 workers per station, we would want 3 shoes to spawn, but on a visual delay so it visually looks like 3 are made). 
-     *  If we made it collision based, a for loop for delaying shoe spawning would break the spawning entirely, so we made it timer based. 
+     * Method for checking if a shoe is finished and a new one can be created, and the shoe spawning is also worker count based. 
      */ 
     public void checkShoeFinished(){
         if(produceSpeed <= 1 && actTimer == 293){
@@ -320,7 +321,7 @@ public class LeftMachines extends Machines
         produceSpeed = gw.getProdSpeedA();
     }
     /**
-     * Updates the default speed of the conveyor. Default speed is a variable that keeps track of the speed of the conveyor once it is changed. It is pivotal for resetting the speed of the conveyor after a Strike. 
+     * Updates the default speed of the conveyor, note that default speed is a variable that keeps track of the speed of the conveyor once it is changed and is pivotal for resetting the speed of the conveyor after a Strike. 
      */
     public void updateDefaultSpeedA(){
         defaultSpeed = produceSpeed; 

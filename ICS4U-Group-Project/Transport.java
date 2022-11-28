@@ -17,9 +17,7 @@ public class Transport extends People
     private GreenfootImage image, imageA;
 
     /**
-     * Constructor for Transport
-     * <p>
-     * Sets the image of the Transport
+     * Constructor for Transport - sets the image of the Transport
      * 
      * @param goX x coordinate to go to
      * @param goY y coordinate to go to
@@ -39,11 +37,15 @@ public class Transport extends People
         imageA.scale(imageA.getWidth()/4, imageA.getHeight()/4);
 
     }
-
+    /**
+     * Calls the super addedToWorld method
+     */
     public void addedToWorld(World w){
         super.addedToWorld(w);
     }
-
+    /**
+     * Constantly switches between two coordinates, the pickup coordinate and the dropoff coordinate, and once it is at the pickup coordinates, ti will pick up a box and move to dropoff. 
+     */
     public void act()
     {
 

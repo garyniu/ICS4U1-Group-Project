@@ -4,7 +4,7 @@ import greenfoot.*;
 /**
  * Win Screen World
  * <p>
- * Displays the image of the Win Screen, and respective text with the winning side.
+ * Displays the image of the Win Screen, and respective text for the winning side.
  * After a couple of seconds, it will switch to a screen that prompts the player to play again. 
  * 
  * @author Harishan Ganeshanathan
@@ -12,8 +12,6 @@ import greenfoot.*;
  */
 public class WinScreen extends World
 {
-
-    
     private String winner; 
     private GreenfootImage background;
     private int timer = 0; 
@@ -26,8 +24,6 @@ public class WinScreen extends World
      * 
      * @param winner The winning side of the game, sent in as either "left" or "right"
      */
-     
-    
     public WinScreen(String winner)
     {    
         // Create a new world of 1024 x 800
@@ -60,7 +56,7 @@ public class WinScreen extends World
         end.stop();
     }
     /**
-     * Act method for WinScreen - after the timer reaches 300 Greenfoot Acts, it will switch the world to End. 
+     * After the timer reaches 300 Greenfoot Acts, it will switch the world to End. 
      */
     public void act(){
         timer++; 

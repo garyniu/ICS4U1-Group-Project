@@ -29,11 +29,15 @@ public class HiredWorkers extends People
         image.scale(image.getWidth()/4, image.getHeight()/4);
         setImage(image);
     }
-
+    /**
+     * Sets the originalPos when added to world
+     */
     public void addedToWorld(){
         originalPos = getY();
     }
-
+    /**
+     * Changes the fadein and originalPos variables accordingly
+     */
     public void act()
     {
         //play sliding down animation, fade in
@@ -49,9 +53,7 @@ public class HiredWorkers extends People
     }
 
     /**
-     * Slides the HiredWorker down the screen, and fades in
-     * <p>
-     * Based on VehicleSimulator code
+     * Slides the HiredWorker down the screen, and fades in, based on VehicleSimulator code
      * 
      * @param fadein The amount of time the HiredWorker will fade in
      * @param originalPos The original position of the HiredWorker

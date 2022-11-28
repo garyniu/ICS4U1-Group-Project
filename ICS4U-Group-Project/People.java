@@ -15,10 +15,8 @@ public abstract class People extends Actor
     protected int currentX, currentY; //current x and y positions, will be filled for inital spawning
     protected int goToX, goToY; //coordinates to go to
     private boolean tBlock, bBlock, lBlock, rBlock;
-    
     /**
      * Sets instance variables based on spawn position
-     * 
      */
     protected void addedToWorld(World w){
         currentX = getX();
@@ -27,7 +25,9 @@ public abstract class People extends Actor
         goToX = getX();
         goToY = getY();
     }
-    
+    /**
+     * Calls the pathfind method to constantly pathfind
+     */
     public void act(){
         pathFind(goToX, goToY, (GameWorld)getWorld());
     }
@@ -79,9 +79,7 @@ public abstract class People extends Actor
     }
 
     /**
-     * Pathfinding algorithm
-     * <p>
-     * Very simplistic pathfinding algorithm, checks if it can move in any direction based on spawned BlockedBoxes
+     * Pathfinding algorithm - very simplistic pathfinding algorithm, checks if it can move in any direction based on spawned BlockedBoxes
      * 
      * @param x The x coordinate to go to
      * @param y The y coordinate to go to

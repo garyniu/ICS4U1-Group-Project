@@ -43,7 +43,7 @@ public class BlockedBoxes extends Actor
 
     }
     /**
-     * Act Method - If the BlockedBoxes instance is being used by People, it will remove itself after 1 second
+     * If the BlockedBoxes instance is being used by People, it will remove itself after 1 second
      */
     public void act(){
         //If the BlockedBoxes is used by People, it will be removed after 1 second
@@ -61,8 +61,9 @@ public class BlockedBoxes extends Actor
     public boolean contact(){
         return (isTouching(Machines.class) && !isTouching(VertConveyor.class)) ? true : false;
     }
-
-    //Getter method to see if it is being used by a Machine
+    /**
+     * Gets if 
+     */
     public boolean isMachine(){
         return wC;
     }

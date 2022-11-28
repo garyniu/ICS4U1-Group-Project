@@ -14,9 +14,7 @@ public class Menu extends World
     private Button b;
     private GreenfootSound Theme;
     /**
-     * Constructor for objects of class Menu
-     * <p>
-     * Sets background and generates a button to switch to ValueSetting
+     * Constructor for objects of class Menu - Sets background and generates a button to switch to ValueSetting
      */
     public Menu()
     {    
@@ -57,8 +55,7 @@ public class Menu extends World
         Theme.stop();
     }
     /**
-     * Act Method for Menu class - checks to see if the button is clicked, 
-     * and if so, it will switch to the ValueSetting screen and stop the music
+     * Checks to see if the button is clicked, and if so, it will switch to the ValueSetting screen and stop the music
      */
     public void act(){
         if (b.getClick()){

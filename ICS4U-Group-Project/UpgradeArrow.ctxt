@@ -1,11 +1,13 @@
 #BlueJ class context
 comment0.target=UpgradeArrow
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ UpgradeArrow\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ An\ upgrade\ arrow\ that\ spawns\ when\ the\ boss\ buys\ an\ upgrade,\ rises\ and\ fades\ out.\r\n\ \r\n\ @author\ Gary\ Niu\r\n\ @version\ November\ 2022\r\n
 comment1.params=type
 comment1.target=UpgradeArrow(int)
+comment1.text=\r\n\ Constructor\ for\ UpgradeArrow\ -\ Sets\ the\ image\ of\ the\ UpgradeArrow,\ and\ plays\ the\ upgrade\ sound\r\n\ @param\ type\ The\ type\ of\ upgrade\ arrow\ to\ spawn,\ changes\ image\ based\ on\ type\ (0\ for\ a\ worker\ arrow,\ 1\ for\ a\ machine\ arrow)\r\n
 comment2.params=
 comment2.target=void\ act()
-comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ UpgradeArrow\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment2.text=\r\n\ Moves\ the\ arrow\ up,\ starts\ fade\ out\ effect,\ and\ removes\ object\ if\ duration\ \=\=\ 0\r\n
 comment3.params=timer
 comment3.target=void\ fadeOut(int)
+comment3.text=\r\n\ Fades\ out\ the\ image\ of\ the\ UpgradeArrow\r\n\ \r\n\ @param\ timer\ Duration\ of\ the\ fade\ out\r\n
 numComments=4

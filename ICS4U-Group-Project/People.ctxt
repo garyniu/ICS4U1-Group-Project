@@ -1,14 +1,19 @@
 #BlueJ class context
 comment0.target=People
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ People\ here.\r\n\ \r\n\ @author\ Gary\ Niu\r\n\ @version\ November\ 2022\r\n
+comment0.text=\r\n\ People\ superclass,\ Contains\ all\ the\ methods\ that\ are\ used\ by\ the\ people\ subclasses\r\n\ <p>\r\n\ Manages\ pathfinding\ of\ People\r\n\ \r\n\ @author\ Gary\ Niu\r\n\ @version\ November\ 2022\r\n
 comment1.params=w
 comment1.target=void\ addedToWorld(greenfoot.World)
+comment1.text=\r\n\ Sets\ instance\ variables\ based\ on\ spawn\ position\r\n
 comment2.params=
 comment2.target=void\ act()
+comment2.text=\r\n\ Calls\ the\ pathfind\ method\ to\ constantly\ pathfind\r\n
 comment3.params=x\ y
 comment3.target=void\ goToLocation(int,\ int)
+comment3.text=\r\n\ Sets\ location\ to\ move\ to\r\n\ \r\n\ @param\ x\ -\ x\ coordinate\ to\ go\ to\r\n\ @param\ y\ -\ y\ coordinate\ to\ go\ to\r\n
 comment4.params=LB\ RB\ TB\ BB
 comment4.target=void\ blockedMovement(boolean,\ boolean,\ boolean,\ boolean)
+comment4.text=\r\n\ Checks\ if\ any\ side\ is\ blocked,\ and\ modifies\ future\ position\ accordingly\r\n\ \r\n\ @param\ LB\ Left\ Block\r\n\ @param\ RB\ Right\ Block\r\n\ @param\ TB\ Top\ Block\r\n\ @param\ BB\ Bottom\ Block\r\n
 comment5.params=x\ y\ w
 comment5.target=void\ pathFind(int,\ int,\ GameWorld)
+comment5.text=\r\n\ Pathfinding\ algorithm\ -\ very\ simplistic\ pathfinding\ algorithm,\ checks\ if\ it\ can\ move\ in\ any\ direction\ based\ on\ spawned\ BlockedBoxes\r\n\ \r\n\ @param\ x\ The\ x\ coordinate\ to\ go\ to\r\n\ @param\ y\ The\ y\ coordinate\ to\ go\ to\r\n\ @param\ w\ The\ world\ to\ check\ for\ BlockedBoxes,\ not\ currently\ used\r\n
 numComments=6
