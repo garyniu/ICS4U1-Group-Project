@@ -1,16 +1,22 @@
 #BlueJ class context
 comment0.target=Shoes
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Shoes\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Shoes\ here.\r\n\r\n\ @author\ Harishan\ Ganeshanathan,\ Victor\ Wei,\ Arsham\ Zare\ Moayedi,\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=m
 comment1.target=Shoes(Machines)
+comment1.text=\r\n\ Constructor\ for\ Shoes\ -\ Sets\ the\ starting\ image\ and\ creates\ the\ other\ images\ that\ the\ shoe\ will\ turn\ into,\ as\ well\ as\ essential\ variables\r\n\ \r\n\ @param\ m\ \ \ \ \ The\ machine\ that\ the\ shoe\ is\ on\ (whether\ it\ is\ a\ left\ or\ right\ machine)\ \r\n
 comment2.params=w
 comment2.target=void\ addedToWorld(greenfoot.World)
+comment2.text=\r\n\ Sets\ the\ side\ that\ the\ shoe\ is\ on\ (left\ or\ right\ side)\r\n\ \r\n\ @param\ w\ World\ \r\n
 comment3.params=
 comment3.target=void\ act()
+comment3.text=\r\n\ Act\ Method\ -\ First,\ the\ timer\ is\ added\ to\ every\ act.\ The\ speed\ is\ set\ and\ the\ shoe\ checks\ if\ it\ is\ on\ a\ vertical\ conveyor\ or\ not.\ If\ not,\ it\ will\ move\ based\ on\ the\ produce\ speed\ of\ the\ machines\ of\ the\ side\ it\ is\ on.\ \r\n\ There\ is\ a\ timer\ based\ algorithm\ for\ changing\ the\ shoe\ images\ once\ they\ go\ through\ a\ station.\ BlockedBoxes\ could\ have\ been\ used,\ but\ adding\ them\ to\ the\ world\ and\ setting\ the\ images\ like\ that\ was\ becoming\ complicated,\ when\ we\ had\ to\ create,\ refer\ to,\ and\ keep\ track\ of\ 12\ different\ BlockedBoxes.\r\n\ If\ the\ shoe\ collides\ with\ the\ BlockedBox\ at\ the\ end\ of\ the\ vertConveyor,\ it\ will\ add\ to\ the\ currency\ and\ then\ remove\ the\ shoe\ object.\r\n
 comment4.params=
 comment4.target=void\ setSpeed()
+comment4.text=\r\n\ This\ method\ constantly\ updates\ the\ speed\ of\ the\ shoe\ to\ ensure\ that\ the\ speed\ is\ accurate.\ \r\n
 comment5.params=
 comment5.target=void\ checkVertConveyor()
+comment5.text=\r\n\ This\ method\ checks\ if\ the\ shoe\ is\ currently\ on\ a\ VertConveyor\ or\ not,\ and\ sets\ a\ boolean\ onVertConveyor\ to\ true\ if\ it\ is.\ \r\n
 comment6.params=
 comment6.target=boolean\ getShoeMade()
+comment6.text=\r\n\ Gets\ if\ this\ current\ instance\ of\ a\ shoe\ has\ been\ made\r\n\ \r\n\ @return\ boolean\ Returns\ the\ boolean\ shoeMade.\ \r\n
 numComments=7
