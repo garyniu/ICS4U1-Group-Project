@@ -1,8 +1,13 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Boss here.
- * 
+ * There are two bosses, which are determined by the image set to them. 
+ * <p>
+ * A normal boss is the owner of the factory who can buy upgrades for workers, machines and more. 
+ * <p>
+ * A super boss is the main funder for the company, and spawns during BossCheckups.
+ * <p>
+ * All bosses will pathfind, but only normal bosses can buy upgrades. Super bosses can cause pay raises and deductions, coded in the BossCheckup Event class. 
  * @author Gary Niu
  * @version November 2022
  */

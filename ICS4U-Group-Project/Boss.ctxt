@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Boss
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Boss\ here.\r\n\ \r\n\ @author\ Gary\ Niu\r\n\ @version\ November\ 2022\r\n
+comment0.text=\r\n\ There\ are\ two\ bosses,\ which\ are\ determined\ by\ the\ image\ set\ to\ them.\ \r\n\ <p>\r\n\ A\ normal\ boss\ is\ the\ owner\ of\ the\ factory\ who\ can\ buy\ upgrades\ for\ workers,\ machines\ and\ more.\ \r\n\ <p>\r\n\ A\ super\ boss\ is\ the\ main\ funder\ for\ the\ company,\ and\ spawns\ during\ BossCheckups.\r\n\ <p>\r\n\ All\ bosses\ will\ pathfind,\ but\ only\ normal\ bosses\ can\ buy\ upgrades.\ Super\ bosses\ can\ cause\ pay\ raises\ and\ deductions,\ coded\ in\ the\ BossCheckup\ Event\ class.\ \r\n\ @author\ Gary\ Niu\r\n\ @version\ November\ 2022\r\n
 comment1.params=UP\ bossImg
 comment1.target=Boss(int,\ int)
 comment1.text=\r\n\ Constructor\ calls\ the\ superConstructor\ and\ sets\ the\ image\ for\ Boss\ based\ on\ if\ it\ is\ a\ normal\ or\ super\ Boss.\ \r\n\ \r\n\ @param\ UP\ \ \ \ \r\n\ @param\ bossImg\ \ \ Passes\ through\ the\ constructor\ if\ the\ image\ set\ should\ be\ a\ super\ or\ normal\ Boss\r\n
