@@ -5,7 +5,7 @@ import greenfoot.*;
  * Win Screen World
  * <p>
  * Displays the image of the Win Screen, and respective text with the winning side.
- * Also displays a button connected to the main menu.
+ * After a couple of seconds, it will switch to a screen that prompts the player to play again. 
  * 
  * @author Harishan Ganeshanathan
  * @version November 2022
@@ -47,18 +47,22 @@ public class WinScreen extends World
           background.scale(1024,800);
         }
     }
-    
-    //Methods to start and stop music
+    /**
+     * Started() method - used for playing music in a loop
+     */
     public void started(){
         end.playLoop();
     }
-    
+    /**
+     * Stopped() method - stops music if the world is stopped
+     */
     public void stopped(){
         end.stop();
     }
-    
+    /**
+     * Act method for WinScreen - after the timer reaches 300 Greenfoot Acts, it will switch the world to End. 
+     */
     public void act(){
-        //When the timer increments to 300, go to the Main Menu
         timer++; 
         if(timer == 300){
             Greenfoot.setWorld(new End());

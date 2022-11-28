@@ -59,8 +59,9 @@ public class BoomingBusiness extends Event
         }
         animationTimer.mark();
     }
-
-    //Method to run through arrow array, to create animation
+    /**
+     * This method loops through an image array, preloaded with all the images for the arrow animation, and sets the image of the actor to the current iterated image in the array. 
+     */
     public void animateArrow(){
         if(animationTimer.millisElapsed() < 80){
             return; 
@@ -73,8 +74,11 @@ public class BoomingBusiness extends Event
             animated = true; 
         }
     }
-
-
+    /**
+     * In the act method, the BoomingBusiness event image will be added in the corner. 
+     * If the arrow has not been animated, it will animate the arrow, and if it has been animated,
+     *  it will constantly set the image of the arrow to the final image.  
+     */
     public void act()
     {
         eventTimer++;
@@ -97,25 +101,22 @@ public class BoomingBusiness extends Event
             endEvent();
         }
     }
-
-    //Method to increase the value of the sold items depending on side
+    /**
+     * Increases the value of a shoe. Ex: If a shoe is originally worth $100, after increaseStock() is called, its value will be $125.
+    */
     public void increaseStock(){
         GameWorld gw = (GameWorld)getWorld();
         if(left){
             itemA = LeftMachines.getMachItemValueA();
             newValueLeft = itemA + 25; 
             LeftMachines.setMachItemValueA(newValueLeft);
-            System.out.println("left machine item: shoes " + " and value: "+ newValueLeft);
             gw.setItemValueA(newValueLeft);
-            System.out.println("Left machine shoes: "+gw.getItemValueA());
         }
         else if(right){
             itemB = Rightmachines.getMachItemValueB();
             newValueRight= itemB + 25; 
             Rightmachines.setMachItemValueB(newValueRight);
-            System.out.println("right machine item: shoes and value " +newValueRight);
             gw.setItemValueB(newValueRight);
-            System.out.println("right machine shoes: "+gw.getItemValueB());
         }
     }
 }

@@ -11,7 +11,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class StockMarketCrashImage extends Effect
 {
-    //Constructor, creates image object
+    /**
+     * Constructor that simply sets the image of the StockMarketCrashImage actor and scales it
+     */
     public StockMarketCrashImage(){
         GreenfootImage image = new GreenfootImage("STOCKMARKETCRASHTEXT.png");
         setImage(image);

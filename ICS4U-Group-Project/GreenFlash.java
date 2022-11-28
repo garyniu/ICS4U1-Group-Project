@@ -34,7 +34,11 @@ public class GreenFlash extends Effect
        flashing.setTransparency(100);
        setImage(flashing);
    }
-   
+   /**
+    * If the flashTimer reaches a certain time, it will set the flash transparency to 0, turning it "off".
+    * If the flashTimer reaches another set time, it will reset the flash transparency to 1, turning it back 'on". 
+    * Finally, if the durationTimer reaches the set duration of the effect, it will remove itself from the world
+    */
    public void act()
    {
        flashTimer++;

@@ -3,4 +3,5 @@ comment0.target=BoomingBusinessImage
 comment0.text=\r\n\ Class\ used\ as\ an\ image\ object\ for\ the\ BoomingBusiness\ class;\r\n\ <p>\r\n\ The\ corresponding\ event\ subclass\ (BoomingBusiness)\ already\ has\ its\ image\ set\ (the\ arrow\ animation).\ My\ simple\ solution\ for\ adding\ an\ event\ icon\ into\ \r\n\ the\ world\ is\ by\ adding\ an\ actor\ with\ their\ image\ set\ as\ the\ event\ icon.\ \r\n\ \r\n\ @author\ Harishan\ Ganeshanathan\r\n\ @version\ November\ 2022\r\n
 comment1.params=
 comment1.target=BoomingBusinessImage()
+comment1.text=\r\n\ Constructor\ that\ simply\ sets\ the\ image\ of\ the\ BoomingBusinessImage\ actor\ and\ scales\ it\r\n
 numComments=2

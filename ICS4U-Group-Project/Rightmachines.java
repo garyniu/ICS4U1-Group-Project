@@ -5,7 +5,8 @@ import greenfoot.*;
  * Class for the Conveyers on the Right side of the screen
  * <p>
  * Holds workers, and spawns shoes on the conveyer belt.
- *
+ * <p>
+ * Known Bug: The naming of the Rightmachines class - no matter what we tried, we couldn't get the 'm' to be capitalized. Just something to note. 
  * @author Victor Wei, Gary Niu, Harishan Ganeshanathan
  * @version November 2022
  */
@@ -26,11 +27,17 @@ public class Rightmachines extends Machines
     private Shoes shoe; 
     private HiredWorkers t_o, t_t, t_th, th_o, th_t, th_th;
 
-    //Constructor
+    /**
+     * Constructor calls the super Constructor 
+     */
     public Rightmachines(){
         super();
     }
-
+    /**
+     * If the strike event is inactive and if the speed has not been set, only then wil the speed be updated.
+     * <p>
+     * Checks if the current shoe is finished on the conveyor, so a new shoe Item can be spawned. 
+     */ 
     public void act()
     {
         GameWorld gw = (GameWorld)getWorld(); 
@@ -49,8 +56,10 @@ public class Rightmachines extends Machines
         //Method to spawn shoes on the conveyer, after a certain amount of time
         checkShoeFinished(); 
     }
-
-    //Method when the object is added to the world
+    /**
+     * When this object is added to world, it will add a new BlockedBoxes object, spawn a new shoes,
+     * create a MachineCover object and add it, as well as add 3 workers, one per station of the conveyor. 
+     */
     public void addedToWorld(World w){
         //Adds blocked boxes to the conveyer, for shoes to detect end of conveyer
         w.addObject(new BlockedBoxes(30, 80, true), (this.getX()+width/2)-10, this.getY()-height/2);
@@ -116,8 +125,9 @@ public class Rightmachines extends Machines
         twoWorks = false;
         threeWorks = false;
     }
-
-    //Method used to spawn a new shoe on the conveyer
+    /**
+     * Spawns a new shoe on the conveyor, updates the speed, sets ShoeBoxed to true, and gets the itemValue. 
+     */
     public void spawnShoes(){
         GameWorld gw = (GameWorld)getWorld(); 
         gw.addObject(new Shoes(this) , this.getX()- this.getX()/5, this.getY()-height/4-10);
@@ -126,8 +136,13 @@ public class Rightmachines extends Machines
         gw.itemsSold("right");
         itemValue = gw.getItemValueB();
     }
-
-    //Method to check if a shoe has existed for a specific time, and if so, spawn a new one (Also based on upgrade)
+    /**
+     * Method for checking if a shoe is finished and a new one can be created. The shoe spawning is also worker count based. 
+     * <p>
+     * The reason this is timer based and not BlockedBoxes collision based is because we ran into problems with adding multiple shoes at a time,
+     *  but with a delay (if there were 3 workers per station, we would want 3 shoes to spawn, but on a visual delay so it visually looks like 3 are made). 
+     *  If we made it collision based, a for loop for delaying shoe spawning would break the spawning entirely, so we made it timer based. 
+     */
     public void checkShoeFinished(){
         if(produceSpeed <= 1 && actTimer == 293){
             spawnShoes(); 
@@ -298,41 +313,71 @@ public class Rightmachines extends Machines
         if (actTimer > 300) actTimer = 0;
     }
     
-    //Getters and Setters
+    /**
+     * Updates the speed of the conveyor so it is the speed set in GameWorld. 
+     */
     public void updateSpeed(){
         GameWorld gw = (GameWorld)getWorld();
         produceSpeed = gw.getProdSpeedB();
     }
-
+    /**
+     * Updates the default speed of the conveyor. Default speed is a variable that keeps track of the speed of the conveyor once it is changed. It is pivotal for resetting the speed of the conveyor after a Strike. 
+     */
     public void updateDefaultSpeedB(){
         defaultSpeed = produceSpeed; 
     }
-
+    /**
+     * Gets the default speed of the conveyor.
+     * 
+     * @return double   Returns the default speed. 
+     */
     public double getDefaultSpeedB(){
         return defaultSpeed; 
     }
-
+    /**
+     * Gets the produce speed of the conveyor.
+     * 
+     * @return double   Returns the produce speed of the conveyor.
+     */
     public double getProdSpeedB(){
         return produceSpeed; 
     }
-
+    /**
+     * Sets the produce speed of the conveyor.
+     * 
+     * @param newSpd    The speed the conveyor will be set to. 
+     */
     public void setProdSpeedB(double newSpd){
         produceSpeed = newSpd;
     }
-
+    /**
+     * Gets the value of the items on the conveyor belt
+     * 
+     * @return double   Returns the item value. 
+     */
     public static double getMachItemValueB(){
         return itemValue;
     }
-
+    /**
+     * Sets the value of the items on the conveyor
+     * 
+     * @param value     New value the item value will be set to
+     */
     public static void setMachItemValueB(double value){
         itemValue = value; 
     }
+    /**
+     * Gets the number of workers per conveyor
+     * 
+     * @return  Number of workers
+     */
     public int returnWorkers(){
         return WC;
     }
-    
+    /**
+     * Resets the number of workers to 1
+     */
     public void resetWorkers(){
         WC = 1;
     }
-
 }

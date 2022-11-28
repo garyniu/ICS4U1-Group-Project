@@ -1,11 +1,12 @@
 #BlueJ class context
 comment0.target=BlockedBoxes
-comment0.text=\r\n\ Object\ used\ to\ detect\ if\ there\ is\ a\ collision\ between\ two\ objects.\r\n\ <p>\r\n\ Used\ in\ People\ for\ pathfinding,\ and\ in\ Shoes\ to\ see\ if\ it\ has\ reached\ the\ end\ of\ the\ conveyer.\r\n\ \r\n\ @author\ Gary\ Niu\r\n\ @version\ November\ 2022\r\n
+comment0.text=\r\n\ Object\ used\ to\ detect\ if\ there\ is\ a\ collision\ between\ two\ objects.\r\n\ <p>\r\n\ Used\ in\ People\ for\ pathfinding\ and\ shoes\ for\ if\ it\ reaches\ the\ end\ of\ a\ vertical\ conveyor\r\n\ \r\n\ @author\ Gary\ Niu\r\n\ @version\ November\ 2022\r\n
 comment1.params=w\ h\ isMachineUsing
 comment1.target=BlockedBoxes(int,\ int,\ boolean)
 comment1.text=\r\n\ Constructor\ for\ BlockedBoxes\r\n\ <p>\r\n\ Creates\ a\ new\ BlockedBoxes\ object\ with\ a\ width\ and\ height,\ and\ sets\ it\ to\ an\ invisible\ image\r\n\ \r\n\ @param\ w\ Width\ of\ the\ BlockedBoxes\ object\r\n\ @param\ h\ Height\ of\ the\ BlockedBoxes\ object\r\n\ @param\ wC\ If\ the\ BlockedBoxes\ is\ used\ by\ People\ or\ Machines,\ true\ if\ Machines,\ false\ if\ People\r\n
 comment2.params=
 comment2.target=void\ act()
+comment2.text=\r\n\ Act\ Method\ -\ If\ the\ BlockedBoxes\ instance\ is\ being\ used\ by\ People,\ it\ will\ remove\ itself\ after\ 1\ second\r\n
 comment3.params=
 comment3.target=boolean\ contact()
 comment3.text=\r\n\ Returns\ if\ the\ BlockedBoxes\ is\ colliding\ with\ a\ Machine\r\n\ \r\n\ @return\ If\ collision\ is\ detected\r\n

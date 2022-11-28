@@ -6,7 +6,7 @@ import greenfoot.Color;
 /**
  * Object used to detect if there is a collision between two objects.
  * <p>
- * Used in People for pathfinding, and in Shoes to see if it has reached the end of the conveyer.
+ * Used in People for pathfinding and shoes for if it reaches the end of a vertical conveyor
  * 
  * @author Gary Niu
  * @version November 2022
@@ -42,7 +42,9 @@ public class BlockedBoxes extends Actor
         setImage(image);
 
     }
-
+    /**
+     * Act Method - If the BlockedBoxes instance is being used by People, it will remove itself after 1 second
+     */
     public void act(){
         //If the BlockedBoxes is used by People, it will be removed after 1 second
         if (!wC){

@@ -120,15 +120,27 @@ public class ValueSetting extends World
         addObject(menu, 160, 650);
     }
 
-    //Methods to start and stop music
+    /**
+     * Started() method - used for playing music in a loop
+     */
     public void started(){
         Valuemusic.playLoop();
     }
-
+    /**
+     * Stopped() method - stops music if the world is stopped
+     */
     public void stopped(){
         Valuemusic.stop();
     }
-
+    /**
+     * Act Method for ValueSetting - Checks to see if buttons are toggled/pressed or not. 
+     * <p>
+     * For the left and right side, there are buttons for UpgradePriority and Starting Money. The act method first checks 
+     * both of those buttons on each side. Each button has a limit. For displaying text on the buttons, the value setting 
+     * screen is an image with empty spaces where text can be written on top of. There are also buttons that apply 
+     * to both sides, one for the time/duration of the event, one for the difficulty. 
+     * Finally, buttons for setting default values, starting the game, and returning to the Menu are also checked. 
+     */
     public void act(){
 
         //Buttons for the left side

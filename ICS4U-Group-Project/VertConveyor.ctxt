@@ -1,11 +1,10 @@
 #BlueJ class context
 comment0.target=VertConveyor
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ VertConveyor\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ A\ VertConveyor\ is\ what\ transports\ shoes\ from\ the\ end\ of\ the\ Left\ or\ Right\ conveyer.\ \r\n\ <p>\r\n\ Mostly\ a\ visual\ aspect,\ shoes\ do\ the\ transportation\ themselves.\ \r\n\ \r\n\ @author\ Harishan\ Ganeshanathan\ \r\n\ @version\ November\ 2022\r\n
 comment1.params=
 comment1.target=VertConveyor()
-comment2.params=
-comment2.target=void\ act()
-comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ VertConveyor\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
-comment3.params=w
-comment3.target=void\ addedToWorld(greenfoot.World)
-numComments=4
+comment1.text=\r\n\ Constructor\ sets\ and\ scales\ the\ image\ of\ the\ vertical\ conveyor\r\n
+comment2.params=w
+comment2.target=void\ addedToWorld(greenfoot.World)
+comment2.text=\r\n\ When\ added\ to\ the\ world,\ a\ BlockedBoxes\ object\ will\ spawn\ at\ the\ end\ of\ the\ vertical\ conveyor.\ \r\n
+numComments=3

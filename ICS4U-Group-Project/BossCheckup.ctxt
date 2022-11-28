@@ -1,10 +1,19 @@
 #BlueJ class context
 comment0.target=BossCheckup
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ BossCheckup\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ During\ the\ BossCheckup\ Event,\ a\ super\ boss\ will\ be\ spawned\ on\ the\ corresponding\ side.\ It\ will\ walk\ around\ \r\n\ for\ the\ duration\ of\ the\ event.\ \r\n\ <p>\r\n\ Once\ the\ duration\ of\ the\ event\ is\ over,\ the\ boss\ will\ be\ removed\ from\ the\ world\ and\ either\ give\ the\ workers\ a\ raise\ or\ reduce\ their\ pay\r\n\ <p>\r\n\ If\ they\ get\ a\ raise,\ they\ work\ faster.\ If\ their\ pay\ is\ reduced,\ they\ work\ slower.\r\n\ <p>\r\n\ A\ Boss\ and\ a\ BossCheckupImage\ are\ spawned\ into\ the\ world\ during\ a\ BossCheckup\ \r\n\ \r\n\ @author\ Harishan\ Ganeshanathan\r\n\ @version\ November\ 2022\r\n
 comment1.params=d\ left\ right
 comment1.target=BossCheckup(int,\ boolean,\ boolean)
+comment1.text=\r\n\ Constructor\ for\ BossCheckup\ \r\n\ <p>\r\n\ Sets\ instance\ variables\r\n\ \r\n\ @param\ d\ Duration\ of\ the\ event\r\n\ @param\ left\ If\ the\ event\ is\ on\ the\ left\ side\ of\ the\ screen\r\n\ @param\ right\ If\ the\ event\ is\ on\ the\ right\ side\ of\ the\ screen\r\n
 comment2.params=
 comment2.target=void\ act()
+comment2.text=\r\n\ Once\ the\ timer\ is\ over,\ it\ will\ first\ randomize\ if\ the\ workers\ get\ a\ raise\ or\ deduction,\ and\ if\ their\ speed\ is\ increased\ or\ decreased\r\n\ <p>\r\n\ Then,\ the\ boss\ and\ the\ event\ are\ removed\ from\ the\ world\r\n
 comment3.params=w
 comment3.target=void\ addedToWorld(greenfoot.World)
-numComments=4
+comment3.text=\r\n\ The\ boss\ object\ is\ added\ to\ the\ world\ based\ on\ if\ it\ is\ on\ the\ left\ or\ right\ side.\ \r\n\ \r\n\ @param\ w\ World\ parameter\r\n
+comment4.params=side
+comment4.target=void\ increaseEfficiency(int)
+comment4.text=\r\n\ Increases\ the\ speed\ of\ the\ workers\ on\ the\ side\ of\ the\ event\ \r\n\ \r\n\ @param\ side\ \ The\ side\ that\ the\ event\ is\ taking\ place\ on.\ Note\ that\ this\ is\ an\ integer\ variable,\ not\ a\ boolean\ variables,\ which\ made\ checking\ for\ this\ specific\ event\ less\ confusing.\ \r\n
+comment5.params=side
+comment5.target=void\ slowEfficiency(int)
+comment5.text=\r\n\ Decreases\ the\ speed\ of\ the\ workers\ on\ the\ side\ of\ the\ event\ \r\n\ \r\n\ @param\ side\ \ The\ side\ that\ the\ event\ is\ taking\ place\ on.\ Note\ that\ this\ is\ an\ integer\ variable,\ not\ a\ boolean\ variables,\ which\ made\ checking\ for\ this\ specific\ event\ less\ confusing.\ \r\n
+numComments=6

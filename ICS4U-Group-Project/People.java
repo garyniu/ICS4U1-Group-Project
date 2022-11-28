@@ -3,8 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class People here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Gary Niu
+ * @version November 2022
  */
 public abstract class People extends Actor
 {
@@ -12,40 +12,17 @@ public abstract class People extends Actor
     protected int currentX, currentY; //current x and y positions, will be filled for inital spawning
     protected int goToX, goToY; //coordinates to go to
     private boolean tBlock, bBlock, lBlock, rBlock;
-
-    //TODO
-    //spawn hiredworker
-    //"holding" an object / having object in hand
-    //implement manufactoring 
-    //implement pathfinding, go to machine with pathfinding
-
-    /**
-     * Act - do whatever the People wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public People(){
-
-        //setting positions
-        
-
-    }
     
     protected void addedToWorld(World w){
-        
-        //System.out.println("test1222222222222222222");
         currentX = getX();
         currentY = getY();
 
         goToX = getX();
         goToY = getY();
-        
-        //System.out.println(getX());
-        //System.out.println(getY());
     }
     
     public void act(){
         pathFind(goToX, goToY, (GameWorld)getWorld());
-        //System.out.println(currentX + " " + currentY + " "  + goToX + " " + goToY);
     }
     
     public void goToLocation(int x, int y){
@@ -95,10 +72,6 @@ public abstract class People extends Actor
         w.addObject(r, getX() + (getImage().getWidth()/2) + 3, getY());
 
         tBlock = b.contact(); bBlock = t.contact(); lBlock = l.contact(); rBlock = r.contact();
-        
-
-        
-        //System.out.println("\ntop blocked: " + tBlock + "\nbottom blocked: " + bBlock + "\nleft blocked: " + lBlock + "\nright blocked: " + rBlock);
         
         //make rest of cases
         //make method for movement each case, flip x/y, disable x++, x--, y++, y--

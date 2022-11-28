@@ -1,29 +1,27 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class VertConveyor here.
+ * A VertConveyor is what transports shoes from the end of the Left or Right conveyer. 
+ * <p>
+ * Mostly a visual aspect, shoes do the transportation themselves. 
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Harishan Ganeshanathan 
+ * @version November 2022
  */
 public class VertConveyor extends Machines
 {
     private GreenfootImage image;
-    private int width;
-    private int height;
+    /**
+     * Constructor sets and scales the image of the vertical conveyor
+     */
     public VertConveyor(){
         GreenfootImage image = new GreenfootImage("VertConveyer.png");
         setImage(image);
         getImage().scale(52,380);
     }
     /**
-     * Act - do whatever the VertConveyor wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * When added to the world, a BlockedBoxes object will spawn at the end of the vertical conveyor. 
      */
-    public void act()
-    {
-        // Add your action code here.
-    }
     public void addedToWorld(World w){
         w.addObject(new BlockedBoxes(30, 80, true), this.getX()+9, 700);
     }

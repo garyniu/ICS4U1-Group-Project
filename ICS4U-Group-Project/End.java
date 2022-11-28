@@ -16,7 +16,7 @@ public class End extends World
     /**
      * Constructor for objects of class End.
      * <p>
-     * Sets background and generates a button.
+     * Sets background and generates a restart button.
      */
     public End()
     {    
@@ -40,9 +40,13 @@ public class End extends World
         addObject(b,getWidth()/2,getHeight()/2 + 100); 
 
     }
-
+    /**
+     * Act Method for class End 
+     * <p>
+     * Checks to see if the restart button is clicked, and if so, it will switch to the Menu screen. 
+     *
+     */
     public void act(){
-        //if clicked, go to the main menu
         if (b.getClick()){
             Greenfoot.setWorld(new Menu());
         }

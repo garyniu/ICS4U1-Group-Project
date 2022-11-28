@@ -16,7 +16,7 @@ public class Menu extends World
     /**
      * Constructor for objects of class Menu
      * <p>
-     * Sets background and generates a button.
+     * Sets background and generates a button to switch to ValueSetting
      */
     public Menu()
     {    
@@ -44,17 +44,23 @@ public class Menu extends World
         addObject(b,getWidth()/2,getHeight()/2 + 100); 
     }
 
-    //Methods to start and stop music
+    /**
+     * Started() method - used for playing music in a loop
+     */
     public void started(){
         Theme.playLoop();
     }
-
+    /**
+     * Stopped() method - stops music if the world is stopped
+     */
     public void stopped(){
         Theme.stop();
     }
-
+    /**
+     * Act Method for Menu class - checks to see if the button is clicked, 
+     * and if so, it will switch to the ValueSetting screen and stop the music
+     */
     public void act(){
-        //If the button is clicked, go to ValueSetting and stop the music
         if (b.getClick()){
             Greenfoot.setWorld(new ValueSetting());
             stopped();

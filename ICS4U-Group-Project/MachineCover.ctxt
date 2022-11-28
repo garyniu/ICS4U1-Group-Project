@@ -3,4 +3,5 @@ comment0.target=MachineCover
 comment0.text=\r\n\ Simple\ class\ for\ an\ image\ object\ to\ cover\ Shoes\ while\ it\ travels\ along\ the\ conveyer.\r\n\ \r\n\ @author\ Gary\ Niu\r\n\ @version\ November\ 2022\r\n
 comment1.params=
 comment1.target=MachineCover()
+comment1.text=\r\n\ Constructor\ -\ sets\ Image\ for\ MachineCover\r\n
 numComments=2

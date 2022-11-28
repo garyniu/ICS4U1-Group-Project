@@ -1,13 +1,16 @@
 #BlueJ class context
 comment0.target=WinScreen
-comment0.text=\r\n\ Win\ Screen\ World\r\n\ <p>\r\n\ Displays\ the\ image\ of\ the\ Win\ Screen,\ and\ respective\ text\ with\ the\ winning\ side.\r\n\ Also\ displays\ a\ button\ connected\ to\ the\ main\ menu.\r\n\ \r\n\ @author\ Harishan\ Ganeshanathan\r\n\ @version\ November\ 2022\r\n
+comment0.text=\r\n\ Win\ Screen\ World\r\n\ <p>\r\n\ Displays\ the\ image\ of\ the\ Win\ Screen,\ and\ respective\ text\ with\ the\ winning\ side.\r\n\ After\ a\ couple\ of\ seconds,\ it\ will\ switch\ to\ a\ screen\ that\ prompts\ the\ player\ to\ play\ again.\ \r\n\ \r\n\ @author\ Harishan\ Ganeshanathan\r\n\ @version\ November\ 2022\r\n
 comment1.params=winner
 comment1.target=WinScreen(java.lang.String)
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ WinScreen\r\n\ <p>\r\n\ Sets\ background\ for\ the\ world.\r\n\ \r\n\ @param\ winner\ The\ winning\ side\ of\ the\ game,\ sent\ in\ as\ either\ "left"\ or\ "right"\r\n
 comment2.params=
 comment2.target=void\ started()
+comment2.text=\r\n\ Started()\ method\ -\ used\ for\ playing\ music\ in\ a\ loop\r\n
 comment3.params=
 comment3.target=void\ stopped()
+comment3.text=\r\n\ Stopped()\ method\ -\ stops\ music\ if\ the\ world\ is\ stopped\r\n
 comment4.params=
 comment4.target=void\ act()
+comment4.text=\r\n\ Act\ method\ for\ WinScreen\ -\ after\ the\ timer\ reaches\ 300\ Greenfoot\ Acts,\ it\ will\ switch\ the\ world\ to\ End.\ \r\n
 numComments=5

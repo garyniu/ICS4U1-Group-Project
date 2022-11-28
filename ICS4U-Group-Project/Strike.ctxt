@@ -1,12 +1,16 @@
 #BlueJ class context
 comment0.target=Strike
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Strike\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ During\ the\ Strike\ event,\ all\ workers\ will\ stop\ working\ and\ all\ item\ production\ will\ be\ stopped.\ At\ the\ end\ of\ the\ Strike,\ most\ of\ the\ workers\ will\ leave.\r\n\ Only\ one\ worker\ will\ be\ left\ per\ station.\r\n\ \r\n\ @Harishan\ Ganeshanathan\ \r\n\ @version\ November\ 2022\r\n
 comment1.params=d\ left\ right
 comment1.target=Strike(int,\ boolean,\ boolean)
+comment1.text=\r\n\ Constructor\ for\ Strike\ \r\n\ <p>\r\n\ Sets\ instance\ variables\r\n\ \r\n\ @param\ d\ Duration\ of\ the\ event\r\n\ @param\ left\ If\ the\ event\ is\ on\ the\ left\ side\ of\ the\ screen\r\n\ @param\ right\ If\ the\ event\ is\ on\ the\ right\ side\ of\ the\ screen\r\n
 comment2.params=
 comment2.target=void\ act()
+comment2.text=\r\n\ If\ the\ machines\ are\ not\ already\ stopped,\ it\ will\ first\ set\ the\ StrikeStatus\ for\ both\ sides\ in\ the\ world,\ depending\ on\ what\ side\ the\ event\ is\ happening\ on.\ \r\n\ Then,\ the\ machines\ will\ be\ stopped.\ If\ the\ event\ timer\ reaches\ the\ duration\ of\ the\ event,\ the\ machines\ will\ be\ started,\ \r\n\ the\ StrikeStatuses\ will\ be\ reset,\ workers\ will\ be\ set\ to\ 1\ per\ station,\ and\ the\ event\ will\ be\ ended.\ \r\n
 comment3.params=
 comment3.target=void\ stopMachines()
+comment3.text=\r\n\ Stops\ machines\ on\ either\ the\ left\ or\ right\ side/sets\ produce\ speed\ to\ 0.\ \r\n
 comment4.params=
 comment4.target=void\ startMachines()
+comment4.text=\r\n\ Starts\ machines\ on\ either\ the\ left\ or\ right\ side/sets\ produce\ speed\ to\ the\ speed\ the\ machines\ were\ last\ set\ to\ before\ they\ were\ set\ to\ 0.\ \r\n
 numComments=5

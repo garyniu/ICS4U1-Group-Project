@@ -1,10 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Event here.
+ * Events are randomized events that essentially make the simulation more random. At a base level, they change around variables to either help or hurt either side. 
+ * <p>
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Harishan Ganeshanathan 
+ * @version November 2022
  */
 public abstract class Event extends Actor
 {
@@ -16,11 +17,11 @@ public abstract class Event extends Actor
     protected double newValueRight;
     protected boolean flashAdded;
     
-    private double newSpeedLeft;
-    private double newSpeedRight;
-    private double slowSpeedLeft;
-    private double slowSpeedRight;
-    private double maxSpeed;
+    protected double newSpeedLeft;
+    protected double newSpeedRight;
+    protected double slowSpeedLeft;
+    protected double slowSpeedRight;
+    protected double maxSpeed;
     
     protected GreenfootSound Goodstock;
     protected GreenfootSound Badstock;
@@ -28,6 +29,13 @@ public abstract class Event extends Actor
     protected GreenFlash gf; 
     protected RedFlash rf;
     
+    /**
+     * Contructor - Sets all instance variable values, as well as sounds
+     * 
+     * @param duration  The duration of the event in seconds. In the constructor, it will convert the instance variable duration so it is in seconds.
+     * @param left  Checks if the event is on the left side
+     * @param right Checks if the event is on the right side
+     */
     public Event(int duration, boolean left, boolean right){
         this.duration = duration*60; 
         this.left = left;
@@ -40,14 +48,13 @@ public abstract class Event extends Actor
         Badstock = new GreenfootSound("Badstock.mp3");
         Badstock.setVolume(30);
     }
-    public void act()
-    {
-        
-    }
+    /**
+     * The endEvent method first sets the activeEventStatus to false, depending on which side the event is on. 
+     * Then, it removes the event object from the world. 
+     */
     public void endEvent(){
         GameWorld gw = (GameWorld) getWorld();
         eventTimer = 0;
-        System.out.println("EVENT IS NOW OVER EVENT IS NOW OVER");
         if(left){
             gw.setEventStatusA(false);
         }
@@ -56,53 +63,10 @@ public abstract class Event extends Actor
         }
         gw.removeObject(this);
     }
-    public void increaseEfficiency(int side){
-        GameWorld gw = (GameWorld)getWorld();
-        if(side == 0){
-            for(LeftMachines lm : gw.getObjects(LeftMachines.class)){
-                if(lm.getProdSpeedA() < maxSpeed){
-                    newSpeedLeft = lm.getDefaultSpeedA()+0.5; 
-                    lm.setProdSpeedA(newSpeedLeft);
-                }
-            }
-        }
-        else if(side == 1){
-            for(Rightmachines rm : gw.getObjects(Rightmachines.class)){
-                if(rm.getProdSpeedB() <maxSpeed){
-                    newSpeedRight = rm.getDefaultSpeedB()+0.5; 
-                    rm.setProdSpeedB(newSpeedRight);
-                }
-            }
-        }
-    }
-    public void slowEfficiency(int side){
-        GameWorld gw = (GameWorld)getWorld();
-        if(side == 0){
-            for(LeftMachines lm : gw.getObjects(LeftMachines.class)){
-                slowSpeedLeft = lm.getDefaultSpeedA()-0.5; 
-                lm.setProdSpeedA(slowSpeedLeft);
-            }
-        }
-        else if(side == 1){
-            for(Rightmachines rm : gw.getObjects(Rightmachines.class)){
-                slowSpeedRight = rm.getDefaultSpeedB()-0.5; 
-                rm.setProdSpeedB(slowSpeedRight);
-            }
-        }
-    }
-    public void resumeEfficiency(int side){
-        GameWorld gw = (GameWorld)getWorld();
-        if(side == 0){
-            for(LeftMachines lm : gw.getObjects(LeftMachines.class)){
-                lm.setProdSpeedA(lm.getDefaultSpeedA()); 
-            }
-        }
-        else if(side == 1){
-            for(Rightmachines rm : gw.getObjects(Rightmachines.class)){
-                rm.setProdSpeedB(rm.getDefaultSpeedB());
-            }
-        }
-    }
+    /**
+     * If a flash hasn't been added to the world yet, it will add only one 
+     * red flash object to the world
+     */
     public void addRedFlash(){
         if(!flashAdded){
             GameWorld w = (GameWorld)getWorld();
@@ -117,6 +81,10 @@ public abstract class Event extends Actor
             Badstock.play();
         }
     }
+    /**
+     * If a flash hasn't been added to the world yet, it will add only one 
+     * green flash object to the world
+     */
     public void addGreenFlash(){
         if(!flashAdded){
             GameWorld w = (GameWorld)getWorld();

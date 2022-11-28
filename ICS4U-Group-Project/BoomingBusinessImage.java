@@ -12,7 +12,9 @@ import greenfoot.*;
  */
 public class BoomingBusinessImage extends Effect
 {
-    //Constructor, creates image object
+    /**
+     * Constructor that simply sets the image of the BoomingBusinessImage actor and scales it
+     */
     public BoomingBusinessImage(){
         GreenfootImage image = new GreenfootImage("STOCKMARKETBOOMINTEXT.png");
         setImage(image);

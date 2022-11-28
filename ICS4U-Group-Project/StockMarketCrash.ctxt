@@ -1,12 +1,16 @@
 #BlueJ class context
 comment0.target=StockMarketCrash
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ StockMarketCrash\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ StockMarketCrash\ Event,\ Spawns\ 2\ effects,\ and\ decreases\ value\ of\ sold\ items\ by\ 25\ dollars.\r\n\ <p>\r\n\ Spawns\ two\ effects,\ one\ of\ which\ is\ the\ arrow\ visual\ effect,\ the\ other\ being\ the\ flashing\ screen\ effect..\r\n\ \r\n\ @author\ Harishan\ Ganeshanathan\r\n\ @version\ November\ 2022\r\n
 comment1.params=d\ left\ right
 comment1.target=StockMarketCrash(int,\ boolean,\ boolean)
+comment1.text=\r\n\ Constructor\ for\ StockMarketCrash\r\n\ <p>\r\n\ Sets\ instance\ variables,\ and\ creates\ an\ array\ of\ the\ down\ arrow\ images\ to\ be\ used\ in\ the\ animation.\r\n\ \r\n\ @param\ d\ Duration\ of\ the\ event\r\n\ @param\ left\ If\ the\ event\ is\ on\ the\ left\ side\ of\ the\ screen\r\n\ @param\ right\ If\ the\ event\ is\ on\ the\ right\ side\ of\ the\ screen\r\n
 comment2.params=
 comment2.target=void\ animateArrow()
+comment2.text=\r\n\ This\ method\ loops\ through\ an\ image\ array,\ preloaded\ with\ all\ the\ images\ for\ the\ arrow\ animation,\ and\ sets\ the\ image\ of\ the\ actor\ to\ the\ current\ iterated\ image\ in\ the\ array.\ \r\n
 comment3.params=
 comment3.target=void\ act()
+comment3.text=\r\n\ In\ the\ act\ method,\ the\ StockMarketCrash\ event\ image\ will\ be\ added\ in\ the\ corner.\ \r\n\ If\ the\ arrow\ has\ not\ been\ animated,\ it\ will\ animate\ the\ arrow,\ and\ if\ it\ has\ been\ animated,\r\n\ \ it\ will\ constantly\ set\ the\ image\ of\ the\ arrow\ to\ the\ final\ image.\ \ \r\n
 comment4.params=
 comment4.target=void\ decreaseStock()
+comment4.text=\r\n\ Decreases\ the\ value\ of\ a\ shoe.\ Ex\:\ If\ a\ shoe\ is\ originally\ worth\ $100,\ after\ decreaseStock()\ is\ called,\ its\ value\ will\ be\ $75.\r\n
 numComments=5

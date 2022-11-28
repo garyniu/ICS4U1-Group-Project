@@ -3,8 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Boss here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Gary Niu
+ * @version November 2022
  */
 
 public class Boss extends People
@@ -18,8 +18,10 @@ public class Boss extends People
     private int UpgradeNum, bossImg;
 
     /**
-     * Act - do whatever the Boss wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Constructor calls the superConstructor and sets the image for Boss based on if it is a normal or super Boss. 
+     * 
+     * @param UP    
+     * @param bossImg   Passes through the constructor if the image set should be a super or normal Boss
      */
     public Boss(int UP, int bossImg){
         super();
@@ -47,7 +49,9 @@ public class Boss extends People
 
         randTimer = 600;
     }
-
+    /**
+     * Calls the super addedToWorld method, and determines if the side the boss is on is left or right. 
+     */
     public void addedToWorld(World w){
         super.addedToWorld(w);
         if(this.getX()<=512){
@@ -57,7 +61,9 @@ public class Boss extends People
         }
         
     }
-
+    /**
+     * Calls the super act method and randomizes when the boss should move around and to where. If it is a normal boss, it will randomly buys upgrades. 
+     */
     public void act()
     {
         super.act();
@@ -82,8 +88,6 @@ public class Boss extends People
                 randTimer = 0; 
             }
         }
-
-        
 
         if (bossImg == 0){
             if (1 == Greenfoot.getRandomNumber(100)){

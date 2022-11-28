@@ -10,7 +10,9 @@ import greenfoot.*;
 
 public class MachineCover extends Machines
 {
-    //Constructor, creates image object
+    /**
+     * Constructor - sets Image for MachineCover
+     */
     public MachineCover(){
         GreenfootImage image = new GreenfootImage("ConveyerC.png");
         setImage(image);
