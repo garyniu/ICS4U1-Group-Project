@@ -1,20 +1,27 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class UpgradeArrow here.
+ * An upgrade arrow that spawns when the boss buys an upgrade, rises and fades out.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Gary Niu
+ * @version November 2022
  */
 public class UpgradeArrow extends Actor
 {
     
+    //Instance variables
     private int type;
     private int duration;
     private GreenfootImage image;
     
     private GreenfootSound upgrade;
     
+    /**
+     * Constructor for UpgradeArrow
+     * <p>
+     * Sets the image of the UpgradeArrow, and plays the upgrade sound
+     * @param type The type of upgrade arrow to spawn, changes image based on type (0 for a worker arrow, 1 for a machine arrow)
+     */
     public UpgradeArrow(int type){
         this.type = type;
         
@@ -33,14 +40,14 @@ public class UpgradeArrow extends Actor
         upgrade.play();
         duration = 60;
     }
-    /**
-     * Act - do whatever the UpgradeArrow wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+
+
     public void act()
     {
+        //Move the arrow up
         setLocation (getX(), getY() - 1);
         
+        //Fade out while there is still duraiton left
         if (duration == 0){
             getWorld().removeObject(this);
         } else if (duration <= 60){
@@ -49,6 +56,11 @@ public class UpgradeArrow extends Actor
         duration--;
     }
     
+    /**
+     * Fades out the image of the UpgradeArrow
+     * 
+     * @param timer Duration of the fade out
+     */
     private void fadeOut(int timer){
         double percent = timer / (double)60;
         int transperency = (int)(percent * 255);

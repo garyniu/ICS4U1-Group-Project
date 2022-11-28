@@ -1,8 +1,10 @@
+//Imports
 import greenfoot.*;
+
 /**
  * StockMarketCrash Event, Spawns 2 effects, and decreases value of sold items by 25 dollars.
  * <p>
- * Spawns two effects, one of which is the arrow visual effect, the other being the flashing screen effect..
+ * Spawns two effects, one of which is the arrow visual effect, the other being the flashing screen effect.
  * 
  * @author Harishan Ganeshanathan
  * @version November 2022

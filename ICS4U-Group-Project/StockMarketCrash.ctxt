@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=StockMarketCrash
-comment0.text=\r\n\ StockMarketCrash\ Event,\ Spawns\ 2\ effects,\ and\ decreases\ value\ of\ sold\ items\ by\ 25\ dollars.\r\n\ <p>\r\n\ Spawns\ two\ effects,\ one\ of\ which\ is\ the\ arrow\ visual\ effect,\ the\ other\ being\ the\ flashing\ screen\ effect..\r\n\ \r\n\ @author\ Harishan\ Ganeshanathan\r\n\ @version\ November\ 2022\r\n
+comment0.text=\r\n\ StockMarketCrash\ Event,\ Spawns\ 2\ effects,\ and\ decreases\ value\ of\ sold\ items\ by\ 25\ dollars.\r\n\ <p>\r\n\ Spawns\ two\ effects,\ one\ of\ which\ is\ the\ arrow\ visual\ effect,\ the\ other\ being\ the\ flashing\ screen\ effect.\r\n\ \r\n\ @author\ Harishan\ Ganeshanathan\r\n\ @version\ November\ 2022\r\n
 comment1.params=d\ left\ right
 comment1.target=StockMarketCrash(int,\ boolean,\ boolean)
 comment1.text=\r\n\ Constructor\ for\ StockMarketCrash\r\n\ <p>\r\n\ Sets\ instance\ variables,\ and\ creates\ an\ array\ of\ the\ down\ arrow\ images\ to\ be\ used\ in\ the\ animation.\r\n\ \r\n\ @param\ d\ Duration\ of\ the\ event\r\n\ @param\ left\ If\ the\ event\ is\ on\ the\ left\ side\ of\ the\ screen\r\n\ @param\ right\ If\ the\ event\ is\ on\ the\ right\ side\ of\ the\ screen\r\n
