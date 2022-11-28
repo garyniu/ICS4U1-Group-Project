@@ -1,10 +1,14 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList; 
 /**
- * Write a description of class Shoes here.
+ * Shoes are the items that are made by machines and workers. They are responsible for moving themselves across the conveyor, but their speed is taken from its corresponding machines speed using a getter. 
+ * <p>
+ * Any manipulation of the speed at which shoes are produced at is due to the machine production speed being changed, and then the shoes speed being constantly updated so it is equal to the speed of the machines. 
+ * <p>
+ * For setting images based on their position on the conveyor (found in act()), BlockedBoxes could have been used, but adding them to the world and setting the images like that was becoming complicated, when we had to create, refer to, and keep track of 12 different BlockedBoxes. Therefore, we opted for a simple timer-based approach.
  *
- * @author Harishan Ganeshanathan, Victor Wei, Arsham Zare Moayedi, 
- * @version (a version number or a date)
+ * @author Harishan Ganeshanathan, Victor Wei, Arsham Zare Moayedi, Gary Niu 
+ * @version November 2022
  */
 public class Shoes extends SmoothMover
 {
@@ -56,9 +60,9 @@ public class Shoes extends SmoothMover
         }
     }
     /**
-     * Act Method - First, the timer is added to every act. The speed is set and the shoe checks if it is on a vertical conveyor or not. If not, it will move based on the produce speed of the machines of the side it is on. 
-     * There is a timer based algorithm for changing the shoe images once they go through a station. BlockedBoxes could have been used, but adding them to the world and setting the images like that was becoming complicated, when we had to create, refer to, and keep track of 12 different BlockedBoxes.
-     * If the shoe collides with the BlockedBox at the end of the vertConveyor, it will add to the currency and then remove the shoe object.
+     * Act Method - The speed is set and the shoe checks if it is on a vertical conveyor or not (if not, it will move based on the produce speed of the machines of the side it is on),  
+     * there is a timer based algorithm for changing the shoe images once they go through a station, 
+     * if the shoe collides with the BlockedBox at the end of the vertConveyor, it will add to the currency and then remove the shoe object.
      */
     public void act()
     {
@@ -194,7 +198,7 @@ public class Shoes extends SmoothMover
         }
     }
     /**
-     * Gets if this current instance of a shoe has been made
+     * Gets if this current instance of a shoe has been made.
      * 
      * @return boolean Returns the boolean shoeMade. 
      */

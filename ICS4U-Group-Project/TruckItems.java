@@ -11,7 +11,6 @@ public class TruckItems extends Actor
     private int duration;
     private GreenfootImage image;
     
-
     public TruckItems(){
         image = new GreenfootImage("boximg.png");
         image.scale(40, 40);
