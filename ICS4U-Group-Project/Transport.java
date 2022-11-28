@@ -3,23 +3,34 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * A transport worker takes materials from where the truck drops them off, and then moves them to the conveyor belt
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Gary Niu
+ * @version November 2022
  */
 public class Transport extends People
 {
 
+    //Instance variables
     private int goX, goY;
     private int goingX, goingY, timer = 0, seqence = 1;
     private boolean pointT = false, pointC = true, moving = true;
     private String side;
     private GreenfootImage image, imageA;
 
+    /**
+     * Constructor for Transport
+     * <p>
+     * Sets the image of the Transport
+     * 
+     * @param goX x coordinate to go to
+     * @param goY y coordinate to go to
+     * @param side Which side the transport worker is on, "left" or "right" 
+     */
     public Transport(int goX, int goY, String side){
         this.goX = goX;
         this.goY = goY;
         this.side = side;
 
+        //Sets the image of the Transport, and an image with it holding a box
         image = new GreenfootImage("Char.png");
         image.scale(image.getWidth()/4, image.getHeight()/4);
         setImage(image);
@@ -27,24 +38,17 @@ public class Transport extends People
         imageA = new GreenfootImage("CharBox.png");
         imageA.scale(imageA.getWidth()/4, imageA.getHeight()/4);
 
-        
-
     }
 
     public void addedToWorld(World w){
         super.addedToWorld(w);
-        
     }
 
-    /**
-     * Act - do whatever the Transport wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     public void act()
     {
 
-        //constantly go to 2 coords
-        
+        //constantly goes to two coordinates, one pickup, one dropoff
+        //if it is at the pickup, it picks up a box, and then goes to the dropoff, through 2 booleans
         timer++;
         
         if (pointC && !pointT){
@@ -76,6 +80,7 @@ public class Transport extends People
             goToLocation(goingX, goingY);
         }
         
+        //Changing image based on point
         if (pointC){
             setImage(imageA);
         } else {

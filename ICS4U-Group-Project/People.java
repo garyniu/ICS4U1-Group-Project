@@ -1,11 +1,14 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class People here.
+ * People superclass, Contains all the methods that are used by the people subclasses
+ * <p>
+ * Manages pathfinding of People
  * 
  * @author Gary Niu
  * @version November 2022
  */
+
 public abstract class People extends Actor
 {
     protected int direction;
@@ -13,6 +16,10 @@ public abstract class People extends Actor
     protected int goToX, goToY; //coordinates to go to
     private boolean tBlock, bBlock, lBlock, rBlock;
     
+    /**
+     * Sets instance variables based on spawn position
+     * 
+     */
     protected void addedToWorld(World w){
         currentX = getX();
         currentY = getY();
@@ -25,6 +32,12 @@ public abstract class People extends Actor
         pathFind(goToX, goToY, (GameWorld)getWorld());
     }
     
+    /**
+     * Sets location to move to
+     * 
+     * @param x - x coordinate to go to
+     * @param y - y coordinate to go to
+     */
     public void goToLocation(int x, int y){
         if (x > getWorld().getWidth()){
             x = getWorld().getWidth();
@@ -42,6 +55,14 @@ public abstract class People extends Actor
         goToY = y;
     }
 
+    /**
+     * Checks if any side is blocked, and modifies future position accordingly
+     * 
+     * @param LB Left Block
+     * @param RB Right Block
+     * @param TB Top Block
+     * @param BB Bottom Block
+     */
     private void blockedMovement(boolean LB, boolean RB, boolean TB, boolean BB){
 
         if (currentX < goToX && !RB){
@@ -57,7 +78,15 @@ public abstract class People extends Actor
         }
     }
 
-    //pathfinding algo, very simple
+    /**
+     * Pathfinding algorithm
+     * <p>
+     * Very simplistic pathfinding algorithm, checks if it can move in any direction based on spawned BlockedBoxes
+     * 
+     * @param x The x coordinate to go to
+     * @param y The y coordinate to go to
+     * @param w The world to check for BlockedBoxes, not currently used
+     */
     public void pathFind(int x, int y, GameWorld w){
         GameWorld gw = w;
 
