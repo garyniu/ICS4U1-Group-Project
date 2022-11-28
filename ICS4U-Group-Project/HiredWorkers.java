@@ -1,4 +1,5 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+//Imports
+import greenfoot.*; 
 
 /**
  * A HiredWorker is hired by a normal boss once they want to upgrade the number of workers per station. 
@@ -15,7 +16,7 @@ public class HiredWorkers extends People
     /**
      * Constructor calls the super Constructor and sets values+images
      * 
-     * @param FS    
+     * @param FS Unused now, used to determine if the HiredWorker will have a fade in animation
      */
     public HiredWorkers(boolean FS){
         super();
@@ -23,12 +24,10 @@ public class HiredWorkers extends People
         GameWorld gw = (GameWorld)getWorld();
         firstSpawn = FS;
 
-        
+        //add image / scale image
         GreenfootImage image = new GreenfootImage("Char.png");
         image.scale(image.getWidth()/4, image.getHeight()/4);
         setImage(image);
-
-        //add image / scale image
     }
 
     public void addedToWorld(){
@@ -39,8 +38,8 @@ public class HiredWorkers extends People
     {
         //play sliding down animation, fade in
         fadein--; originalPos++;
-        //System.out.println(fadein);
         
+        //Unused, messed up spawn positions
         //if (fadein >= 0 && firstSpawn){
             //System.out.println("testsed");
             //entry(fadein, originalPos);
@@ -49,6 +48,15 @@ public class HiredWorkers extends People
         //} 
     }
 
+    /**
+     * Slides the HiredWorker down the screen, and fades in
+     * <p>
+     * Based on VehicleSimulator code
+     * 
+     * @param fadein The amount of time the HiredWorker will fade in
+     * @param originalPos The original position of the HiredWorker
+     *
+     */
     private void entry(int fadetime, int ogposition){
         
         int upMovement = ogposition - 120;
@@ -58,8 +66,6 @@ public class HiredWorkers extends People
         perc = 1 - perc;
         int transp = (int)(perc * 255);
         
-        
-
         if (transp > 255){
             transp = 255;
         } else if (transp < 0){

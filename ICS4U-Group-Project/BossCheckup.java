@@ -1,4 +1,5 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+//Imports
+import greenfoot.*; 
 
 /**
  * During the BossCheckup Event, a super boss will be spawned on the corresponding side. It will walk around 

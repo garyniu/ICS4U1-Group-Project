@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Strike
-comment0.text=\r\n\ During\ the\ Strike\ event,\ all\ workers\ will\ stop\ working\ and\ all\ item\ production\ will\ be\ stopped.\ At\ the\ end\ of\ the\ Strike,\ most\ of\ the\ workers\ will\ leave.\r\n\ Only\ one\ worker\ will\ be\ left\ per\ station.\r\n\ \r\n\ @Harishan\ Ganeshanathan\ \r\n\ @version\ November\ 2022\r\n
+comment0.text=\r\n\ During\ the\ Strike\ event,\ all\ workers\ will\ stop\ working\ and\ all\ item\ production\ will\ be\ stopped.\ At\ the\ end\ of\ the\ Strike,\ most\ of\ the\ workers\ will\ leave.\r\n\ Only\ one\ worker\ will\ be\ left\ per\ station.\r\n\ \r\n\ @authors\ Harishan\ Ganeshanathan\ \r\n\ @version\ November\ 2022\r\n
 comment1.params=d\ left\ right
 comment1.target=Strike(int,\ boolean,\ boolean)
 comment1.text=\r\n\ Constructor\ for\ Strike\ \r\n\ <p>\r\n\ Sets\ instance\ variables\r\n\ \r\n\ @param\ d\ Duration\ of\ the\ event\r\n\ @param\ left\ If\ the\ event\ is\ on\ the\ left\ side\ of\ the\ screen\r\n\ @param\ right\ If\ the\ event\ is\ on\ the\ right\ side\ of\ the\ screen\r\n

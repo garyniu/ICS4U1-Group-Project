@@ -4,7 +4,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * During the Strike event, all workers will stop working and all item production will be stopped. At the end of the Strike, most of the workers will leave.
  * Only one worker will be left per station.
  * 
- * @Harishan Ganeshanathan 
+ * @authors Harishan Ganeshanathan 
  * @version November 2022
  */
 public class Strike extends Event
