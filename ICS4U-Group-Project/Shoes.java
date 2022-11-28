@@ -3,7 +3,7 @@ import java.util.ArrayList;
 /**
  * Write a description of class Shoes here.
  *
- * @author (your name)
+ * @author Harishan Ganeshanathan, Victor Wei, Arsham Zare Moayedi, 
  * @version (a version number or a date)
  */
 public class Shoes extends SmoothMover
@@ -18,6 +18,11 @@ public class Shoes extends SmoothMover
     private boolean shoeMade;
     private GreenfootImage leather, shoe, box;
     private int timer = 0;
+    /**
+     * Constructor for Shoes - Sets the starting image and creates the other images that the shoe will turn into, as well as essential variables
+     * 
+     * @param m     The machine that the shoe is on (whether it is a left or right machine) 
+     */
     public Shoes(Machines m)
     {
         leather = new GreenfootImage("Leather.png");
@@ -32,7 +37,11 @@ public class Shoes extends SmoothMover
         onVertConveyor = false;
         shoeMade = false;
     }
-
+    /**
+     * Sets the side that the shoe is on (left or right side)
+     * 
+     * @param w World 
+     */
     public void addedToWorld(World w){
         if(this.getX() <=512){
             for(LeftMachines lm : w.getObjects(LeftMachines.class)){
@@ -45,9 +54,12 @@ public class Shoes extends SmoothMover
                 side = "right";
             }
         }
-        GameWorld gw = (GameWorld)getWorld();
     }
-
+    /**
+     * Act Method - First, the timer is added to every act. The speed is set and the shoe checks if it is on a vertical conveyor or not. If not, it will move based on the produce speed of the machines of the side it is on. 
+     * There is a timer based algorithm for changing the shoe images once they go through a station. BlockedBoxes could have been used, but adding them to the world and setting the images like that was becoming complicated, when we had to create, refer to, and keep track of 12 different BlockedBoxes.
+     * If the shoe collides with the BlockedBox at the end of the vertConveyor, it will add to the currency and then remove the shoe object.
+     */
     public void act()
     {
         timer++;
@@ -136,7 +148,9 @@ public class Shoes extends SmoothMover
             getWorld().removeObject(this);
         }
     }
-
+    /**
+     * This method constantly updates the speed of the shoe to ensure that the speed is accurate. 
+     */
     public void setSpeed(){
         GameWorld gw = (GameWorld)getWorld();
         if(this.getX() <=512){
@@ -151,7 +165,9 @@ public class Shoes extends SmoothMover
             }
         }
     }
-
+    /**
+     * This method checks if the shoe is currently on a VertConveyor or not, and sets a boolean onVertConveyor to true if it is. 
+     */
     public void checkVertConveyor(){
         GameWorld gw = (GameWorld)getWorld();
         ArrayList<VertConveyor> vertConveyors = (ArrayList<VertConveyor>)gw.getObjects(VertConveyor.class); 
@@ -177,7 +193,11 @@ public class Shoes extends SmoothMover
             }
         }
     }
-
+    /**
+     * Gets if this current instance of a shoe has been made
+     * 
+     * @return boolean Returns the boolean shoeMade. 
+     */
     public boolean getShoeMade(){
         return shoeMade;
     }
