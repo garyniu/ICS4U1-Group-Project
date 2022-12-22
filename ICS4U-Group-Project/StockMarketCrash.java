@@ -13,7 +13,7 @@ public class StockMarketCrash extends Event
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public StockMarketCrash(int d){
-        super(d);
+        super(d); 
     }
     
     public void addedToWorld(World w){
